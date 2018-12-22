@@ -74,8 +74,7 @@
 											<tr id="second" class="context-requst-one selected">
 											<td class="datainner" style="">{{$list->company_name}}</td>
 											<td class="datainner" style="">{{$list->email_address}}</td>
-											<td class="datainner" style="">{{$list->website}}</td>
-                                          
+											<td class="datainner" style="">{{$list->website}}</td>                       
 											<td align="right">
 												<div class="dropdown action-drop">
 													<a href="" class="dropdown-toggle" data-toggle="dropdown"><i style="font-size:16px;" class="fa fa-cog"></i></a>
