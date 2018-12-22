@@ -476,3 +476,24 @@ header .header-menu li.dropdown .dropdown-menu  .menu-list a i{
 .inner-main-section li i {
     color: #0c64ae;
 }
+.action-drop .dropdown-toggle:after {
+    content: none;
+}
+.action-drop .dropdown-menu {
+    padding: 10px;
+}
+.action-drop .dropdown-menu li {
+    padding: 3px 0;
+}
+.action-drop .dropdown-menu li i {
+    width: 27px;
+    text-align: center;
+}
+.action-drop:hover .dropdown-menu {
+    display: block;
+    left: unset;
+    right: 0;
+}
+.action-drop .dropdown-menu li a {
+    font-size: 14px;
+}

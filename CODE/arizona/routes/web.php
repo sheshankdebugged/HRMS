@@ -22,6 +22,13 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
 
 Route::get('/dashboard','DashboardController@index')->name('dashboard');
-//Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('/companies', 'companiesController@index');
+Route::get('/addcompanies', 'companiesController@create');
+Route::post('/savecompanies', 'companiesController@store');
+Route::get('/companies/edit/{id}', 'companiesController@edit');
+Route::post('/companies/update/{id}', 'companiesController@update');
+Route::get('/companies/delete/{id}', 'companiesController@destroy');
 
 });

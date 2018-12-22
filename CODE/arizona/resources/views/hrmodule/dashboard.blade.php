@@ -74,6 +74,7 @@
 									</div>
 								</div>
 								<div class="inner-table-main" style="min-height:590px;">
+								<div class="inner-table-main" style="min-height:590px;">
 									<table id="requesttab" border="0" cellspacing="0" cellpadding="3" width="100%" align="center">
 									 <thead>
 									  <tr>
@@ -92,28 +93,38 @@
 											<td class="datainner" style="">1</td>
 											<td class="datainner" style=""></td>
 											<td class="datainner" style="">Requested</td>
-											<td align="right"><a href="#"><i style="font-size:16px;" class="fa fa-bars"></i></a></td>
+											<td align="right">
+												<div class="dropdown action-drop">
+													<a href="" class="dropdown-toggle" data-toggle="dropdown"><i style="font-size:16px;" class="fa fa-cog"></i></a>
+													<ul class="dropdown-menu">
+														<li><a href="#"><i class="fa fa-folder-open"></i>View Record</a></li>
+														<li><a href="#"><i class="fa fa-edit"></i>Edit Record</a></li>
+														<li><a href="#"><i class="fa fa-sticky-note"></i>Notes</a></li>
+														<li><a href="#"><i class="fa fa-times"></i>Delete Record</a></li>
+													</ul>
+												</div>
+											</td>
 										</tr>
 										<tr id="1" class="context-requst-one">
 											<td class="datainner" style="">HR Manager</td>
 											<td class="datainner" style="">Contract</td>
 											<td class="datainner" style="">1</td><td class="rtla1" style=""></td>
 											<td class="datainner" style="">Requested</td>
-											<td align="right"><a href="#" id="bars-new"><i style="font-size:16px;" class="fa fa-bars"></i></a></td>
+											<td align="right"><a href="#" id="bars-new"><i style="font-size:16px;" class="fa fa-cog"></i></a></td>
 										</tr>
 										<tr id="1" class="context-requst-one">
 											<td class="datainner" style="">HR Manager</td>
 											<td class="datainner" style="">Contract</td>
 											<td class="datainner" style="">1</td><td class="rtla1" style=""></td>
 											<td class="datainner" style="">Requested</td>
-											<td align="right"><a href="#" id="bars-new"><i style="font-size:16px;" class="fa fa-bars"></i></a></td>
+											<td align="right"><a href="#" id="bars-new"><i style="font-size:16px;" class="fa fa-cog"></i></a></td>
 										</tr>
 										<tr id="1" class="context-requst-one">
 											<td class="datainner" style="">HR Manager</td>
 											<td class="datainner" style="">Contract</td>
 											<td class="datainner" style="">1</td><td class="rtla1" style=""></td>
 											<td class="datainner" style="">Requested</td>
-											<td align="right"><a href="#" id="bars-new"><i style="font-size:16px;" class="fa fa-bars"></i></a></td>
+											<td align="right"><a href="#" id="bars-new"><i style="font-size:16px;" class="fa fa-cog"></i></a></td>
 										</tr>
 										</tbody>
 												</table>
