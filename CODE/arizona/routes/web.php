@@ -37,4 +37,20 @@ Route::get('/companies/delete/{id}', 'companiesController@destroy');
 // JobPosts Routes
 \App\Http\Controllers\JobPostsController::routes();
 
+Route::get('/departments', 'DepartmentsController@index');
+Route::get('/adddepartments', 'DepartmentsController@create');
+Route::post('/savedepartments', 'DepartmentsController@store');
+Route::get('/departments/edit/{id}', 'DepartmentsController@edit');
+Route::post('/departments/update/{id}', 'DepartmentsController@update');
+Route::get('/departments/delete/{id}', 'DepartmentsController@destroy');
+
+
+Route::get('/stations', 'StationsController@index');
+Route::get('/addstations', 'StationsController@create');
+Route::post('/savestations', 'StationsController@store');
+Route::get('/stations/edit/{id}', 'StationsController@edit');
+Route::post('/stations/update/{id}', 'StationsController@update');
+Route::get('/stations/delete/{id}', 'StationsController@destroy');
+
+
 });

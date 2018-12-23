@@ -10,6 +10,7 @@ use Illuminate\Support\Form;
 use Validator;
 use Session;
 use App\Models\Companies;
+use Illuminate\Support\Facades\Auth;
 
 class CompaniesController extends Controller
 {
@@ -50,9 +51,12 @@ class CompaniesController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     * 	bs@hopmanhome.com, triproserv@gmail.com adam.mckinnon75@outlook.com
      */
     public function store(Request $request)
     {
+
+        $user_id = Auth::id();
         if($request->all()){
 
             $validator = Validator::make($request->all(), [
@@ -60,7 +64,7 @@ class CompaniesController extends Controller
 
 
             ]);
-            if ($validator->fails()) {
+           if ($validator->fails()) {
                 $action = 'addcompanies';
                 return redirect('/addcompanies')
                     ->withErrors($validator)
@@ -78,6 +82,7 @@ class CompaniesController extends Controller
             }
 
             $input['status']=  1;
+            $input['user_id'] =  $user_id;
             unset($input['_token']);
             if($input['id']>0){
                 $input['updated_at']=date("Y-m-d H:i:s");
