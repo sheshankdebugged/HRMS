@@ -78,10 +78,10 @@
     <nav class="navbar navbar-expand-lg navbar-expand-sm sticky header-section">
         <div class="container navbar-collapse d-none d-sm-block header-main">
             <ul class="rtl navbar-nav mr-auto header-menu">
-                <li>   
+                <li>
                     <a href="#" class="nav-link">
                         <i id="navHome_Icon" class="fa fa-home"></i>
-                    </a>  
+                    </a>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="nav-link">
@@ -93,7 +93,7 @@
                         <div class="d-block menu-list">
                            <div class="row">
                               <div class="col-sm-6 list-unstyled">
-                                 <a href="#"><i class="fa fa-dashboard"></i>Companies</a>
+                                 <a href="companies"><i class="fa fa-dashboard"></i>Companies</a>
                                  <a href="#"><i class="fa fa-desktop" style="margin-right:12px; font-size:18px;"></i>Stations</a>
                                  <a href="#noanchor"><i class="fa fa-envelope-open"></i>Job Requests</a>
                                  <a href="#noanchor"><i class="fa fa-envelope-o"></i>Job Posts</a>
@@ -121,13 +121,48 @@
                               <div class="col-sm-6 list-unstyled">
                                  <a href="#"><i class="fa fa-dashboard"></i>Dashboard</a>
                                  <a href="#"><i class="fa fa-desktop" style="margin-right:12px; font-size:18px;"></i>Screening</a>
-                                 <a href="#noanchor"><i class="fa fa-envelope-open"></i>Job Requests</a>
-                                 <a href="#noanchor"><i class="fa fa-envelope-o"></i>Job Posts</a>
+                                 <a href="#"><i class="fa fa-envelope-open"></i>Job Requests</a>
+                                 <a href="/jobposts"><i class="fa fa-envelope-o"></i>Job Posts</a>
                                  <a href="#noanchor"><i class="fa fa-male"></i>Job Candidates</a>
                               </div>
                               <div class="col-sm-6 list-unstyled">
                                     <a href="#noanchor"><i class="fa fa-clipboard"></i>Job Tests</a>
                                     <a href="#noanchor"><i class="fa fa-comments"></i>Job Interviews</a>
+                              </div>
+                           </div>
+                        </div>
+
+                    </div>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="nav-link">
+                        <i class="fa fa-group"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-left">
+                        <div class="sub-menu-title">Employees</div>
+
+                        <div class="d-block menu-list">
+                           <div class="row">
+                              <div class="col-sm-6 list-unstyled">
+                                 <a href="#"><i class="fa fa-dashboard"></i>Dashboard</a>
+                                 <a href="employees"><i class="fa fa-group"></i>Employees</a>
+                                 <a href="#noanchor"><i class="fa fa-sign-in"></i>Onboarding</a>
+                                 <a href="#noanchor"><i class="fa fa-file"></i>Contracts</a>
+                                 <a href="#noanchor"><i class="fa fa-briefcase"></i>Assignments</a>
+                                 <a href="#noanchor"><i class="fa fa-refresh"></i>Transfers</a>
+                                 <a href="#noanchor"><i class="fa fa-edit"></i>Resignations</a>
+                                 <a href="#noanchor"><i class="fa fa-pie-chart"></i>Polls</a>
+                                 <a href="#noanchor"><i class="fa fa-sign-out"></i>Employees Exit</a>
+                              </div>
+                              <div class="col-sm-6 list-unstyled">
+                                    <a href="#noanchor"><i class="fa fa-trophy"></i>Achievements</a>
+                                    <a href="#noanchor"><i class="fa fa-plane"></i>Travels</a>
+                                    <a href="#noanchor"><i class="fa fa-star"></i>Promotions</a>
+                                    <a href="#noanchor"><i class="fa fa-exclamation-circle"></i>Complaints</a>
+                                    <a href="#noanchor"><i class="fa fa-exclamation-triangle"></i>Warnings</a>
+                                    <a href="#noanchor"><i class="fa fa-edit"></i>Memos</a>
+                                    <a href="#noanchor"><i class="fa fa-times"></i>Terminations</a>
                               </div>
                            </div>
                         </div>

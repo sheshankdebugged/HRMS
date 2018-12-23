@@ -9,11 +9,11 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Form;
 use Validator;
 use Session;
-use App\Models\Companies; 
+use App\Models\Companies;
 
 class CompaniesController extends Controller
 {
-    
+
      /**
      * Display a listing of the resource.
      *
@@ -21,13 +21,13 @@ class CompaniesController extends Controller
      */
     public function index()
     {
-        
+
         $list = Companies::where(['status'=>1])->paginate(10);
         return view('hrmodule.companies.list')->with([
             'listData' => $list,
             'pageTitle'=>"Companies"
         ]);
-        
+
     }
 
     /**
@@ -53,13 +53,13 @@ class CompaniesController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->all()){ 
+        if($request->all()){
 
             $validator = Validator::make($request->all(), [
                 'company_name' => 'required',
-               
-                
-            ]);  
+
+
+            ]);
             if ($validator->fails()) {
                 $action = 'addcompanies';
                 return redirect('/addcompanies')
@@ -74,9 +74,9 @@ class CompaniesController extends Controller
             if (request()->hasFile('icon_img')) {
                 $file = request()->file('icon_img');
                 $input['icon_img'] = md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
-                $file->move('./img/uploads/Companies/', $input['icon_img']);    
+                $file->move('./img/uploads/Companies/', $input['icon_img']);
             }
-        
+
             $input['status']=  1;
             unset($input['_token']);
             if($input['id']>0){
@@ -91,7 +91,7 @@ class CompaniesController extends Controller
                 Companies::insertGetId($input);
             }
             return redirect('/companies');
-        } 
+        }
     }
 
     /**
@@ -113,7 +113,7 @@ class CompaniesController extends Controller
      */
     public function edit($id)
     {
-        
+
         $action = 'edit';
         $result = Companies::find($id);
         $action = 'add';
@@ -127,7 +127,7 @@ class CompaniesController extends Controller
 
     }
 
-  
+
     /**
      * Remove the specified resource from storage.
      *

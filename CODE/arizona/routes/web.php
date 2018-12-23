@@ -31,4 +31,10 @@ Route::get('/companies/edit/{id}', 'companiesController@edit');
 Route::post('/companies/update/{id}', 'companiesController@update');
 Route::get('/companies/delete/{id}', 'companiesController@destroy');
 
+// Employees Routes
+\App\Http\Controllers\EmployeesController::routes();
+
+// JobPosts Routes
+\App\Http\Controllers\JobPostsController::routes();
+
 });
