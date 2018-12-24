@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 
 class CompaniesController extends Controller
 {
-    
+
      /**
      * Display a listing of the resource.
      *
@@ -22,13 +22,13 @@ class CompaniesController extends Controller
      */
     public function index()
     {
-        
+
         $list = Companies::where(['status'=>1])->paginate(10);
         return view('hrmodule.companies.list')->with([
             'listData' => $list,
             'pageTitle'=>"Companies"
         ]);
-        
+
     }
 
     /**
@@ -55,15 +55,15 @@ class CompaniesController extends Controller
      */
     public function store(Request $request)
     {
-       
+
         $user_id = Auth::id();
-        if($request->all()){ 
+        if($request->all()){
 
             $validator = Validator::make($request->all(), [
                 'company_name' => 'required',
-               
-                
-            ]);  
+
+
+            ]);
            if ($validator->fails()) {
                 $action = 'addcompanies';
                 return redirect('/addcompanies')
@@ -78,9 +78,9 @@ class CompaniesController extends Controller
             if (request()->hasFile('icon_img')) {
                 $file = request()->file('icon_img');
                 $input['icon_img'] = md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
-                $file->move('./img/uploads/Companies/', $input['icon_img']);    
+                $file->move('./img/uploads/Companies/', $input['icon_img']);
             }
-        
+
             $input['status']=  1;
             $input['user_id'] =  $user_id;
             unset($input['_token']);
@@ -96,7 +96,7 @@ class CompaniesController extends Controller
                 Companies::insertGetId($input);
             }
             return redirect('/companies');
-        } 
+        }
     }
 
     /**
@@ -118,7 +118,7 @@ class CompaniesController extends Controller
      */
     public function edit($id)
     {
-        
+
         $action = 'edit';
         $result = Companies::find($id);
         $action = 'add';
@@ -132,7 +132,7 @@ class CompaniesController extends Controller
 
     }
 
-  
+
     /**
      * Remove the specified resource from storage.
      *
