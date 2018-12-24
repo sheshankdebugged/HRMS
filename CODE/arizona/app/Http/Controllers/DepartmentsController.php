@@ -1,33 +1,32 @@
 <?php
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
+
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Input;
+use App\Models\Departments;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Form;
-use Validator;
 use Session;
-use App\Models\Departments; 
+use Validator;
 
 class DepartmentsController extends Controller
 {
-    
-     /**
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        
-        $list = Departments::where(['status'=>1])->paginate(10);
+
+        $list = Departments::where(['status' => 1])->paginate(10);
         return view('hrmodule.Departments.list')->with([
             'listData' => $list,
-            'pageTitle'=>"Departments"
+            'pageTitle' => "Departments",
         ]);
-        
+
     }
 
     /**
@@ -40,8 +39,8 @@ class DepartmentsController extends Controller
         $action = 'add';
         return view('hrmodule.Departments.add')->with([
             'action' => $action,
-            'pageTitle'=>"Departments",
-            'Addform'  =>"Add New Company"
+            'pageTitle' => "Departments",
+            'Addform' => "Add New Company",
         ]);
     }
 
@@ -50,26 +49,25 @@ class DepartmentsController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-     * 	bs@hopmanhome.com, triproserv@gmail.com adam.mckinnon75@outlook.com
+     *     bs@hopmanhome.com, triproserv@gmail.com adam.mckinnon75@outlook.com
      */
     public function store(Request $request)
     {
-       
-        $user_id =  Auth::user()->id;
-        if($request->all()){ 
+
+        $user_id = Auth::user()->id;
+        if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
                 'company_name' => 'required',
-               
-                
-            ]);  
-           if ($validator->fails()) {
+
+            ]);
+            if ($validator->fails()) {
                 $action = 'addDepartments';
                 return redirect('/addDepartments')
                     ->withErrors($validator)
                     ->withInput()
                     ->with([
-                         'action' => $action
+                        'action' => $action,
                     ]);
             }
 
@@ -77,25 +75,25 @@ class DepartmentsController extends Controller
             if (request()->hasFile('icon_img')) {
                 $file = request()->file('icon_img');
                 $input['icon_img'] = md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
-                $file->move('./img/uploads/Departments/', $input['icon_img']);    
+                $file->move('./img/uploads/Departments/', $input['icon_img']);
             }
-        
-            $input['status']=  1;
-            $input['user_id'] =  $user_id;
+
+            $input['status'] = 1;
+            $input['user_id'] = $user_id;
             unset($input['_token']);
-            if($input['id']>0){
-                $input['updated_at']=date("Y-m-d H:i:s");
+            if ($input['id'] > 0) {
+                $input['updated_at'] = date("Y-m-d H:i:s");
                 Session::flash('message', 'Companie  Updated Successfully.');
                 Departments::where('id', $input['id'])->update($input);
-            }else{
+            } else {
                 unset($input['id']);
-                $input['created_at']=date("Y-m-d H:i:s");
-                $input['updated_at']=date("Y-m-d H:i:s");
+                $input['created_at'] = date("Y-m-d H:i:s");
+                $input['updated_at'] = date("Y-m-d H:i:s");
                 Session::flash('message', 'Companie  Added Successfully.');
                 Departments::insertGetId($input);
             }
             return redirect('/Departments');
-        } 
+        }
     }
 
     /**
@@ -117,21 +115,20 @@ class DepartmentsController extends Controller
      */
     public function edit($id)
     {
-        
+
         $action = 'edit';
         $result = Departments::find($id);
         $action = 'add';
-        $editname = "Edit ".$result->company_name;
+        $editname = "Edit " . $result->company_name;
         return view('hrmodule.Departments.add')->with([
             'action' => $action,
-            'pageTitle'=>"Departments",
-            'Addform'  =>$editname,
-            'result'  =>$result
+            'pageTitle' => "Departments",
+            'Addform' => $editname,
+            'result' => $result,
         ]);
 
     }
 
-  
     /**
      * Remove the specified resource from storage.
      *
@@ -145,5 +142,16 @@ class DepartmentsController extends Controller
         $Departments->save();
         Session::flash('message', 'Company delete successfully');
         return redirect("/Departments");
+    }
+    public static function routes()
+    {
+        Route::group(array('prefix' => 'departments'), function () {
+            Route::get('/', array('as' => 'departments.index', 'uses' => 'DepartmentsController@index'));
+            Route::get('/add', array('as' => 'departments.create', 'uses' => 'DepartmentsController@create'));
+            Route::post('/save', array('as' => 'departments.save', 'uses' => 'DepartmentsController@store'));
+            Route::get('/edit/{id}', array('as' => 'departments.edit', 'uses' => 'DepartmentsController@edit'));
+            Route::post('/update/{id}', array('as' => 'departments.update', 'uses' => 'DepartmentsController@update'));
+            Route::get('/delete/{id}', array('as' => 'departments.destroy', 'uses' => 'DepartmentsController@destroy'));
+        });
     }
 }

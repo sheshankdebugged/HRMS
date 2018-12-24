@@ -1,16 +1,15 @@
 <?php
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
+
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Form;
-use Validator;
-use Session;
 use App\Models\Projects;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Form;
+use Session;
+use Validator;
 
 class ProjectsController extends Controller
 {
@@ -22,16 +21,16 @@ class ProjectsController extends Controller
     public function index()
     {
         //
-     
-        $list = Projects::where(['status'=>1])->paginate(10);
-        
-       // echo "<pre>";
+
+        $list = Projects::where(['status' => 1])->paginate(10);
+
+        // echo "<pre>";
         //print_r($list);
 
-       // die;
+        // die;
         return view('hrmodule.projects.list')->with([
             'listData' => $list,
-            'pageTitle'=>"Projects"
+            'pageTitle' => "Projects",
         ]);
 
     }
@@ -46,8 +45,8 @@ class ProjectsController extends Controller
         $action = 'add';
         return view('hrmodule.projects.add')->with([
             'action' => $action,
-            'pageTitle'=>"Projects",
-            'Addform'  =>"Add New Projects"
+            'pageTitle' => "Projects",
+            'Addform' => "Add New Projects",
         ]);
     }
 
@@ -60,20 +59,19 @@ class ProjectsController extends Controller
     public function store(Request $request)
     {
         $user_id = Auth::id();
-        if($request->all()){
+        if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
                 'project_title' => 'required',
 
-
             ]);
-           if ($validator->fails()) {
+            if ($validator->fails()) {
                 $action = 'addprojects';
                 return redirect('/addprojects')
                     ->withErrors($validator)
                     ->withInput()
                     ->with([
-                         'action' => $action
+                        'action' => $action,
                     ]);
             }
 
@@ -84,17 +82,17 @@ class ProjectsController extends Controller
                 $file->move('./img/uploads/Companies/', $input['icon_img']);
             }
 
-            $input['status']=  1;
-            $input['user_id'] =  $user_id;
+            $input['status'] = 1;
+            $input['user_id'] = $user_id;
             unset($input['_token']);
-            if($input['id']>0){
-                $input['updated_at']=date("Y-m-d H:i:s");
+            if ($input['id'] > 0) {
+                $input['updated_at'] = date("Y-m-d H:i:s");
                 Session::flash('message', 'Projects  Updated Successfully.');
                 Projects::where('id', $input['id'])->update($input);
-            }else{
+            } else {
                 unset($input['id']);
-                $input['created_at']=date("Y-m-d H:i:s");
-                $input['updated_at']=date("Y-m-d H:i:s");
+                $input['created_at'] = date("Y-m-d H:i:s");
+                $input['updated_at'] = date("Y-m-d H:i:s");
                 Session::flash('message', 'Projects  Added Successfully.');
                 Projects::insertGetId($input);
             }
@@ -119,19 +117,18 @@ class ProjectsController extends Controller
      * @param  \App\Models\Projects  $projects
      * @return \Illuminate\Http\Response
      */
-    public function edit( $id)
+    public function edit($id)
     {
-       
 
         $action = 'edit';
         $result = Projects::find($id);
         $action = 'add';
-        $editname = "Edit ".$result->project_title;
+        $editname = "Edit " . $result->project_title;
         return view('hrmodule.projects.add')->with([
             'action' => $action,
-            'pageTitle'=>"Project",
-            'Addform'  =>$editname,
-            'result'  =>$result
+            'pageTitle' => "Project",
+            'Addform' => $editname,
+            'result' => $result,
         ]);
     }
 
@@ -155,11 +152,23 @@ class ProjectsController extends Controller
      */
     public function destroy($id)
     {
-       
+
         $Companies = Projects::find($id);
         $Companies->status = 0;
         $Companies->save();
         Session::flash('message', 'Project delete successfully');
         return redirect("/projects");
+    }
+    public static function routes()
+    {
+        Route::group(array('prefix' => 'projects'), function () {
+            Route::get('/', array('as' => 'projects.index', 'uses' => 'ProjectsController@index'));
+            Route::get('/add', array('as' => 'projects.create', 'uses' => 'ProjectsController@create'));
+            Route::post('/save', array('as' => 'projects.save', 'uses' => 'ProjectsController@store'));
+            Route::get('/edit/{id}', array('as' => 'projects.edit', 'uses' => 'ProjectsController@edit'));
+            Route::post('/update/{id}', array('as' => 'projects.update', 'uses' => 'ProjectsController@update'));
+            Route::get('/delete/{id}', array('as' => 'projects.destroy', 'uses' => 'ProjectsController@destroy'));
+        });
+
     }
 }
