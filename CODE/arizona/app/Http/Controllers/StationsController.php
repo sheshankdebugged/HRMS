@@ -88,7 +88,8 @@ class StationsController extends Controller
             if($input['id']>0){
                 $input['updated_at']=date("Y-m-d H:i:s");
                 Session::flash('message', 'Stations  Updated Successfully.');
-               Stations::where('id', $input['id'])->update($input);
+              
+                 Stations::where('id', $input['id'])->update($input);
             }else{
                 unset($input['id']);
                 $input['created_at']=date("Y-m-d H:i:s");
