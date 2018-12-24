@@ -31,6 +31,15 @@ Route::get('/companies/edit/{id}', 'companiesController@edit');
 Route::post('/companies/update/{id}', 'companiesController@update');
 Route::get('/companies/delete/{id}', 'companiesController@destroy');
 
+
+Route::get('/projects', 'ProjectsController@index');
+Route::get('/addprojects', 'ProjectsController@create');
+Route::post('/saveprojects', 'ProjectsController@store');
+Route::get('/projects/edit/{id}', 'ProjectsController@edit');
+Route::post('/projects/update/{id}', 'ProjectsController@update');
+Route::get('/projects/delete/{id}', 'ProjectsController@destroy');
+
+
 // Employees Routes
 \App\Http\Controllers\EmployeesController::routes();
 
