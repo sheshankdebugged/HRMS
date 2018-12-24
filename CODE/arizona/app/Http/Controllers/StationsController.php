@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 use Validator;
 use Session;
 use App\Models\Stations;
+use App\Models\Companies;
+
 
 
 class StationsController extends Controller
@@ -25,6 +27,7 @@ class StationsController extends Controller
     {
         
         $list =Stations::where(['status'=>1])->paginate(10);
+        $master = $this->getmasterfields();
         return view('hrmodule.stations.list')->with([
             'listData' => $list,
             'pageTitle'=>"Stations"
@@ -40,10 +43,12 @@ class StationsController extends Controller
     public function create()
     {
         $action = 'add';
+        $master = $this->getmasterfields();
         return view('hrmodule.stations.add')->with([
             'action' => $action,
             'pageTitle'=>"Stations",
-            'Addform'  =>"Add New Station"
+            'Addform'  =>"Add New Station",
+            'master'  =>$master
         ]);
     }
 
@@ -125,11 +130,13 @@ class StationsController extends Controller
         $result =Stations::find($id);
         $action = 'add';
         $editname = "Edit ".$result->company_name;
+        $master = $this->getmasterfields();
         return view('hrmodule.stations.add')->with([
             'action' => $action,
             'pageTitle'=>"stations",
             'Addform'  =>$editname,
-            'result'  =>$result
+            'result'  =>$result,
+            'master'  =>$master
         ]);
 
     }
@@ -149,4 +156,19 @@ class StationsController extends Controller
         Session::flash('message', 'Company delete successfully');
         return redirect("/stations");
     }
+
+    /*
+     *
+    */
+
+  
+
+    function getmasterfields(){
+
+            $master                     = array();
+            $master['Companies']             = Companies::where(['status'=>1])->get()->toArray();
+            return $master;
+    }
+
+    
 }
