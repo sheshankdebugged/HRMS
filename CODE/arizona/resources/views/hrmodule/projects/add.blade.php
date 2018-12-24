@@ -53,12 +53,10 @@
                                                     @endforeach
                                                 </ul>
                                             </div>
-                                        @endif 
-                                        
+                                        @endif
                                         <form method="post" action="{{ url('saveprojects') }}">
                                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                           <input type="hidden" name="id" value="{{isset($result->id)?$result->id:''}}">
-
 											<div class="form-field-inner">
 												<div class="form-group">
 													<label>Project Category:</label>
@@ -70,35 +68,27 @@
 													<input type="text" class="form-control-spacial" id="project_title" name="project_title" value="{{isset($result->project_title)?$result->project_title:''}}" placeholder="Company name">
                                                     <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fal fa-asterisk"></i>
 												 </div>
-
 												 <div class="form-group">
 													<label>Client Name:</label>
 													<select  name ="client_name" id="client_name" class="form-control-select">
 													<option style="" value="0"> - </option><option style="" value="1">Corporation</option><option style="" value="2">Exempt Organization</option><option style="" value="3">Partnership</option><option style="" value="4">Private Foundation</option><option style="" value="5">S Corporation</option><option style="" value="6">Sole Proprietor</option><option style="" value="7">Limited Liability Company</option><option style="" value="8">Trading LLC</option><option style="" value="9">Private Limited</option><option style="" value="10">General Partnership</option><option style="" value="11">Limited Partnership</option><option style="" value="12">Non Profit Organization</option><option style="" value="13">Trust</option><option style="" value="14">Joint Venture</option><option style="" value="15">Association</option><option style="" value="16">Free Zone</option>
 												 	</select>
 												 </div>
-
-
 												 <div class="form-group">
 													<label>Client Name (Old):</label>
 													<input type="text"  id="client_name_old" name="client_name_old"  placeholder="Client Name">
                                                     <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fal fa-asterisk"></i>
 												 </div>
-
 												 <div class="form-group">
 													<label>Project Start Date:</label>
 													<input type="date" class "form-control-spacial date" id="created_at" name="created_at">
                                                     <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fal fa-asterisk"></i>
 												 </div>
-
-                                                
-
 												<div class="form-group">
 													<label>Project End Date:</label>
 													<input type="date" class "form-control-spacial date" id="updated_at" name="updated_at" value="{{isset($result->updated_at)?$result->updated_at:''}}">
 													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fal fa-asterisk"></i>
-												</div> 
-
+												</div>
 												<div class="form-group">
 													<h4>Project Audience</h4>
 												 </div>
@@ -120,11 +110,9 @@
 													<option style="" value="0"> - </option><option style="" value="1">Corporation</option><option style="" value="2">Exempt Organization</option><option style="" value="3">Partnership</option><option style="" value="4">Private Foundation</option><option style="" value="5">S Corporation</option><option style="" value="6">Sole Proprietor</option><option style="" value="7">Limited Liability Company</option><option style="" value="8">Trading LLC</option><option style="" value="9">Private Limited</option><option style="" value="10">General Partnership</option><option style="" value="11">Limited Partnership</option><option style="" value="12">Non Profit Organization</option><option style="" value="13">Trust</option><option style="" value="14">Joint Venture</option><option style="" value="15">Association</option><option style="" value="16">Free Zone</option>
 												 	</select>
 												 </div>
-
-												 
 												 <div class="form-group">
 													<h4>Project Employees</h4>
-												 </div> 
+												 </div>
 												 <div class="form-group">
 													<label>Project Employees:</label>
 													<input type="text" class="project_employees" id="project_employees" placeholder="" role="combobox">
@@ -141,34 +129,27 @@
 													<option style="" value="0"> - </option><option style="" value="1">Corporation</option><option style="" value="2">Exempt Organization</option><option style="" value="3">Partnership</option><option style="" value="4">Private Foundation</option><option style="" value="5">S Corporation</option><option style="" value="6">Sole Proprietor</option><option style="" value="7">Limited Liability Company</option><option style="" value="8">Trading LLC</option><option style="" value="9">Private Limited</option><option style="" value="10">General Partnership</option><option style="" value="11">Limited Partnership</option><option style="" value="12">Non Profit Organization</option><option style="" value="13">Trust</option><option style="" value="14">Joint Venture</option><option style="" value="15">Association</option><option style="" value="16">Free Zone</option>
 												 	</select>
 												 </div>
-												 
 												 <div class="form-group">
 													<h4>Project Description</h4>
 												 </div>
-												
 												 <div class="form-group">
 													<h4>Additional Information</h4>
 												 </div>
-
 												 <div class="form-group">
 												 <label>Notes:</label>
 												 <textarea class="notes" name="notes" id="notes" id="notes">{{isset($result->notes)?$result->notes:''}}</textarea>
-												</div> 
+												</div>
 
 												 <div class="form-group">
 												 <label>Record Added By:</label>
-												</div> 
-												
+												</div>
 												<div class="form-group">
 												 <label>Record Added On:</label>
-
-												 @php 
-												 $date  = date("F j, Y, g:i a"); 
-
+												 @php
+												 $date  = date("F j, Y, g:i a");
 												 @endphp
 												 {{$date}}
-												</div> 
-
+												</div>
 												 <div class="form-group">
 													<input class="submit-office" type="submit" value="Save">
 												</div>
