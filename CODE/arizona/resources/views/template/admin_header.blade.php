@@ -85,23 +85,27 @@
                 </li>
                 <li class="dropdown">
                     <a href="#" class="nav-link">
-                        <i class="fa fa-id-card-o"></i>
+                        <i class="fa  fa-cog"></i>
                     </a>
+                    
                     <div class="dropdown-menu dropdown-menu-left">
                         <div class="sub-menu-title">Organization</div>
 
                         <div class="d-block menu-list">
                            <div class="row">
                               <div class="col-sm-6 list-unstyled">
-                                 <a href="companies"><i class="fa fa-dashboard"></i>Companies</a>
-                                 <a href="#"><i class="fa fa-desktop" style="margin-right:12px; font-size:18px;"></i>Stations</a>
-                                 <a href="#noanchor"><i class="fa fa-envelope-open"></i>Job Requests</a>
-                                 <a href="#noanchor"><i class="fa fa-envelope-o"></i>Job Posts</a>
-                                 <a href="#noanchor"><i class="fa fa-male"></i>Job Candidates</a>
+                                 <a href="{{url('companies')}}"><i class="fa fa-clone"></i>Companies</a>
+                                 <a href="{{url('stations')}}"><i class="fa fa-building" style="margin-right:12px; font-size:18px;"></i>Stations</a>
+                                 <a href="#noanchor"><i class="fa fa-sitemap"></i>Departments</a>
+                                 <a href="#noanchor"><i class="fa fa-archive"></i>Projects</a>
+                                 <a href="#noanchor"><i class="fa fa-newspaper-o"></i>Organization News</a>
                               </div>
                               <div class="col-sm-6 list-unstyled">
-                                    <a href="#noanchor"><i class="fa fa-clipboard"></i>Job Tests</a>
-                                    <a href="#noanchor"><i class="fa fa-comments"></i>Job Interviews</a>
+                                    <a href="#noanchor"><i class="fa fa-file-text-o"></i>Policies</a>
+                                    <a href="#noanchor"><i class="fa fa-bullhorn"></i>Announcements</a>
+                                    <a href="#noanchor"><i class="fa fa-cogs"></i>System Settings</a>
+                                    <a href="#noanchor"><i class="fa fa-file-o"></i>System Logs</a>
+                                    
                               </div>
                            </div>
                         </div>
@@ -122,7 +126,7 @@
                                  <a href="#"><i class="fa fa-dashboard"></i>Dashboard</a>
                                  <a href="#"><i class="fa fa-desktop" style="margin-right:12px; font-size:18px;"></i>Screening</a>
                                  <a href="#"><i class="fa fa-envelope-open"></i>Job Requests</a>
-                                 <a href="/jobposts"><i class="fa fa-envelope-o"></i>Job Posts</a>
+                                 <a href="{{url('jobposts')}}"><i class="fa fa-envelope-o"></i>Job Posts</a>
                                  <a href="#noanchor"><i class="fa fa-male"></i>Job Candidates</a>
                               </div>
                               <div class="col-sm-6 list-unstyled">
