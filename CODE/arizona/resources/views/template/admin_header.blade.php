@@ -87,6 +87,7 @@
                     <a href="#" class="nav-link">
                         <i class="fa  fa-cog"></i>
                     </a>
+                    
                     <div class="dropdown-menu dropdown-menu-left">
                         <div class="sub-menu-title">Organization</div>
 

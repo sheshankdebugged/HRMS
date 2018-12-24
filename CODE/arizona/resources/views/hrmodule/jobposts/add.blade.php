@@ -152,6 +152,7 @@
                                                     <label>State / Province:</label>
                                                     <input type="text" class="form-control-spacial" id="state" name="state" value="{{isset($result->state)?$result->state:''}}">
                                                 </div>
+                                    
                                                 <div class="form-group">
                                                     <label>Zip Code:</label>
                                                     <input type="text" class="form-control-spacial" id="zip_code" name="zip_code" value="{{isset($result->zip_code)?$result->zip_code:''}}">
