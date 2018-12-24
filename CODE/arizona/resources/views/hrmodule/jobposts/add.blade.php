@@ -72,7 +72,7 @@
                                                     <select class="form-control-spacial" id="job_field" value="{{isset($result->job_field)?$result->job_field:''}}" name="job_field">
                                                         <option value="">-</option>
                                                         @foreach($jobFields as $key=>$field)
-                                                        <option value="{{$key}}" <?php echo ($key == $result->job_field) ? "selected":"" ?>>{{$field}}</option>
+                                                        <option value="{{$key}}" <?php   if(isset( $result->job_field)) { echo ($key == $result->job_field) ? "selected":"" ; } ?>>{{$field}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -81,7 +81,7 @@
                                                     <label>Job Type:</label>
                                                     <select class="form-control-spacial" id="job_type" value="{{isset($result->job_type)?$result->job_type:''}}" name="job_type">
                                                         @foreach($jobTypes as $key=>$list)
-                                                        <option value="{{$key}}" <?php echo ($key == $result->job_type) ? "selected":"" ?>>{{$list}}</option>
+                                                        <option value="{{$key}}" <?php  if(isset( $result->job_field)) { echo ($key == $result->job_type) ? "selected":"" ; } ?>>{{$list}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -104,8 +104,8 @@
                                                 <div class="form-group">
                                                     <label>Publish in Jobs Portal:</label>
                                                     <select class="form-control-spacial" id="publish_in_jobs_portal" value="{{isset($result->publish_in_jobs_portal)?$result->publish_in_jobs_portal:''}}" name="publish_in_jobs_portal">
-                                                        <option value="0" <?php echo ($result->publish_in_jobs_portal==0) ? "selected":"" ?>>No</option>
-                                                        <option value="1" <?php echo ( !isset($result->publish_in_jobs_portal) || $result->publish_in_jobs_portal==1) ? "selected":"" ?>>Yes</option>
+                                                        <option value="0" <?php   if(isset( $result->publish_in_jobs_portal)) { echo ($result->publish_in_jobs_portal==0) ? "selected":"" ; }?>>No</option>
+                                                        <option value="1" <?php  if(isset( $result->publish_in_jobs_portal)) { echo ( !isset($result->publish_in_jobs_portal) || $result->publish_in_jobs_portal==1) ? "selected":"" ; }?>>Yes</option>
                                                     </select>
                                                 </div>
 
@@ -160,7 +160,7 @@
                                                     <label>Country:</label>
                                                     <select class="form-control-spacial" id="country" name="country">
                                                             @foreach($countries as $country)
-                                                            <option value="{{$country['country_id']}}" <?php echo ($country['country_id'] == $result->country) ? "selected":"" ?> >{{$country['title']}}</option>
+                                                            <option value="{{$country['country_id']}}" <?php  if(isset($result->country))  {  echo ($country['country_id'] == $result->country) ? "selected":"" ; } ?> >{{$country['title']}}</option>
                                                             @endforeach
                                                         </select>
                                                 </div>
