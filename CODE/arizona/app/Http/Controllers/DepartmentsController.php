@@ -154,15 +154,5 @@ class DepartmentsController extends Controller
             Route::get('/delete/{id}', array('as' => 'departments.destroy', 'uses' => 'DepartmentsController@destroy'));
         });
     }
-    public static function routes()
-    {
-        Route::group(array('prefix' => 'departments'), function () {
-            Route::get('/', array('as' => 'departments.index', 'uses' => 'DepartmentsController@index'));
-            Route::get('/add', array('as' => 'departments.create', 'uses' => 'DepartmentsController@create'));
-            Route::post('/save', array('as' => 'departments.save', 'uses' => 'DepartmentsController@store'));
-            Route::get('/edit/{id}', array('as' => 'departments.edit', 'uses' => 'DepartmentsController@edit'));
-            Route::post('/update/{id}', array('as' => 'departments.update', 'uses' => 'DepartmentsController@update'));
-            Route::get('/delete/{id}', array('as' => 'departments.destroy', 'uses' => 'DepartmentsController@destroy'));
-        });
-    }
+    
 }
