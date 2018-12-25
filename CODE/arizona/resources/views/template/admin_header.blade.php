@@ -16,9 +16,13 @@
     <link rel="stylesheet" type="text/css" href="{{ url('/admin/css/custome.css') }}">
     <link href="{{ url('/admin/css/datepicker.css') }}" rel="stylesheet" type="text/css" />
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=a57gf21fw3xkb4vsipclijy1rlihz8b4rz5un8vg1n7xzbbq"></script>
+    <script>tinymce.init({ selector:'.tinyeditorclass' });</script>
 
-    <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
-     <script>tinymce.init({ selector:'textarea' });</script>
+    <!--
+Username: debug86d
+Password: @7tN$i2cF5~5
+    -->
 </head>
 <body>
 
