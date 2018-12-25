@@ -146,7 +146,7 @@ class CompaniesController extends Controller
     }
     public static function routes()
     {
-        Route::group(array('companies' => 'projects'), function () {
+            Route::group(array('prefix' => 'companies'), function () {
             Route::get('/', array('as' => 'companies.index', 'uses' => 'CompaniesController@index'));
             Route::get('/add', array('as' => 'companies.create', 'uses' => 'CompaniesController@create'));
             Route::post('/save', array('as' => 'companies.save', 'uses' => 'CompaniesController@store'));

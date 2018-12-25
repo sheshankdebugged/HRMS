@@ -38,4 +38,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 //Stations Routes
     \App\Http\Controllers\StationsController::routes();
+
+    // job Routes
+    \App\Http\Controllers\JobRequestsController::routes();
 });
