@@ -16,8 +16,18 @@
 <!-- jQuery -->
 <script src="{{ url('/admin/js/jquery.min.js') }}"></script>
 <script src="{{ url('/admin/js/bootstrap.min.js') }}"></script>
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    $(function(){
+        $( ".date" ).datepicker();
+    });
+</script>
 <script src="{{ url('/admin/js/popper.min.js') }}"></script>
 <script src="{{ url('/admin/js/bootstrap-datepicker.js') }}"></script>
 <script src="{{ url('/admin/js/custom.js') }}"></script>
+
+
 </body>
 </html>

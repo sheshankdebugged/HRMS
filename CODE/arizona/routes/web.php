@@ -30,8 +30,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
-
-
+// Companies Routes
     \App\Http\Controllers\CompaniesController::routes();
 
 // Employees Routes
@@ -46,13 +45,28 @@ Route::group(['middleware' => 'auth'], function () {
 // Departments Routes
     \App\Http\Controllers\DepartmentsController::routes();
 
+// Departments Routes
+    \App\Http\Controllers\DepartmentsController::routes();
 
 //Stations Routes
     \App\Http\Controllers\StationsController::routes();
 
-    // job Routes
-    \App\Http\Controllers\JobRequestsController::routes();
+// Assignments
+    \App\Http\Controllers\AssignmentsController::routes();
 
-// Employee Routes
-    \App\Http\Controllers\EmployeeController::routes();
+// Resignations
+    \App\Http\Controllers\ResignationsController::routes();
+//OrganizationNews Routes
+    \App\Http\Controllers\OrganizationNewsController::routes();
+    // job Routes
+    
+	\App\Http\Controllers\JobRequestsController::routes();
+
+    
+    // Contracts Routes
+    \App\Http\Controllers\contractsController::routes();
+
+     // Transfers Routes
+     \App\Http\Controllers\transfersController::routes();
+
 });

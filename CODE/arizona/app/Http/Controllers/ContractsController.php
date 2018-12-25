@@ -1,8 +1,8 @@
 <?php
+
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Departments;
+use App\Models\Contracts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -11,7 +11,7 @@ use Illuminate\Support\Form;
 use Session;
 use Validator;
 
-class DepartmentsController extends Controller
+class ContractsController extends Controller
 {
 
     /**
@@ -22,10 +22,10 @@ class DepartmentsController extends Controller
     public function index()
     {
 
-        $list = Departments::where(['status' => 1])->paginate(10);
-        return view('hrmodule.departments.list')->with([
+        $list = contracts::where(['status' => 1])->paginate(10);
+        return view('hrmodule.contracts.list')->with([
             'listData' => $list,
-            'pageTitle' => "Departments",
+            'pageTitle' => "contracts",
         ]);
 
     }
@@ -38,10 +38,10 @@ class DepartmentsController extends Controller
     public function create()
     {
         $action = 'add';
-        return view('hrmodule.departments.add')->with([
+        return view('hrmodule.contracts.add')->with([
             'action' => $action,
-            'pageTitle' => "Departments",
-            'Addform' => "Add New Departments",
+            'pageTitle' => "contracts",
+            'Addform' => "Add New Contract",
         ]);
     }
 
@@ -55,15 +55,16 @@ class DepartmentsController extends Controller
     public function store(Request $request)
     {
 
-        $user_id = Auth::user()->id;
+        $user_id = Auth::id();
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                'department_name' => 'required'
+                'employee' => 'required',
+
             ]);
             if ($validator->fails()) {
-                $action = 'departments/add';
-                return redirect('departments/add')
+                $action = 'addcontracts';
+                return redirect('/contracts/add')
                     ->withErrors($validator)
                     ->withInput()
                     ->with([
@@ -75,7 +76,7 @@ class DepartmentsController extends Controller
             if (request()->hasFile('icon_img')) {
                 $file = request()->file('icon_img');
                 $input['icon_img'] = md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
-                $file->move('./img/uploads/Departments/', $input['icon_img']);
+                $file->move('./img/uploads/contracts/', $input['icon_img']);
             }
 
             $input['status'] = 1;
@@ -84,15 +85,15 @@ class DepartmentsController extends Controller
             if ($input['id'] > 0) {
                 $input['updated_at'] = date("Y-m-d H:i:s");
                 Session::flash('message', 'Companie  Updated Successfully.');
-                Departments::where('id', $input['id'])->update($input);
+                contracts::where('id', $input['id'])->update($input);
             } else {
                 unset($input['id']);
                 $input['created_at'] = date("Y-m-d H:i:s");
                 $input['updated_at'] = date("Y-m-d H:i:s");
                 Session::flash('message', 'Companie  Added Successfully.');
-                Departments::insertGetId($input);
+                contracts::insertGetId($input);
             }
-            return redirect('/departments');
+            return redirect('/contracts');
         }
     }
 
@@ -117,12 +118,12 @@ class DepartmentsController extends Controller
     {
 
         $action = 'edit';
-        $result = Departments::find($id);
+        $result = contracts::find($id);
         $action = 'add';
-        $editname = "Edit " . $result->department_name;
-        return view('hrmodule.departments.add')->with([
+        $editname = "Edit " . $result->employee;
+        return view('hrmodule.contracts.add')->with([
             'action' => $action,
-            'pageTitle' => "Departments",
+            'pageTitle' => "contracts",
             'Addform' => $editname,
             'result' => $result,
         ]);
@@ -137,32 +138,21 @@ class DepartmentsController extends Controller
      */
     public function destroy($id)
     {
-        $Departments = Departments::find($id);
-        $Departments->status = 0;
-        $Departments->save();
-        Session::flash('message', 'Department delete successfully');
-        return redirect("/departments");
+        $contracts = contracts::find($id);
+        $contracts->status = 0;
+        $contracts->save();
+        Session::flash('message', 'Contracts delete successfully');
+        return redirect("/contracts");
     }
     public static function routes()
     {
-        Route::group(array('prefix' => 'departments'), function () {
-            Route::get('/', array('as' => 'departments.index', 'uses' => 'DepartmentsController@index'));
-            Route::get('/add', array('as' => 'departments.create', 'uses' => 'DepartmentsController@create'));
-            Route::post('/save', array('as' => 'departments.save', 'uses' => 'DepartmentsController@store'));
-            Route::get('/edit/{id}', array('as' => 'departments.edit', 'uses' => 'DepartmentsController@edit'));
-            Route::post('/update/{id}', array('as' => 'departments.update', 'uses' => 'DepartmentsController@update'));
-            Route::get('/delete/{id}', array('as' => 'departments.destroy', 'uses' => 'DepartmentsController@destroy'));
-        });
-    }
-    public static function routes()
-    {
-        Route::group(array('prefix' => 'departments'), function () {
-            Route::get('/', array('as' => 'departments.index', 'uses' => 'DepartmentsController@index'));
-            Route::get('/add', array('as' => 'departments.create', 'uses' => 'DepartmentsController@create'));
-            Route::post('/save', array('as' => 'departments.save', 'uses' => 'DepartmentsController@store'));
-            Route::get('/edit/{id}', array('as' => 'departments.edit', 'uses' => 'DepartmentsController@edit'));
-            Route::post('/update/{id}', array('as' => 'departments.update', 'uses' => 'DepartmentsController@update'));
-            Route::get('/delete/{id}', array('as' => 'departments.destroy', 'uses' => 'DepartmentsController@destroy'));
+            Route::group(array('prefix' => 'contracts'), function () {
+            Route::get('/', array('as' => 'contracts.index', 'uses' => 'contractsController@index'));
+            Route::get('/add', array('as' => 'contracts.create', 'uses' => 'contractsController@create'));
+            Route::post('/save', array('as' => 'contracts.save', 'uses' => 'contractsController@store'));
+            Route::get('/edit/{id}', array('as' => 'contracts.edit', 'uses' => 'contractsController@edit'));
+            Route::post('/update/{id}', array('as' => 'contracts.update', 'uses' => 'contractsController@update'));
+            Route::get('/delete/{id}', array('as' => 'contracts.destroy', 'uses' => 'contractsController@destroy'));
         });
     }
 }
