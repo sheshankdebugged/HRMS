@@ -27,20 +27,20 @@ Password: @7tN$i2cF5~5
 <body>
 
 <!-- header start -->
-<header>
+<header class="an-header-main">
     <div class="header-top">
         <div class="container">
             <div class="row">
 
                 <div class="col">
                     <div class="logo">
-                        <img src="{{ url('admin/images/WebHR.svg') }}" style="">
+                        <img src="{{ url('admin/images/Arizona-original-Logo.png') }}" style="width: 85px">
                     </div>
                 </div>
 
                 <div class="col d-none d-sm-block" align="center">
                     <!--img src="images/demo_OdCFED.png" border="0" class="img-fluid" style="height:64px;"-->
-				  <h1 style="font-size:18px;margin-top: 20px;">Arizona National Software</h1>
+				  <h1 style="font-size:18px;margin-top: 40px;">Arizona National Software</h1>
 
                 </div>
 
