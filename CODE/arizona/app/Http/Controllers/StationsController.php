@@ -22,8 +22,8 @@ class StationsController extends Controller
      */
     public function index()
     {
-        
-        $list =Stations::where(['status'=>1])->paginate(10);
+        $user_id = Auth::id();
+        $list =Stations::where(['status'=>1,'user_id'=>$user_id])->paginate(10);
         return view('hrmodule.stations.list')->with([
             'listData' => $list,
             'pageTitle' => "Stations",
@@ -163,22 +163,16 @@ class StationsController extends Controller
             return $master;
     }
 
-
-
-      /**
-     * For Setting Job Posts Routes
-     */
-    static function routes() {
-           
-            Route::group(array('prefix' => 'stations'), function() {
+    public static function routes()
+    {
+           Route::group(array('prefix' => 'stations'), function () {
             Route::get('/', array('as' => 'stations.index', 'uses' => 'StationsController@index'));
             Route::get('/add', array('as' => 'stations.create', 'uses' => 'StationsController@create'));
             Route::post('/save', array('as' => 'stations.save', 'uses' => 'StationsController@store'));
             Route::get('/edit/{id}', array('as' => 'stations.edit', 'uses' => 'StationsController@edit'));
-            Route::post('/update/{id}', array('as' => 'stations.create', 'uses' => 'StationsController@create'));
+            Route::post('/update/{id}', array('as' => 'stations.update', 'uses' => 'StationsController@update'));
             Route::get('/delete/{id}', array('as' => 'stations.destroy', 'uses' => 'StationsController@destroy'));
         });
 
     }
-
 }
