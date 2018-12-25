@@ -21,7 +21,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
-// Employees Routes
+// Companies Routes
     \App\Http\Controllers\CompaniesController::routes();
 
 // Employees Routes
@@ -36,15 +36,21 @@ Route::group(['middleware' => 'auth'], function () {
 // Departments Routes
     \App\Http\Controllers\DepartmentsController::routes();
 
+
 //Stations Routes
     \App\Http\Controllers\StationsController::routes();
 
+//OrganizationNews Routes
+    \App\Http\Controllers\OrganizationNewsController::routes();
     // job Routes
-    \App\Http\Controllers\JobRequestsController::routes();
+    
+	\App\Http\Controllers\JobRequestsController::routes();
+
     
     // Contracts Routes
     \App\Http\Controllers\contractsController::routes();
 
      // Transfers Routes
      \App\Http\Controllers\transfersController::routes();
+
 });

@@ -2,8 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Companies;
-use App\Models\Stations;
+use App\Models\Projects;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -12,9 +11,8 @@ use Illuminate\Support\Form;
 use Session;
 use Validator;
 
-class StationsController extends Controller
+class ProjectsController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -22,11 +20,17 @@ class StationsController extends Controller
      */
     public function index()
     {
-        $user_id = Auth::id();
-        $list =Stations::where(['status'=>1,'user_id'=>$user_id])->paginate(10);
-        return view('hrmodule.stations.list')->with([
+        //
+
+        $list = Projects::where(['status' => 1])->paginate(10);
+
+        // echo "<pre>";
+        //print_r($list);
+
+        // die;
+        return view('hrmodule.projects.list')->with([
             'listData' => $list,
-            'pageTitle' => "Stations",
+            'pageTitle' => "Projects",
         ]);
 
     }
@@ -39,14 +43,10 @@ class StationsController extends Controller
     public function create()
     {
         $action = 'add';
-        $master = $this->getmasterfields();
-
-     
-        return view('hrmodule.stations.add')->with([
+        return view('hrmodule.projects.add')->with([
             'action' => $action,
-            'pageTitle' => "Stations",
-            'Addform' => "Add New Station",
-            'master' => $master,
+            'pageTitle' => "Projects",
+            'Addform' => "Add New Projects",
         ]);
     }
 
@@ -55,21 +55,19 @@ class StationsController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-     *     bs@hopmanhome.com, triproserv@gmail.com adam.mckinnon75@outlook.com
      */
     public function store(Request $request)
     {
-
         $user_id = Auth::id();
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                'station_name' => 'required',
+                'project_title' => 'required',
 
             ]);
             if ($validator->fails()) {
-                $action = 'addstations';
-                return redirect('/addstations')
+                $action = 'addprojects';
+                return redirect('/addprojects')
                     ->withErrors($validator)
                     ->withInput()
                     ->with([
@@ -81,7 +79,7 @@ class StationsController extends Controller
             if (request()->hasFile('icon_img')) {
                 $file = request()->file('icon_img');
                 $input['icon_img'] = md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
-                $file->move('./img/uploads/stations/', $input['icon_img']);
+                $file->move('./img/uploads/Companies/', $input['icon_img']);
             }
 
             $input['status'] = 1;
@@ -89,27 +87,26 @@ class StationsController extends Controller
             unset($input['_token']);
             if ($input['id'] > 0) {
                 $input['updated_at'] = date("Y-m-d H:i:s");
-                Session::flash('message', 'Stations  Updated Successfully.');
-
-                Stations::where('id', $input['id'])->update($input);
+                Session::flash('message', 'Projects  Updated Successfully.');
+                Projects::where('id', $input['id'])->update($input);
             } else {
                 unset($input['id']);
                 $input['created_at'] = date("Y-m-d H:i:s");
                 $input['updated_at'] = date("Y-m-d H:i:s");
-                Session::flash('message', 'Stations  Added Successfully.');
-                Stations::insertGetId($input);
+                Session::flash('message', 'Projects  Added Successfully.');
+                Projects::insertGetId($input);
             }
-            return redirect('/stations');
+            return redirect('/projects');
         }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Projects  $projects
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Projects $projects)
     {
         //
     }
@@ -117,61 +114,60 @@ class StationsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Projects  $projects
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
 
         $action = 'edit';
-        $result = Stations::find($id);
+        $result = Projects::find($id);
         $action = 'add';
-        $editname = "Edit " . $result->company_name;
-        $master = $this->getmasterfields();
-        return view('hrmodule.stations.add')->with([
+        $editname = "Edit " . $result->project_title;
+        return view('hrmodule.projects.add')->with([
             'action' => $action,
-            'pageTitle' => "stations",
+            'pageTitle' => "Project",
             'Addform' => $editname,
             'result' => $result,
-            'master' => $master,
         ]);
+    }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Projects  $projects
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Projects $projects)
+    {
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Projects  $projects
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $stations = Stations::find($id);
-        $stations->status = 0;
-        $stations->save();
-        Session::flash('message', 'Company delete successfully');
-        return redirect("/stations");
+
+        $Companies = Projects::find($id);
+        $Companies->status = 0;
+        $Companies->save();
+        Session::flash('message', 'Project delete successfully');
+        return redirect("/projects");
     }
-
-    /*
-     *
-    */
-    function getmasterfields(){
-
-            $master                     = array();
-            $master['Companies']        = Companies::where(['status'=>1])->get()->toArray();
-            return $master;
-    }
-
     public static function routes()
     {
-           Route::group(array('prefix' => 'stations'), function () {
-            Route::get('/', array('as' => 'stations.index', 'uses' => 'StationsController@index'));
-            Route::get('/add', array('as' => 'stations.create', 'uses' => 'StationsController@create'));
-            Route::post('/save', array('as' => 'stations.save', 'uses' => 'StationsController@store'));
-            Route::get('/edit/{id}', array('as' => 'stations.edit', 'uses' => 'StationsController@edit'));
-            Route::post('/update/{id}', array('as' => 'stations.update', 'uses' => 'StationsController@update'));
-            Route::get('/delete/{id}', array('as' => 'stations.destroy', 'uses' => 'StationsController@destroy'));
+        Route::group(array('prefix' => 'projects'), function () {
+            Route::get('/', array('as' => 'projects.index', 'uses' => 'ProjectsController@index'));
+            Route::get('/add', array('as' => 'projects.create', 'uses' => 'ProjectsController@create'));
+            Route::post('/save', array('as' => 'projects.save', 'uses' => 'ProjectsController@store'));
+            Route::get('/edit/{id}', array('as' => 'projects.edit', 'uses' => 'ProjectsController@edit'));
+            Route::post('/update/{id}', array('as' => 'projects.update', 'uses' => 'ProjectsController@update'));
+            Route::get('/delete/{id}', array('as' => 'projects.destroy', 'uses' => 'ProjectsController@destroy'));
         });
 
     }

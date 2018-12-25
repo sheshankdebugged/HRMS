@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\JobRequests;
+
+use App\Models\Contracts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -10,21 +11,21 @@ use Illuminate\Support\Form;
 use Session;
 use Validator;
 
-class JobRequestsController extends Controller
+class ContractsController extends Controller
 {
-    
-     /**
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $user_id = Auth::id();
-        $list = jobRequests::where(['status' => 1,'user_id'=>$user_id])->paginate(10);
-        return view('hrmodule.jobrequest.list')->with([
+
+        $list = contracts::where(['status' => 1])->paginate(10);
+        return view('hrmodule.contracts.list')->with([
             'listData' => $list,
-            'pageTitle' => "jobrequest",
+            'pageTitle' => "contracts",
         ]);
 
     }
@@ -37,10 +38,10 @@ class JobRequestsController extends Controller
     public function create()
     {
         $action = 'add';
-        return view('hrmodule.jobrequest.add')->with([
+        return view('hrmodule.contracts.add')->with([
             'action' => $action,
-            'pageTitle' => "jobrequest",
-            'Addform' => "Add New Company",
+            'pageTitle' => "contracts",
+            'Addform' => "Add New Contract",
         ]);
     }
 
@@ -58,13 +59,12 @@ class JobRequestsController extends Controller
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                'job_title' => 'required',
+                'employee' => 'required',
 
             ]);
-
             if ($validator->fails()) {
-                $action = 'addjobrequest';
-                return redirect('/jobrequest/add')
+                $action = 'addcontracts';
+                return redirect('/contracts/add')
                     ->withErrors($validator)
                     ->withInput()
                     ->with([
@@ -76,7 +76,7 @@ class JobRequestsController extends Controller
             if (request()->hasFile('icon_img')) {
                 $file = request()->file('icon_img');
                 $input['icon_img'] = md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
-                $file->move('./img/uploads/jobrequest/', $input['icon_img']);
+                $file->move('./img/uploads/contracts/', $input['icon_img']);
             }
 
             $input['status'] = 1;
@@ -84,16 +84,16 @@ class JobRequestsController extends Controller
             unset($input['_token']);
             if ($input['id'] > 0) {
                 $input['updated_at'] = date("Y-m-d H:i:s");
-                Session::flash('message', 'JobRequest  Updated Successfully.');
-                jobRequests::where('id', $input['id'])->update($input);
+                Session::flash('message', 'Companie  Updated Successfully.');
+                contracts::where('id', $input['id'])->update($input);
             } else {
                 unset($input['id']);
                 $input['created_at'] = date("Y-m-d H:i:s");
                 $input['updated_at'] = date("Y-m-d H:i:s");
-                Session::flash('message', 'JobRequest  Added Successfully.');
-                jobRequests::insertGetId($input);
+                Session::flash('message', 'Companie  Added Successfully.');
+                contracts::insertGetId($input);
             }
-            return redirect('/jobrequest');
+            return redirect('/contracts');
         }
     }
 
@@ -116,13 +116,14 @@ class JobRequestsController extends Controller
      */
     public function edit($id)
     {
-        $action = 'edit';  
-        $result = jobRequests::find($id);
+
+        $action = 'edit';
+        $result = contracts::find($id);
         $action = 'add';
-        $editname = "Edit " . $result->job_title;
-        return view('hrmodule.jobrequest.add')->with([
+        $editname = "Edit " . $result->employee;
+        return view('hrmodule.contracts.add')->with([
             'action' => $action,
-            'pageTitle' => "jobrequest",
+            'pageTitle' => "contracts",
             'Addform' => $editname,
             'result' => $result,
         ]);
@@ -137,22 +138,21 @@ class JobRequestsController extends Controller
      */
     public function destroy($id)
     {
-        $jobrequest = jobRequests::find($id);
-        $jobrequest->status = 0;
-        $jobrequest->save();
-        Session::flash('message', 'Company delete successfully');
-        return redirect("/jobrequest");
+        $contracts = contracts::find($id);
+        $contracts->status = 0;
+        $contracts->save();
+        Session::flash('message', 'Contracts delete successfully');
+        return redirect("/contracts");
     }
     public static function routes()
     {
-            Route::group(array('prefix' => 'jobrequest'), function () {
-            Route::get('/', array('as' => 'jobrequest.index', 'uses' => 'JobRequestsController@index'));
-            Route::get('/add', array('as' => 'jobrequest.create', 'uses' => 'JobRequestsController@create'));
-            Route::post('/save', array('as' => 'jobrequest.save', 'uses' => 'JobRequestsController@store'));
-            Route::get('/edit/{id}', array('as' => 'jobrequest.edit', 'uses' => 'JobRequestsController@edit'));
-            Route::post('/update/{id}', array('as' => 'jobrequest.update', 'uses' => 'JobRequestsController@update'));
-            Route::get('/delete/{id}', array('as' => 'jobrequest.destroy', 'uses' => 'JobRequestsController@destroy'));
+            Route::group(array('prefix' => 'contracts'), function () {
+            Route::get('/', array('as' => 'contracts.index', 'uses' => 'contractsController@index'));
+            Route::get('/add', array('as' => 'contracts.create', 'uses' => 'contractsController@create'));
+            Route::post('/save', array('as' => 'contracts.save', 'uses' => 'contractsController@store'));
+            Route::get('/edit/{id}', array('as' => 'contracts.edit', 'uses' => 'contractsController@edit'));
+            Route::post('/update/{id}', array('as' => 'contracts.update', 'uses' => 'contractsController@update'));
+            Route::get('/delete/{id}', array('as' => 'contracts.destroy', 'uses' => 'contractsController@destroy'));
         });
     }
-    
 }

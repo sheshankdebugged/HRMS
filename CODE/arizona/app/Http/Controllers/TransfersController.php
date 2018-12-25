@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\JobRequests;
+
+use App\Models\Transfers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -10,21 +11,21 @@ use Illuminate\Support\Form;
 use Session;
 use Validator;
 
-class JobRequestsController extends Controller
+class TransfersController extends Controller
 {
-    
-     /**
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $user_id = Auth::id();
-        $list = jobRequests::where(['status' => 1,'user_id'=>$user_id])->paginate(10);
-        return view('hrmodule.jobrequest.list')->with([
+
+        $list = transfers::where(['status' => 1])->paginate(10);
+        return view('hrmodule.transfers.list')->with([
             'listData' => $list,
-            'pageTitle' => "jobrequest",
+            'pageTitle' => "Transfers",
         ]);
 
     }
@@ -37,10 +38,10 @@ class JobRequestsController extends Controller
     public function create()
     {
         $action = 'add';
-        return view('hrmodule.jobrequest.add')->with([
+        return view('hrmodule.transfers.add')->with([
             'action' => $action,
-            'pageTitle' => "jobrequest",
-            'Addform' => "Add New Company",
+            'pageTitle' => "transfers",
+            'Addform' => "Add New Transfer",
         ]);
     }
 
@@ -58,13 +59,12 @@ class JobRequestsController extends Controller
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                'job_title' => 'required',
+                'employee_to_transfer' => 'required',
 
             ]);
-
             if ($validator->fails()) {
-                $action = 'addjobrequest';
-                return redirect('/jobrequest/add')
+                $action = 'addtransfers';
+                return redirect('/transfers/add')
                     ->withErrors($validator)
                     ->withInput()
                     ->with([
@@ -76,7 +76,7 @@ class JobRequestsController extends Controller
             if (request()->hasFile('icon_img')) {
                 $file = request()->file('icon_img');
                 $input['icon_img'] = md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
-                $file->move('./img/uploads/jobrequest/', $input['icon_img']);
+                $file->move('./img/uploads/transfers/', $input['icon_img']);
             }
 
             $input['status'] = 1;
@@ -84,16 +84,16 @@ class JobRequestsController extends Controller
             unset($input['_token']);
             if ($input['id'] > 0) {
                 $input['updated_at'] = date("Y-m-d H:i:s");
-                Session::flash('message', 'JobRequest  Updated Successfully.');
-                jobRequests::where('id', $input['id'])->update($input);
+                Session::flash('message', 'Companie  Updated Successfully.');
+                transfers::where('id', $input['id'])->update($input);
             } else {
                 unset($input['id']);
                 $input['created_at'] = date("Y-m-d H:i:s");
                 $input['updated_at'] = date("Y-m-d H:i:s");
-                Session::flash('message', 'JobRequest  Added Successfully.');
-                jobRequests::insertGetId($input);
+                Session::flash('message', 'Companie  Added Successfully.');
+                transfers::insertGetId($input);
             }
-            return redirect('/jobrequest');
+            return redirect('/transfers');
         }
     }
 
@@ -116,13 +116,14 @@ class JobRequestsController extends Controller
      */
     public function edit($id)
     {
-        $action = 'edit';  
-        $result = jobRequests::find($id);
+
+        $action = 'edit';
+        $result = transfers::find($id);
         $action = 'add';
-        $editname = "Edit " . $result->job_title;
-        return view('hrmodule.jobrequest.add')->with([
+        $editname = "Edit Transfer " . $result->employee;
+        return view('hrmodule.transfers.add')->with([
             'action' => $action,
-            'pageTitle' => "jobrequest",
+            'pageTitle' => "transfers",
             'Addform' => $editname,
             'result' => $result,
         ]);
@@ -137,22 +138,22 @@ class JobRequestsController extends Controller
      */
     public function destroy($id)
     {
-        $jobrequest = jobRequests::find($id);
-        $jobrequest->status = 0;
-        $jobrequest->save();
-        Session::flash('message', 'Company delete successfully');
-        return redirect("/jobrequest");
+        $transfers = transfers::find($id);
+        $transfers->status = 0;
+        $transfers->save();
+        Session::flash('message', 'Contracts delete successfully');
+        return redirect("/transfers");
     }
     public static function routes()
     {
-            Route::group(array('prefix' => 'jobrequest'), function () {
-            Route::get('/', array('as' => 'jobrequest.index', 'uses' => 'JobRequestsController@index'));
-            Route::get('/add', array('as' => 'jobrequest.create', 'uses' => 'JobRequestsController@create'));
-            Route::post('/save', array('as' => 'jobrequest.save', 'uses' => 'JobRequestsController@store'));
-            Route::get('/edit/{id}', array('as' => 'jobrequest.edit', 'uses' => 'JobRequestsController@edit'));
-            Route::post('/update/{id}', array('as' => 'jobrequest.update', 'uses' => 'JobRequestsController@update'));
-            Route::get('/delete/{id}', array('as' => 'jobrequest.destroy', 'uses' => 'JobRequestsController@destroy'));
+            Route::group(array('prefix' => 'transfers'), function () {
+            Route::get('/', array('as' => 'transfers.index', 'uses' => 'transfersController@index'));
+            Route::get('/add', array('as' => 'transfers.create', 'uses' => 'transfersController@create'));
+            Route::post('/save', array('as' => 'transfers.save', 'uses' => 'transfersController@store'));
+            Route::get('/edit/{id}', array('as' => 'transfers.edit', 'uses' => 'transfersController@edit'));
+            Route::post('/update/{id}', array('as' => 'transfers.update', 'uses' => 'transfersController@update'));
+            Route::get('/delete/{id}', array('as' => 'transfers.destroy', 'uses' => 'transfersController@destroy'));
         });
     }
-    
 }
+

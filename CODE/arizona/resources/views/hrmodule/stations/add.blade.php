@@ -63,8 +63,15 @@
 												
 												 <div class="form-group">
 													<label>Company:</label>
-													<input type="text" class="form-control-spacial" id="company" name="company" value="{{isset($result->company)?$result->company:''}}" placeholder="Company name">
-                                                    <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fal fa-asterisk"></i>
+
+													<select id="st" class="WebHRForm1" style="width:180px;" name="station_type">
+
+													<option value="ALL"> All </option>
+													@foreach($master['Companies'] as $val)
+													<option  value="{{$val['company_name']}}">{{$val['company_name']}}</option>
+													@endforeach
+													</select>
+													
 												 </div>
 
                                                  <div class="form-group">
@@ -81,6 +88,7 @@
 												 <div class="form-group">
 													<label>Station Name:</label>
 													<input type="text" id="station_name" name="station_name" value="{{isset($result->station_name)?$result->station_name:''}}" placeholder="Station Name" class="form-control-spacial" />
+													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
                                                    
 												 </div>
 
