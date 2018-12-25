@@ -50,8 +50,14 @@ Route::group(['middleware' => 'auth'], function () {
 //OrganizationNews Routes
     \App\Http\Controllers\OrganizationNewsController::routes();
     // job Routes
-    \App\Http\Controllers\JobRequestsController::routes();
+    
+	\App\Http\Controllers\JobRequestsController::routes();
 
-// Employee Routes
-    \App\Http\Controllers\EmployeeController::routes();
+    
+    // Contracts Routes
+    \App\Http\Controllers\contractsController::routes();
+
+     // Transfers Routes
+     \App\Http\Controllers\transfersController::routes();
+
 });
