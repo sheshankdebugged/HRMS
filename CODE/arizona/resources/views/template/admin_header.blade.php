@@ -103,9 +103,9 @@ Password: @7tN$i2cF5~5
                               <div class="col-sm-6 list-unstyled">
                                  <a href="{{url('companies')}}"><i class="fa fa-clone"></i>Companies</a>
                                  <a href="{{url('stations')}}"><i class="fa fa-building" style="margin-right:12px; font-size:18px;"></i>Stations</a>
-                                 <a href="#noanchor"><i class="fa fa-sitemap"></i>Departments</a>
-                                 <a href="#noanchor"><i class="fa fa-archive"></i>Projects</a>
-                                 <a href="#noanchor"><i class="fa fa-newspaper-o"></i>Organization News</a>
+                                 <a href="{{url('departments')}}"><i class="fa fa-sitemap"></i>Departments</a>
+                                 <a href="{{url('projects')}}"><i class="fa fa-archive"></i>Projects</a>
+                                 <a href="{{url('organizationnews')}}"><i class="fa fa-newspaper-o"></i>Organization News</a>
                               </div>
                               <div class="col-sm-6 list-unstyled">
                                     <a href="#noanchor"><i class="fa fa-file-text-o"></i>Policies</a>

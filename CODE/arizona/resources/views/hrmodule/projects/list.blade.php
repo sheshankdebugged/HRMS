@@ -50,7 +50,7 @@
 												<a href="#" alt="Dashboard"><i class="fa fa-refresh"></i></a>
 											</div>
 											<div class="add-record-btn">
-												<a href="{{ url('addprojects') }}"><i class="fa fa-plus"></i>Add Record</a>
+												<a href="{{ url('projects/add') }}"><i class="fa fa-plus"></i>Add Record</a>
 											</div>
 										</div>
 									</div>
