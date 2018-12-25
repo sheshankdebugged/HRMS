@@ -20,8 +20,8 @@ class JobRequestsController extends Controller
      */
     public function index()
     {
-
-        $list = jobRequests::where(['status' => 1])->paginate(10);
+        $user_id = Auth::id();
+        $list = jobRequests::where(['status' => 1,'user_id'=>$user_id])->paginate(10);
         return view('hrmodule.jobrequest.list')->with([
             'listData' => $list,
             'pageTitle' => "jobrequest",
