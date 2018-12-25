@@ -496,6 +496,7 @@ header .header-menu li.dropdown .dropdown-menu  .menu-list a i{
 }
 .action-drop .dropdown-menu {
     padding: 10px;
+    background: #163850;
 }
 .action-drop .dropdown-menu li {
     padding: 3px 0;
@@ -515,6 +516,7 @@ header .header-menu li.dropdown .dropdown-menu  .menu-list a i{
 }
 .action-drop .dropdown-menu li a {
     font-size: 14px;
+        color: #fff;
 }
 .main-dashboard-out {
     float: left;
