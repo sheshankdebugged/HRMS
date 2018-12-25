@@ -1,0 +1,1 @@
+ALTER TABLE `job_requests` ADD `forward_application_to` VARCHAR(225) NULL AFTER `status`, ADD `job_title` VARCHAR(225) NULL AFTER `forward_application_to`;

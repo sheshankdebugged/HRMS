@@ -178,7 +178,7 @@ class JobPostsController extends Controller
      * For Setting Job Posts Routes
      */
     static function routes() {
-        Route::group(array('prefix' => 'jobposts'), function() {
+            Route::group(array('prefix' => 'jobposts'), function() {
             Route::get('/', array('as' => 'jobposts.index', 'uses' => 'JobPostsController@index'));
             Route::get('/add', array('as' => 'jobposts.create', 'uses' => 'JobPostsController@create'));
             Route::post('/save', array('as' => 'jobposts.save', 'uses' => 'JobPostsController@store'));

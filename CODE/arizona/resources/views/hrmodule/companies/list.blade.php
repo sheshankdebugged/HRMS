@@ -51,7 +51,7 @@
 												<a href="#" alt="Dashboard"><i class="fa fa-refresh"></i></a>
 											</div>
 											<div class="add-record-btn">
-												<a href="{{ url('addcompanies') }}"><i class="fa fa-plus"></i>Add Record</a>
+												<a href="{{ url('companies/add') }}"><i class="fa fa-plus"></i>Add Record</a>
 											</div>
 											
 										</div>
@@ -77,7 +77,7 @@
 											<td class="datainner" style="">{{$list->website}}</td>                       
 											<td align="right">
 												<div class="dropdown action-drop">
-													<a href="" class="dropdown-toggle" data-toggle="dropdown"><i style="font-size:16px;" class="fa fa-cog"></i></a>
+													<a href="javascript:void(0);" class="dropdown-custom"><i style="font-size:16px;" class="fa fa-cog"></i></a>
 													<ul class="dropdown-menu">
 														<li><a href="#"><i class="fa fa-folder-open"></i>View Record</a></li>
 														<li><a href="{{url('/companies/edit')}}/{{$list->id}}"><i class="fa fa-edit"></i>Edit Record</a></li>

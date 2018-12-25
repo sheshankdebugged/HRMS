@@ -22,9 +22,8 @@ class StationsController extends Controller
      */
     public function index()
     {
-
-        $list = Stations::where(['status' => 1])->paginate(10);
-        $master = $this->getmasterfields();
+        $user_id = Auth::id();
+        $list =Stations::where(['status'=>1,'user_id'=>$user_id])->paginate(10);
         return view('hrmodule.stations.list')->with([
             'listData' => $list,
             'pageTitle' => "Stations",
@@ -41,6 +40,8 @@ class StationsController extends Controller
     {
         $action = 'add';
         $master = $this->getmasterfields();
+
+     
         return view('hrmodule.stations.add')->with([
             'action' => $action,
             'pageTitle' => "Stations",
@@ -154,18 +155,17 @@ class StationsController extends Controller
 
     /*
      *
-     */
+    */
+    function getmasterfields(){
 
-    public function getmasterfields()
-    {
-
-        $master = array();
-        $master['Companies'] = Companies::where(['status' => 1])->get()->toArray();
-        return $master;
+            $master                     = array();
+            $master['Companies']        = Companies::where(['status'=>1])->get()->toArray();
+            return $master;
     }
+
     public static function routes()
     {
-        Route::group(array('prefix' => 'stations'), function () {
+           Route::group(array('prefix' => 'stations'), function () {
             Route::get('/', array('as' => 'stations.index', 'uses' => 'StationsController@index'));
             Route::get('/add', array('as' => 'stations.create', 'uses' => 'StationsController@create'));
             Route::post('/save', array('as' => 'stations.save', 'uses' => 'StationsController@store'));
@@ -173,5 +173,6 @@ class StationsController extends Controller
             Route::post('/update/{id}', array('as' => 'stations.update', 'uses' => 'StationsController@update'));
             Route::get('/delete/{id}', array('as' => 'stations.destroy', 'uses' => 'StationsController@destroy'));
         });
+
     }
 }

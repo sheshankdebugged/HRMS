@@ -15,7 +15,13 @@ jQuery(document).ready(function () {
 	        todayHighlight: true
 	 }).datepicker('update', new Date());
 
-	
+	$('.dropdown-custom').click(function(e){
+  $(this).parent().toggleClass('active');
+});
+        $('#myTabs a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
 
     
 

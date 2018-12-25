@@ -161,7 +161,7 @@ class ProjectsController extends Controller
     }
     public static function routes()
     {
-        Route::group(array('prefix' => 'projects'), function () {
+           Route::group(array('prefix' => 'projects'), function () {
             Route::get('/', array('as' => 'projects.index', 'uses' => 'ProjectsController@index'));
             Route::get('/add', array('as' => 'projects.create', 'uses' => 'ProjectsController@create'));
             Route::post('/save', array('as' => 'projects.save', 'uses' => 'ProjectsController@store'));

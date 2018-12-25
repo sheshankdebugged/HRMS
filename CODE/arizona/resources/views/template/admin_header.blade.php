@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon.ico">
-    <title>Web HR - Dashboard</title>
+    <title>Arizona HR - Dashboard</title>
     <!-- Bootstrap -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -16,27 +16,31 @@
     <link rel="stylesheet" type="text/css" href="{{ url('/admin/css/custome.css') }}">
     <link href="{{ url('/admin/css/datepicker.css') }}" rel="stylesheet" type="text/css" />
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=a57gf21fw3xkb4vsipclijy1rlihz8b4rz5un8vg1n7xzbbq"></script>
+    <script>tinymce.init({ selector:'.tinyeditorclass' });</script>
 
-    <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
-     <script>tinymce.init({ selector:'textarea' });</script>
+    <!--
+Username: debug86d
+Password: @7tN$i2cF5~5
+    -->
 </head>
 <body>
 
 <!-- header start -->
-<header>
+<header class="an-header-main">
     <div class="header-top">
         <div class="container">
             <div class="row">
 
                 <div class="col">
                     <div class="logo">
-                        <img src="{{ url('admin/images/WebHR.svg') }}" style="">
+                        <img src="{{ url('admin/images/Arizona-original-Logo.png') }}" style="width: 85px">
                     </div>
                 </div>
 
                 <div class="col d-none d-sm-block" align="center">
                     <!--img src="images/demo_OdCFED.png" border="0" class="img-fluid" style="height:64px;"-->
-				  <h1 style="font-size:18px;margin-top: 20px;">Arizona National Software</h1>
+				  <h1 style="font-size:18px;margin-top: 40px;">Arizona National Software</h1>
 
                 </div>
 
