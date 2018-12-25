@@ -27,20 +27,20 @@ Password: @7tN$i2cF5~5
 <body>
 
 <!-- header start -->
-<header>
+<header class="an-header-main">
     <div class="header-top">
         <div class="container">
             <div class="row">
 
                 <div class="col">
                     <div class="logo">
-                        <img src="{{ url('admin/images/WebHR.svg') }}" style="">
+                        <img src="{{ url('admin/images/Arizona-original-Logo.png') }}" style="width: 85px">
                     </div>
                 </div>
 
                 <div class="col d-none d-sm-block" align="center">
                     <!--img src="images/demo_OdCFED.png" border="0" class="img-fluid" style="height:64px;"-->
-				  <h1 style="font-size:18px;margin-top: 20px;">Arizona National Software</h1>
+				  <h1 style="font-size:18px;margin-top: 40px;">Arizona National Software</h1>
 
                 </div>
 
@@ -103,9 +103,9 @@ Password: @7tN$i2cF5~5
                               <div class="col-sm-6 list-unstyled">
                                  <a href="{{url('companies')}}"><i class="fa fa-clone"></i>Companies</a>
                                  <a href="{{url('stations')}}"><i class="fa fa-building" style="margin-right:12px; font-size:18px;"></i>Stations</a>
-                                 <a href="#noanchor"><i class="fa fa-sitemap"></i>Departments</a>
-                                 <a href="#noanchor"><i class="fa fa-archive"></i>Projects</a>
-                                 <a href="#noanchor"><i class="fa fa-newspaper-o"></i>Organization News</a>
+                                 <a href="{{url('departments')}}"><i class="fa fa-sitemap"></i>Departments</a>
+                                 <a href="{{url('projects')}}"><i class="fa fa-archive"></i>Projects</a>
+                                 <a href="{{url('organizationnews')}}"><i class="fa fa-newspaper-o"></i>Organization News</a>
                               </div>
                               <div class="col-sm-6 list-unstyled">
                                     <a href="#noanchor"><i class="fa fa-file-text-o"></i>Policies</a>

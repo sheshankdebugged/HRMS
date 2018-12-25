@@ -12,9 +12,10 @@ class SystemSettingsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+  
     public function index()
     {
-        //
+        return view('hrmodule.setting');
     }
 
     /**

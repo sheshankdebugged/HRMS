@@ -54,7 +54,7 @@
                                                 </ul>
                                             </div>
                                         @endif
-                                        <form method="post" action="{{ url('saveprojects') }}">
+                                        <form method="post" action="{{ url('projects/save') }}">
                                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                           <input type="hidden" name="id" value="{{isset($result->id)?$result->id:''}}">
 											<div class="form-field-inner">

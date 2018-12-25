@@ -31,7 +31,7 @@
 									<div class="col-md-12 nopadding">
 										<div class="back-button">
 											<div class="add-record-btn">
-												<a href="{{ url('companies') }}"><i class="fa fa-angle-left"></i>Back</a>
+												<a href="{{ url('departments') }}"><i class="fa fa-angle-left"></i>Back</a>
 											</div>
 										</div>
 									</div>
@@ -41,7 +41,7 @@
 										<h3>{{$Addform}}</h3>
 									</div>
 									<div class="form-upper-main">
-										<h4>Company Information</h4>
+										<h4>Department Information</h4>
 									</div>
 									<div class="form-subsets">
 
@@ -53,32 +53,70 @@
                                                     @endforeach
                                                 </ul>
                                             </div>
-                                        @endif 
-                                        
-                                        <form method="post" action="{{ url('savecompanies') }}">
+                                        @endif
+
+                                        <form method="post" action="{{ url('departments/save') }}">
                                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                           <input type="hidden" name="id" value="{{isset($result->id)?$result->id:''}}">
 
 											<div class="form-field-inner">
-												
+
+												<div class="form-group">
+													<label>Station:</label>
+													<select  name ="station" id="station" class="form-control-select">
+													<option style="" value="0"> - </option><option style="" value="1">Corporation</option><option style="" value="2">Exempt Organization</option><option style="" value="3">Partnership</option><option style="" value="4">Private Foundation</option><option style="" value="5">S Corporation</option><option style="" value="6">Sole Proprietor</option><option style="" value="7">Limited Liability Company</option><option style="" value="8">Trading LLC</option><option style="" value="9">Private Limited</option><option style="" value="10">General Partnership</option><option style="" value="11">Limited Partnership</option><option style="" value="12">Non Profit Organization</option><option style="" value="13">Trust</option><option style="" value="14">Joint Venture</option><option style="" value="15">Association</option><option style="" value="16">Free Zone</option>
+													</select>
+												</div>
+
+                                                <div class="form-group">
+                                                    <label>Department Name:</label>
+                                                    <input type="text" class="form-control-spacial" id="department_name" name="department_name" value="{{isset($result->job_title)?$result->job_title:''}}">
+                                                    <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
+                                                </div>
+
+												<div class="form-group">
+													<label>Parent Department:</label>
+													<select  name ="parent_department" id="parent_department" class="form-control-select">
+													<option style="" value="0"> - </option><option style="" value="1">Corporation</option><option style="" value="2">Exempt Organization</option><option style="" value="3">Partnership</option><option style="" value="4">Private Foundation</option><option style="" value="5">S Corporation</option><option style="" value="6">Sole Proprietor</option><option style="" value="7">Limited Liability Company</option><option style="" value="8">Trading LLC</option><option style="" value="9">Private Limited</option><option style="" value="10">General Partnership</option><option style="" value="11">Limited Partnership</option><option style="" value="12">Non Profit Organization</option><option style="" value="13">Trust</option><option style="" value="14">Joint Venture</option><option style="" value="15">Association</option><option style="" value="16">Free Zone</option>
+												 	</select>
+												</div>
+												<div class="form-upper-main">
+													<h4>Head of Department</h4>
+                                                </div>
 												 <div class="form-group">
-													<label>Company Name:</label>
-													<input type="text" class="form-control-spacial" id="company_name" name="company_name" value="{{isset($result->company_name)?$result->company_name:''}}">
-                                                    <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fal fa-asterisk"></i>
-												 </div>
+													<label>Department Head:</label>
+													<select  name ="department_head" id="department_head" class="form-control-select">
+													<option style="" value="0"> - </option><option style="" value="1">Corporation</option><option style="" value="2">Exempt Organization</option><option style="" value="3">Partnership</option><option style="" value="4">Private Foundation</option><option style="" value="5">S Corporation</option><option style="" value="6">Sole Proprietor</option><option style="" value="7">Limited Liability Company</option><option style="" value="8">Trading LLC</option><option style="" value="9">Private Limited</option><option style="" value="10">General Partnership</option><option style="" value="11">Limited Partnership</option><option style="" value="12">Non Profit Organization</option><option style="" value="13">Trust</option><option style="" value="14">Joint Venture</option><option style="" value="15">Association</option><option style="" value="16">Free Zone</option>
+													</select>
+												</div>
+												<div class="form-group">
+													<label>Assistant Department Head:</label>
+													<select  name ="assistant_departmant_head" id="assistant_departmant_head" class="form-control-select">
+													<option style="" value="0"> - </option><option style="" value="1">Corporation</option><option style="" value="2">Exempt Organization</option><option style="" value="3">Partnership</option><option style="" value="4">Private Foundation</option><option style="" value="5">S Corporation</option><option style="" value="6">Sole Proprietor</option><option style="" value="7">Limited Liability Company</option><option style="" value="8">Trading LLC</option><option style="" value="9">Private Limited</option><option style="" value="10">General Partnership</option><option style="" value="11">Limited Partnership</option><option style="" value="12">Non Profit Organization</option><option style="" value="13">Trust</option><option style="" value="14">Joint Venture</option><option style="" value="15">Association</option><option style="" value="16">Free Zone</option>
+													</select>
+												</div>
+												<div class="form-upper-main">
+													<h4>Additional Information</h4>
+												</div>
+												<div class="form-group">
+                                                    <label>Department Sorting Order</label>
+                                                    <input type="text" class="form-control-spacial" id="department_sorting_order" name="department_sorting_order" value="{{isset($result->job_title)?$result->job_title:''}}">
+												</div>
+												<div class="form-group">
+												<label>Notes:</label>
+													<textarea class="tinyeditorclass" name="notes" id="notes">{{isset($result->additonal_information)?$result->additonal_information:''}}</textarea>
+												</div>
+												<div class="form-group">
+												 	<label>Record Added By:</label>
+												</div>
+												<div class="form-group">
+													<label>Record Added On:</label>
+													@php
+													$date  = date("F j, Y, g:i a");
+													@endphp
+													{{$date}}
+												</div>
 
-                                                 <div class="form-group">
-													<label>Legal / Trading Name:</label>
-													<input type="text" class="form-control-spacial" id="legal_trading_name" value="{{isset($result->legal_trading_name)?$result->legal_trading_name:''}}" name="legal_trading_name">
-                                                   
-												 </div>
-
-                                                 <div class="form-group">
-													<label>Registration Number:</label>
-													<input type="text" class="form-control-spacial" id="registration_name" name="registration_number" value="{{isset($result->registration_number)?$result->registration_number:''}}">
-                                                   
-												 </div>
-											
 												 <div class="form-group">
 													<input class="submit-office" type="submit" value="Save">
 												</div>
