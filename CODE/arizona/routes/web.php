@@ -41,4 +41,10 @@ Route::group(['middleware' => 'auth'], function () {
 
     // job Routes
     \App\Http\Controllers\JobRequestsController::routes();
+    
+    // Contracts Routes
+    \App\Http\Controllers\contractsController::routes();
+
+     // Transfers Routes
+     \App\Http\Controllers\transfersController::routes();
 });
