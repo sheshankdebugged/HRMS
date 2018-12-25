@@ -21,12 +21,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
-    Route::get('/companies', 'CompaniesController@index');
-    Route::get('/addcompanies', 'CompaniesController@create');
-    Route::post('/savecompanies', 'CompaniesController@store');
-    Route::get('/companies/edit/{id}', 'CompaniesController@edit');
-    Route::post('/companies/update/{id}', 'CompaniesController@update');
-    Route::get('/companies/delete/{id}', 'CompaniesController@destroy');
+// Employees Routes
+    \App\Http\Controllers\CompaniesController::routes();
 
 // Employees Routes
     \App\Http\Controllers\EmployeesController::routes();

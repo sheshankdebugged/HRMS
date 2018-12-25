@@ -1,21 +1,20 @@
 <?php
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
+
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Form;
-use Validator;
-use Session;
 use App\Models\Companies;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Form;
+use Session;
+use Validator;
 
 class CompaniesController extends Controller
 {
 
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -23,10 +22,10 @@ class CompaniesController extends Controller
     public function index()
     {
 
-        $list = Companies::where(['status'=>1])->paginate(10);
+        $list = Companies::where(['status' => 1])->paginate(10);
         return view('hrmodule.companies.list')->with([
             'listData' => $list,
-            'pageTitle'=>"Companies"
+            'pageTitle' => "Companies",
         ]);
 
     }
@@ -41,8 +40,8 @@ class CompaniesController extends Controller
         $action = 'add';
         return view('hrmodule.companies.add')->with([
             'action' => $action,
-            'pageTitle'=>"Companies",
-            'Addform'  =>"Add New Company"
+            'pageTitle' => "Companies",
+            'Addform' => "Add New Company",
         ]);
     }
 
@@ -51,26 +50,25 @@ class CompaniesController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-     * 	bs@hopmanhome.com, triproserv@gmail.com adam.mckinnon75@outlook.com
+     *     bs@hopmanhome.com, triproserv@gmail.com adam.mckinnon75@outlook.com
      */
     public function store(Request $request)
     {
 
         $user_id = Auth::id();
-        if($request->all()){
+        if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
                 'company_name' => 'required',
 
-
             ]);
-           if ($validator->fails()) {
+            if ($validator->fails()) {
                 $action = 'addcompanies';
                 return redirect('/addcompanies')
                     ->withErrors($validator)
                     ->withInput()
                     ->with([
-                         'action' => $action
+                        'action' => $action,
                     ]);
             }
 
@@ -81,17 +79,17 @@ class CompaniesController extends Controller
                 $file->move('./img/uploads/Companies/', $input['icon_img']);
             }
 
-            $input['status']=  1;
-            $input['user_id'] =  $user_id;
+            $input['status'] = 1;
+            $input['user_id'] = $user_id;
             unset($input['_token']);
-            if($input['id']>0){
-                $input['updated_at']=date("Y-m-d H:i:s");
+            if ($input['id'] > 0) {
+                $input['updated_at'] = date("Y-m-d H:i:s");
                 Session::flash('message', 'Companie  Updated Successfully.');
                 Companies::where('id', $input['id'])->update($input);
-            }else{
+            } else {
                 unset($input['id']);
-                $input['created_at']=date("Y-m-d H:i:s");
-                $input['updated_at']=date("Y-m-d H:i:s");
+                $input['created_at'] = date("Y-m-d H:i:s");
+                $input['updated_at'] = date("Y-m-d H:i:s");
                 Session::flash('message', 'Companie  Added Successfully.');
                 Companies::insertGetId($input);
             }
@@ -122,16 +120,15 @@ class CompaniesController extends Controller
         $action = 'edit';
         $result = Companies::find($id);
         $action = 'add';
-        $editname = "Edit ".$result->company_name;
+        $editname = "Edit " . $result->company_name;
         return view('hrmodule.companies.add')->with([
             'action' => $action,
-            'pageTitle'=>"Companies",
-            'Addform'  =>$editname,
-            'result'  =>$result
+            'pageTitle' => "Companies",
+            'Addform' => $editname,
+            'result' => $result,
         ]);
 
     }
-
 
     /**
      * Remove the specified resource from storage.
@@ -146,5 +143,16 @@ class CompaniesController extends Controller
         $Companies->save();
         Session::flash('message', 'Company delete successfully');
         return redirect("/companies");
+    }
+    public static function routes()
+    {
+        Route::group(array('companies' => 'projects'), function () {
+            Route::get('/', array('as' => 'companies.index', 'uses' => 'CompaniesController@index'));
+            Route::get('/add', array('as' => 'companies.create', 'uses' => 'CompaniesController@create'));
+            Route::post('/save', array('as' => 'companies.save', 'uses' => 'CompaniesController@store'));
+            Route::get('/edit/{id}', array('as' => 'companies.edit', 'uses' => 'CompaniesController@edit'));
+            Route::post('/update/{id}', array('as' => 'companies.update', 'uses' => 'CompaniesController@update'));
+            Route::get('/delete/{id}', array('as' => 'companies.destroy', 'uses' => 'CompaniesController@destroy'));
+        });
     }
 }
