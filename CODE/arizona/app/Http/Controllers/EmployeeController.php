@@ -1,8 +1,9 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Companies;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -11,9 +12,8 @@ use Illuminate\Support\Form;
 use Session;
 use Validator;
 
-class CompaniesController extends Controller
+class EmployeeController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -21,11 +21,13 @@ class CompaniesController extends Controller
      */
     public function index()
     {
-
-        $list = Companies::where(['status' => 1])->paginate(10);
-        return view('hrmodule.companies.list')->with([
+        $user_id = Auth::id();
+        
+        $user_id = 1;
+        $list = Employee::where(['status'=>1,'user_id'=>$user_id])->paginate(10);
+        return view('hrmodule.employees.list')->with([
             'listData' => $list,
-            'pageTitle' => "Companies",
+            'pageTitle' => "Employees",
         ]);
 
     }
@@ -38,10 +40,10 @@ class CompaniesController extends Controller
     public function create()
     {
         $action = 'add';
-        return view('hrmodule.companies.add')->with([
+        return view('hrmodule.employees.add')->with([
             'action' => $action,
-            'pageTitle' => "Companies",
-            'Addform' => "Add New Company",
+            'pageTitle' => "Employees",
+            'Addform' => "Add New Employee",
         ]);
     }
 
@@ -54,17 +56,18 @@ class CompaniesController extends Controller
      */
     public function store(Request $request)
     {
-
+       
         $user_id = Auth::id();
+        $master = $this->getmasterfields();
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                'company_name' => 'required',
+                'employee_name' => 'required',
 
             ]);
             if ($validator->fails()) {
-                $action = 'addcompanies';
-                return redirect('/addcompanies')
+                $action = 'addemployees';
+                return redirect('/employees/add')
                     ->withErrors($validator)
                     ->withInput()
                     ->with([
@@ -76,7 +79,7 @@ class CompaniesController extends Controller
             if (request()->hasFile('icon_img')) {
                 $file = request()->file('icon_img');
                 $input['icon_img'] = md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
-                $file->move('./img/uploads/Companies/', $input['icon_img']);
+                $file->move('./img/uploads/employees/', $input['icon_img']);
             }
 
             $input['status'] = 1;
@@ -84,16 +87,16 @@ class CompaniesController extends Controller
             unset($input['_token']);
             if ($input['id'] > 0) {
                 $input['updated_at'] = date("Y-m-d H:i:s");
-                Session::flash('message', 'Companie  Updated Successfully.');
-                Companies::where('id', $input['id'])->update($input);
+                Session::flash('message', 'Employee Updated Successfully.');
+                Employee::where('id', $input['id'])->update($input);
             } else {
                 unset($input['id']);
                 $input['created_at'] = date("Y-m-d H:i:s");
                 $input['updated_at'] = date("Y-m-d H:i:s");
-                Session::flash('message', 'Companie  Added Successfully.');
-                Companies::insertGetId($input);
+                Session::flash('message', 'Employee  Added Successfully.');
+                Employee::insertGetId($input);
             }
-            return redirect('/companies');
+            return redirect('/employees');
         }
     }
 
@@ -116,14 +119,13 @@ class CompaniesController extends Controller
      */
     public function edit($id)
     {
-
         $action = 'edit';
-        $result = Companies::find($id);
+        $result = Employee::find($id);
         $action = 'add';
-        $editname = "Edit " . $result->company_name;
-        return view('hrmodule.companies.add')->with([
+        $editname = "Edit " . $result->employee_name;
+        return view('hrmodule.employees.add')->with([
             'action' => $action,
-            'pageTitle' => "Companies",
+            'pageTitle' => "employees",
             'Addform' => $editname,
             'result' => $result,
         ]);
@@ -138,21 +140,32 @@ class CompaniesController extends Controller
      */
     public function destroy($id)
     {
-        $Companies = Companies::find($id);
-        $Companies->status = 0;
-        $Companies->save();
-        Session::flash('message', 'Company delete successfully');
-        return redirect("/companies");
+        $employees = Employee::find($id);
+        $employees->status = 0;
+        $employees->save();
+        Session::flash('message', 'Employee delete successfully');
+        return redirect("/employees");
     }
     public static function routes()
     {
-            Route::group(array('prefix' => 'companies'), function () {
-            Route::get('/', array('as' => 'companies.index', 'uses' => 'CompaniesController@index'));
-            Route::get('/add', array('as' => 'companies.create', 'uses' => 'CompaniesController@create'));
-            Route::post('/save', array('as' => 'companies.save', 'uses' => 'CompaniesController@store'));
-            Route::get('/edit/{id}', array('as' => 'companies.edit', 'uses' => 'CompaniesController@edit'));
-            Route::post('/update/{id}', array('as' => 'companies.update', 'uses' => 'CompaniesController@update'));
-            Route::get('/delete/{id}', array('as' => 'companies.destroy', 'uses' => 'CompaniesController@destroy'));
+            Route::group(array('prefix' => 'employees'), function () {
+            Route::get('/', array('as' => 'employees.index', 'uses' => 'EmployeeController@index'));
+            Route::get('/add', array('as' => 'employees.create', 'uses' => 'EmployeeController@create'));
+            Route::post('/save', array('as' => 'employees.save', 'uses' => 'EmployeeController@store'));
+            Route::get('/edit/{id}', array('as' => 'employees.edit', 'uses' => 'EmployeeController@edit'));
+            Route::post('/update/{id}', array('as' => 'employees.update', 'uses' => 'EmployeeController@update'));
+            Route::get('/delete/{id}', array('as' => 'employees.destroy', 'uses' => 'EmployeeController@destroy'));
         });
+    }
+
+     /*
+     *
+     */
+
+    public function getmasterfields()
+    {
+        $master = array();
+        $master['Companies'] = Companies::where(['status' => 1])->get()->toArray();
+        return $master;
     }
 }

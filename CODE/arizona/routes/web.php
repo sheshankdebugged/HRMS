@@ -21,12 +21,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
-    Route::get('/companies', 'CompaniesController@index');
-    Route::get('/addcompanies', 'CompaniesController@create');
-    Route::post('/savecompanies', 'CompaniesController@store');
-    Route::get('/companies/edit/{id}', 'CompaniesController@edit');
-    Route::post('/companies/update/{id}', 'CompaniesController@update');
-    Route::get('/companies/delete/{id}', 'CompaniesController@destroy');
+// Companies Routes
+    \App\Http\Controllers\CompaniesController::routes();
 
 // Employees Routes
     \App\Http\Controllers\EmployeesController::routes();
@@ -40,6 +36,9 @@ Route::group(['middleware' => 'auth'], function () {
 // Departments Routes
     \App\Http\Controllers\DepartmentsController::routes();
 
+// Departments Routes
+    \App\Http\Controllers\DepartmentsController::routes();
+
 //Stations Routes
     \App\Http\Controllers\StationsController::routes();
 
@@ -48,4 +47,11 @@ Route::group(['middleware' => 'auth'], function () {
 
 // Resignations
     \App\Http\Controllers\ResignationsController::routes();
+//OrganizationNews Routes
+    \App\Http\Controllers\OrganizationNewsController::routes();
+    // job Routes
+    \App\Http\Controllers\JobRequestsController::routes();
+
+// Employee Routes
+    \App\Http\Controllers\EmployeeController::routes();
 });

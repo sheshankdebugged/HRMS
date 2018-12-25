@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Projects;
+use App\Models\OrganizationNews;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -11,7 +11,7 @@ use Illuminate\Support\Form;
 use Session;
 use Validator;
 
-class ProjectsController extends Controller
+class OrganizationNewsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,16 +21,11 @@ class ProjectsController extends Controller
     public function index()
     {
         //
+        $list = OrganizationNews::where(['status' => 1])->paginate(10);
 
-        $list = Projects::where(['status' => 1])->paginate(10);
-
-        // echo "<pre>";
-        //print_r($list);
-
-        // die;
-        return view('hrmodule.projects.list')->with([
+        return view('hrmodule.organizationNews.list')->with([
             'listData' => $list,
-            'pageTitle' => "Projects",
+            'pageTitle' => "Organization News",
         ]);
 
     }
@@ -42,11 +37,12 @@ class ProjectsController extends Controller
      */
     public function create()
     {
+
         $action = 'add';
-        return view('hrmodule.projects.add')->with([
+        return view('hrmodule.organizationNews.add')->with([
             'action' => $action,
-            'pageTitle' => "Projects",
-            'Addform' => "Add New Projects",
+            'pageTitle' => "Organization News",
+            'Addform' => "Add News",
         ]);
     }
 
@@ -62,12 +58,12 @@ class ProjectsController extends Controller
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                'project_title' => 'required',
+                'news_title' => 'required',
 
             ]);
             if ($validator->fails()) {
-                $action = 'addprojects';
-                return redirect('/addprojects')
+                $action = 'organizationnews';
+                return redirect('/organizationnews/add')
                     ->withErrors($validator)
                     ->withInput()
                     ->with([
@@ -76,10 +72,10 @@ class ProjectsController extends Controller
             }
 
             $input = $request->all();
-            if (request()->hasFile('icon_img')) {
-                $file = request()->file('icon_img');
-                $input['icon_img'] = md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
-                $file->move('./img/uploads/Companies/', $input['icon_img']);
+            if (request()->hasFile('news_images')) {
+                $file = request()->file('news_images');
+                $input['news_images'] = md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
+                $file->move('./img/uploads/news/', $input['news_images']);
             }
 
             $input['status'] = 1;
@@ -88,15 +84,15 @@ class ProjectsController extends Controller
             if ($input['id'] > 0) {
                 $input['updated_at'] = date("Y-m-d H:i:s");
                 Session::flash('message', 'Projects  Updated Successfully.');
-                Projects::where('id', $input['id'])->update($input);
+                OrganizationNews::where('id', $input['id'])->update($input);
             } else {
                 unset($input['id']);
                 $input['created_at'] = date("Y-m-d H:i:s");
                 $input['updated_at'] = date("Y-m-d H:i:s");
                 Session::flash('message', 'Projects  Added Successfully.');
-                Projects::insertGetId($input);
+                OrganizationNews::insertGetId($input);
             }
-            return redirect('/projects');
+            return redirect('/organizationnews');
         }
     }
 
@@ -121,12 +117,12 @@ class ProjectsController extends Controller
     {
 
         $action = 'edit';
-        $result = Projects::find($id);
+        $result = OrganizationNews::find($id);
         $action = 'add';
-        $editname = "Edit " . $result->project_title;
-        return view('hrmodule.projects.add')->with([
+        $editname = "Edit " . $result->news_title;
+        return view('hrmodule.organizationnews.add')->with([
             'action' => $action,
-            'pageTitle' => "Project",
+            'pageTitle' => "OrganizationNews",
             'Addform' => $editname,
             'result' => $result,
         ]);
@@ -152,22 +148,21 @@ class ProjectsController extends Controller
      */
     public function destroy($id)
     {
-
-        $Companies = Projects::find($id);
+        $Companies = OrganizationNews::find($id);
         $Companies->status = 0;
         $Companies->save();
-        Session::flash('message', 'Project delete successfully');
-        return redirect("/projects");
+        Session::flash('message', 'News delete successfully');
+        return redirect("/organizationnews");
     }
     public static function routes()
     {
-           Route::group(array('prefix' => 'projects'), function () {
-            Route::get('/', array('as' => 'projects.index', 'uses' => 'ProjectsController@index'));
-            Route::get('/add', array('as' => 'projects.create', 'uses' => 'ProjectsController@create'));
-            Route::post('/save', array('as' => 'projects.save', 'uses' => 'ProjectsController@store'));
-            Route::get('/edit/{id}', array('as' => 'projects.edit', 'uses' => 'ProjectsController@edit'));
-            Route::post('/update/{id}', array('as' => 'projects.update', 'uses' => 'ProjectsController@update'));
-            Route::get('/delete/{id}', array('as' => 'projects.destroy', 'uses' => 'ProjectsController@destroy'));
+        Route::group(array('prefix' => 'organizationnews'), function () {
+            Route::get('/', array('as' => 'OrganizationNews.index', 'uses' => 'OrganizationNewsController@index'));
+            Route::get('/add', array('as' => 'OrganizationNews.create', 'uses' => 'OrganizationNewsController@create'));
+            Route::post('/save', array('as' => 'OrganizationNews.save', 'uses' => 'OrganizationNewsController@store'));
+            Route::get('/edit/{id}', array('as' => 'OrganizationNews.edit', 'uses' => 'OrganizationNewsController@edit'));
+            Route::post('/update/{id}', array('as' => 'OrganizationNews.update', 'uses' => 'OrganizationNewsController@update'));
+            Route::get('/delete/{id}', array('as' => 'OrganizationNews.destroy', 'uses' => 'OrganizationNewsController@destroy'));
         });
 
     }

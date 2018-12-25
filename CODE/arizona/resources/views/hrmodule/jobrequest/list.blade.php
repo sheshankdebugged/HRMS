@@ -9,14 +9,14 @@
                         @include('template.organisation_nav_icon')
 						</div>
 					</div>
-
+            
 					<div class="right-bar-request">
 						<div class="request-section">
 							<div class="main-heading">
 								<div class="inner-heading-request">
 									<h2>{{ $pageTitle }}</h2>
 								</div>
-
+                                
 								<div class="settings-buttons">
 									<ul>
 										<li>
@@ -51,11 +51,11 @@
 												<a href="#" alt="Dashboard"><i class="fa fa-refresh"></i></a>
 											</div>
 											<div class="add-record-btn">
-												<a href="{{ url('jobposts/add') }}"><i class="fa fa-plus"></i>Add Record</a>
+												<a href="{{ url('jobrequest/add') }}"><i class="fa fa-plus"></i>Add Record</a>
 											</div>
-
+											
 										</div>
-
+										
 									</div>
 								</div>
 								<div class="inner-table-main" style="min-height:590px;">
@@ -65,10 +65,7 @@
 									  <tr>
 										  <td style="background-color:#0c64ae; " class="thbackgroud"><a style="color:#fff; " href="#">Job Title</a></td>
 										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Job Type</a></td>
-                                          <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">No. of Positions</a></td>
-                                          <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Closing Date</a></td>
-                                          <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Reference Number</a></td>
-                                          <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Status</a></td>
+										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">	No. of Positions</a></td>
 									      <td style="background-color:#0c64ae; width:1%;"></td>
 									  </tr>
 									</thead>
@@ -76,22 +73,19 @@
                                         @foreach($listData as $list)
 											<tr id="second" class="context-requst-one selected">
 											<td class="datainner" style="">{{$list->job_title}}</td>
-											<td class="datainner" style="">{{$list->notes}}</td>
-											<td class="datainner" style="">{{$list->number_of_positions}}</td>
-											<td class="datainner" style="">{{ date( 'F d, Y',strtotime($list->job_post_closing_date)) }}</td>
-											<td class="datainner" style="">{{$list->notes}}</td>
-											<td class="datainner" style="">{{($list->status ==1) ? 'Active':'Inactive' }}</td>
+											<td class="datainner" style="">{{$list->email_address}}</td>
+											<td class="datainner" style="">{{$list->website}}</td>                       
 											<td align="right">
 												<div class="dropdown action-drop">
-													<a href="javascript:void(0);" class="dropdown-custom"><i style="font-size:16px;" class="fa fa-cog"></i></a>
+													<a href="" class="dropdown-toggle" data-toggle="dropdown"><i style="font-size:16px;" class="fa fa-cog"></i></a>
 													<ul class="dropdown-menu">
 														<li><a href="#"><i class="fa fa-folder-open"></i>View Record</a></li>
-														<li><a href="{{url('/jobposts/edit')}}/{{$list->id}}"><i class="fa fa-edit"></i>Edit Record</a></li>
+														<li><a href="{{url('/jobrequests/edit')}}/{{$list->id}}"><i class="fa fa-edit"></i>Edit Record</a></li>
 														<li><a href="#"><i class="fa fa-sticky-note"></i>Notes</a></li>
-														<li><a href="{{url('/jobposts/delete/')}}/{{$list->id}}"><i class="fa fa-times"></i>Delete Record</a></li>
+														<li><a href="{{url('/jobrequests/delete/')}}/{{$list->id}}"><i class="fa fa-times"></i>Delete Record</a></li>
 													</ul>
 												</div>
-											</td>
+											</td> 
 										</tr>
                                         @endforeach
 

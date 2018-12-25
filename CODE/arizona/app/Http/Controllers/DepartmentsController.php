@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Departments;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Form;
@@ -22,7 +23,7 @@ class DepartmentsController extends Controller
     {
 
         $list = Departments::where(['status' => 1])->paginate(10);
-        return view('hrmodule.Departments.list')->with([
+        return view('hrmodule.departments.list')->with([
             'listData' => $list,
             'pageTitle' => "Departments",
         ]);
@@ -37,10 +38,10 @@ class DepartmentsController extends Controller
     public function create()
     {
         $action = 'add';
-        return view('hrmodule.Departments.add')->with([
+        return view('hrmodule.departments.add')->with([
             'action' => $action,
             'pageTitle' => "Departments",
-            'Addform' => "Add New Company",
+            'Addform' => "Add New Departments",
         ]);
     }
 
@@ -58,12 +59,11 @@ class DepartmentsController extends Controller
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                'company_name' => 'required',
-
+                'department_name' => 'required'
             ]);
             if ($validator->fails()) {
-                $action = 'addDepartments';
-                return redirect('/addDepartments')
+                $action = 'departments/add';
+                return redirect('departments/add')
                     ->withErrors($validator)
                     ->withInput()
                     ->with([
@@ -92,7 +92,7 @@ class DepartmentsController extends Controller
                 Session::flash('message', 'Companie  Added Successfully.');
                 Departments::insertGetId($input);
             }
-            return redirect('/Departments');
+            return redirect('/departments');
         }
     }
 
@@ -119,8 +119,8 @@ class DepartmentsController extends Controller
         $action = 'edit';
         $result = Departments::find($id);
         $action = 'add';
-        $editname = "Edit " . $result->company_name;
-        return view('hrmodule.Departments.add')->with([
+        $editname = "Edit " . $result->department_name;
+        return view('hrmodule.departments.add')->with([
             'action' => $action,
             'pageTitle' => "Departments",
             'Addform' => $editname,
@@ -140,8 +140,19 @@ class DepartmentsController extends Controller
         $Departments = Departments::find($id);
         $Departments->status = 0;
         $Departments->save();
-        Session::flash('message', 'Company delete successfully');
-        return redirect("/Departments");
+        Session::flash('message', 'Department delete successfully');
+        return redirect("/departments");
+    }
+    public static function routes()
+    {
+        Route::group(array('prefix' => 'departments'), function () {
+            Route::get('/', array('as' => 'departments.index', 'uses' => 'DepartmentsController@index'));
+            Route::get('/add', array('as' => 'departments.create', 'uses' => 'DepartmentsController@create'));
+            Route::post('/save', array('as' => 'departments.save', 'uses' => 'DepartmentsController@store'));
+            Route::get('/edit/{id}', array('as' => 'departments.edit', 'uses' => 'DepartmentsController@edit'));
+            Route::post('/update/{id}', array('as' => 'departments.update', 'uses' => 'DepartmentsController@update'));
+            Route::get('/delete/{id}', array('as' => 'departments.destroy', 'uses' => 'DepartmentsController@destroy'));
+        });
     }
     public static function routes()
     {
