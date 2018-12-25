@@ -1,12 +1,16 @@
 <ul>
+                                <li>          
+								<a href="{{url('dashboard')}}"><i class="fa fa-dashboard"></i></a>
+								</li>
+								
 								<li>
-									<a href="#" alt="Dashboard"><i class="fa fa-angle-right"></i></a>
+								<a href="{{url('companies')}}"><i class="fa fa-clone"></i></a>
 								</li>
 								<li>
-									<a href="#" alt="Dashboard"><i class="fa fa-tachometer"></i></a>
+								<a href="{{url('stations')}}"><i class="fa fa-building"></i></a>
 								</li>
 								<li>
-									<a href="#" alt="Dashboard"><i class="fa fa-envelope-open"></i></a>
+								<a href="#noanchor"><i class="fa fa-sitemap"></i></a>
 								</li>
 								<li>
 									<a href="#" alt="Dashboard"><i class="fa fa-envelope-o"></i></a>
@@ -20,4 +24,4 @@
 								<li>
 									<a href="#" alt="Dashboard"><i class="fa fa-comments"></i></a>
 								</li>
-</ul>
+ </ul>

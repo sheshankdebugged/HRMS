@@ -27,7 +27,6 @@ class StationsController extends Controller
     {
         
         $list =Stations::where(['status'=>1])->paginate(10);
-        $master = $this->getmasterfields();
         return view('hrmodule.stations.list')->with([
             'listData' => $list,
             'pageTitle'=>"Stations"
@@ -44,6 +43,8 @@ class StationsController extends Controller
     {
         $action = 'add';
         $master = $this->getmasterfields();
+
+     
         return view('hrmodule.stations.add')->with([
             'action' => $action,
             'pageTitle'=>"Stations",
@@ -160,13 +161,10 @@ class StationsController extends Controller
     /*
      *
     */
-
-  
-
     function getmasterfields(){
 
             $master                     = array();
-            $master['Companies']             = Companies::where(['status'=>1])->get()->toArray();
+            $master['Companies']        = Companies::where(['status'=>1])->get()->toArray();
             return $master;
     }
 

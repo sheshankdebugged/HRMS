@@ -64,7 +64,7 @@
 												 <div class="form-group">
 													<label>Company Name:</label>
 													<input type="text" class="form-control-spacial" id="company_name" name="company_name" value="{{isset($result->company_name)?$result->company_name:''}}" placeholder="Company name">
-                                                    <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fal fa-asterisk"></i>
+                                                    <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 												 </div>
 
                                                  <div class="form-group">
@@ -258,7 +258,7 @@
 												 </div>
 												 <div class="form-group">
 												 <label>Notes:</label>
-													<textarea class="tinyeditorclass" name="additonal_information" id="additonal_information">{{isset($result->additonal_information)?$result->additonal_information:''}}</textarea>
+													<textarea  name="additonal_information" id="additonal_information">{{isset($result->additonal_information)?$result->additonal_information:''}}</textarea>
 												</div> 
 
 
