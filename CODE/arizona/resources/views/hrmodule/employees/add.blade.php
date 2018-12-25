@@ -55,28 +55,10 @@
                                             </div>
                                         @endif
 
-										<div style="position:relative;"><div style="position:absolute; right:0px; width:400px;"><div align="right"><img id="imgEmployeePhoto" title="" src="https://cdn.webhr.co/images/Photo/NoPhotoM.png" style="background-repeat: no-repeat; background-position: 50%; border-radius: 50%; width: 200px; height: 200px;"><br>
-			 <div style="" id="fileEmployeePhoto"><div class="ajax-file-upload" style="position: relative; overflow: hidden; cursor: default;">Upload Photo<form method="POST" action="../pages/?page=Upload&amp;type=UploadFile&amp;n=1&amp;m=Upload&amp;t=&amp;type2=EmployeePhoto" enctype="multipart/form-data" style="margin: 0px; padding: 0px;"><input type="file" id="ajax-upload-id-1545737415618" name="fileEmployeePhoto" accept="image/*" style="position: absolute; cursor: pointer; top: 0px; width: 100%; height: 100%; left: 0px; z-index: 100; opacity: 0;"></form></div><div></div></div><div class="ajax-file-upload-container"></div>
-		<script>
-		$(document).ready(function() {
-			// $("#fileEmployeePhoto").uploadFile({ 
-			// 	url:"../pages/?page=Upload&type=UploadFile&n=1&m=Upload&t=&type2=EmployeePhoto", 
-			// 	fileName:"fileEmployeePhoto", 
-			// 	acceptFiles:"image/*",
-			// 	dragDrop:false, 
-			// 	maxFileCount:1, 
-			// 	uploadStr:"Upload Photo",
-			// 	maxFileSize:100*1024*10*20,		// 20 MB
-			// 	afterUploadAll:function(obj) {
-			// 		var sResponse = $.parseJSON(obj.getResponses());
-			// 		$("#ephoto").val(sResponse["FileName"]); $("#imgEmployeePhoto").attr("src", "../include/image.php?org=t&img=" + sResponse["FileName"]);
-			// 	} 
-			// }); 
-		});
-		</script>
+	       
 		     
-		    </div></div></div>
-                                        <form method="post" action="{{ url('employees/save') }}">
+
+                                        <form method="post" action="{{ url('employees/save') }}" enctype='multipart/form-data' >
                                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                           <input type="hidden" name="id" value="{{isset($result->id)?$result->id:''}}">
 
@@ -84,7 +66,14 @@
 												 <div class="form-group">
 													<label>Company:</label>
 													<!-- <input type="text" class="form-control-spacial" id="employee_name" name="employee_name" value="{{isset($result->employee_name)?$result->employee_name:''}}"> -->
-													<select id="st" name="company_name" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Company 1</option></select>
+													<!-- <select id="st" name="company_name" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Company 1</option></select> -->
+													<select id="st" class="WebHRForm1" style="width:180px;" name="station_type">
+
+													<!-- <option value="ALL"> All </option> -->
+													@foreach($master['Companies'] as $val)
+													<option  value="{{$val['company_name']}}">{{$val['company_name']}}</option>
+													@endforeach
+													</select>
                                                     <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 												 </div>
 
@@ -95,38 +84,61 @@
 
 												 </div>
 
+
+												 <div class="form-group">
+													<label>profile pic:</label>
+												    <input type="file" name="profile_pic" id="profile_pic" />
+												 </div>
+
+
                                                  <div class="form-group">
 													<label>Station:</label>
-													<select id="st" name="station" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Station 1</option></select>
-													<!-- <input type="text" class="form-control-spacial" id="department" name="department" value="{{isset($result->department)?$result->department:''}}"> -->
+													<!-- <option value="ALL"> All </option> -->
+													<select id="st" class="WebHRForm1" style="width:180px;" name="station_type">
+													@foreach($master['Stations'] as $val)
+													<option  value="{{$val['id']}}" @php if(isset($result->station_type) && $result->station_type == $val['id']  ) { echo "selected";  } @endphp >{{$val['station_name']}}</option>
+													@endforeach
+													</select>
 
 												 </div>
 												 
 												 <div class="form-group">
 													<label>Department:</label>
 													<!-- <input type="text" class="form-control-spacial" id="station" name="station" value="{{isset($result->station)?$result->station:''}}"> -->
-													<select id="st" name="department" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Department 1</option></select>
+													<select id="st" class="WebHRForm1" style="width:180px;" name="department_id">
+													@foreach($master['Departments'] as $val)
+													<option  value="{{$val['id']}}" @php if(isset($result->department_id) && $result->department_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['department_name']}}</option>
+													@endforeach
+													</select>
 
 												 </div>
 
 												 <div class="form-group">
 													<label>Employee Type:</label>
 													<!-- <input type="text" class="form-control-spacial" id="user_name" name="user_name" value="{{isset($result->user_name)?$result->user_name:''}}"> -->
-													<select id="st" name="employee_type" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Employee Type 1</option></select>
-
+													<select id="st" class="WebHRForm1" style="width:180px;" name="station_type">
+													@foreach($master['EmployeeType'] as $val)
+													<option  value="{{$val['id']}}" @php if(isset($result->name) && $result->id == $val['id']  ) { echo "selected";  } @endphp >{{$val['name']}}</option>
+													@endforeach
+													</select>
 												 </div>
 
 												 <div class="form-group">
 													<label>Employee Category:</label>
-													<!-- <input type="text" class="form-control-spacial" id="access_code" name="access_code" value="{{isset($result->access_code)?$result->access_code:''}}"> -->
-													<select id="st" name="employee_category" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Employee Category 1</option></select>
-
+													<select id="st" class="WebHRForm1" style="width:180px;" name="station_type">
+													@foreach($master['EmployeeCategory'] as $val)
+													<option  value="{{$val['id']}}" @php if(isset($result->name) && $result->name == $val['name']  ) { echo "selected";  } @endphp >{{$val['name']}}</option>
+													@endforeach
+													</select>
 												 </div>
 
 												 <div class="form-group">
 													<label>Designation / Job Title:</label>
-													<!-- <input type="text" class="form-control-spacial" id="joining_date" name="joining_date" value="{{isset($result->joining_date)?$result->joining_date:''}}"> -->
-													<select id="st" name="employee_designation" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Employee Designation 1</option></select>
+													<select id="st" class="WebHRForm1" style="width:180px;" name="station_type">
+													@foreach($master['EmployeeDesignation'] as $val)
+													<option  value="{{$val['id']}}" @php if(isset($result->name) && $result->name == $val['name']  ) { echo "selected";  } @endphp >{{$val['name']}}</option>
+													@endforeach
+													</select>
 												 </div>
 
 												 <div class="form-group">

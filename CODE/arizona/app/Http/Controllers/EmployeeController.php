@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Employee;
+use App\Models\Companies;
+use App\Models\Stations;
+use App\Models\Departments;
+use App\Models\EmployeeType;
+use App\Models\EmployeeCategory;
+use App\Models\EmployeeDesignation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -40,10 +46,12 @@ class EmployeeController extends Controller
     public function create()
     {
         $action = 'add';
+        $master = $this->getmasterfields();
         return view('hrmodule.employees.add')->with([
             'action' => $action,
             'pageTitle' => "Employees",
             'Addform' => "Add New Employee",
+            'master' => $master,
         ]);
     }
 
@@ -61,7 +69,7 @@ class EmployeeController extends Controller
         $master = $this->getmasterfields();
         if ($request->all()) {
 
-            $validator = Validator::make($request->all(), [
+          /*  $validator = Validator::make($request->all(), [
                 'employee_name' => 'required',
 
             ]);
@@ -73,13 +81,13 @@ class EmployeeController extends Controller
                     ->with([
                         'action' => $action,
                     ]);
-            }
+            } */
 
             $input = $request->all();
-            if (request()->hasFile('icon_img')) {
-                $file = request()->file('icon_img');
-                $input['icon_img'] = md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
-                $file->move('./img/uploads/employees/', $input['icon_img']);
+            if (request()->hasFile('profile_pic')) {
+                $file = request()->file('profile_pic');
+                $input['employee_profile'] = md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
+                $file->move('./img/uploads/employees/', $input['employee_profile']);
             }
 
             $input['status'] = 1;
@@ -165,7 +173,12 @@ class EmployeeController extends Controller
     public function getmasterfields()
     {
         $master = array();
-        $master['Companies'] = Companies::where(['status' => 1])->get()->toArray();
+        $master['Companies']               = Companies::where(['status' => 1])->get()->toArray();
+        $master['Stations']                = Stations::where(['status'=>1])->get()->toArray();
+        $master['Departments']             = Departments::where(['status'=>1])->get()->toArray();
+        $master['EmployeeType']            = EmployeeType::where(['status'=>1])->get()->toArray();
+        $master['EmployeeCategory']        = EmployeeCategory::where(['status'=>1])->get()->toArray();
+        $master['EmployeeDesignation']     = EmployeeDesignation::where(['status'=>1])->get()->toArray();
         return $master;
     }
 }
