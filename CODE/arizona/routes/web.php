@@ -15,6 +15,15 @@ Route::get('/', function () {
     return view('home.login');
 });
 
+
+Route::get('/setting', function () {
+    return view('hrmodule.setting');
+});
+
+
+
+
+
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
