@@ -51,7 +51,7 @@
 												<a href="#" alt="Dashboard"><i class="fa fa-refresh"></i></a>
 											</div>
 											<div class="add-record-btn">
-												<a href="{{ url('companies/add') }}"><i class="fa fa-plus"></i>Add Record</a>
+												<a href="{{ url('jobrequest/add') }}"><i class="fa fa-plus"></i>Add Record</a>
 											</div>
 											
 										</div>
@@ -63,16 +63,16 @@
 									<table id="requesttab" border="0" cellspacing="0" cellpadding="3" width="100%" align="center">
 									 <thead>
 									  <tr>
-										  <td style="background-color:#0c64ae; " class="thbackgroud"><a style="color:#fff; " href="#">Company name</a></td>
-										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Email address</a></td>
-										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Website</a></td>
+										  <td style="background-color:#0c64ae; " class="thbackgroud"><a style="color:#fff; " href="#">Job Title</a></td>
+										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Job Type</a></td>
+										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">	No. of Positions</a></td>
 									      <td style="background-color:#0c64ae; width:1%;"></td>
 									  </tr>
 									</thead>
 										<tbody>
                                         @foreach($listData as $list)
 											<tr id="second" class="context-requst-one selected">
-											<td class="datainner" style="">{{$list->company_name}}</td>
+											<td class="datainner" style="">{{$list->job_title}}</td>
 											<td class="datainner" style="">{{$list->email_address}}</td>
 											<td class="datainner" style="">{{$list->website}}</td>                       
 											<td align="right">
@@ -80,9 +80,9 @@
 													<a href="" class="dropdown-toggle" data-toggle="dropdown"><i style="font-size:16px;" class="fa fa-cog"></i></a>
 													<ul class="dropdown-menu">
 														<li><a href="#"><i class="fa fa-folder-open"></i>View Record</a></li>
-														<li><a href="{{url('/companies/edit')}}/{{$list->id}}"><i class="fa fa-edit"></i>Edit Record</a></li>
+														<li><a href="{{url('/jobrequests/edit')}}/{{$list->id}}"><i class="fa fa-edit"></i>Edit Record</a></li>
 														<li><a href="#"><i class="fa fa-sticky-note"></i>Notes</a></li>
-														<li><a href="{{url('/companies/delete/')}}/{{$list->id}}"><i class="fa fa-times"></i>Delete Record</a></li>
+														<li><a href="{{url('/jobrequests/delete/')}}/{{$list->id}}"><i class="fa fa-times"></i>Delete Record</a></li>
 													</ul>
 												</div>
 											</td> 
