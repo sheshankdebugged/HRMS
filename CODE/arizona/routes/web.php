@@ -21,7 +21,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
-// Employees Routes
+// Companies Routes
     \App\Http\Controllers\CompaniesController::routes();
 
 // Employees Routes
@@ -38,4 +38,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 //Stations Routes
     \App\Http\Controllers\StationsController::routes();
+
+//OrganizationNews Routes
+    \App\Http\Controllers\OrganizationNewsController::routes();
 });

@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Companies;
+use App\Models\Projects;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -11,9 +11,8 @@ use Illuminate\Support\Form;
 use Session;
 use Validator;
 
-class CompaniesController extends Controller
+class ProjectsController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -21,11 +20,17 @@ class CompaniesController extends Controller
      */
     public function index()
     {
+        //
 
-        $list = Companies::where(['status' => 1])->paginate(10);
-        return view('hrmodule.companies.list')->with([
+        $list = Projects::where(['status' => 1])->paginate(10);
+
+        // echo "<pre>";
+        //print_r($list);
+
+        // die;
+        return view('hrmodule.projects.list')->with([
             'listData' => $list,
-            'pageTitle' => "Companies",
+            'pageTitle' => "Projects",
         ]);
 
     }
@@ -38,10 +43,10 @@ class CompaniesController extends Controller
     public function create()
     {
         $action = 'add';
-        return view('hrmodule.companies.add')->with([
+        return view('hrmodule.projects.add')->with([
             'action' => $action,
-            'pageTitle' => "Companies",
-            'Addform' => "Add New Company",
+            'pageTitle' => "Projects",
+            'Addform' => "Add New Projects",
         ]);
     }
 
@@ -50,21 +55,19 @@ class CompaniesController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-     *     bs@hopmanhome.com, triproserv@gmail.com adam.mckinnon75@outlook.com
      */
     public function store(Request $request)
     {
-
         $user_id = Auth::id();
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                'company_name' => 'required',
+                'project_title' => 'required',
 
             ]);
             if ($validator->fails()) {
-                $action = 'addcompanies';
-                return redirect('/addcompanies')
+                $action = 'addprojects';
+                return redirect('/addprojects')
                     ->withErrors($validator)
                     ->withInput()
                     ->with([
@@ -84,26 +87,26 @@ class CompaniesController extends Controller
             unset($input['_token']);
             if ($input['id'] > 0) {
                 $input['updated_at'] = date("Y-m-d H:i:s");
-                Session::flash('message', 'Companie  Updated Successfully.');
-                Companies::where('id', $input['id'])->update($input);
+                Session::flash('message', 'Projects  Updated Successfully.');
+                Projects::where('id', $input['id'])->update($input);
             } else {
                 unset($input['id']);
                 $input['created_at'] = date("Y-m-d H:i:s");
                 $input['updated_at'] = date("Y-m-d H:i:s");
-                Session::flash('message', 'Companie  Added Successfully.');
-                Companies::insertGetId($input);
+                Session::flash('message', 'Projects  Added Successfully.');
+                Projects::insertGetId($input);
             }
-            return redirect('/companies');
+            return redirect('/projects');
         }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Projects  $projects
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Projects $projects)
     {
         //
     }
@@ -111,48 +114,61 @@ class CompaniesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Projects  $projects
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
 
         $action = 'edit';
-        $result = Companies::find($id);
+        $result = Projects::find($id);
         $action = 'add';
-        $editname = "Edit " . $result->company_name;
-        return view('hrmodule.companies.add')->with([
+        $editname = "Edit " . $result->project_title;
+        return view('hrmodule.projects.add')->with([
             'action' => $action,
-            'pageTitle' => "Companies",
+            'pageTitle' => "Project",
             'Addform' => $editname,
             'result' => $result,
         ]);
+    }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Projects  $projects
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Projects $projects)
+    {
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Projects  $projects
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $Companies = Companies::find($id);
+
+        $Companies = Projects::find($id);
         $Companies->status = 0;
         $Companies->save();
-        Session::flash('message', 'Company delete successfully');
-        return redirect("/companies");
+        Session::flash('message', 'Project delete successfully');
+        return redirect("/projects");
     }
     public static function routes()
     {
-        Route::group(array('companies' => 'companies'), function () {
-            Route::get('/', array('as' => 'companies.index', 'uses' => 'CompaniesController@index'));
-            Route::get('/add', array('as' => 'companies.create', 'uses' => 'CompaniesController@create'));
-            Route::post('/save', array('as' => 'companies.save', 'uses' => 'CompaniesController@store'));
-            Route::get('/edit/{id}', array('as' => 'companies.edit', 'uses' => 'CompaniesController@edit'));
-            Route::post('/update/{id}', array('as' => 'companies.update', 'uses' => 'CompaniesController@update'));
-            Route::get('/delete/{id}', array('as' => 'companies.destroy', 'uses' => 'CompaniesController@destroy'));
+        Route::group(array('prefix' => 'projects'), function () {
+            Route::get('/', array('as' => 'projects.index', 'uses' => 'ProjectsController@index'));
+            Route::get('/add', array('as' => 'projects.create', 'uses' => 'ProjectsController@create'));
+            Route::post('/save', array('as' => 'projects.save', 'uses' => 'ProjectsController@store'));
+            Route::get('/edit/{id}', array('as' => 'projects.edit', 'uses' => 'ProjectsController@edit'));
+            Route::post('/update/{id}', array('as' => 'projects.update', 'uses' => 'ProjectsController@update'));
+            Route::get('/delete/{id}', array('as' => 'projects.destroy', 'uses' => 'ProjectsController@destroy'));
         });
+
     }
 }
