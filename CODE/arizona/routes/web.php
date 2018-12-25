@@ -42,4 +42,10 @@ Route::group(['middleware' => 'auth'], function () {
 
 //Stations Routes
     \App\Http\Controllers\StationsController::routes();
+
+// Assignments
+    \App\Http\Controllers\AssignmentsController::routes();
+
+// Resignations
+    \App\Http\Controllers\ResignationsController::routes();
 });
