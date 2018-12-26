@@ -132,13 +132,13 @@ Password: @7tN$i2cF5~5
                               <div class="col-sm-6 list-unstyled">
                                  <a href="#"><i class="fa fa-dashboard"></i>Dashboard</a>
                                  <a href="#"><i class="fa fa-desktop" style="margin-right:12px; font-size:18px;"></i>Screening</a>
-                                 <a href="#"><i class="fa fa-envelope-open"></i>Job Requests</a>
+                                 <a href="{{url('jobrequests')}}"><i class="fa fa-envelope-open"></i>Job Requests</a>
                                  <a href="{{url('jobposts')}}"><i class="fa fa-envelope-o"></i>Job Posts</a>
                                  <a href="#noanchor"><i class="fa fa-male"></i>Job Candidates</a>
                               </div>
                               <div class="col-sm-6 list-unstyled">
-                                    <a href="#noanchor"><i class="fa fa-clipboard"></i>Job Tests</a>
-                                    <a href="#noanchor"><i class="fa fa-comments"></i>Job Interviews</a>
+                                    <a href="{{url('jobtests')}}"><i class="fa fa-clipboard"></i>Job Tests</a>
+                                    <a href="{{url('jobinterviews')}}"><i class="fa fa-comments"></i>Job Interviews</a>
                               </div>
                            </div>
                         </div>
