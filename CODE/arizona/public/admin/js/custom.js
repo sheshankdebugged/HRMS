@@ -1,14 +1,14 @@
-jQuery(document).ready(function () {
+jQuery(document).ready(function ($) {
 
 
-    $("[data-toggle=popover]").popover({
-        html : true,
-        trigger: 'focus',
-        content: function() {
-            var content = $(this).attr("data-popover-content");
-            return $(content).children(".popover-body").html();
-        }
-    });
+    // $("[data-toggle=popover]").popover({
+    //     html : true,
+    //     trigger: 'focus',
+    //     content: function() {
+    //         var content = $(this).attr("data-popover-content");
+    //         return $(content).children(".popover-body").html();
+    //     }
+    // });
     
 	$("#datepicker").datepicker({ 
 	        autoclose: true, 
@@ -18,10 +18,10 @@ jQuery(document).ready(function () {
 	$('.dropdown-custom').click(function(e){
   $(this).parent().toggleClass('active');
 });
-        $('#myTabs a').click(function (e) {
-  e.preventDefault()
-  $(this).tab('show')
-})
+//         $('#myTabs a').click(function (e) {
+//   e.preventDefault()
+//   $(this).tab('show')
+// })
 
     
 

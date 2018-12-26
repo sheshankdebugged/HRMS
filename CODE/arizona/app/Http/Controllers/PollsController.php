@@ -25,7 +25,7 @@ class PollsController extends Controller
         $list = polls::where(['status' => 1])->paginate(10);
         return view('hrmodule.polls.list')->with([
             'listData' => $list,
-            'pageTitle' => "Transfers",
+            'pageTitle' => "Polls",
         ]);
 
     }
@@ -40,8 +40,8 @@ class PollsController extends Controller
         $action = 'add';
         return view('hrmodule.polls.add')->with([
             'action' => $action,
-            'pageTitle' => "polls",
-            'Addform' => "Add New Transfer",
+            'pageTitle' => "Polls",
+            'Addform' => "Add New Poll",
         ]);
     }
 
@@ -59,8 +59,9 @@ class PollsController extends Controller
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                'employee_to_transfer' => 'required',
-
+                'poll_question' => 'required',
+                'poll_answer_1' => 'required',
+                'poll_answer_2' => 'required'
             ]);
             if ($validator->fails()) {
                 $action = 'addpolls';
@@ -79,18 +80,23 @@ class PollsController extends Controller
                 $file->move('./img/uploads/polls/', $input['icon_img']);
             }
 
-            $input['status'] = 1;
-            $input['user_id'] = $user_id;
+            echo "<pre>";
+
+       
+            $input['poll_start_date'] = ($input['poll_start_date'] !="")?date('Y-m-d',strtotime($input['poll_start_date'])):$input['poll_start_date'];
+            $input['poll_end_date']   = ($input['poll_end_date'] !="")?date('Y-m-d',strtotime($input['poll_end_date'])):$input['poll_end_date'];
+            $input['status']=  1;
+            $input['user_id'] =  $user_id;
             unset($input['_token']);
-            if ($input['id'] > 0) {
-                $input['updated_at'] = date("Y-m-d H:i:s");
-                Session::flash('message', 'Companie  Updated Successfully.');
+            if($input['id']>0){
+                $input['updated_at']=date("Y-m-d H:i:s");
+                Session::flash('message', 'Polls Updated Successfully.');
                 polls::where('id', $input['id'])->update($input);
-            } else {
+            }else{
                 unset($input['id']);
-                $input['created_at'] = date("Y-m-d H:i:s");
-                $input['updated_at'] = date("Y-m-d H:i:s");
-                Session::flash('message', 'Companie  Added Successfully.');
+                $input['created_at']=date("Y-m-d H:i:s");
+                $input['updated_at']=date("Y-m-d H:i:s");
+                Session::flash('message', 'Polls  Added Successfully.');
                 polls::insertGetId($input);
             }
             return redirect('/polls');
@@ -141,18 +147,18 @@ class PollsController extends Controller
         $polls = polls::find($id);
         $polls->status = 0;
         $polls->save();
-        Session::flash('message', 'Contracts delete successfully');
+        Session::flash('message', ' Polls delete successfully');
         return redirect("/polls");
     }
     public static function routes()
     {
             Route::group(array('prefix' => 'polls'), function () {
-            Route::get('/', array('as' => 'polls.index', 'uses' => 'pollsController@index'));
-            Route::get('/add', array('as' => 'polls.create', 'uses' => 'pollsController@create'));
-            Route::post('/save', array('as' => 'polls.save', 'uses' => 'pollsController@store'));
-            Route::get('/edit/{id}', array('as' => 'polls.edit', 'uses' => 'pollsController@edit'));
-            Route::post('/update/{id}', array('as' => 'polls.update', 'uses' => 'pollsController@update'));
-            Route::get('/delete/{id}', array('as' => 'polls.destroy', 'uses' => 'pollsController@destroy'));
+            Route::get('/', array('as' => 'polls.index', 'uses' => 'PollsController@index'));
+            Route::get('/add', array('as' => 'polls.create', 'uses' => 'PollsController@create'));
+            Route::post('/save', array('as' => 'polls.save', 'uses' => 'PollsController@store'));
+            Route::get('/edit/{id}', array('as' => 'polls.edit', 'uses' => 'PollsController@edit'));
+            Route::post('/update/{id}', array('as' => 'polls.update', 'uses' => 'PollsController@update'));
+            Route::get('/delete/{id}', array('as' => 'polls.destroy', 'uses' => 'PollsController@destroy'));
         });
     }
 }

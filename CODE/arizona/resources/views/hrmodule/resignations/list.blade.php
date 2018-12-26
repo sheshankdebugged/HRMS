@@ -63,29 +63,23 @@
 									<table id="requesttab" border="0" cellspacing="0" cellpadding="3" width="100%" align="center">
 									 <thead>
 									  <tr>
-										  <td style="background-color:#0c64ae; " class="thbackgroud"><a style="color:#fff; " href="#">Assignment Name</a></td>
-										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Employee</a></td>
-										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Start Date</a></td>
-										  <td style="background-color:#0c64ae; " class="thbackgroud"><a style="color:#fff; " href="#">Due Date</a></td>
-										  <td style="background-color:#0c64ae; " class="thbackgroud"><a style="color:#fff; " href="#">Project</a></td>
-										  <td style="background-color:#0c64ae; " class="thbackgroud"><a style="color:#fff; " href="#">Reference</a></td>
-										  <td style="background-color:#0c64ae; " class="thbackgroud"><a style="color:#fff; " href="#">Status</a></td>
+										  <td style="background-color:#0c64ae; " class="thbackgroud"><a style="color:#fff; " href="#">Employee Name</a></td>
+										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Notice Date</a></td>
+										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Resignation Date</a></td>
+										  <td style="background-color:#0c64ae; " class="thbackgroud"><a style="color:#fff; " href="#">Approval Status</a></td>
 									      <td style="background-color:#0c64ae; width:1%;"></td>
 									  </tr>
 									</thead>
 										<tbody>
                                         @foreach($listData as $list)
 											<tr id="second" class="context-requst-one selected">
-											<td class="datainner" style="">{{$list->assignment_name}}</td>
-											<td class="datainner" style="">{{$list->assigned_to}}</td>
-											<td class="datainner" style="">{{$list->start_date}}</td>
-											<td class="datainner" style="">{{$list->due_date}}</td>
-											<td class="datainner" style="">{{$list->project}}</td>
-											<td class="datainner" style="">{{$list->company_name}}</td>
-											<td class="datainner" style="">{{$list->status}}</td> 
+											<td class="datainner" style="">{{$list->resigning_employee}}</td>
+											<td class="datainner" style="">{{$list->notice_date}}</td>
+											<td class="datainner" style="">{{$list->resignation_date}}</td>
+											<td class="datainner" style="">{{$list->approval_status_id}}</td>
 											<td align="right">
 													<div class="dropdown action-drop">
-														<a href="" class="dropdown-toggle" data-toggle="dropdown"><i style="font-size:16px;" class="fa fa-cog"></i></a>
+														<a href="javascript:void(0);" class="dropdown-custom"><i style="font-size:16px;" class="fa fa-cog"></i></a>
 														<ul class="dropdown-menu">
 															<li><a href="#"><i class="fa fa-folder-open"></i>View Record</a></li>
 															<li><a href="{{url('/assignments/edit')}}/{{$list->id}}"><i class="fa fa-edit"></i>Edit Record</a></li>

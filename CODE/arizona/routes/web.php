@@ -15,14 +15,9 @@ Route::get('/', function () {
     return view('home.login');
 });
 
-
 Route::get('/setting', function () {
     return view('hrmodule.setting');
 });
-
-
-
-
 
 Auth::routes();
 
@@ -54,17 +49,58 @@ Route::group(['middleware' => 'auth'], function () {
 
 // Resignations
     \App\Http\Controllers\ResignationsController::routes();
+
+// Polls
+    \App\Http\Controllers\PollsController::routes();
+
 //OrganizationNews Routes
     \App\Http\Controllers\OrganizationNewsController::routes();
-    // job Routes
+
+// job Routes
+    \App\Http\Controllers\JobRequestsController::routes();
     
-	\App\Http\Controllers\JobRequestsController::routes();
+// jobrequests Routes
+    \App\Http\Controllers\JobRequestsController::routes();
 
+// JobTests Routes
+    \App\Http\Controllers\JobTestsController::routes();
     
-    // Contracts Routes
-    \App\Http\Controllers\contractsController::routes();
+// JobInterviews Routes
+    \App\Http\Controllers\JobInterviewsController::routes();
 
-     // Transfers Routes
-     \App\Http\Controllers\transfersController::routes();
+// Contracts Routes
+    \App\Http\Controllers\ContractsController::routes();
 
+ // Transfers Routes
+     \App\Http\Controllers\TransfersController::routes();
+
+ // Employees Exit
+     \App\Http\Controllers\EmployeesexitController::routes();
+
+// Travels
+     \App\Http\Controllers\TravelsController::routes();
+
+// Warnings
+     \App\Http\Controllers\WarningsController::routes();
+
+// Achievements
+     \App\Http\Controllers\AchievementsController::routes();
+
+     // Polls Routes
+     \App\Http\Controllers\PollsController::routes();
+
+     // Achievements Routes
+     \App\Http\Controllers\AchievementsController::routes();
+
+     // Promotions Routes
+     \App\Http\Controllers\PromotionsController::routes();
+
+     // Complaints Routes
+     \App\Http\Controllers\ComplaintsController::routes();
+
+     // Memos Routes
+     \App\Http\Controllers\MemosController::routes();
+
+      // Terminations Routes
+      \App\Http\Controllers\TerminationsController::routes();
 });

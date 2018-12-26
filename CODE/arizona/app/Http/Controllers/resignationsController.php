@@ -63,8 +63,6 @@ class resignationsController extends Controller
 
             $validator = Validator::make($request->all(), [
                 'resigning_employee' => 'required',
-
-
             ]);
            if ($validator->fails()) {
                 $action = 'addresignations';
@@ -80,8 +78,8 @@ class resignationsController extends Controller
             echo "<pre>";
 
        
-            $input['start_date'] = ($input['start_date'] !="")?date('Y-m-d',strtotime($input['start_date'])):$input['start_date'];
-            $input['due_date']   = ($input['due_date'] !="")?date('Y-m-d',strtotime($input['due_date'])):$input['due_date'];
+            $input['resignation_date'] = ($input['resignation_date'] !="")?date('Y-m-d H:i:s',strtotime($input['resignation_date'])):$input['resignation_date'];
+            $input['notice_date']   = ($input['notice_date'] !="")?date('Y-m-d H:i:s',strtotime($input['notice_date'])):$input['notice_date'];
             $input['status']=  1;
             $input['user_id'] =  $user_id;
             unset($input['_token']);

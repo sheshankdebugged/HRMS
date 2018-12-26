@@ -65,7 +65,7 @@
 											<div class="form-group">
 													<label>Resigning Employee:</label>
 
-													<select  name ="resigning_employee_id" id="resigning_employee_id" class="form-control-select" >
+													<select  name ="resigning_employee" id="resigning_employee" class="form-control-select" >
 
 													<option style="" value="0"> 0 </option>
 													<option style="" value="1">1</option>
@@ -94,13 +94,13 @@
 
 												 <div class="form-group">
 													<label>Notice Date:</label>
-													<input type="text" placeholder="" class="form-control-spacial date" id="start_date" name="start_date" value="{{isset($result->resigning_employee)?$result->resigning_employee:''}}">
+													<input type="text" placeholder="" class="form-control-spacial date" id="notice_date" name="notice_date" value="{{isset($result->notice_date)?$result->notice_date:''}}">
 
 												 </div>
 
 												 <div class="form-group">
 													<label>Resignation Date:</label>
-													<input type="text" placeholder="" class="form-control-spacial date" id="due_date" name="due_date" value="{{isset($result->assignment_employees)?$result->assignment_employees:''}}">
+													<input type="text" placeholder="" class="form-control-spacial date" id="resignation_date" name="resignation_date" value="{{isset($result->assignment_employees)?$result->assignment_employees:''}}">
 
 												 </div>
 

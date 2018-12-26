@@ -110,7 +110,7 @@ Password: @7tN$i2cF5~5
                               <div class="col-sm-6 list-unstyled">
                                     <a href="#noanchor"><i class="fa fa-file-text-o"></i>Policies</a>
                                     <a href="#noanchor"><i class="fa fa-bullhorn"></i>Announcements</a>
-                                    <a href="#noanchor"><i class="fa fa-cogs"></i>System Settings</a>
+                                    <a href="{{url('setting')}}"><i class="fa fa-cogs"></i>System Settings</a>
                                     <a href="#noanchor"><i class="fa fa-file-o"></i>System Logs</a>
                                     
                               </div>
@@ -132,13 +132,13 @@ Password: @7tN$i2cF5~5
                               <div class="col-sm-6 list-unstyled">
                                  <a href="#"><i class="fa fa-dashboard"></i>Dashboard</a>
                                  <a href="#"><i class="fa fa-desktop" style="margin-right:12px; font-size:18px;"></i>Screening</a>
-                                 <a href="#"><i class="fa fa-envelope-open"></i>Job Requests</a>
+                                 <a href="{{url('jobrequests')}}"><i class="fa fa-envelope-open"></i>Job Requests</a>
                                  <a href="{{url('jobposts')}}"><i class="fa fa-envelope-o"></i>Job Posts</a>
                                  <a href="#noanchor"><i class="fa fa-male"></i>Job Candidates</a>
                               </div>
                               <div class="col-sm-6 list-unstyled">
-                                    <a href="#noanchor"><i class="fa fa-clipboard"></i>Job Tests</a>
-                                    <a href="#noanchor"><i class="fa fa-comments"></i>Job Interviews</a>
+                                    <a href="{{url('jobtests')}}"><i class="fa fa-clipboard"></i>Job Tests</a>
+                                    <a href="{{url('jobinterviews')}}"><i class="fa fa-comments"></i>Job Interviews</a>
                               </div>
                            </div>
                         </div>
@@ -157,23 +157,24 @@ Password: @7tN$i2cF5~5
                            <div class="row">
                               <div class="col-sm-6 list-unstyled">
                                  <a href="#"><i class="fa fa-dashboard"></i>Dashboard</a>
-                                 <a href="employees"><i class="fa fa-group"></i>Employees</a>
-                                 <a href="#noanchor"><i class="fa fa-sign-in"></i>Onboarding</a>
-                                 <a href="#noanchor"><i class="fa fa-file"></i>Contracts</a>
-                                 <a href="#noanchor"><i class="fa fa-briefcase"></i>Assignments</a>
-                                 <a href="#noanchor"><i class="fa fa-refresh"></i>Transfers</a>
-                                 <a href="#noanchor"><i class="fa fa-edit"></i>Resignations</a>
-                                 <a href="#noanchor"><i class="fa fa-pie-chart"></i>Polls</a>
-                                 <a href="#noanchor"><i class="fa fa-sign-out"></i>Employees Exit</a>
+                                 <a href="{{('employees')}}"><i class="fa fa-group"></i>Employees</a>
+                                 <a href="{{('onboarding')}}"><i class="fa fa-sign-in"></i>Onboarding</a>
+                                 <a href="{{('contracts')}}"><i class="fa fa-file"></i>Contracts</a>
+                                 <a href="{{('assignments')}}"><i class="fa fa-briefcase"></i>Assignments</a>
+                                 <a href="{{('transfers')}}"><i class="fa fa-refresh"></i>Transfers</a>
+                                 <a href="{{('resignations')}}"><i class="fa fa-edit"></i>Resignations</a>
+                                 <a href="{{url('polls')}}"><i class="fa fa-pie-chart"></i>Polls</a>
+                                 <a href="{{url('employeesexit')}}"><i class="fa fa-sign-out"></i>Employees Exit</a>
+                                                                  
                               </div>
                               <div class="col-sm-6 list-unstyled">
-                                    <a href="#noanchor"><i class="fa fa-trophy"></i>Achievements</a>
-                                    <a href="#noanchor"><i class="fa fa-plane"></i>Travels</a>
-                                    <a href="#noanchor"><i class="fa fa-star"></i>Promotions</a>
-                                    <a href="#noanchor"><i class="fa fa-exclamation-circle"></i>Complaints</a>
-                                    <a href="#noanchor"><i class="fa fa-exclamation-triangle"></i>Warnings</a>
-                                    <a href="#noanchor"><i class="fa fa-edit"></i>Memos</a>
-                                    <a href="#noanchor"><i class="fa fa-times"></i>Terminations</a>
+                                    <a href="{{url('achievements')}}"><i class="fa fa-trophy"></i>Achievements</a>
+                                    <a href="{{url('travels')}}"><i class="fa fa-plane"></i>Travels</a>
+                                    <a href="{{url('promotions')}}"><i class="fa fa-star"></i>Promotions</a>
+                                    <a href="{{url('complaints')}}"><i class="fa fa-exclamation-circle"></i>Complaints</a>
+                                    <a href="{{url('warnings')}}"><i class="fa fa-exclamation-triangle"></i>Warnings</a>
+                                    <a href="{{url('memos')}}"><i class="fa fa-edit"></i>Memos</a>
+                                    <a href="{{url('terminations')}}"><i class="fa fa-times"></i>Terminations</a>
                               </div>
                            </div>
                         </div>

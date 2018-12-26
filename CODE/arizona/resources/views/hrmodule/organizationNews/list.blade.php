@@ -66,7 +66,7 @@
 													<td class="datainner" style=""><b>{{$list->news_title}}</b> <i><br>By System Administrator - On {{$list->created_at}}<br></i> {{$list->news_details}}</td>
 													<td align="right">
 														<div class="dropdown action-drop">
-															<a href="" class="dropdown-toggle" data-toggle="dropdown">
+															<a href="javascript:void(0);" class="dropdown-custom">
 																<i style="font-size:16px;" class="fa fa-cog"></i>
 															</a>
 															<ul class="dropdown-menu">

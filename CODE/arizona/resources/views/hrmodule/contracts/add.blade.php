@@ -31,7 +31,7 @@
 									<div class="col-md-12 nopadding">
 										<div class="back-button">
 											<div class="add-record-btn">
-												<a href="{{ url('companies') }}"><i class="fa fa-angle-left"></i>Back</a>
+												<a href="{{ url('contracts') }}"><i class="fa fa-angle-left"></i>Back</a>
 											</div>
 										</div>
 									</div>
@@ -63,31 +63,37 @@
 												
 												 <div class="form-group">
 													<label>Employee:</label>
-													<input type="text" class="form-control-spacial" id="employee" name="employee" value="{{isset($result->employee)?$result->employee:''}}" placeholder="Employee">
-                                                    <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fal fa-asterisk"></i>
+													<select id="employee" name="employee" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Employee</option></select>
+                                                    <!-- <input type="text" class="form-control-spacial" id="employee" name="employee" value="{{isset($result->employee)?$result->employee:''}}" placeholder="Employee"> -->
+                                                    <!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
+                                                    <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
+
 												 </div>
 												 
 												 <div class="form-group">
 													<label>Contract Type:</label>
-													<input type="text" class="form-control-spacial" id="contract_type" value="{{isset($result->contract_type)?$result->contract_type:''}}" name="contract_type" placeholder="Contract Type"> 
-                                                   
+													<!-- <input type="text" class="form-control-spacial" id="contract_type" value="{{isset($result->contract_type)?$result->contract_type:''}}" name="contract_type" placeholder="Contract Type">  -->
+													<select id="contract_type" name="contract_type" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Contract Type</option></select>
+
 												 </div>
 
                                                  <div class="form-group">
 													<label>Contract Title:</label>
 													<input type="text" class="form-control-spacial" id="contract_title" value="{{isset($result->contract_title)?$result->contract_title:''}}" name="contract_title" placeholder="Contract Title"> 
-                                                   
+													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
+
 												 </div>
 
                                                  <div class="form-group">
 													<label>Contract Start Date:</label>
-													<input type="text" placeholder="Contract Start Date" class="form-control-spacial" id="contract_start_date" name="contract_start_date" value="{{isset($result->contract_start_date)?$result->contract_start_date:''}}">
-                                                   
+													<!-- <input type="text" placeholder="Contract Start Date" class="form-control-spacial" id="contract_start_date" name="contract_start_date" value="{{isset($result->contract_start_date)?$result->contract_start_date:''}}"> -->
+													<input type="text" placeholder="" class="form-control-spacial date" id="contract_start_date" name="contract_start_date" value="{{isset($result->contract_start_date)?$result->contract_start_date:''}}">
 												 </div>
 												 <div class="form-group">
 													<label>Contract End Date:</label>
-													<input type="text" placeholder="Contract End Date" class="form-control-spacial" id="contract_end_date" name="contract_end_date" value="{{isset($result->contract_end_date)?$result->contract_end_date:''}}">
-                                                   
+													<!-- <input type="text" placeholder="Contract End Date" class="form-control-spacial" id="contract_end_date" name="contract_end_date" value="{{isset($result->contract_end_date)?$result->contract_end_date:''}}"> -->
+													<input type="text" placeholder="" class="form-control-spacial date" id="contract_end_date" name="contract_end_date" value="{{isset($result->contract_end_date)?$result->contract_end_date:''}}">
+
 												 </div>
 
 

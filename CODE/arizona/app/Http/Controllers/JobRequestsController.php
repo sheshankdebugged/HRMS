@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\JobRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,8 +13,8 @@ use Validator;
 
 class JobRequestsController extends Controller
 {
-    
-     /**
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -21,10 +22,10 @@ class JobRequestsController extends Controller
     public function index()
     {
         $user_id = Auth::id();
-        $list = jobRequests::where(['status' => 1,'user_id'=>$user_id])->paginate(10);
+        $list = jobRequests::where(['status' => 1, 'user_id' => $user_id])->paginate(10);
         return view('hrmodule.jobrequest.list')->with([
             'listData' => $list,
-            'pageTitle' => "jobrequest",
+            'pageTitle' => "Job Requests",
         ]);
 
     }
@@ -39,8 +40,9 @@ class JobRequestsController extends Controller
         $action = 'add';
         return view('hrmodule.jobrequest.add')->with([
             'action' => $action,
-            'pageTitle' => "jobrequest",
-            'Addform' => "Add New Company",
+            'pageTitle' => "Job Requests",
+            'Addform' => "Add New Job Request
+            ",
         ]);
     }
 
@@ -59,12 +61,13 @@ class JobRequestsController extends Controller
 
             $validator = Validator::make($request->all(), [
                 'job_title' => 'required',
+                'number_of_positions' => 'required',
 
             ]);
 
             if ($validator->fails()) {
                 $action = 'addjobrequest';
-                return redirect('/jobrequest/add')
+                return redirect('/jobrequests/add')
                     ->withErrors($validator)
                     ->withInput()
                     ->with([
@@ -93,7 +96,7 @@ class JobRequestsController extends Controller
                 Session::flash('message', 'JobRequest  Added Successfully.');
                 jobRequests::insertGetId($input);
             }
-            return redirect('/jobrequest');
+            return redirect('/jobrequests');
         }
     }
 
@@ -116,7 +119,7 @@ class JobRequestsController extends Controller
      */
     public function edit($id)
     {
-        $action = 'edit';  
+        $action = 'edit';
         $result = jobRequests::find($id);
         $action = 'add';
         $editname = "Edit " . $result->job_title;
@@ -141,11 +144,11 @@ class JobRequestsController extends Controller
         $jobrequest->status = 0;
         $jobrequest->save();
         Session::flash('message', 'Company delete successfully');
-        return redirect("/jobrequest");
+        return redirect("/jobrequests");
     }
     public static function routes()
     {
-            Route::group(array('prefix' => 'jobrequest'), function () {
+        Route::group(array('prefix' => 'jobrequests'), function () {
             Route::get('/', array('as' => 'jobrequest.index', 'uses' => 'JobRequestsController@index'));
             Route::get('/add', array('as' => 'jobrequest.create', 'uses' => 'JobRequestsController@create'));
             Route::post('/save', array('as' => 'jobrequest.save', 'uses' => 'JobRequestsController@store'));
@@ -154,5 +157,5 @@ class JobRequestsController extends Controller
             Route::get('/delete/{id}', array('as' => 'jobrequest.destroy', 'uses' => 'JobRequestsController@destroy'));
         });
     }
-    
+
 }

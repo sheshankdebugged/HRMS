@@ -154,5 +154,5 @@ class DepartmentsController extends Controller
             Route::get('/delete/{id}', array('as' => 'departments.destroy', 'uses' => 'DepartmentsController@destroy'));
         });
     }
-    
+
 }

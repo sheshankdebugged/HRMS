@@ -60,7 +60,7 @@ class ContractsController extends Controller
 
             $validator = Validator::make($request->all(), [
                 'employee' => 'required',
-
+                'contract_title' => 'required'
             ]);
             if ($validator->fails()) {
                 $action = 'addcontracts';
@@ -78,19 +78,23 @@ class ContractsController extends Controller
                 $input['icon_img'] = md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
                 $file->move('./img/uploads/contracts/', $input['icon_img']);
             }
+            echo "<pre>";
 
+       
+            $input['contract_start_date'] = ($input['contract_start_date'] !="")?date('Y-m-d',strtotime($input['contract_start_date'])):$input['contract_start_date'];
+            $input['contract_end_date']   = ($input['contract_end_date'] !="")?date('Y-m-d',strtotime($input['contract_end_date'])):$input['contract_end_date'];
             $input['status'] = 1;
             $input['user_id'] = $user_id;
             unset($input['_token']);
             if ($input['id'] > 0) {
                 $input['updated_at'] = date("Y-m-d H:i:s");
-                Session::flash('message', 'Companie  Updated Successfully.');
+                Session::flash('message', 'Contracts Updated Successfully.');
                 contracts::where('id', $input['id'])->update($input);
             } else {
                 unset($input['id']);
                 $input['created_at'] = date("Y-m-d H:i:s");
                 $input['updated_at'] = date("Y-m-d H:i:s");
-                Session::flash('message', 'Companie  Added Successfully.');
+                Session::flash('message', 'Contracts Added Successfully.');
                 contracts::insertGetId($input);
             }
             return redirect('/contracts');
@@ -147,12 +151,12 @@ class ContractsController extends Controller
     public static function routes()
     {
             Route::group(array('prefix' => 'contracts'), function () {
-            Route::get('/', array('as' => 'contracts.index', 'uses' => 'contractsController@index'));
-            Route::get('/add', array('as' => 'contracts.create', 'uses' => 'contractsController@create'));
-            Route::post('/save', array('as' => 'contracts.save', 'uses' => 'contractsController@store'));
-            Route::get('/edit/{id}', array('as' => 'contracts.edit', 'uses' => 'contractsController@edit'));
-            Route::post('/update/{id}', array('as' => 'contracts.update', 'uses' => 'contractsController@update'));
-            Route::get('/delete/{id}', array('as' => 'contracts.destroy', 'uses' => 'contractsController@destroy'));
+            Route::get('/', array('as' => 'contracts.index', 'uses' => 'ContractsController@index'));
+            Route::get('/add', array('as' => 'contracts.create', 'uses' => 'ContractsController@create'));
+            Route::post('/save', array('as' => 'contracts.save', 'uses' => 'ContractsController@store'));
+            Route::get('/edit/{id}', array('as' => 'contracts.edit', 'uses' => 'ContractsController@edit'));
+            Route::post('/update/{id}', array('as' => 'contracts.update', 'uses' => 'ContractsController@update'));
+            Route::get('/delete/{id}', array('as' => 'contracts.destroy', 'uses' => 'ContractsController@destroy'));
         });
     }
 }
