@@ -56,17 +56,27 @@ Route::group(['middleware' => 'auth'], function () {
 
 // Resignations
     \App\Http\Controllers\ResignationsController::routes();
+
 //OrganizationNews Routes
     \App\Http\Controllers\OrganizationNewsController::routes();
-    // job Routes
-    
-	\App\Http\Controllers\JobRequestsController::routes();
 
-    
-    // Contracts Routes
+// job Routes
+    \App\Http\Controllers\JobRequestsController::routes();
+
+// Contracts Routes
     \App\Http\Controllers\contractsController::routes();
 
-     // Transfers Routes
+ // Transfers Routes
      \App\Http\Controllers\transfersController::routes();
+
+ // Employees Exit
+     \App\Http\Controllers\employeesexitController::routes();
+
+// Travels
+     \App\Http\Controllers\travelsController::routes();
+
+// Warnings
+     \App\Http\Controllers\WarningsController::routes();
+
 
 });

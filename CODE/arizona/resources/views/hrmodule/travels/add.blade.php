@@ -31,7 +31,7 @@
 									<div class="col-md-12 nopadding">
 										<div class="back-button">
 											<div class="add-record-btn">
-												<a href="{{ url('resignations') }}"><i class="fa fa-angle-left"></i>Back</a>
+												<a href="{{ url('travels') }}"><i class="fa fa-angle-left"></i>Back</a>
 											</div>
 										</div>
 									</div>
@@ -41,7 +41,7 @@
 										<h3>{{$Addform}}</h3>
 									</div>
 									<div class="form-upper-main">
-										<h4>Resignation Information</h4>
+										<h4>Travel Information</h4>
 									</div>
 									<div class="form-subsets">
 
@@ -55,7 +55,7 @@
                                             </div>
                                         @endif
 
-                                        <form method="post" action="{{ url('resignations/save') }}">
+                                        <form method="post" action="{{ url('travels/save') }}">
                                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                           <input type="hidden" name="id" value="{{isset($result->id)?$result->id:''}}">
 
@@ -63,9 +63,9 @@
 
 
 											<div class="form-group">
-													<label>Resigning Employee:</label>
+													<label>Employee:</label>
 
-													<select  name ="resigning_employee" id="resigning_employee" class="form-control-select" >
+													<select  name ="employee" id="employee" class="form-control-select" >
 
 													<option style="" value="0"> 0 </option>
 													<option style="" value="1">1</option>
@@ -79,53 +79,99 @@
 
 
 													</select>
-													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
+
 
 												 </div>
 
 												 <div class="form-group">
-													<label>Forward Application To:</label>
-													<select id ="forward_application_to_id"  name ="forward_application_to_id" class="form-control-select">
+													<label>Travel Type:</label>
+
+													<select  name ="travel_type" class="form-control-select">
 													<option style="" value="0"> - </option>
 													<option style="" value="1">1</option>
 													<option style="" value="2">2</option>
+
 													</select>
+
+
+												 </div>
+												 <div class="form-group">
+													<label>Forward Application To:</label>
+
+													<select  name ="forward_application_to" class="form-control-select">
+													<option style="" value="0">-</option>
+													<option style="" value="1">-</option>
+													<option style="" value="2">-</option>
+
+													</select>
+
+
+												 </div>
+                                                 <div class="form-group">
+													<label>Purpose of Visit:</label>
+													<input type="text" class="form-control-spacial" placeholder="Purpose of Visit:" id="purpose_of_visit" name="purpose_of_visit" value="{{isset($result->purpose_of_visit)?$result->purpose_of_visit:''}}" >
+
+												 </div>
+												 <div class="form-group">
+													<h4>Travel Dates</h4>
+												 </div>
+												 <div class="form-group">
+													<label>Travel Start Date:</label>
+													<input type="text" placeholder="" class="form-control-spacial date" id="travel_start_date" name="travel_start_date" value="{{isset($result->travel_start_date)?$result->travel_start_date:''}}">
+
 												 </div>
 
 												 <div class="form-group">
-													<label>Notice Date:</label>
-													<input type="text" placeholder="" class="form-control-spacial date" id="notice_date" name="notice_date" value="{{isset($result->notice_date)?$result->notice_date:''}}">
+													<label>Travel End Date:</label>
+													<input type="text" placeholder="" class="form-control-spacial date" id="travel_end_date" name="travel_end_date" value="{{isset($result->travel_end_date)?$result->travel_end_date:''}}">
 
 												 </div>
-
+												 </div>
 												 <div class="form-group">
-													<label>Resignation Date:</label>
-													<input type="text" placeholder="" class="form-control-spacial date" id="resignation_date" name="resignation_date" value="{{isset($result->assignment_employees)?$result->assignment_employees:''}}">
-
+													<h4>Travel Budget</h4>
 												 </div>
-
-
-
-
-												 </div>
-
 
 
 												 <div class="form-group">
-													<h4>Resignation Reason</h4>
+													<label>Expected Travel Budget:</label>
+													<input type="text" class="form-control-spacial" placeholder="$" id="expected_travel_budget" name="expected_travel_budget" value="{{isset($result->expected_travel_budget)?$result->expected_travel_budget:''}}" >
+
 												 </div>
 												 <div class="form-group">
-												 <label>Notes:</label>
-													<textarea class="tinyeditorclass" name="notes" id="notes">{{isset($result->notes)?$result->notes:''}}</textarea>
-												</div>
+													<label>Actual Travel Budget:</label>
+													<input type="text" class="form-control-spacial" placeholder="$" id="actual_travel_budget" name="actual_travel_budget" value="{{isset($result->actual_travel_budget)?$result->actual_travel_budget:''}}" >
 
+												 </div>
+												 <div class="form-group">
+													<h4>Travel Destinations</h4>
+												 </div>
+
+												 <!-- Add table -->
+																					 								 
+
+
+											 
 
 												<div class="form-group">
+													<h4>Travel Description</h4>
+												 </div>
+												  <div class="form-group">
+											      <textarea class="tinyeditorclass" name="travel_description" id="travel_description" value="{{isset($result->notes)?$result->travel_description:''}}</textarea>
+												</div>
+
+												<div class="form-group">
+													<h4>Travel Documents (Optional)</h4>
+												 </div>
+
+
+												 <!-- Add Attachment button -->
+
+
+												 <div class="form-group">
 													<h4>Additional Information</h4>
 												 </div>
-												 <div class="form-group">
-												 <label>Notes:</label>
-													<textarea class="tinyeditorclass" name="notes" id="notes">{{isset($result->notes)?$result->notes:''}}</textarea>
+												  <div class="form-group">
+											      <textarea class="tinyeditorclass" name="notes" id="notes">{{isset($result->notes)?$result->notes:''}}</textarea>
 												</div>
 
 
@@ -140,6 +186,7 @@
 
 												 @php
 												 $date  = date("F j, Y, g:i a");
+
 												 @endphp
 												 {{$date}}
 												</div>
