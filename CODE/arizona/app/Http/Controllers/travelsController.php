@@ -2,23 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\resignations;
-use Illuminate\Http\Request;
+use App\Models\travels;
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Input;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Form;
-use Illuminate\Support\Facades\Auth;
-use Validator;
 use Session;
+use Validator;
 
-
-class resignationsController extends Controller
+class travelsController extends Controller
 {
-      /**
+   /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -26,10 +22,10 @@ class resignationsController extends Controller
     public function index()
     {
 
-        $list = Resignations::where(['status'=>1])->paginate(10);
-        return view('hrmodule.resignations.list')->with([
+        $list = travels::where(['status'=>1])->paginate(10);
+        return view('hrmodule.travels.list')->with([
             'listData' => $list,
-            'pageTitle'=>"Resignations"
+            'pageTitle'=>"Travels"
         ]);
 
     }
@@ -42,10 +38,10 @@ class resignationsController extends Controller
     public function create()
     {
         $action = 'add';
-        return view('hrmodule.resignations.add')->with([
+        return view('hrmodule.travels.add')->with([
             'action' => $action,
-            'pageTitle'=>"Resignations",
-            'Addform'  =>"Add New Resignations"
+            'pageTitle'=>"Travels",
+            'Addform'  =>"Add New Travels"
         ]);
     }
 
@@ -62,13 +58,13 @@ class resignationsController extends Controller
         if($request->all()){
 
             $validator = Validator::make($request->all(), [
-                'resigning_employee' => 'required',
+                'purpose_of_visit' => 'required',
 
 
             ]);
            if ($validator->fails()) {
-                $action = 'addresignations';
-                return redirect('/resignations/add')
+                $action = 'travels';
+                return redirect('/travels')
                     ->withErrors($validator)
                     ->withInput()
                     ->with([
@@ -80,23 +76,23 @@ class resignationsController extends Controller
             echo "<pre>";
 
        
-            $input['resignation_date'] = ($input['resignation_date'] !="")?date('Y-m-d H:i:s',strtotime($input['resignation_date'])):$input['resignation_date'];
-            $input['notice_date']   = ($input['notice_date'] !="")?date('Y-m-d H:i:s',strtotime($input['notice_date'])):$input['notice_date'];
+            $input['travel_start_date'] = ($input['travel_start_date'] !="")?date('Y-m-d',strtotime($input['travel_start_date'])):$input['travel_start_date'];
+            $input['travel_end_date']   = ($input['travel_end_date'] !="")?date('Y-m-d',strtotime($input['travel_end_date'])):$input['travel_end_date'];
             $input['status']=  1;
             $input['user_id'] =  $user_id;
             unset($input['_token']);
             if($input['id']>0){
                 $input['updated_at']=date("Y-m-d H:i:s");
-                Session::flash('message', 'Resignation Updated Successfully.');
-                resignations::where('id', $input['id'])->update($input);
+                Session::flash('message', 'Travels Updated Successfully.');
+                travels::where('id', $input['id'])->update($input);
             }else{
                 unset($input['id']);
                 $input['created_at']=date("Y-m-d H:i:s");
                 $input['updated_at']=date("Y-m-d H:i:s");
-                Session::flash('message', 'Resignation Added Successfully.');
-                resignations::insertGetId($input);
+                Session::flash('message', 'Travels  Added Successfully.');
+                travels::insertGetId($input);
             }
-            return redirect('/resignations');
+            return redirect('/travels');
         }
     }
 
@@ -121,12 +117,12 @@ class resignationsController extends Controller
     {
 
         $action = 'edit';
-        $result = Resignations::find($id);
+        $result = travels::find($id);
         $action = 'add';
         $editname = "Edit ".$result->assignment_name;
-        return view('hrmodule.Resignations.add')->with([
+        return view('hrmodule.travels.add')->with([
             'action' => $action,
-            'pageTitle'=>"Resignation",
+            'pageTitle'=>"travels",
             'Addform'  =>$editname,
             'result'  =>$result
         ]);
@@ -142,11 +138,11 @@ class resignationsController extends Controller
      */
     public function destroy($id)
     {
-        $resignations = Resignations::find($id);
-        $resignations->status = 0;
-        $resignations->save();
-        Session::flash('message', 'Resignation delete successfully');
-        return redirect("/resignations");
+        $travels = travels::find($id);
+        $travels->status = 0;
+        $travels->save();
+        Session::flash('message', 'Travels delete successfully');
+        return redirect("/travels");
     }
 
 
@@ -154,13 +150,13 @@ class resignationsController extends Controller
      * For Setting Job Posts Routes
      */
     static function routes() {
-          Route::group(array('prefix' => 'resignations'), function() {
-            Route::get('/', array('as' => 'resignations.index', 'uses' => 'ResignationsController@index'));
-            Route::get('/add', array('as' => 'resignations.create', 'uses' => 'ResignationsController@create'));
-            Route::post('/save', array('as' => 'resignations.save', 'uses' => 'ResignationsController@store'));
-            Route::get('/edit/{id}', array('as' => 'resignations.edit', 'uses' => 'ResignationsController@edit'));
-            Route::post('/update/{id}', array('as' => 'resignations.create', 'uses' => 'ResignationsController@create'));
-            Route::get('/delete/{id}', array('as' => 'resignations.destroy', 'uses' => 'ResignationsController@destroy'));
+          Route::group(array('prefix' => 'travels'), function() {
+            Route::get('/', array('as' => 'travels.index', 'uses' => 'TravelsController@index'));
+            Route::get('/add', array('as' => 'travels.create', 'uses' => 'TravelsController@create'));
+            Route::post('/save', array('as' => 'travels.save', 'uses' => 'TravelsController@store'));
+            Route::get('/edit/{id}', array('as' => 'travels.edit', 'uses' => 'TravelsController@edit'));
+            Route::post('/update/{id}', array('as' => 'travels.update', 'uses' => 'TravelsController@create'));
+            Route::get('/delete/{id}', array('as' => 'travels.destroy', 'uses' => 'TravelsController@destroy'));
         });
 
     }

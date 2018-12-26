@@ -51,7 +51,7 @@
 												<a href="#" alt="Dashboard"><i class="fa fa-refresh"></i></a>
 											</div>
 											<div class="add-record-btn">
-												<a href="{{ url('jobrequest/add') }}"><i class="fa fa-plus"></i>Add Record</a>
+												<a href="{{ url('jobrequests/add') }}"><i class="fa fa-plus"></i>Add Record</a>
 											</div>
 											
 										</div>
@@ -66,6 +66,8 @@
 										  <td style="background-color:#0c64ae; " class="thbackgroud"><a style="color:#fff; " href="#">Job Title</a></td>
 										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Job Type</a></td>
 										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">	No. of Positions</a></td>
+										  <td style="background-color:#0c64ae; " class="thbackgroud"><a style="color:#fff; " href="#">Reference Number</a></td>
+										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Approval Status</a></td>
 									      <td style="background-color:#0c64ae; width:1%;"></td>
 									  </tr>
 									</thead>
@@ -73,8 +75,10 @@
                                         @foreach($listData as $list)
 											<tr id="second" class="context-requst-one selected">
 											<td class="datainner" style="">{{$list->job_title}}</td>
-											<td class="datainner" style="">{{$list->email_address}}</td>
-											<td class="datainner" style="">{{$list->website}}</td>                       
+											<td class="datainner" style="">{{$list->job_type}}</td>
+											<td class="datainner" style="">{{$list->number_of_positions}}</td>
+											<td class="datainner" style="">{{$list->notes}}</td>
+											<td class="datainner" style="">{{($list->status ==1) ? 'Approved':'Requested' }}</td>                          
 											<td align="right">
 												<div class="dropdown action-drop">
 													<a href="" class="dropdown-toggle" data-toggle="dropdown"><i style="font-size:16px;" class="fa fa-cog"></i></a>

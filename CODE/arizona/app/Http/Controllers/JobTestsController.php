@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\JobTests;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Form;
+use Session;
+use Validator;
 
 class JobTestsController extends Controller
 {
@@ -14,7 +20,13 @@ class JobTestsController extends Controller
      */
     public function index()
     {
-        //
+        $user_id = Auth::id();
+        $list = JobTests::where(['status' => 1, 'user_id' => $user_id])->paginate(10);
+        return view('hrmodule.jobtest.list')->with([
+            'listData' => $list,
+            'pageTitle' => "Job Tests",
+        ]);
+
     }
 
     /**
@@ -24,7 +36,13 @@ class JobTestsController extends Controller
      */
     public function create()
     {
-        //
+        $action = 'add';
+        return view('hrmodule.jobtest.add')->with([
+            'action' => $action,
+            'pageTitle' => "Job Tests",
+            'Addform' => "Add New Job Test
+            ",
+        ]);
     }
 
     /**
@@ -35,7 +53,47 @@ class JobTestsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user_id = Auth::id();
+        if ($request->all()) {
+
+            $validator = Validator::make($request->all(), [
+                'test_title' => 'required',
+
+            ]);
+
+            if ($validator->fails()) {
+                $action = 'addjobtests';
+                return redirect('/jobtests/add')
+                    ->withErrors($validator)
+                    ->withInput()
+                    ->with([
+                        'action' => $action,
+                    ]);
+            }
+
+            $input = $request->all();
+            if (request()->hasFile('icon_img')) {
+                $file = request()->file('icon_img');
+                $input['icon_img'] = md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
+                $file->move('./img/uploads/jobtets/', $input['icon_img']);
+            }
+
+            $input['status'] = 1;
+            $input['user_id'] = $user_id;
+            unset($input['_token']);
+            if ($input['id'] > 0) {
+                $input['updated_at'] = date("Y-m-d H:i:s");
+                Session::flash('message', 'JobTests  Updated Successfully.');
+                JobTests::where('id', $input['id'])->update($input);
+            } else {
+                unset($input['id']);
+                $input['created_at'] = date("Y-m-d H:i:s");
+                $input['updated_at'] = date("Y-m-d H:i:s");
+                Session::flash('message', 'JobTests  Added Successfully.');
+                JobTests::insertGetId($input);
+            }
+            return redirect('/jobtests');
+        }
     }
 
     /**
@@ -55,9 +113,18 @@ class JobTestsController extends Controller
      * @param  \App\Models\JobTests  $jobTests
      * @return \Illuminate\Http\Response
      */
-    public function edit(JobTests $jobTests)
+    public function edit($id)
     {
-        //
+        $action = 'edit';
+        $result = JobTests::find($id);
+        $action = 'add';
+        $editname = "Edit " . $result->test_title;
+        return view('hrmodule.jobtest.add')->with([
+            'action' => $action,
+            'pageTitle' => "Job Tests",
+            'Addform' => $editname,
+            'result' => $result,
+        ]);
     }
 
     /**
@@ -78,8 +145,23 @@ class JobTestsController extends Controller
      * @param  \App\Models\JobTests  $jobTests
      * @return \Illuminate\Http\Response
      */
-    public function destroy(JobTests $jobTests)
+    public function destroy($id)
     {
-        //
+        $jontest = JobTests::find($id);
+        $jontest->status = 0;
+        $jontest->save();
+        Session::flash('message', 'Job Test delete successfully');
+        return redirect("/jobtests");
+    }
+    public static function routes()
+    {
+        Route::group(array('prefix' => 'jobtests'), function () {
+            Route::get('/', array('as' => 'jobtests.index', 'uses' => 'JobTestsController@index'));
+            Route::get('/add', array('as' => 'jobtests.create', 'uses' => 'JobTestsController@create'));
+            Route::post('/save', array('as' => 'jobtests.save', 'uses' => 'JobTestsController@store'));
+            Route::get('/edit/{id}', array('as' => 'jobtests.edit', 'uses' => 'JobTestsController@edit'));
+            Route::post('/update/{id}', array('as' => 'jobtests.update', 'uses' => 'JobTestsController@update'));
+            Route::get('/delete/{id}', array('as' => 'jobtests.destroy', 'uses' => 'JobTestsController@destroy'));
+        });
     }
 }
