@@ -324,12 +324,12 @@ header .header-menu li.dropdown .dropdown-menu  .menu-list a i{
 .request-inner-table {
     float: left;
     width: 100%;
-    background: #fff;
+    background: transparent;
     padding: 10px;
-    border: 1px solid #e1e1e1;
+    border: none;
     -webkit-box-shadow: 0 1px 2px #777;
     -moz-box-shadow: 0 2px 1px #777;
-    box-shadow: 0 0.5px 0 0 #fff inset, 0 1px 2px 0 #b3b3b340;
+    box-shadow: none;
 }
 .inner-heading-request {
     float: left;
@@ -409,7 +409,10 @@ header .header-menu li.dropdown .dropdown-menu  .menu-list a i{
 
 .inner-table-main table td {
     padding: 5px 7px;
+        color: #fff;
 }
+
+
 .add-record-btn {
     float: right;
         padding-right: 8px;
@@ -821,8 +824,105 @@ input[type=submit] {
 .an-header-main h1 {
     color: #fff;
 }
-
+.inner-setting-db .nav-pills li {
+    display: block;
+    width: 100%;
+}
 .logo img {
     background: #fff;
     border-radius: 10px 10px 0 0;
 }
+.inner-setting-db .nav-pills a {
+    font-size: 14px;
+        width: 200px;
+    color: #fff;
+    padding: 8px 14px;
+    display: inline-block;
+}
+.inner-setting-db .tab-content h2 {
+    color: #fff;
+    font-weight: 100;
+        margin-bottom: 20px;
+    display: inline-block;
+}
+.field-value-an select option {
+    background: #205275;
+}
+.emply-table table {
+    background: #163850;
+}
+
+.emply-table table td {
+    color: #fff;
+    border: 1px solid;
+}
+.form-field-an {
+    display: inline-block;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.field-group {display: flex;flex: 0 0 100%;align-items: baseline;}
+
+.file-title-an {width: 214px;}
+
+.file-title-an label {
+    color: #fff;
+}
+
+.field-value-an p {
+    color: #fff;
+}
+
+.field-value-an {
+    margin-left: 40px;
+}
+.field-value-an input, .field-value-an select {
+    border-bottom: 1px solid #fff018;
+    border-width: 0 0 1px 0;
+    background: transparent;
+    color: #fff;
+    width: 200px;
+}
+.submit-buttton-an {
+    background: #fff018;
+    color: #000;
+    border: 1px solid #fff018;
+    padding: 4px 30px;
+        margin-top: 20px;
+}
+div#profile {
+    width: 100%;
+}
+
+.dash-board-bd {
+    display: inline-block;
+    width: 100%;
+}
+
+.custon-field-header h2 {
+    color: #fff;
+    font-weight: 100;
+    font-size: 24px;
+    float: left;
+}
+
+.custon-field-header .right-button {
+    float: right;
+}
+
+.custon-field-header {
+    display: inline-block;
+    width: 100%;
+}
+
+.inner-wrapper-an {
+    display: inline-block;
+    width: 100%;
+}
+
+.custon-field-header .search-area-request {
+    margin: 0 20px 0 0px;
+    display: inline-block;
+}
+.inner-setting-db .nav-pills a.active {background: #fff;color: #205275;}

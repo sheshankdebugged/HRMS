@@ -67,7 +67,7 @@ class ProjectsController extends Controller
             ]);
             if ($validator->fails()) {
                 $action = 'addprojects';
-                return redirect('/projects/add')
+                return redirect('/addprojects')
                     ->withErrors($validator)
                     ->withInput()
                     ->with([

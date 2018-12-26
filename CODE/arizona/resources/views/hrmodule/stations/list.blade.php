@@ -84,7 +84,7 @@
 											<td align="right">
 											
 												<div class="dropdown action-drop">
-													<span class="dropdown-custom"><i class="fa fa-cog"></i></span>
+													<a href="javascript:void(0);" class="dropdown-custom"><i class="fa fa-cog"></i></a>
 													<ul class="dropdown-menu">
 													<li><a href="#"><i class="fa fa-folder-open"></i>View Record</a></li>
 														<li><a href="{{url('/stations/edit')}}/{{$list->id}}"><i class="fa fa-edit"></i>Edit Record</a></li>

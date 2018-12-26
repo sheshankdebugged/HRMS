@@ -40,8 +40,6 @@ Route::group(['middleware' => 'auth'], function () {
 // Departments Routes
     \App\Http\Controllers\DepartmentsController::routes();
 
-// Departments Routes
-    \App\Http\Controllers\DepartmentsController::routes();
 
 //Stations Routes
     \App\Http\Controllers\StationsController::routes();

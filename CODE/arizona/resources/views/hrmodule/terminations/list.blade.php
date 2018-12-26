@@ -79,7 +79,7 @@
 											<td class="datainner" style="">{{$list->approval_status}}</td>                      
 											<td align="right">
 												<div class="dropdown action-drop">
-													<a href="" class="dropdown-toggle" data-toggle="dropdown"><i style="font-size:16px;" class="fa fa-cog"></i></a>
+													<a href="javascript:void(0);" class="dropdown-custom"><i style="font-size:16px;" class="fa fa-cog"></i></a>
 													<ul class="dropdown-menu">
 														<li><a href="#"><i class="fa fa-folder-open"></i>View Record</a></li>
 														<li><a href="{{url('/terminations/edit')}}/{{$list->id}}"><i class="fa fa-edit"></i>Edit Record</a></li>

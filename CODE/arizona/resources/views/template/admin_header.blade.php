@@ -110,7 +110,7 @@ Password: @7tN$i2cF5~5
                               <div class="col-sm-6 list-unstyled">
                                     <a href="#noanchor"><i class="fa fa-file-text-o"></i>Policies</a>
                                     <a href="#noanchor"><i class="fa fa-bullhorn"></i>Announcements</a>
-                                    <a href="#noanchor"><i class="fa fa-cogs"></i>System Settings</a>
+                                    <a href="{{url('setting')}}"><i class="fa fa-cogs"></i>System Settings</a>
                                     <a href="#noanchor"><i class="fa fa-file-o"></i>System Logs</a>
                                     
                               </div>
