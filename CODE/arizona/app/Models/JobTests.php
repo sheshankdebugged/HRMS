@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class JobTests extends Model
 {
-    //
+    protected $table = 'job_test';
 }

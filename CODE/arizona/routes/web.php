@@ -15,14 +15,9 @@ Route::get('/', function () {
     return view('home.login');
 });
 
-
 Route::get('/setting', function () {
     return view('hrmodule.setting');
 });
-
-
-
-
 
 Auth::routes();
 
@@ -59,15 +54,32 @@ Route::group(['middleware' => 'auth'], function () {
 
 //OrganizationNews Routes
     \App\Http\Controllers\OrganizationNewsController::routes();
+<<<<<<< HEAD
 
 // job Routes
     \App\Http\Controllers\JobRequestsController::routes();
+=======
+    
+// jobrequests Routes
+    \App\Http\Controllers\JobRequestsController::routes();
+
+// JobTests Routes
+    \App\Http\Controllers\JobTestsController::routes();
+    
+// JobInterviews Routes
+    \App\Http\Controllers\JobInterviewsController::routes();
+>>>>>>> 46871d3b47728d79e06c6863891f7e8085d7cc5e
 
 // Contracts Routes
     \App\Http\Controllers\contractsController::routes();
 
+<<<<<<< HEAD
  // Transfers Routes
      \App\Http\Controllers\transfersController::routes();
+=======
+// Transfers Routes
+    \App\Http\Controllers\transfersController::routes();
+>>>>>>> 46871d3b47728d79e06c6863891f7e8085d7cc5e
 
  // Employees Exit
      \App\Http\Controllers\employeesexitController::routes();

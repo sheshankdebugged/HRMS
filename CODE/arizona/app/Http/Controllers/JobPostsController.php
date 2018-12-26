@@ -2,20 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Form;
-use Validator;
-use Session;
-use Illuminate\Support\Facades\Auth;
-
-use App\Models\JobPosts;
 use App\Models\Countries;
+use App\Models\JobPosts;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Form;
+use Session;
+use Validator;
 
 class JobPostsController extends Controller
 {
@@ -26,11 +22,11 @@ class JobPostsController extends Controller
      */
     public function index()
     {
-        $list = JobPosts::where(['is_deleted'=>0])->paginate(10);
+        $list = JobPosts::where(['is_deleted' => 0])->paginate(10);
         // $list['job_post_closing_date'] = date('MM d, y', strtotime($list['job_post_closing_date']))
         return view('hrmodule.jobposts.list')->with([
             'listData' => $list,
-            'pageTitle'=>"Job Posts"
+            'pageTitle' => "Job Posts",
         ]);
     }
 
@@ -42,9 +38,9 @@ class JobPostsController extends Controller
     public function create()
     {
         $action = 'add';
-        $jobFields = array("Information Technology", "Graphics & Multimedia", "Human Resource", "Administration","Accounts & Finance");
+        $jobFields = array("Information Technology", "Graphics & Multimedia", "Human Resource", "Administration", "Accounts & Finance");
         $jobTypes = array("Permanent", "Contract", "Project Based", "Intern");
-        $countries = Countries::where(['status'=>1])->orderBy('title','ASC')->get();
+        $countries = Countries::where(['status' => 1])->orderBy('title', 'ASC')->get();
         // echo "<pre>";
         // print_r($countries); die;
 
@@ -53,8 +49,8 @@ class JobPostsController extends Controller
             'jobFields' => $jobFields,
             'jobTypes' => $jobTypes,
             'countries' => $countries,
-            'pageTitle'=>"Job Posts",
-            'Addform'  =>"Add New Job Post"
+            'pageTitle' => "Job Posts",
+            'Addform' => "Add New Job Post",
         ]);
     }
 
@@ -66,18 +62,18 @@ class JobPostsController extends Controller
      */
     public function store(Request $request)
     {
-        if( $request->all() )
-        {
+        if ($request->all()) {
             $validator = Validator::make($request->all(), [
                 'job_title' => 'required',
             ]);
             if ($validator->fails()) {
                 $action = 'add jobpost';
-                return redirect('/jobposts/add')
+                return redirect('/
+                ')
                     ->withErrors($validator)
                     ->withInput()
                     ->with([
-                         'action' => $action
+                        'action' => $action,
                     ]);
             }
 
@@ -90,11 +86,11 @@ class JobPostsController extends Controller
             $input['user_id'] = Auth::id();
 
             unset($input['_token']);
-            if($input['id']>0){
-                $input['updated_at']=date("Y-m-d H:i:s");
+            if ($input['id'] > 0) {
+                $input['updated_at'] = date("Y-m-d H:i:s");
                 Session::flash('message', 'Job Post  Updated Successfully.');
-                JobPosts::where('id', $input['id'])->update( $input );
-            }else{
+                JobPosts::where('id', $input['id'])->update($input);
+            } else {
                 unset($input['id']);
                 $input['created_at'] = date("Y-m-d H:i:s");
                 $input['updated_at'] = date("Y-m-d H:i:s");
@@ -124,23 +120,23 @@ class JobPostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit( $id )
+    public function edit($id)
     {
         $action = 'edit';
-        $jobFields = array("Information Technology", "Graphics & Multimedia", "Human Resource", "Administration","Accounts & Finance");
+        $jobFields = array("Information Technology", "Graphics & Multimedia", "Human Resource", "Administration", "Accounts & Finance");
         $jobTypes = array("Permanent", "Contract", "Project Based", "Intern");
-        $countries = Countries::where(['status'=>1])->orderBy('title','ASC')->get();
+        $countries = Countries::where(['status' => 1])->orderBy('title', 'ASC')->get();
         $result = JobPosts::find($id);
         $action = 'add';
-        $editname = "Edit ".$result->job_title;
+        $editname = "Edit " . $result->job_title;
         return view('hrmodule.jobposts.add')->with([
             'action' => $action,
             'jobFields' => $jobFields,
             'jobTypes' => $jobTypes,
             'countries' => $countries,
-            'pageTitle'=>"Job Posts",
-            'Addform'  =>$editname,
-            'result'  =>$result
+            'pageTitle' => "Job Posts",
+            'Addform' => $editname,
+            'result' => $result,
         ]);
     }
 
@@ -163,7 +159,7 @@ class JobPostsController extends Controller
      * @param  \App\Models\JobPosts  $jobPosts
      * @return \Illuminate\Http\Response
      */
-    public function destroy( $id )
+    public function destroy($id)
     {
         $job = JobPosts::find($id);
         $job->is_deleted = 1;
@@ -173,12 +169,12 @@ class JobPostsController extends Controller
         return redirect("/jobposts");
     }
 
-
     /**
      * For Setting Job Posts Routes
      */
-    static function routes() {
-            Route::group(array('prefix' => 'jobposts'), function() {
+    public static function routes()
+    {
+        Route::group(array('prefix' => 'jobposts'), function () {
             Route::get('/', array('as' => 'jobposts.index', 'uses' => 'JobPostsController@index'));
             Route::get('/add', array('as' => 'jobposts.create', 'uses' => 'JobPostsController@create'));
             Route::post('/save', array('as' => 'jobposts.save', 'uses' => 'JobPostsController@store'));
