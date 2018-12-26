@@ -141,7 +141,7 @@ class TransfersController extends Controller
         $transfers = transfers::find($id);
         $transfers->status = 0;
         $transfers->save();
-        Session::flash('message', 'Contracts delete successfully');
+        Session::flash('message', 'Transfers delete successfully');
         return redirect("/transfers");
     }
     public static function routes()

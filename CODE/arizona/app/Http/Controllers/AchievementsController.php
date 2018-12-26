@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Polls;
+use App\Models\Achievements;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -11,7 +11,7 @@ use Illuminate\Support\Form;
 use Session;
 use Validator;
 
-class PollsController extends Controller
+class AchievementsController extends Controller
 {
 
     /**
@@ -22,10 +22,10 @@ class PollsController extends Controller
     public function index()
     {
 
-        $list = polls::where(['status' => 1])->paginate(10);
-        return view('hrmodule.polls.list')->with([
+        $list = achievements::where(['status' => 1])->paginate(10);
+        return view('hrmodule.achievements.list')->with([
             'listData' => $list,
-            'pageTitle' => "Polls",
+            'pageTitle' => "Achievements",
         ]);
 
     }
@@ -38,10 +38,10 @@ class PollsController extends Controller
     public function create()
     {
         $action = 'add';
-        return view('hrmodule.polls.add')->with([
+        return view('hrmodule.achievements.add')->with([
             'action' => $action,
-            'pageTitle' => "Polls",
-            'Addform' => "Add New Poll",
+            'pageTitle' => "Achievements",
+            'Addform' => "Add New Achievement",
         ]);
     }
 
@@ -59,13 +59,12 @@ class PollsController extends Controller
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                'poll_question' => 'required',
-                'poll_answer_1' => 'required',
-                'poll_answer_2' => 'required'
+                'achievement_title' => 'required'
+                
             ]);
             if ($validator->fails()) {
-                $action = 'addpolls';
-                return redirect('/polls/add')
+                $action = 'addachievements';
+                return redirect('/achievements/add')
                     ->withErrors($validator)
                     ->withInput()
                     ->with([
@@ -77,29 +76,28 @@ class PollsController extends Controller
             if (request()->hasFile('icon_img')) {
                 $file = request()->file('icon_img');
                 $input['icon_img'] = md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
-                $file->move('./img/uploads/polls/', $input['icon_img']);
+                $file->move('./img/uploads/achievements/', $input['icon_img']);
             }
 
             echo "<pre>";
 
        
-            $input['poll_start_date'] = ($input['poll_start_date'] !="")?date('Y-m-d',strtotime($input['poll_start_date'])):$input['poll_start_date'];
-            $input['poll_end_date']   = ($input['poll_end_date'] !="")?date('Y-m-d',strtotime($input['poll_end_date'])):$input['poll_end_date'];
+            $input['achievement_date'] = ($input['achievement_date'] !="")?date('Y-m-d',strtotime($input['achievement_date'])):$input['achievement_date'];
             $input['status']=  1;
             $input['user_id'] =  $user_id;
             unset($input['_token']);
             if($input['id']>0){
                 $input['updated_at']=date("Y-m-d H:i:s");
-                Session::flash('message', 'Polls Updated Successfully.');
-                polls::where('id', $input['id'])->update($input);
+                Session::flash('message', 'Achievements Updated Successfully.');
+                achievements::where('id', $input['id'])->update($input);
             }else{
                 unset($input['id']);
                 $input['created_at']=date("Y-m-d H:i:s");
                 $input['updated_at']=date("Y-m-d H:i:s");
-                Session::flash('message', 'Polls  Added Successfully.');
-                polls::insertGetId($input);
+                Session::flash('message', 'Achievements  Added Successfully.');
+                achievements::insertGetId($input);
             }
-            return redirect('/polls');
+            return redirect('/achievements');
         }
     }
 
@@ -124,12 +122,12 @@ class PollsController extends Controller
     {
 
         $action = 'edit';
-        $result = polls::find($id);
+        $result = achievements::find($id);
         $action = 'add';
-        $editname = "Edit Transfer " . $result->employee;
-        return view('hrmodule.polls.add')->with([
+        $editname = "Edit Achievement " . $result->employee;
+        return view('hrmodule.achievements.add')->with([
             'action' => $action,
-            'pageTitle' => "polls",
+            'pageTitle' => "Achievements",
             'Addform' => $editname,
             'result' => $result,
         ]);
@@ -144,21 +142,21 @@ class PollsController extends Controller
      */
     public function destroy($id)
     {
-        $polls = polls::find($id);
-        $polls->status = 0;
-        $polls->save();
-        Session::flash('message', ' Polls delete successfully');
-        return redirect("/polls");
+        $achievements = achievements::find($id);
+        $achievements->status = 0;
+        $achievements->save();
+        Session::flash('message', 'Achievements delete successfully');
+        return redirect("/achievements");
     }
     public static function routes()
     {
-            Route::group(array('prefix' => 'polls'), function () {
-            Route::get('/', array('as' => 'polls.index', 'uses' => 'pollsController@index'));
-            Route::get('/add', array('as' => 'polls.create', 'uses' => 'pollsController@create'));
-            Route::post('/save', array('as' => 'polls.save', 'uses' => 'pollsController@store'));
-            Route::get('/edit/{id}', array('as' => 'polls.edit', 'uses' => 'pollsController@edit'));
-            Route::post('/update/{id}', array('as' => 'polls.update', 'uses' => 'pollsController@update'));
-            Route::get('/delete/{id}', array('as' => 'polls.destroy', 'uses' => 'pollsController@destroy'));
+            Route::group(array('prefix' => 'achievements'), function () {
+            Route::get('/', array('as' => 'achievements.index', 'uses' => 'achievementsController@index'));
+            Route::get('/add', array('as' => 'achievements.create', 'uses' => 'achievementsController@create'));
+            Route::post('/save', array('as' => 'achievements.save', 'uses' => 'achievementsController@store'));
+            Route::get('/edit/{id}', array('as' => 'achievements.edit', 'uses' => 'achievementsController@edit'));
+            Route::post('/update/{id}', array('as' => 'achievements.update', 'uses' => 'achievementsController@update'));
+            Route::get('/delete/{id}', array('as' => 'achievements.destroy', 'uses' => 'achievementsController@destroy'));
         });
     }
 }

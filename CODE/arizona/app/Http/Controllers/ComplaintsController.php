@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Polls;
+use App\Models\Complaints;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -11,7 +11,7 @@ use Illuminate\Support\Form;
 use Session;
 use Validator;
 
-class PollsController extends Controller
+class ComplaintsController extends Controller
 {
 
     /**
@@ -22,10 +22,10 @@ class PollsController extends Controller
     public function index()
     {
 
-        $list = polls::where(['status' => 1])->paginate(10);
-        return view('hrmodule.polls.list')->with([
+        $list = complaints::where(['status' => 1])->paginate(10);
+        return view('hrmodule.complaints.list')->with([
             'listData' => $list,
-            'pageTitle' => "Polls",
+            'pageTitle' => "Complaints",
         ]);
 
     }
@@ -38,10 +38,10 @@ class PollsController extends Controller
     public function create()
     {
         $action = 'add';
-        return view('hrmodule.polls.add')->with([
+        return view('hrmodule.complaints.add')->with([
             'action' => $action,
-            'pageTitle' => "Polls",
-            'Addform' => "Add New Poll",
+            'pageTitle' => "Complaints",
+            'Addform' => "Add New Complaint",
         ]);
     }
 
@@ -59,13 +59,13 @@ class PollsController extends Controller
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                'poll_question' => 'required',
-                'poll_answer_1' => 'required',
-                'poll_answer_2' => 'required'
+                // 'poll_question' => 'required',
+                // 'poll_answer_1' => 'required',
+                // 'poll_answer_2' => 'required'
             ]);
             if ($validator->fails()) {
-                $action = 'addpolls';
-                return redirect('/polls/add')
+                $action = 'addcomplaints';
+                return redirect('/complaints/add')
                     ->withErrors($validator)
                     ->withInput()
                     ->with([
@@ -77,29 +77,29 @@ class PollsController extends Controller
             if (request()->hasFile('icon_img')) {
                 $file = request()->file('icon_img');
                 $input['icon_img'] = md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
-                $file->move('./img/uploads/polls/', $input['icon_img']);
+                $file->move('./img/uploads/complaints/', $input['icon_img']);
             }
 
             echo "<pre>";
 
        
-            $input['poll_start_date'] = ($input['poll_start_date'] !="")?date('Y-m-d',strtotime($input['poll_start_date'])):$input['poll_start_date'];
-            $input['poll_end_date']   = ($input['poll_end_date'] !="")?date('Y-m-d',strtotime($input['poll_end_date'])):$input['poll_end_date'];
-            $input['status']=  1;
+            // $input['promotion_date'] = ($input['promotion_date'] !="")?date('Y-m-d',strtotime($input['promotion_date'])):$input['promotion_date'];
+            // $input['poll_end_date']   = ($input['poll_end_date'] !="")?date('Y-m-d',strtotime($input['poll_end_date'])):$input['poll_end_date'];
+            $input['status'] =  1;
             $input['user_id'] =  $user_id;
             unset($input['_token']);
             if($input['id']>0){
                 $input['updated_at']=date("Y-m-d H:i:s");
-                Session::flash('message', 'Polls Updated Successfully.');
-                polls::where('id', $input['id'])->update($input);
+                Session::flash('message', 'Complaints Updated Successfully.');
+                Complaints::where('id', $input['id'])->update($input);
             }else{
                 unset($input['id']);
                 $input['created_at']=date("Y-m-d H:i:s");
                 $input['updated_at']=date("Y-m-d H:i:s");
-                Session::flash('message', 'Polls  Added Successfully.');
-                polls::insertGetId($input);
+                Session::flash('message', 'Complaints  Added Successfully.');
+                complaints::insertGetId($input);
             }
-            return redirect('/polls');
+            return redirect('/complaints');
         }
     }
 
@@ -124,12 +124,12 @@ class PollsController extends Controller
     {
 
         $action = 'edit';
-        $result = polls::find($id);
+        $result = complaints::find($id);
         $action = 'add';
-        $editname = "Edit Transfer " . $result->employee;
-        return view('hrmodule.polls.add')->with([
+        $editname = "Edit Complaint " . $result->employee;
+        return view('hrmodule.complaints.add')->with([
             'action' => $action,
-            'pageTitle' => "polls",
+            'pageTitle' => "complaints",
             'Addform' => $editname,
             'result' => $result,
         ]);
@@ -144,22 +144,21 @@ class PollsController extends Controller
      */
     public function destroy($id)
     {
-        $polls = polls::find($id);
-        $polls->status = 0;
-        $polls->save();
-        Session::flash('message', ' Polls delete successfully');
-        return redirect("/polls");
+        $complaints = complaints::find($id);
+        $complaints->status = 0;
+        $complaints->save();
+        Session::flash('message', ' Complaints delete successfully');
+        return redirect("/complaints");
     }
     public static function routes()
     {
-            Route::group(array('prefix' => 'polls'), function () {
-            Route::get('/', array('as' => 'polls.index', 'uses' => 'pollsController@index'));
-            Route::get('/add', array('as' => 'polls.create', 'uses' => 'pollsController@create'));
-            Route::post('/save', array('as' => 'polls.save', 'uses' => 'pollsController@store'));
-            Route::get('/edit/{id}', array('as' => 'polls.edit', 'uses' => 'pollsController@edit'));
-            Route::post('/update/{id}', array('as' => 'polls.update', 'uses' => 'pollsController@update'));
-            Route::get('/delete/{id}', array('as' => 'polls.destroy', 'uses' => 'pollsController@destroy'));
+            Route::group(array('prefix' => 'complaints'), function () {
+            Route::get('/', array('as' => 'complaints.index', 'uses' => 'complaintsController@index'));
+            Route::get('/add', array('as' => 'complaints.create', 'uses' => 'complaintsController@create'));
+            Route::post('/save', array('as' => 'complaints.save', 'uses' => 'complaintsController@store'));
+            Route::get('/edit/{id}', array('as' => 'complaints.edit', 'uses' => 'complaintsController@edit'));
+            Route::post('/update/{id}', array('as' => 'complaints.update', 'uses' => 'complaintsController@update'));
+            Route::get('/delete/{id}', array('as' => 'complaints.destroy', 'uses' => 'complaintsController@destroy'));
         });
     }
 }
-

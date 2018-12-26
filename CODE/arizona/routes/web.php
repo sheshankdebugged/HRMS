@@ -69,4 +69,15 @@ Route::group(['middleware' => 'auth'], function () {
      // Transfers Routes
      \App\Http\Controllers\transfersController::routes();
 
+     // Polls Routes
+     \App\Http\Controllers\pollsController::routes();
+
+     // Achievements Routes
+     \App\Http\Controllers\achievementsController::routes();
+
+     // Promotions Routes
+     \App\Http\Controllers\promotionsController::routes();
+
+     // Complaints Routes
+     \App\Http\Controllers\complaintsController::routes();
 });
