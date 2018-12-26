@@ -157,7 +157,7 @@
 												 </div>
 												  <div class="form-group">
 											      <textarea class="tinyeditorclass" name="travel_description" id="travel_description" value="{{isset($result->notes)?$result->travel_description:''}}</textarea>
-												</div>
+										        </div>
 
 												<div class="form-group">
 													<h4>Travel Documents (Optional)</h4>

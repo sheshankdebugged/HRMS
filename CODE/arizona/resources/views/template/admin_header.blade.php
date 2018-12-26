@@ -157,9 +157,9 @@ Password: @7tN$i2cF5~5
                            <div class="row">
                               <div class="col-sm-6 list-unstyled">
                                  <a href="#"><i class="fa fa-dashboard"></i>Dashboard</a>
-                                 <a href="employees"><i class="fa fa-group"></i>Employees</a>
-                                 <a href="#noanchor"><i class="fa fa-sign-in"></i>Onboarding</a>
-                                 <a href="#noanchor"><i class="fa fa-file"></i>Contracts</a>
+                                 <a href="{{('employees')}}"><i class="fa fa-group"></i>Employees</a>
+                                 <a href="{{('onboarding')}}"><i class="fa fa-sign-in"></i>Onboarding</a>
+                                 <a href="{{('contracts')}}"><i class="fa fa-file"></i>Contracts</a>
                                  <a href="{{('assignments')}}"><i class="fa fa-briefcase"></i>Assignments</a>
                                  <a href="{{('transfers')}}"><i class="fa fa-refresh"></i>Transfers</a>
                                  <a href="{{('resignations')}}"><i class="fa fa-edit"></i>Resignations</a>
@@ -171,10 +171,10 @@ Password: @7tN$i2cF5~5
                                     <a href="{{url('achievements')}}"><i class="fa fa-trophy"></i>Achievements</a>
                                     <a href="{{url('travels')}}"><i class="fa fa-plane"></i>Travels</a>
                                     <a href="{{url('promotions')}}"><i class="fa fa-star"></i>Promotions</a>
-                                    <a href="#noanchor"><i class="fa fa-exclamation-circle"></i>Complaints</a>
-                                    <a href="#noanchor"><i class="fa fa-exclamation-triangle"></i>Warnings</a>
-                                    <a href="#noanchor"><i class="fa fa-edit"></i>Memos</a>
-                                    <a href="#noanchor"><i class="fa fa-times"></i>Terminations</a>
+                                    <a href="{{url('complaints')}}"><i class="fa fa-exclamation-circle"></i>Complaints</a>
+                                    <a href="{{url('warnings')}}"><i class="fa fa-exclamation-triangle"></i>Warnings</a>
+                                    <a href="{{url('memos')}}"><i class="fa fa-edit"></i>Memos</a>
+                                    <a href="{{url('terminations')}}"><i class="fa fa-times"></i>Terminations</a>
                               </div>
                            </div>
                         </div>

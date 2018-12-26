@@ -52,6 +52,9 @@ Route::group(['middleware' => 'auth'], function () {
 // Resignations
     \App\Http\Controllers\ResignationsController::routes();
 
+// Polls
+    \App\Http\Controllers\PollsController::routes();
+
 //OrganizationNews Routes
     \App\Http\Controllers\OrganizationNewsController::routes();
     
@@ -78,6 +81,14 @@ Route::group(['middleware' => 'auth'], function () {
 
 // Warnings
      \App\Http\Controllers\WarningsController::routes();
+
+// Achievements
+     \App\Http\Controllers\AchievementsController::routes();
+
+// Promotions
+     \App\Http\Controllers\PromotionsController::routes();
+
+     
 
 
 });
