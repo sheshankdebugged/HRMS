@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Contracts;
+use App\Models\Memos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -11,7 +11,7 @@ use Illuminate\Support\Form;
 use Session;
 use Validator;
 
-class ContractsController extends Controller
+class MemosController extends Controller
 {
 
     /**
@@ -22,10 +22,10 @@ class ContractsController extends Controller
     public function index()
     {
 
-        $list = contracts::where(['status' => 1])->paginate(10);
-        return view('hrmodule.contracts.list')->with([
+        $list = memos::where(['status' => 1])->paginate(10);
+        return view('hrmodule.memos.list')->with([
             'listData' => $list,
-            'pageTitle' => "contracts",
+            'pageTitle' => "Memos",
         ]);
 
     }
@@ -38,10 +38,10 @@ class ContractsController extends Controller
     public function create()
     {
         $action = 'add';
-        return view('hrmodule.contracts.add')->with([
+        return view('hrmodule.memos.add')->with([
             'action' => $action,
-            'pageTitle' => "contracts",
-            'Addform' => "Add New Contract",
+            'pageTitle' => "Memos",
+            'Addform' => "Add New Memo",
         ]);
     }
 
@@ -59,13 +59,12 @@ class ContractsController extends Controller
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                'employee' => 'required',
-                'contract_title' => 'required'
+                'memo_subject' => 'required',
 
             ]);
             if ($validator->fails()) {
-                $action = 'addcontracts';
-                return redirect('/contracts/add')
+                $action = 'addmemos';
+                return redirect('/memos/add')
                     ->withErrors($validator)
                     ->withInput()
                     ->with([
@@ -77,28 +76,27 @@ class ContractsController extends Controller
             if (request()->hasFile('icon_img')) {
                 $file = request()->file('icon_img');
                 $input['icon_img'] = md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
-                $file->move('./img/uploads/contracts/', $input['icon_img']);
+                $file->move('./img/uploads/memos/', $input['icon_img']);
             }
             echo "<pre>";
 
        
-            $input['contract_start_date'] = ($input['contract_start_date'] !="")?date('Y-m-d',strtotime($input['contract_start_date'])):$input['contract_start_date'];
-            $input['contract_end_date']   = ($input['contract_end_date'] !="")?date('Y-m-d',strtotime($input['contract_end_date'])):$input['contract_end_date'];
+            $input['memo_date'] = ($input['memo_date'] !="")?date('Y-m-d',strtotime($input['memo_date'])):$input['memo_date'];
             $input['status'] = 1;
             $input['user_id'] = $user_id;
             unset($input['_token']);
             if ($input['id'] > 0) {
                 $input['updated_at'] = date("Y-m-d H:i:s");
-                Session::flash('message', 'Contracts Updated Successfully.');
-                contracts::where('id', $input['id'])->update($input);
+                Session::flash('message', 'Memo  Updated Successfully.');
+                memos::where('id', $input['id'])->update($input);
             } else {
                 unset($input['id']);
                 $input['created_at'] = date("Y-m-d H:i:s");
                 $input['updated_at'] = date("Y-m-d H:i:s");
-                Session::flash('message', 'Contracts Added Successfully.');
-                contracts::insertGetId($input);
+                Session::flash('message', 'Memo  Added Successfully.');
+                memos::insertGetId($input);
             }
-            return redirect('/contracts');
+            return redirect('/memos');
         }
     }
 
@@ -123,12 +121,12 @@ class ContractsController extends Controller
     {
 
         $action = 'edit';
-        $result = contracts::find($id);
+        $result = memos::find($id);
         $action = 'add';
-        $editname = "Edit " . $result->employee;
-        return view('hrmodule.contracts.add')->with([
+        $editname = "Edit Memo " . $result->employee;
+        return view('hrmodule.memos.add')->with([
             'action' => $action,
-            'pageTitle' => "contracts",
+            'pageTitle' => "memos",
             'Addform' => $editname,
             'result' => $result,
         ]);
@@ -143,21 +141,22 @@ class ContractsController extends Controller
      */
     public function destroy($id)
     {
-        $contracts = contracts::find($id);
-        $contracts->status = 0;
-        $contracts->save();
-        Session::flash('message', 'Contracts delete successfully');
-        return redirect("/contracts");
+        $memos = memos::find($id);
+        $memos->status = 0;
+        $memos->save();
+        Session::flash('message', 'Memo delete successfully');
+        return redirect("/memos");
     }
     public static function routes()
     {
-            Route::group(array('prefix' => 'contracts'), function () {
-            Route::get('/', array('as' => 'contracts.index', 'uses' => 'ContractsController@index'));
-            Route::get('/add', array('as' => 'contracts.create', 'uses' => 'ContractsController@create'));
-            Route::post('/save', array('as' => 'contracts.save', 'uses' => 'ContractsController@store'));
-            Route::get('/edit/{id}', array('as' => 'contracts.edit', 'uses' => 'ContractsController@edit'));
-            Route::post('/update/{id}', array('as' => 'contracts.update', 'uses' => 'ContractsController@update'));
-            Route::get('/delete/{id}', array('as' => 'contracts.destroy', 'uses' => 'ContractsController@destroy'));
+            Route::group(array('prefix' => 'memos'), function () {
+            Route::get('/', array('as' => 'memos.index', 'uses' => 'MemosController@index'));
+            Route::get('/add', array('as' => 'memos.create', 'uses' => 'MemosController@create'));
+            Route::post('/save', array('as' => 'memos.save', 'uses' => 'MemosController@store'));
+            Route::get('/edit/{id}', array('as' => 'memos.edit', 'uses' => 'MemosController@edit'));
+            Route::post('/update/{id}', array('as' => 'memos.update', 'uses' => 'MemosController@update'));
+            Route::get('/delete/{id}', array('as' => 'memos.destroy', 'uses' => 'MemosController@destroy'));
         });
     }
 }
+

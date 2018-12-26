@@ -57,6 +57,9 @@ Route::group(['middleware' => 'auth'], function () {
 
 //OrganizationNews Routes
     \App\Http\Controllers\OrganizationNewsController::routes();
+
+// job Routes
+    \App\Http\Controllers\JobRequestsController::routes();
     
 // jobrequests Routes
     \App\Http\Controllers\JobRequestsController::routes();
@@ -68,16 +71,16 @@ Route::group(['middleware' => 'auth'], function () {
     \App\Http\Controllers\JobInterviewsController::routes();
 
 // Contracts Routes
-    \App\Http\Controllers\contractsController::routes();
+    \App\Http\Controllers\ContractsController::routes();
 
-// Transfers Routes
-    \App\Http\Controllers\transfersController::routes();
+ // Transfers Routes
+     \App\Http\Controllers\TransfersController::routes();
 
  // Employees Exit
-     \App\Http\Controllers\employeesexitController::routes();
+     \App\Http\Controllers\EmployeesexitController::routes();
 
 // Travels
-     \App\Http\Controllers\travelsController::routes();
+     \App\Http\Controllers\TravelsController::routes();
 
 // Warnings
      \App\Http\Controllers\WarningsController::routes();
@@ -85,10 +88,21 @@ Route::group(['middleware' => 'auth'], function () {
 // Achievements
      \App\Http\Controllers\AchievementsController::routes();
 
-// Promotions
+     // Polls Routes
+     \App\Http\Controllers\PollsController::routes();
+
+     // Achievements Routes
+     \App\Http\Controllers\AchievementsController::routes();
+
+     // Promotions Routes
      \App\Http\Controllers\PromotionsController::routes();
 
-     
+     // Complaints Routes
+     \App\Http\Controllers\ComplaintsController::routes();
 
+     // Memos Routes
+     \App\Http\Controllers\MemosController::routes();
 
+      // Terminations Routes
+      \App\Http\Controllers\TerminationsController::routes();
 });

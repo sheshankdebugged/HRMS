@@ -31,7 +31,7 @@
 									<div class="col-md-12 nopadding">
 										<div class="back-button">
 											<div class="add-record-btn">
-												<a href="{{ url('complaints') }}"><i class="fa fa-angle-left"></i>Back</a>
+												<a href="{{ url('memos') }}"><i class="fa fa-angle-left"></i>Back</a>
 											</div>
 										</div>
 									</div>
@@ -41,7 +41,7 @@
 										<h3>{{$Addform}}</h3>
 									</div>
 									<div class="form-upper-main">
-										<h4>Complaint Information</h4>
+										<h4>Memo Information</h4>
 									</div>
 									<div class="form-subsets">
 
@@ -55,70 +55,75 @@
                                             </div>
                                         @endif 
                                         
-                                        <form method="post" action="{{ url('complaints/save') }}">
+                                        <form method="post" action="{{ url('memos/save') }}">
                                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                           <input type="hidden" name="id" value="{{isset($result->id)?$result->id:''}}">
 
 											<div class="form-field-inner">
 												
-												 <div class="form-group">
-													<label>Complaint From:</label>
-													<select id="complaint_from" name="complaint_from" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Complaint From</option></select>
-                                                    <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
+											<div class="form-group">
+													<label>Memo From:</label>
+													<select id="memo_from" name="memo_from"" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Memo From </option></select>
+													<!-- <input type="text" placeholder="Contact Person" class="form-control-spacial" id="registration_name" name="contact_person" value="{{isset($result->contact_person)?$result->contact_person:''}}"> -->
+                                                   
 												 </div>
-												 
-												 <div class="form-group">
-													<label>Forward Application To:</label>
-													<select id="forward_application_to" name="forward_application_to" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Forward Application To</option></select>
 
-												 </div>
-												 
-												 </div>
+
 												 <div class="form-group">
-												   <label>Complaint Title:</label>
-												   <input type="text" placeholder="Complaint Title" class="form-control-spacial" id="complaint_title" name="complaint_title" value="{{isset($result->complaint_title)?$result->complaint_title:''}}">
-												   <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
+												   <label>Memo Subject:</label>
+												   <!-- <select id="forward_application_to" name="forward_application_to" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Forward Application To: 1</option></select> -->
+													<input type="text" placeholder="Memo Subject" class="form-control-spacial" id="memo_subject" name="memo_subject" value="{{isset($result->memo_subject)?$result->memo_subject:''}}">
+													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
+
 												 </div>
 
 												 
-
 												 <div class="form-group">
-													<label>Complaint Date:</label>
-													<input type="text" placeholder="" class="form-control-spacial date" id="complaint_date" name="complaint_date" value="{{isset($result->complaint_date)?$result->complaint_date:''}}">
-
+												   <label>Memo Date:</label>
+												   <!-- <select id="Memo Date" name="employee_category" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Employee Category 1</option></select> -->
+													<!-- <input type="text" placeholder="Memo Date" class="form-control-spacial" id="memo_date" name="memo_date" value="{{isset($result->memo_date)?$result->memo_date:''}}"> -->
+													<input type="text" placeholder="" class="form-control-spacial date" id="memo_date" name="memo_date" value="{{isset($result->memo_date)?$result->memo_date:''}}">
 												 </div>
 												 <div class="form-group">
-													<h4>Complaint Against</h4>
-													<label>Complaint Against:</label>
-												   <!-- <input type="text" placeholder="Complaint Title" class="form-control-spacial" id="complaint_against" name="complaint_against" value="{{isset($result->complaint_against)?$result->complaint_against:''}}"> -->
-												   <select id="complaint_against" name="complaint_against" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Complaint Title</option></select>
-
+													<h4>Memo To</h4>
 												 </div>
-
 												 <div class="form-group">
-													<h4>Complaint Description</h4>
+													<label>Memo To:</label>
+													<select id="memo_to" name="memo_to"" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Memo To</option></select>
+													<!-- <input type="text" placeholder="Contact Person" class="form-control-spacial" id="registration_name" name="contact_person" value="{{isset($result->contact_person)?$result->contact_person:''}}"> -->
+                                                   
+												 </div>
+										 
+												 
+												
+
+												 
+												 <div class="form-group">
+													<h4>Memo Description</h4>
 												 </div>
 
                                                  <div class="form-group">
 												 <label>Notes:</label>
 													<textarea class="tinyeditorclass" name="additonal_information" id="additonal_information">{{isset($result->additonal_information)?$result->additonal_information:''}}</textarea>
 												</div> 
-												 												
-												
 
-																								
-												<div class="form-group">
+												 											 
+
+												 <div class="form-group">
 													<h4>Additional Information</h4>
 												 </div>
 												 <div class="form-group">
 												 <label>Notes:</label>
-													<textarea  name="additonal_information" id="additonal_information">{{isset($result->additonal_information)?$result->additonal_information:''}}</textarea>
+													<textarea class="tinyeditorclass" name="additonal_information" id="additonal_information">{{isset($result->additonal_information)?$result->additonal_information:''}}</textarea>
 												</div> 
 
+												
+												 
+												 
 
 												<div class="form-group">
 												 <label>Record Added By:</label>
-												 System Administrator
+												System Administrator	 
 												</div> 
 
 												

@@ -58,7 +58,8 @@ class WarningsController extends Controller
         if($request->all()){
 
             $validator = Validator::make($request->all(), [
-                'warning_to' => 'required'
+                'warning_to
+                ' => 'required'
             ]);
            if ($validator->fails()) {
                 $action = 'warnings';

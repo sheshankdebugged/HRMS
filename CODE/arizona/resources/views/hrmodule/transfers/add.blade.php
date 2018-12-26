@@ -31,7 +31,7 @@
 									<div class="col-md-12 nopadding">
 										<div class="back-button">
 											<div class="add-record-btn">
-												<a href="{{ url('companies') }}"><i class="fa fa-angle-left"></i>Back</a>
+												<a href="{{ url('transfers') }}"><i class="fa fa-angle-left"></i>Back</a>
 											</div>
 										</div>
 									</div>
@@ -80,8 +80,8 @@
 												 <div class="form-group">
 												   <label>Transfer Date:</label>
 												   <!-- <select id="Transfer Date" name="employee_category" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Employee Category 1</option></select> -->
-													<input type="text" placeholder="Transfer Date" class="form-control-spacial" id="transfer_date" name="transfer_date" value="{{isset($result->transfer_date)?$result->transfer_date:''}}">
-                                
+													<!-- <input type="text" placeholder="Transfer Date" class="form-control-spacial" id="transfer_date" name="transfer_date" value="{{isset($result->transfer_date)?$result->transfer_date:''}}"> -->
+													<input type="text" placeholder="" class="form-control-spacial date" id="transfer_date" name="transfer_date" value="{{isset($result->transfer_date)?$result->transfer_date:''}}">
 												 </div>
 												 <div class="form-group">
 													<h4>Transfer To</h4>
