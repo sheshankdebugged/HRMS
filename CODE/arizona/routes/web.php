@@ -97,4 +97,7 @@ Route::group(['middleware' => 'auth'], function () {
 
      // Memos Routes
      \App\Http\Controllers\MemosController::routes();
+
+      // Terminations Routes
+      \App\Http\Controllers\TerminationsController::routes();
 });
