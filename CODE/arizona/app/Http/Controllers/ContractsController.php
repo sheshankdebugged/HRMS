@@ -61,7 +61,6 @@ class ContractsController extends Controller
             $validator = Validator::make($request->all(), [
                 'employee' => 'required',
                 'contract_title' => 'required'
-
             ]);
             if ($validator->fails()) {
                 $action = 'addcontracts';

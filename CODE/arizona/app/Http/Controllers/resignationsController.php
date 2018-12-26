@@ -63,8 +63,6 @@ class resignationsController extends Controller
 
             $validator = Validator::make($request->all(), [
                 'resigning_employee' => 'required',
-
-
             ]);
            if ($validator->fails()) {
                 $action = 'addresignations';

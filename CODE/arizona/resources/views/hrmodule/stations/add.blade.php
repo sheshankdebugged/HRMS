@@ -55,7 +55,7 @@
                                             </div>
                                         @endif 
                                         
-                                        <form method="post" action="{{ url('savestations') }}">
+                                        <form method="post" action="{{ url('stations/save') }}">
                                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                           <input type="hidden" name="id" value="{{isset($result->id)?$result->id:''}}">
 

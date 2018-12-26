@@ -69,7 +69,7 @@ class StationsController extends Controller
             ]);
             if ($validator->fails()) {
                 $action = 'addstations';
-                return redirect('/addstations')
+                return redirect('/stations/add')
                     ->withErrors($validator)
                     ->withInput()
                     ->with([

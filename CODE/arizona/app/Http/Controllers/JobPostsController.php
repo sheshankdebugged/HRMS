@@ -67,8 +67,8 @@ class JobPostsController extends Controller
                 'job_title' => 'required',
             ]);
             if ($validator->fails()) {
-                $action = 'add jobpost';
-                return redirect('/
+                $action = 'addjobpost';
+                return redirect('jobposts/add
                 ')
                     ->withErrors($validator)
                     ->withInput()

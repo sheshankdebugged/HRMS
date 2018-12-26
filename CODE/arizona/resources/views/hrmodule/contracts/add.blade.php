@@ -65,8 +65,8 @@
 													<label>Employee:</label>
 													<select id="employee" name="employee" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Employee</option></select>
                                                     <!-- <input type="text" class="form-control-spacial" id="employee" name="employee" value="{{isset($result->employee)?$result->employee:''}}" placeholder="Employee"> -->
-                                                    <!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fal fa-asterisk"></i> -->
-                                                    <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fal fa-asterisk"></i>
+                                                    <!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
+                                                    <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 
 												 </div>
 												 
@@ -80,7 +80,7 @@
                                                  <div class="form-group">
 													<label>Contract Title:</label>
 													<input type="text" class="form-control-spacial" id="contract_title" value="{{isset($result->contract_title)?$result->contract_title:''}}" name="contract_title" placeholder="Contract Title"> 
-													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fal fa-asterisk"></i>
+													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 
 												 </div>
 
