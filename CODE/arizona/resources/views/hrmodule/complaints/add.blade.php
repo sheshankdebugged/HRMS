@@ -62,9 +62,9 @@
 											<div class="form-field-inner">
 												
 												 <div class="form-group">
-													<label>Complaint Form:</label>
-													<select id="complaint_form" name="complaint_form" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Complaint From</option></select>
-
+													<label>Complaint From:</label>
+													<select id="complaint_from" name="complaint_from" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Complaint From</option></select>
+                                                    <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 												 </div>
 												 
 												 <div class="form-group">
@@ -77,36 +77,21 @@
 												 <div class="form-group">
 												   <label>Complaint Title:</label>
 												   <input type="text" placeholder="Complaint Title" class="form-control-spacial" id="complaint_title" name="complaint_title" value="{{isset($result->complaint_title)?$result->complaint_title:''}}">
-												   <!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
+												   <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 												 </div>
 
-												 <div class="form-group">
-													<label>Complaint Designation From:</label>
-													<select id="complaint_designation_from" name="complaint_designation_from" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Complaint Designation From</option></select>
-
-												 </div>
-
-												 <div class="form-group">
-													<label>Complaint Designation To:</label>
-													<select id="complaint_designation_to" name="complaint_designation_to" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Complaint Designation To</option></select>
-
-												 </div>
-
-												 <div class="form-group">
-													<label>Complaint Grade From:</label>
-													<select id="complaint_grade_from" name="complaint_grade_from" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Complaint Grade From</option></select>
-
-												 </div>
-
-												 <div class="form-group">
-													<label>Complaint Grade To:</label>
-													<select id="complaint_grade_to" name="complaint_grade_to" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Complaint Grade To</option></select>
-
-												 </div>
+												 
 
 												 <div class="form-group">
 													<label>Complaint Date:</label>
 													<input type="text" placeholder="" class="form-control-spacial date" id="complaint_date" name="complaint_date" value="{{isset($result->complaint_date)?$result->complaint_date:''}}">
+
+												 </div>
+												 <div class="form-group">
+													<h4>Complaint Against</h4>
+													<label>Complaint Against:</label>
+												   <!-- <input type="text" placeholder="Complaint Title" class="form-control-spacial" id="complaint_against" name="complaint_against" value="{{isset($result->complaint_against)?$result->complaint_against:''}}"> -->
+												   <select id="complaint_against" name="complaint_against" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Complaint Title</option></select>
 
 												 </div>
 
@@ -118,7 +103,8 @@
 												 <label>Notes:</label>
 													<textarea class="tinyeditorclass" name="additonal_information" id="additonal_information">{{isset($result->additonal_information)?$result->additonal_information:''}}</textarea>
 												</div> 
-												 
+												 												
+												
 
 																								
 												<div class="form-group">

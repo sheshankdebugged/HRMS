@@ -54,11 +54,9 @@ Route::group(['middleware' => 'auth'], function () {
 
 //OrganizationNews Routes
     \App\Http\Controllers\OrganizationNewsController::routes();
-<<<<<<< HEAD
 
 // job Routes
     \App\Http\Controllers\JobRequestsController::routes();
-=======
     
 // jobrequests Routes
     \App\Http\Controllers\JobRequestsController::routes();
@@ -68,38 +66,35 @@ Route::group(['middleware' => 'auth'], function () {
     
 // JobInterviews Routes
     \App\Http\Controllers\JobInterviewsController::routes();
->>>>>>> 46871d3b47728d79e06c6863891f7e8085d7cc5e
 
 // Contracts Routes
-    \App\Http\Controllers\contractsController::routes();
+    \App\Http\Controllers\ContractsController::routes();
 
-<<<<<<< HEAD
  // Transfers Routes
-     \App\Http\Controllers\transfersController::routes();
-=======
-// Transfers Routes
-    \App\Http\Controllers\transfersController::routes();
->>>>>>> 46871d3b47728d79e06c6863891f7e8085d7cc5e
+     \App\Http\Controllers\TransfersController::routes();
 
  // Employees Exit
-     \App\Http\Controllers\employeesexitController::routes();
+     \App\Http\Controllers\EmployeesexitController::routes();
 
 // Travels
-     \App\Http\Controllers\travelsController::routes();
+     \App\Http\Controllers\TravelsController::routes();
 
 // Warnings
      \App\Http\Controllers\WarningsController::routes();
 
 
      // Polls Routes
-     \App\Http\Controllers\pollsController::routes();
+     \App\Http\Controllers\PollsController::routes();
 
      // Achievements Routes
-     \App\Http\Controllers\achievementsController::routes();
+     \App\Http\Controllers\AchievementsController::routes();
 
      // Promotions Routes
-     \App\Http\Controllers\promotionsController::routes();
+     \App\Http\Controllers\PromotionsController::routes();
 
      // Complaints Routes
-     \App\Http\Controllers\complaintsController::routes();
+     \App\Http\Controllers\ComplaintsController::routes();
+
+     // Memos Routes
+     \App\Http\Controllers\MemosController::routes();
 });

@@ -151,12 +151,12 @@ class AchievementsController extends Controller
     public static function routes()
     {
             Route::group(array('prefix' => 'achievements'), function () {
-            Route::get('/', array('as' => 'achievements.index', 'uses' => 'achievementsController@index'));
-            Route::get('/add', array('as' => 'achievements.create', 'uses' => 'achievementsController@create'));
-            Route::post('/save', array('as' => 'achievements.save', 'uses' => 'achievementsController@store'));
-            Route::get('/edit/{id}', array('as' => 'achievements.edit', 'uses' => 'achievementsController@edit'));
-            Route::post('/update/{id}', array('as' => 'achievements.update', 'uses' => 'achievementsController@update'));
-            Route::get('/delete/{id}', array('as' => 'achievements.destroy', 'uses' => 'achievementsController@destroy'));
+            Route::get('/', array('as' => 'achievements.index', 'uses' => 'AchievementsController@index'));
+            Route::get('/add', array('as' => 'achievements.create', 'uses' => 'AchievementsController@create'));
+            Route::post('/save', array('as' => 'achievements.save', 'uses' => 'AchievementsController@store'));
+            Route::get('/edit/{id}', array('as' => 'achievements.edit', 'uses' => 'AchievementsController@edit'));
+            Route::post('/update/{id}', array('as' => 'achievements.update', 'uses' => 'AchievementsController@update'));
+            Route::get('/delete/{id}', array('as' => 'achievements.destroy', 'uses' => 'AchievementsController@destroy'));
         });
     }
 }
