@@ -160,17 +160,17 @@ Password: @7tN$i2cF5~5
                                  <a href="employees"><i class="fa fa-group"></i>Employees</a>
                                  <a href="#noanchor"><i class="fa fa-sign-in"></i>Onboarding</a>
                                  <a href="#noanchor"><i class="fa fa-file"></i>Contracts</a>
-                                 <a href="assignments"><i class="fa fa-briefcase"></i>Assignments</a>
-                                 <a href="#noanchor"><i class="fa fa-refresh"></i>Transfers</a>
-                                 <a href="{{url('resignations')}}><i class="fa fa-edit"></i>Resignations</a>
+                                 <a href="{{('assignments')}}"><i class="fa fa-briefcase"></i>Assignments</a>
+                                 <a href="{{('transfers')}}"><i class="fa fa-refresh"></i>Transfers</a>
+                                 <a href="{{('resignations')}}"><i class="fa fa-edit"></i>Resignations</a>
                                  <a href="{{url('polls')}}"><i class="fa fa-pie-chart"></i>Polls</a>
                                  <a href="{{url('employeesexit')}}"><i class="fa fa-sign-out"></i>Employees Exit</a>
                                                                   
                               </div>
                               <div class="col-sm-6 list-unstyled">
-                                    <a href="#noanchor"><i class="fa fa-trophy"></i>Achievements</a>
-                                    <a href="#noanchor"><i class="fa fa-plane"></i>Travels</a>
-                                    <a href="#noanchor"><i class="fa fa-star"></i>Promotions</a>
+                                    <a href="{{url('achievements')}}"><i class="fa fa-trophy"></i>Achievements</a>
+                                    <a href="{{url('travels')}}"><i class="fa fa-plane"></i>Travels</a>
+                                    <a href="{{url('promotions')}}"><i class="fa fa-star"></i>Promotions</a>
                                     <a href="#noanchor"><i class="fa fa-exclamation-circle"></i>Complaints</a>
                                     <a href="#noanchor"><i class="fa fa-exclamation-triangle"></i>Warnings</a>
                                     <a href="#noanchor"><i class="fa fa-edit"></i>Memos</a>
