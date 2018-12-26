@@ -23,7 +23,17 @@ class StationsController extends Controller
     public function index()
     {
         $user_id = Auth::id();
-        $list =Stations::where(['status'=>1,'user_id'=>$user_id])->paginate(10);
+        $searchQuery  = isset($_GET['search'])?trim($_GET['search']):"";
+        $where   = ['status'=>1,'user_id'=>$user_id];
+        
+        if(!empty($searchQuery)){
+            $where = [
+                ['station_name', 'LIKE', "%$searchQuery%"],
+                ['status', '=', 1],
+                ['user_id', '=', $user_id],
+            ];   
+        }
+        $list =Stations::where($where)->paginate(10);
         return view('hrmodule.stations.list')->with([
             'listData' => $list,
             'pageTitle' => "Stations",

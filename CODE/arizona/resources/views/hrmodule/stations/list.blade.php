@@ -41,14 +41,16 @@
 										<div class="col-md-4 nopadding">
 											<h3>{{ $pageTitle }}</h3>
 										</div>
-                             	<div class="col-md-8 nopadding">
+                             	          <div class="col-md-8 nopadding">
+								            <form id="search" name="search" method="get" />
 											<div class="search-area-request">
-												<input type="text" placeholder="Search...">
-												<button><i class="fa fa-search"></i></button>
+												<input type="text" placeholder="Search..."  name="search" class="search" id="search" value="{{isset($_GET['search'])?$_GET['search']:''}} "/>
+												<button style="cursor:pointer"><i class="fa fa-search"></i></button>
 											</div>
+											</form>
 											<div class="filter-btn-request">
-												<a href="#" alt="Dashboard"><i class="fa fa-filter"></i></a>
-												<a href="#" alt="Dashboard"><i class="fa fa-refresh"></i></a>
+												
+												<a href="{{ url('stations') }}" alt="Dashboard"><i class="fa fa-refresh"></i></a>
 											</div>
 											<div class="add-record-btn">
 												<a href="{{ url('stations/add') }}"><i class="fa fa-plus"></i>Add Record</a>
