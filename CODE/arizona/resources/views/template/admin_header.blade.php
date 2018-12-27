@@ -181,6 +181,38 @@ Password: @7tN$i2cF5~5
 
                     </div>
                 </li>
+
+
+
+                <li class="dropdown">
+                    <a href="#" class="nav-link">
+                        <i class="fa fa-group"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-left">
+                        <div class="sub-menu-title">Time Sheet</div>
+
+                        <div class="d-block menu-list">
+                           <div class="row">
+                              <div class="col-sm-6 list-unstyled">
+                                 <a href="#"><i class="fa fa-dashboard"></i>Dashboard</a>
+                                 <a href="{{('scheduler')}}"><i class="fa fa-group"></i>Scheduler</a>
+                                 <a href="{{('attendance')}}"><i class="fa fa-sign-in"></i>Attendance</a>
+                                 <a href="{{('employee_hours')}}"><i class="fa fa-file"></i>Employee Hours</a>
+                                 <a href="{{('leaves')}}"><i class="fa fa-briefcase"></i>Leaves</a>
+                                
+                                                                  
+                              </div>
+                              <div class="col-sm-6 list-unstyled">
+                                    <a href="{{url('worksheet')}}"><i class="fa fa-trophy"></i>Worksheet</a>
+                                    <a href="{{url('work_shifts')}}"><i class="fa fa-plane"></i>Work Shifts</a>
+                                    <a href="{{url('holidays')}}"><i class="fa fa-star"></i>Holidays</a>
+                                   
+                              </div>
+                           </div>
+                        </div>
+
+                    </div>
+                </li>
             </ul>
         </div>
     </nav>

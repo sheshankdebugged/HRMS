@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Assignments;
+use App\Models\WorkShifts;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
@@ -15,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Validator;
 use Session;
 
-class AssignmentsController extends Controller
+class WorkshiftsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -30,17 +29,17 @@ class AssignmentsController extends Controller
         
         if(!empty($searchQuery)){
             $where = [
-                ['assignment_name', 'LIKE', "%$searchQuery%"],
+                ['title', 'LIKE', "%$searchQuery%"],
                 ['status', '=', 1],
                 ['user_id', '=', $user_id],
             ];   
         }
-        $list =Assignments::where($where)->paginate(10);
+        $list =workshifts::where($where)->paginate(10);
 
-        // $list = Assignments::where(['status'=>1])->paginate(10);
-        return view('hrmodule.assignments.list')->with([
+        // $list = workshifts::where(['status'=>1])->paginate(10);
+        return view('hrmodule.workshifts.list')->with([
             'listData' => $list,
-            'pageTitle'=>"Assignments"
+            'pageTitle'=>"Work Shifts"
         ]);
 
     }
@@ -53,11 +52,18 @@ class AssignmentsController extends Controller
     public function create()
     {
         $action = 'add';
-        return view('hrmodule.assignments.add')->with([
+        return view('hrmodule.workshifts.add')->with([
             'action' => $action,
-            'pageTitle'=>"Assignments",
-            'Addform'  =>"Add New Assignment"
+            'pageTitle'=>"Work Shifts",
+            'Addform'  =>"Add New Work Shift"
         ]);
+        // $action = 'add';
+        // return view('hrmodule.specificdaysOff.add')->with([
+        //     'action' => $action,
+        //     'pageTitle'=>"Work Shifts",
+        //     'Addform'  =>"Specific Days Off"
+        // ]);
+
     }
 
     /**
@@ -73,13 +79,13 @@ class AssignmentsController extends Controller
         if($request->all()){
 
             $validator = Validator::make($request->all(), [
-                'assigned_to' => 'required',
+                'title' => 'required',
 
 
             ]);
            if ($validator->fails()) {
-                $action = 'addassignments';
-                return redirect('/addassignments')
+                $action = 'addworkshifts';
+                return redirect('/addworkshifts')
                     ->withErrors($validator)
                     ->withInput()
                     ->with([
@@ -91,23 +97,23 @@ class AssignmentsController extends Controller
             echo "<pre>";
 
        
-            $input['start_date'] = ($input['start_date'] !="")?date('Y-m-d',strtotime($input['start_date'])):$input['start_date'];
-            $input['due_date']   = ($input['due_date'] !="")?date('Y-m-d',strtotime($input['due_date'])):$input['due_date'];
+            // $input['start_date'] = ($input['start_date'] !="")?date('Y-m-d',strtotime($input['start_date'])):$input['start_date'];
+            // $input['due_date']   = ($input['due_date'] !="")?date('Y-m-d',strtotime($input['due_date'])):$input['due_date'];
             $input['status']=  1;
             $input['user_id'] =  $user_id;
             unset($input['_token']);
             if($input['id']>0){
                 $input['updated_at']=date("Y-m-d H:i:s");
-                Session::flash('message', 'Assignment Updated Successfully.');
-                assignments::where('id', $input['id'])->update($input);
+                Session::flash('message', 'Work shift Updated Successfully.');
+                workshifts::where('id', $input['id'])->update($input);
             }else{
                 unset($input['id']);
                 $input['created_at']=date("Y-m-d H:i:s");
                 $input['updated_at']=date("Y-m-d H:i:s");
-                Session::flash('message', 'Assignment  Added Successfully.');
-                assignments::insertGetId($input);
+                Session::flash('message', 'Work shift  Added Successfully.');
+                workshifts::insertGetId($input);
             }
-            return redirect('/assignments');
+            return redirect('/workshifts');
         }
     }
 
@@ -132,12 +138,12 @@ class AssignmentsController extends Controller
     {
 
         $action = 'edit';
-        $result = Assignments::find($id);
+        $result = workshifts::find($id);
         $action = 'add';
-        $editname = "Edit ".$result->assignment_name;
-        return view('hrmodule.assignments.add')->with([
+        $editname = "Edit ".$result->Workshift_name;
+        return view('hrmodule.workshifts.add')->with([
             'action' => $action,
-            'pageTitle'=>"Assignments",
+            'pageTitle'=>"Work Shifts",
             'Addform'  =>$editname,
             'result'  =>$result
         ]);
@@ -153,11 +159,11 @@ class AssignmentsController extends Controller
      */
     public function destroy($id)
     {
-        $assignments = assignments::find($id);
-        $assignments->status = 0;
-        $assignments->save();
-        Session::flash('message', 'Assignment delete successfully');
-        return redirect("/assignments");
+        $workshifts = workshifts::find($id);
+        $workshifts->status = 0;
+        $workshifts->save();
+        Session::flash('message', 'Workshift delete successfully');
+        return redirect("/workshifts");
     }
 
 
@@ -165,13 +171,13 @@ class AssignmentsController extends Controller
      * For Setting Job Posts Routes
      */
     static function routes() {
-          Route::group(array('prefix' => 'assignments'), function() {
-            Route::get('/', array('as' => 'assignments.index', 'uses' => 'AssignmentsController@index'));
-            Route::get('/add', array('as' => 'assignments.create', 'uses' => 'AssignmentsController@create'));
-            Route::post('/save', array('as' => 'assignments.save', 'uses' => 'AssignmentsController@store'));
-            Route::get('/edit/{id}', array('as' => 'assignments.edit', 'uses' => 'AssignmentsController@edit'));
-            Route::post('/update/{id}', array('as' => 'assignments.create', 'uses' => 'AssignmentsController@create'));
-            Route::get('/delete/{id}', array('as' => 'assignments.destroy', 'uses' => 'AssignmentsController@destroy'));
+          Route::group(array('prefix' => 'workshifts'), function() {
+            Route::get('/', array('as' => 'workshifts.index', 'uses' => 'WorkshiftsController@index'));
+            Route::get('/add', array('as' => 'workshifts.create', 'uses' => 'WorkshiftsController@create'));
+            Route::post('/save', array('as' => 'workshifts.save', 'uses' => 'WorkshiftsController@store'));
+            Route::get('/edit/{id}', array('as' => 'workshifts.edit', 'uses' => 'WorkshiftsController@edit'));
+            Route::post('/update/{id}', array('as' => 'workshifts.create', 'uses' => 'WorkshiftsController@create'));
+            Route::get('/delete/{id}', array('as' => 'workshifts.destroy', 'uses' => 'WorkshiftsController@destroy'));
         });
 
     }

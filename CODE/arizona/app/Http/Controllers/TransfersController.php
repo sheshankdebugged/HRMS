@@ -21,8 +21,21 @@ class TransfersController extends Controller
      */
     public function index()
     {
+        $user_id = Auth::id();
+        $searchQuery  = isset($_GET['search'])?trim($_GET['search']):"";
+        $where   = ['status'=>1,'user_id'=>$user_id];
+        
+        if(!empty($searchQuery)){
+            $where = [
+                ['transfer_date', 'LIKE', "%$searchQuery%"],
+                ['status', '=', 1],
+                ['user_id', '=', $user_id],
+            ];   
+        }
+        $list = transfers::where($where)->paginate(10);
 
-        $list = transfers::where(['status' => 1])->paginate(10);
+
+        // $list = transfers::where(['status' => 1])->paginate(10);
         return view('hrmodule.transfers.list')->with([
             'listData' => $list,
             'pageTitle' => "Transfers",

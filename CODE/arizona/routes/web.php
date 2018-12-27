@@ -103,4 +103,13 @@ Route::group(['middleware' => 'auth'], function () {
 
       // Terminations Routes
       \App\Http\Controllers\TerminationsController::routes();
+
+      // Worksheet Routes
+      \App\Http\Controllers\WorksheetController::routes();
+
+      // Workshifts Routes
+      \App\Http\Controllers\WorkshiftsController::routes();
+
+       // Holidays Routes
+       \App\Http\Controllers\HolidaysController::routes();
 });

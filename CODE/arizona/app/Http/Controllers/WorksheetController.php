@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Polls;
+use App\Models\Worksheet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -11,7 +11,7 @@ use Illuminate\Support\Form;
 use Session;
 use Validator;
 
-class PollsController extends Controller
+class WorksheetController extends Controller
 {
 
     /**
@@ -21,24 +21,24 @@ class PollsController extends Controller
      */
     public function index()
     {
+        
         $user_id = Auth::id();
         $searchQuery  = isset($_GET['search'])?trim($_GET['search']):"";
         $where   = ['status'=>1,'user_id'=>$user_id];
         
         if(!empty($searchQuery)){
             $where = [
-                ['poll_question', 'LIKE', "%$searchQuery%"],
+                ['Worksheet_title', 'LIKE', "%$searchQuery%"],
                 ['status', '=', 1],
                 ['user_id', '=', $user_id],
             ];   
         }
-        $list = polls::where($where)->paginate(10);
+        $list = worksheet::where($where)->paginate(10);
 
-
-        // $list = polls::where(['status' => 1])->paginate(10);
-        return view('hrmodule.polls.list')->with([
+        // $list = worksheet::where(['status' => 1])->paginate(10);
+        return view('hrmodule.worksheet.list')->with([
             'listData' => $list,
-            'pageTitle' => "Polls",
+            'pageTitle' => "worksheet",
         ]);
 
     }
@@ -51,10 +51,10 @@ class PollsController extends Controller
     public function create()
     {
         $action = 'add';
-        return view('hrmodule.polls.add')->with([
+        return view('hrmodule.worksheet.add')->with([
             'action' => $action,
-            'pageTitle' => "Polls",
-            'Addform' => "Add New Poll",
+            'pageTitle' => "worksheet",
+            'Addform' => "Add New Worksheet",
         ]);
     }
 
@@ -72,13 +72,13 @@ class PollsController extends Controller
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                'poll_question' => 'required',
-                'poll_answer_1' => 'required',
-                'poll_answer_2' => 'required'
+                // 'poll_question' => 'required',
+                // 'poll_answer_1' => 'required',
+                // 'poll_answer_2' => 'required'
             ]);
             if ($validator->fails()) {
-                $action = 'addpolls';
-                return redirect('/polls/add')
+                $action = 'addworksheet';
+                return redirect('/worksheet/add')
                     ->withErrors($validator)
                     ->withInput()
                     ->with([
@@ -90,29 +90,30 @@ class PollsController extends Controller
             if (request()->hasFile('icon_img')) {
                 $file = request()->file('icon_img');
                 $input['icon_img'] = md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
-                $file->move('./img/uploads/polls/', $input['icon_img']);
+                $file->move('./img/uploads/worksheet/', $input['icon_img']);
             }
 
             echo "<pre>";
 
        
-            $input['poll_start_date'] = ($input['poll_start_date'] !="")?date('Y-m-d',strtotime($input['poll_start_date'])):$input['poll_start_date'];
-            $input['poll_end_date']   = ($input['poll_end_date'] !="")?date('Y-m-d',strtotime($input['poll_end_date'])):$input['poll_end_date'];
-            $input['status']=  1;
+        
+            $input['worksheet_date'] = ($input['worksheet_date'] !="")?date('Y-m-d',strtotime($input['worksheet_date'])):$input['worksheet_date'];
+            
+            $input['status'] =  1;
             $input['user_id'] =  $user_id;
             unset($input['_token']);
             if($input['id']>0){
                 $input['updated_at']=date("Y-m-d H:i:s");
-                Session::flash('message', 'Polls Updated Successfully.');
-                polls::where('id', $input['id'])->update($input);
+                Session::flash('message', 'worksheet Updated Successfully.');
+                worksheet::where('id', $input['id'])->update($input);
             }else{
                 unset($input['id']);
                 $input['created_at']=date("Y-m-d H:i:s");
                 $input['updated_at']=date("Y-m-d H:i:s");
-                Session::flash('message', 'Polls  Added Successfully.');
-                polls::insertGetId($input);
+                Session::flash('message', 'worksheet  Added Successfully.');
+                worksheet::insertGetId($input);
             }
-            return redirect('/polls');
+            return redirect('/worksheet');
         }
     }
 
@@ -137,12 +138,12 @@ class PollsController extends Controller
     {
 
         $action = 'edit';
-        $result = polls::find($id);
+        $result = worksheet::find($id);
         $action = 'add';
-        $editname = "Edit Transfer " . $result->employee;
-        return view('hrmodule.polls.add')->with([
+        $editname = "Edit Worksheet " . $result->employee;
+        return view('hrmodule.worksheet.add')->with([
             'action' => $action,
-            'pageTitle' => "polls",
+            'pageTitle' => "worksheet",
             'Addform' => $editname,
             'result' => $result,
         ]);
@@ -157,21 +158,21 @@ class PollsController extends Controller
      */
     public function destroy($id)
     {
-        $polls = polls::find($id);
-        $polls->status = 0;
-        $polls->save();
-        Session::flash('message', ' Polls delete successfully');
-        return redirect("/polls");
+        $worksheet = worksheet::find($id);
+        $worksheet->status = 0;
+        $worksheet->save();
+        Session::flash('message', ' worksheet delete successfully');
+        return redirect("/worksheet");
     }
     public static function routes()
     {
-            Route::group(array('prefix' => 'polls'), function () {
-            Route::get('/', array('as' => 'polls.index', 'uses' => 'PollsController@index'));
-            Route::get('/add', array('as' => 'polls.create', 'uses' => 'PollsController@create'));
-            Route::post('/save', array('as' => 'polls.save', 'uses' => 'PollsController@store'));
-            Route::get('/edit/{id}', array('as' => 'polls.edit', 'uses' => 'PollsController@edit'));
-            Route::post('/update/{id}', array('as' => 'polls.update', 'uses' => 'PollsController@update'));
-            Route::get('/delete/{id}', array('as' => 'polls.destroy', 'uses' => 'PollsController@destroy'));
+            Route::group(array('prefix' => 'worksheet'), function () {
+            Route::get('/', array('as' => 'worksheet.index', 'uses' => 'WorksheetController@index'));
+            Route::get('/add', array('as' => 'worksheet.create', 'uses' => 'WorksheetController@create'));
+            Route::post('/save', array('as' => 'worksheet.save', 'uses' => 'WorksheetController@store'));
+            Route::get('/edit/{id}', array('as' => 'worksheet.edit', 'uses' => 'WorksheetController@edit'));
+            Route::post('/update/{id}', array('as' => 'worksheet.update', 'uses' => 'WorksheetController@update'));
+            Route::get('/delete/{id}', array('as' => 'worksheet.destroy', 'uses' => 'WorksheetController@destroy'));
         });
     }
 }

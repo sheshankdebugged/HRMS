@@ -22,8 +22,22 @@ class TerminationsController extends Controller
      */
     public function index()
     {
+          
+        $user_id = Auth::id();
+        $searchQuery  = isset($_GET['search'])?trim($_GET['search']):"";
+        $where   = ['status'=>1,'user_id'=>$user_id];
+        
+        if(!empty($searchQuery)){
+            $where = [
+                ['termination_date', 'LIKE', "%$searchQuery%"],
+                ['status', '=', 1],
+                ['user_id', '=', $user_id],
+            ];   
+        }
+        $list =  terminations::where($where)->paginate(10);
 
-        $list = terminations::where(['status' => 1])->paginate(10);
+
+        // $list = terminations::where(['status' => 1])->paginate(10);
         return view('hrmodule.terminations.list')->with([
             'listData' => $list,
             'pageTitle' => "Terminations",

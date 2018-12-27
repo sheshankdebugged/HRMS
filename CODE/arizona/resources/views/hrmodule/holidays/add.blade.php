@@ -31,7 +31,7 @@
 									<div class="col-md-12 nopadding">
 										<div class="back-button">
 											<div class="add-record-btn">
-												<a href="{{ url('promotions') }}"><i class="fa fa-angle-left"></i>Back</a>
+												<a href="{{ url('holidays') }}"><i class="fa fa-angle-left"></i>Back</a>
 											</div>
 										</div>
 									</div>
@@ -41,7 +41,7 @@
 										<h3>{{$Addform}}</h3>
 									</div>
 									<div class="form-upper-main">
-										<h4>Promotion Information</h4>
+										<h4>Holiday Information</h4>
 									</div>
 									<div class="form-subsets">
 
@@ -55,68 +55,74 @@
                                             </div>
                                         @endif 
                                         
-                                        <form method="post" action="{{ url('promotions/save') }}">
+                                        <form method="post" action="{{ url('holidays/save') }}">
                                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                           <input type="hidden" name="id" value="{{isset($result->id)?$result->id:''}}">
 
 											<div class="form-field-inner">
 												
 												 <div class="form-group">
-													<label>Promotion For:</label>
-													<select id="promotion_for_employee_id" name="promotion_for_employee_id" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Employee Name-</option></select>
+													<label>Company:</label>
+													<select id="company" name="company" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Company Name-</option></select>
 
 												 </div>
 												 
 												 <div class="form-group">
-													<label>Forward Application To:</label>
-													<select id="forward_application_to" name="forward_application_to" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Forward Application To</option></select>
+													<label>Station:</label>
+													<select id="station" name="station" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Station</option></select>
+
+												 </div>
+
+												  
+												 <div class="form-group">
+													<label>Department:</label>
+													<select id="department" name="department" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Department</option></select>
+
+												 </div>
+
+												  
+												 <div class="form-group">
+													<label>Employee Type:</label>
+													<select id="employee_type" name="employee_type" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Employee Type</option></select>
+
+												 </div>
+
+												  
+												 <div class="form-group">
+													<label>Employee Category:</label>
+													<select id="employee_category" name="employee_category" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Employee Category</option></select>
 
 												 </div>
 												 
 												 </div>
 												 <div class="form-group">
-												   <label>Promotion Title:</label>
-												   <input type="text" placeholder="Promotion Title" class="form-control-spacial" id="promotion_title" name="promotion_title" value="{{isset($result->promotion_title)?$result->promotion_title:''}}">
-												   <!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
+												   <label>Title:</label>
+												   <input type="text" placeholder="Title" class="form-control-spacial" id="holiday_title" name="holiday_title" value="{{isset($result->holiday_title)?$result->holiday_title:''}}">
+												   <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 												 </div>
 
 												 <div class="form-group">
-													<label>Promotion Designation From:</label>
-													<select id="promotion_designation_from" name="promotion_designation_from" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Promotion Designation From</option></select>
+													<label>Holiday Start Date:</label>
+													<input type="text" placeholder="" class="form-control-spacial date" id="holiday_start_date" name="holiday_start_date" value="{{isset($result->holiday_start_date)?$result->holiday_start_date:''}}">
+												 </div>								 
 
+												 	<div class="form-group">
+													<label>Holiday End Date:</label>
+													<input type="text" placeholder="" class="form-control-spacial date" id="holiday_end_date" name="holiday_end_date" value="{{isset($result->holiday_end_date)?$result->holiday_end_date:''}}">
 												 </div>
-
 												 <div class="form-group">
-													<label>Promotion Designation To:</label>
-													<select id="promotion_designation_to" name="promotion_designation_to" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Promotion Designation To</option></select>
-
-												 </div>
-
-												 <div class="form-group">
-													<label>Promotion Grade From:</label>
-													<select id="promotion_grade_from" name="promotion_grade_from" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Promotion Grade From</option></select>
-
-												 </div>
-
-												 <div class="form-group">
-													<label>Promotion Grade To:</label>
-													<select id="promotion_grade_to" name="promotion_grade_to" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Promotion Grade To</option></select>
+													<label>Status:</label>
+													<select id="holiday_status" name="holiday_status" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">holiday_status</option></select>
 
 												 </div>
 
 												 <div class="form-group">
-													<label>Promotion Date:</label>
-													<!-- <input type="text" placeholder="" class="form-control-spacial date" id="promotion_date" name="promotion_date" value="{{isset($result->promotion_date)?$result->promotion_date:''}}"> -->
-													<input type="text" placeholder="" class="form-control-spacial date" id="promotion_date" name="promotion_date" value="{{isset($result->promotion_date)?$result->promotion_date:''}}">
-												 </div>
-
-												 <div class="form-group">
-													<h4>Promotion Description</h4>
+													<h4>Description</h4>
 												 </div>
 
                                                  <div class="form-group">
 												 <label>Notes:</label>
-													<textarea class="tinyeditorclass" name="additonal_information" id="additonal_information">{{isset($result->additonal_information)?$result->additonal_information:''}}</textarea>
+													<textarea class="tinyeditorclass" name="holiday_description" id="holiday_description">{{isset($result->holiday_description)?$result->holiday_description:''}}</textarea>
 												</div> 
 												 
 

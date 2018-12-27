@@ -21,8 +21,20 @@ class ContractsController extends Controller
      */
     public function index()
     {
+        $user_id = Auth::id();
+        $searchQuery  = isset($_GET['search'])?trim($_GET['search']):"";
+        $where   = ['status'=>1,'user_id'=>$user_id];
+        
+        if(!empty($searchQuery)){
+            $where = [
+                ['contract_title', 'LIKE', "%$searchQuery%"],
+                ['status', '=', 1],
+                ['user_id', '=', $user_id],
+            ];   
+        }
+        $list =contracts::where($where)->paginate(10);
 
-        $list = contracts::where(['status' => 1])->paginate(10);
+        // $list = contracts::where(['status' => 1])->paginate(10);
         return view('hrmodule.contracts.list')->with([
             'listData' => $list,
             'pageTitle' => "contracts",
