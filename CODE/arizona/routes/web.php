@@ -103,4 +103,20 @@ Route::group(['middleware' => 'auth'], function () {
 
       // Terminations Routes
       \App\Http\Controllers\TerminationsController::routes();
+
+    // Time sheet Routes
+
+    //   Attandance
+    
+      \App\Http\Controllers\AttendanceController::routes();
+
+      //   Employee hours
+    
+      \App\Http\Controllers\EmployeehoursController::routes();
+
+      //   Leaves
+    
+      \App\Http\Controllers\LeavesController::routes();
+
+
 });

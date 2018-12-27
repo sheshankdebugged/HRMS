@@ -20,21 +20,41 @@ use Validator;
 
 class EmployeesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $user_id = Auth::id();
+    // /**
+    //  * Display a listing of the resource.
+    //  *
+    //  * @return \Illuminate\Http\Response
+    //  */
+     public function index()
+     {
+       $user_id = Auth::id();
         
-        $user_id = 1;
-        $list = employees::where(['status'=>1,'user_id'=>$user_id])->paginate(10);
+    //     $user_id = 1;
+    //     $list = employees::where(['status'=>1,'user_id'=>$user_id])->paginate(10);
+    //     return view('hrmodule.employees.list')->with([
+    //         'listData' => $list,
+    //         'pageTitle' => "Employees",
+    //     ]);
+
+    // $user_id = Auth::id();
+        $searchQuery  = isset($_GET['search'])?trim($_GET['search']):"";
+        $where   = ['status'=>1,'user_id'=>$user_id];
+                
+        if(!empty($searchQuery)){
+            $where = [
+            //     ['first_name', 'LIKE', "%$searchQuery%"],
+            //     ['email_address', 'LIKE', "%$searchQuery%"],
+            //     ['department', 'LIKE', "%$searchQuery%"],
+            //     ['status', '=', 1],
+            //     ['user_id', '=', $user_id],
+            ];   
+        }
+        $list =employees::where($where)->paginate(10);
         return view('hrmodule.employees.list')->with([
             'listData' => $list,
             'pageTitle' => "Employees",
         ]);
+
 
     }
 
