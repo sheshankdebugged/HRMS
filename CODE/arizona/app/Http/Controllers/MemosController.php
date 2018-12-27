@@ -21,8 +21,21 @@ class MemosController extends Controller
      */
     public function index()
     {
+        
+        $user_id = Auth::id();
+        $searchQuery  = isset($_GET['search'])?trim($_GET['search']):"";
+        $where   = ['status'=>1,'user_id'=>$user_id];
+        
+        if(!empty($searchQuery)){
+            $where = [
+                ['memo_subject', 'LIKE', "%$searchQuery%"],
+                ['status', '=', 1],
+                ['user_id', '=', $user_id],
+            ];   
+        }
+        $list =Memos::where($where)->paginate(10);
 
-        $list = memos::where(['status' => 1])->paginate(10);
+        // $list = memos::where(['status' => 1])->paginate(10);
         return view('hrmodule.memos.list')->with([
             'listData' => $list,
             'pageTitle' => "Memos",

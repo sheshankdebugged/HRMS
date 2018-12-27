@@ -21,9 +21,21 @@ class WarningsController extends Controller
      */
     public function index()
     {
-// die('sd');
-        $list = warnings::where(['status'=>1])->paginate(10);
-        return view('hrmodule.warnings.list')->with([
+        
+        $user_id = Auth::id();
+        $searchQuery  = isset($_GET['search'])?trim($_GET['search']):"";
+        $where   = ['status'=>1,'user_id'=>$user_id];
+        
+        if(!empty($searchQuery)){
+            $where = [
+                ['warning_to', 'LIKE', "%$searchQuery%"],
+                ['status', '=', 1],
+                ['user_id', '=', $user_id],
+            ];   
+        }
+         $list =Warnings::where($where)->paginate(10);
+        //   $list = warnings::where(['status'=>1])->paginate(10);
+         return view('hrmodule.warnings.list')->with([
             'listData' => $list,
             'pageTitle'=>"Warnings"
         ]);
@@ -58,8 +70,7 @@ class WarningsController extends Controller
         if($request->all()){
 
             $validator = Validator::make($request->all(), [
-                'warning_to
-                ' => 'required'
+                'warning_to' => 'required'
             ]);
            if ($validator->fails()) {
                 $action = 'warnings';
