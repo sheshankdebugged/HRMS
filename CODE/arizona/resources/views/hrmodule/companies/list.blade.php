@@ -79,9 +79,7 @@
 												<div class="dropdown action-drop">
 													<a href="javascript:void(0);" class="dropdown-custom"><i style="font-size:16px;" class="fa fa-cog"></i></a>
 													<ul class="dropdown-menu">
-														<li><a href="#"><i class="fa fa-folder-open"></i>View Record</a></li>
 														<li><a href="{{url('/companies/edit')}}/{{$list->id}}"><i class="fa fa-edit"></i>Edit Record</a></li>
-														<li><a href="#"><i class="fa fa-sticky-note"></i>Notes</a></li>
 														<li><a href="{{url('/companies/delete/')}}/{{$list->id}}"><i class="fa fa-times"></i>Delete Record</a></li>
 													</ul>
 												</div>

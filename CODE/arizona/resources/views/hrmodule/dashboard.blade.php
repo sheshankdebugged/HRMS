@@ -30,9 +30,9 @@
 	  <!-- Nav tabs -->
 	  <ul class="nav nav-tabs" role="tablist">
 	    <li role="presentation"><a href="#home" class="active" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-	    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">HR Dashboard</a></li>
-	    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">HR Data</a></li>
-	    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Organogram</a></li>
+	    <li role="presentation"><a href="#hrdashboard" aria-controls="hrdashboard" role="tab" data-toggle="tab">HR Dashboard</a></li>
+	    <li role="presentation"><a href="#hrdata" aria-controls="hrdata" role="tab" data-toggle="tab">HR Data</a></li>
+	    <li role="presentation"><a href="#organogram" aria-controls="organogram" role="tab" data-toggle="tab">Organogram</a></li>
 	  </ul>
 
   <!-- Tab panes -->
@@ -189,9 +189,331 @@
     		</div>
     	</div>
     </div>
-    <div role="tabpanel" class="tab-pane" id="profile">Coming Soon</div>
-    <div role="tabpanel" class="tab-pane" id="messages">Coming Soon</div>
-    <div role="tabpanel" class="tab-pane" id="settings">Coming Soon</div>
+    <div role="tabpanel" class="tab-pane" id="hrdashboard">
+        <div class="inner-home-db">
+    		<div class="upper-profile-an">
+    			<div class="col-md-12">
+                    <div class="upper-header-theme">
+                        <h3>Dashboard Filters</h3>
+                    </div>
+                    <div class="search-filter">
+                        <div class="single-search-an">
+                            <input type="text" placeholder="search">
+                        </div>
+                        <div class="single-search-an">
+                            <input type="text" placeholder="search">
+                        </div>
+                        <div class="single-search-an">
+                            <input type="text" placeholder="search">
+                        </div>
+                        <div class="single-search-an">
+                            <input type="text" placeholder="search">
+                        </div>
+                        <div class="single-search-button-an">
+                            <input type="submit" value="Apply Filters" class="submit-buttton-an">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom-profile-area">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="single-pai-db">
+                                <h3>Male to Female Employees</h3>
+                                <div class="pai-cart-an">
+                                    <img src="{{ url('admin/images/pai.png') }}">
+                                </div>
+                                <div class="pai-table-data">
+                                    <table border="0" width="100%">
+		                                <tbody>
+                                            <tr>
+                                                 <td>Age Group</td>
+                                                 <td style="width:30%;" align="center">Employees</td>
+                                                 <td style="width:16px;"></td>
+                                                 </tr><tr>
+                                                 <td class="WebHRTable_Body">31-40</td>
+                                                 <td align="center">14</td>
+                                                 <td align="center"><a href="#"><i style="color:#b9b9b9;" class="fa fa-external-link"></i></a></td>
+                                                 </tr><tr><td>41-50</td>
+                                                 <td align="center">3</td>
+                                                 <td align="center"><a href="#"><i style="color:#b9b9b9;" class="fa fa-external-link"></i></a></td>
+                                                 </tr><tr><td>51-60</td>
+                                                 <td align="center">1</td>
+                                                 <td align="center"><a href="#"><i style="color:#b9b9b9;" class="fa fa-external-link"></i></a></td>
+                                             </tr>
+                                         </tbody>
+                                     </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="single-pai-db">
+                                <h3>Employees by Age Group</h3>
+                                <div class="pai-cart-an">
+                                    <img src="{{ url('admin/images/pai.png') }}">
+                                </div>
+                                <div class="pai-table-data">
+                                    <table border="0" width="100%">
+		                                <tbody>
+                                            <tr>
+                                                 <td>Age Group</td>
+                                                 <td style="width:30%;" align="center">Employees</td>
+                                                 <td style="width:16px;"></td>
+                                                 </tr><tr>
+                                                 <td class="WebHRTable_Body">31-40</td>
+                                                 <td align="center">14</td>
+                                                 <td align="center"><a href="#"><i style="color:#b9b9b9;" class="fa fa-external-link"></i></a></td>
+                                                 </tr><tr><td>41-50</td>
+                                                 <td align="center">3</td>
+                                                 <td align="center"><a href="#"><i style="color:#b9b9b9;" class="fa fa-external-link"></i></a></td>
+                                                 </tr><tr><td>51-60</td>
+                                                 <td align="center">1</td>
+                                                 <td align="center"><a href="#"><i style="color:#b9b9b9;" class="fa fa-external-link"></i></a></td>
+                                             </tr>
+                                         </tbody>
+                                     </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="single-pai-db">
+                                <h3>Employees by Types</h3>
+                                <div class="pai-cart-an">
+                                    <img src="{{ url('admin/images/pai.png') }}">
+                                </div>
+                                <div class="pai-table-data">
+                                    <table border="0" width="100%">
+		                                <tbody>
+                                            <tr>
+                                                 <td>Age Group</td>
+                                                 <td style="width:30%;" align="center">Employees</td>
+                                                 <td style="width:16px;"></td>
+                                                 </tr><tr>
+                                                 <td class="WebHRTable_Body">31-40</td>
+                                                 <td align="center">14</td>
+                                                 <td align="center"><a href="#"><i style="color:#b9b9b9;" class="fa fa-external-link"></i></a></td>
+                                                 </tr><tr><td>41-50</td>
+                                                 <td align="center">3</td>
+                                                 <td align="center"><a href="#"><i style="color:#b9b9b9;" class="fa fa-external-link"></i></a></td>
+                                                 </tr><tr><td>51-60</td>
+                                                 <td align="center">1</td>
+                                                 <td align="center"><a href="#"><i style="color:#b9b9b9;" class="fa fa-external-link"></i></a></td>
+                                             </tr>
+                                         </tbody>
+                                     </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="single-pai-db">
+                                <h3>Employees by Categories</h3>
+                                <div class="pai-cart-an">
+                                    <img src="{{ url('admin/images/pai.png') }}">
+                                </div>
+                                <div class="pai-table-data">
+                                    <table border="0" width="100%">
+		                                <tbody>
+                                            <tr>
+                                                 <td>Age Group</td>
+                                                 <td style="width:30%;" align="center">Employees</td>
+                                                 <td style="width:16px;"></td>
+                                                 </tr><tr>
+                                                 <td class="WebHRTable_Body">31-40</td>
+                                                 <td align="center">14</td>
+                                                 <td align="center"><a href="#"><i style="color:#b9b9b9;" class="fa fa-external-link"></i></a></td>
+                                                 </tr><tr><td>41-50</td>
+                                                 <td align="center">3</td>
+                                                 <td align="center"><a href="#"><i style="color:#b9b9b9;" class="fa fa-external-link"></i></a></td>
+                                                 </tr><tr><td>51-60</td>
+                                                 <td align="center">1</td>
+                                                 <td align="center"><a href="#"><i style="color:#b9b9b9;" class="fa fa-external-link"></i></a></td>
+                                             </tr>
+                                         </tbody>
+                                     </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="hrdata">
+        <div class="inner-home-db">
+    		<div class="upper-profile-an">
+    			<div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="hr-data-an">
+                                <div class="upper-header-theme">
+                                    <h3>Dashboard Filters</h3>
+                                </div>
+                                <div class="search-filter">
+                                    <div class="single-search-an">
+                                        <input type="text" placeholder="search">
+                                    </div>
+                                    <div class="single-search-an">
+                                        <input type="text" placeholder="search">
+                                    </div>
+                                    <div class="single-search-an">
+                                        <input type="text" placeholder="search">
+                                    </div>
+                                    <div class="single-search-an">
+                                        <input type="text" placeholder="search">
+                                    </div>
+                                    <div class="single-search-button-an">
+                                        <input type="submit" value="Apply Filters" class="submit-buttton-an">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="row">
+                                 <div class="col-md-4">
+                                    <div class="single-pai-db">
+                                        <div class="pai-cart-an">
+                                            <img src="{{ url('admin/images/pai.png') }}">
+                                        </div>
+                                        <h3>Employees by Designation</h3>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="single-pai-db">
+                                        <div class="pai-cart-an">
+                                            <img src="{{ url('admin/images/pai.png') }}">
+                                        </div>
+                                        <h3>Employees by Designation</h3>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="single-pai-db">
+                                        <div class="pai-cart-an">
+                                            <img src="{{ url('admin/images/pai.png') }}">
+                                        </div>
+                                        <h3>Employees by Designation</h3>
+                                    </div>
+                                </div>
+                                <div class="table-data-hr">
+                                     <div class="pai-table-data">
+                                    <table border="0" width="100%">
+                                        <thead>
+		                                 <tr>
+		                                  <td style="width:1%;" align="center">S#</td>
+		                                  <td>Employee</td>
+		                                  <td>User Name</td>
+		                                  <td>Access Code</td>
+		                                  <td>Designation</td>
+		                                  <td>Department</td>
+		                                  <td>Station</td>
+		                                  <td>Company</td>
+		                                  <td style="width:1%;"></td>
+		                                 </tr>
+		                                 </thead>
+		                                <tbody>
+                                            <tr>
+                                                 <td>1</td>
+                                                 <td>Allen Parker</td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                            </tr>
+                                            <tr>
+                                                 <td>2</td>
+                                                 <td>Allen Parker</td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                            </tr>
+                                            <tr>
+                                                 <td>3</td>
+                                                 <td>Allen Parker</td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                            </tr>
+                                            <tr>
+                                                 <td>4</td>
+                                                 <td>Allen Parker</td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                            </tr>
+                                            <tr>
+                                                 <td>5</td>
+                                                 <td>Allen Parker</td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                            </tr>
+                                            <tr>
+                                                 <td>6</td>
+                                                 <td>Allen Parker</td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                            </tr>
+                                            <tr>
+                                                 <td>7</td>
+                                                 <td>Allen Parker</td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                            </tr>
+                                            <tr>
+                                                 <td>8</td>
+                                                 <td>Allen Parker</td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                                 <td></td>
+                                            </tr>
+                                         </tbody>
+                                     </table>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="organogram">Coming Soon</div>
   </div>
 
 </div>				
