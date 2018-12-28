@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Worksheet;
+use App\Models\Overtimes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -11,7 +11,7 @@ use Illuminate\Support\Form;
 use Session;
 use Validator;
 
-class WorksheetController extends Controller
+class OvertimesController extends Controller
 {
 
     /**
@@ -28,17 +28,17 @@ class WorksheetController extends Controller
         
         if(!empty($searchQuery)){
             $where = [
-                ['task', 'LIKE', "%$searchQuery%"],
+                ['overtimes_title', 'LIKE', "%$searchQuery%"],
                 ['status', '=', 1],
                 ['user_id', '=', $user_id],
             ];   
         }
-        $list = worksheet::where($where)->paginate(10);
+        $list = overtimes::where($where)->paginate(10);
 
-        // $list = worksheet::where(['status' => 1])->paginate(10);
-        return view('hrmodule.worksheet.list')->with([
+        // $list = overtimes::where(['status' => 1])->paginate(10);
+        return view('hrmodule.overtimes.list')->with([
             'listData' => $list,
-            'pageTitle' => "worksheet",
+            'pageTitle' => "Overtimes",
         ]);
 
     }
@@ -51,10 +51,10 @@ class WorksheetController extends Controller
     public function create()
     {
         $action = 'add';
-        return view('hrmodule.worksheet.add')->with([
+        return view('hrmodule.overtimes.add')->with([
             'action' => $action,
-            'pageTitle' => "worksheet",
-            'Addform' => "Add New Worksheet",
+            'pageTitle' => "Overtimes",
+            'Addform' => "Add New Overtime",
         ]);
     }
 
@@ -72,13 +72,14 @@ class WorksheetController extends Controller
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                // 'poll_question' => 'required',
-                // 'poll_answer_1' => 'required',
-                // 'poll_answer_2' => 'required'
+                'employee_name' => 'required',
+                'overtimes_title' => 'required',
+                'overtimes_date' => 'required',
+                    
             ]);
             if ($validator->fails()) {
-                $action = 'addworksheet';
-                return redirect('/worksheet/add')
+                $action = 'addovertimes';
+                return redirect('/overtimes/add')
                     ->withErrors($validator)
                     ->withInput()
                     ->with([
@@ -90,30 +91,30 @@ class WorksheetController extends Controller
             if (request()->hasFile('icon_img')) {
                 $file = request()->file('icon_img');
                 $input['icon_img'] = md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
-                $file->move('./img/uploads/worksheet/', $input['icon_img']);
+                $file->move('./img/uploads/overtimes/', $input['icon_img']);
             }
 
             echo "<pre>";
 
        
         
-            $input['worksheet_date'] = ($input['worksheet_date'] !="")?date('Y-m-d',strtotime($input['worksheet_date'])):$input['worksheet_date'];
+            $input['overtimes_date'] = ($input['overtimes_date'] !="")?date('Y-m-d',strtotime($input['overtimes_date'])):$input['overtimes_date'];
             
             $input['status'] =  1;
             $input['user_id'] =  $user_id;
             unset($input['_token']);
             if($input['id']>0){
                 $input['updated_at']=date("Y-m-d H:i:s");
-                Session::flash('message', 'worksheet Updated Successfully.');
-                worksheet::where('id', $input['id'])->update($input);
+                Session::flash('message', 'Overtime Updated Successfully.');
+                overtimes::where('id', $input['id'])->update($input);
             }else{
                 unset($input['id']);
                 $input['created_at']=date("Y-m-d H:i:s");
                 $input['updated_at']=date("Y-m-d H:i:s");
-                Session::flash('message', 'worksheet  Added Successfully.');
-                worksheet::insertGetId($input);
+                Session::flash('message', 'Overtime  Added Successfully.');
+                overtimes::insertGetId($input);
             }
-            return redirect('/worksheet');
+            return redirect('/overtimes');
         }
     }
 
@@ -138,12 +139,12 @@ class WorksheetController extends Controller
     {
 
         $action = 'edit';
-        $result = worksheet::find($id);
+        $result = overtimes::find($id);
         $action = 'add';
-        $editname = "Edit Worksheet " . $result->employee;
-        return view('hrmodule.worksheet.add')->with([
+        $editname = "Edit overtimes " . $result->employee;
+        return view('hrmodule.overtimes.add')->with([
             'action' => $action,
-            'pageTitle' => "worksheet",
+            'pageTitle' => "Overtimes",
             'Addform' => $editname,
             'result' => $result,
         ]);
@@ -158,21 +159,21 @@ class WorksheetController extends Controller
      */
     public function destroy($id)
     {
-        $worksheet = worksheet::find($id);
-        $worksheet->status = 0;
-        $worksheet->save();
-        Session::flash('message', ' worksheet delete successfully');
-        return redirect("/worksheet");
+        $overtimes = overtimes::find($id);
+        $overtimes->status = 0;
+        $overtimes->save();
+        Session::flash('message', ' Overtime delete successfully');
+        return redirect("/overtimes");
     }
     public static function routes()
     {
-            Route::group(array('prefix' => 'worksheet'), function () {
-            Route::get('/', array('as' => 'worksheet.index', 'uses' => 'WorksheetController@index'));
-            Route::get('/add', array('as' => 'worksheet.create', 'uses' => 'WorksheetController@create'));
-            Route::post('/save', array('as' => 'worksheet.save', 'uses' => 'WorksheetController@store'));
-            Route::get('/edit/{id}', array('as' => 'worksheet.edit', 'uses' => 'WorksheetController@edit'));
-            Route::post('/update/{id}', array('as' => 'worksheet.update', 'uses' => 'WorksheetController@update'));
-            Route::get('/delete/{id}', array('as' => 'worksheet.destroy', 'uses' => 'WorksheetController@destroy'));
+            Route::group(array('prefix' => 'overtimes'), function () {
+            Route::get('/', array('as' => 'overtimes.index', 'uses' => 'OvertimesController@index'));
+            Route::get('/add', array('as' => 'overtimes.create', 'uses' => 'OvertimesController@create'));
+            Route::post('/save', array('as' => 'overtimes.save', 'uses' => 'OvertimesController@store'));
+            Route::get('/edit/{id}', array('as' => 'overtimes.edit', 'uses' => 'OvertimesController@edit'));
+            Route::post('/update/{id}', array('as' => 'overtimes.update', 'uses' => 'OvertimesController@update'));
+            Route::get('/delete/{id}', array('as' => 'overtimes.destroy', 'uses' => 'OvertimesController@destroy'));
         });
     }
 }
