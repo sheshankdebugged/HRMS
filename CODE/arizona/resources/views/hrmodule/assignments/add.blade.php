@@ -15,7 +15,7 @@
 								<div class="inner-heading-request">
 									<h2>{{$pageTitle}}</h2>
 								</div>
-								<div class="settings-buttons">
+								<!-- <div class="settings-buttons">
 									<ul>
 										<li>
 											<a href="#" alt="Dashboard"><i class="fa fa-cog"></i></a>
@@ -24,7 +24,7 @@
 											<a href="#" alt="Dashboard"><i class="fa fa-question-circle"></i></a>
 										</li>
 									</ul>
-								</div>
+								</div> -->
 							</div>
 							<div class="request-inner-table">
 								<div class="upper-header-request">
@@ -64,22 +64,18 @@
 
 											<div class="form-group">
 													<label>Assigned To:</label>
-
-													<select  name ="assigned_to" id="assigned_to" class="form-control-select" >
-
-													<option style="" value="0"> 0 </option>
-													<option style="" value="1">1</option>
-													<option style="" value="2">2</option>
-													<option style="" value="3">3</option>
-													<option style="" value="4">4</option>
-													<option style="" value="5">5</option>
-													<option style="" value="6">6</option>
-													<option style="" value="7">7</option>
-													<option style="" value="8">8</option>
-
-
+                                                    <select  name ="assigned_to" id="assigned_to" class="form-control-select" >													
+													  <option style="" value="0"> 0 </option>
+													  <option style="" value="1">1</option>
+													  <option style="" value="2">2</option>
+													  <option style="" value="3">3</option>
+													  <option style="" value="4">4</option>
+													  <option style="" value="5">5</option>
+													  <option style="" value="6">6</option>
+													  <option style="" value="7">7</option>
+													  <option style="" value="8">8</option>
 													</select>
-
+													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 
 												 </div>
 
@@ -98,6 +94,7 @@
                                                  <div class="form-group">
 													<label>Assignment Name:</label>
 													<input type="text" class="form-control-spacial" placeholder="Assignment Name" id="assignment_name" name="assignment_name" value="{{isset($result->assignment_name)?$result->assignment_name:''}}" >
+													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 
 												 </div>
 												 <div class="form-group">

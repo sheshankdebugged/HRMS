@@ -15,7 +15,7 @@
 								<div class="inner-heading-request">
 									<h2>{{$pageTitle}}</h2>
 								</div>
-								<div class="settings-buttons">
+								<!-- <div class="settings-buttons">
 									<ul>
 										<li>
 											<a href="#" alt="Dashboard"><i class="fa fa-cog"></i></a>
@@ -24,7 +24,7 @@
 											<a href="#" alt="Dashboard"><i class="fa fa-question-circle"></i></a>
 										</li>
 									</ul>
-								</div>
+								</div> -->
 							</div>
 							<div class="request-inner-table">
 								<div class="upper-header-request">
@@ -64,6 +64,7 @@
 											<div class="form-group">
 													<label>Employee to Transfer:</label>
 													<select id="employee_to_transfer" name="employee_to_transfer"" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Employee to Transfer 1</option></select>
+													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 													<!-- <input type="text" placeholder="Contact Person" class="form-control-spacial" id="registration_name" name="contact_person" value="{{isset($result->contact_person)?$result->contact_person:''}}"> -->
                                                    
 												 </div>

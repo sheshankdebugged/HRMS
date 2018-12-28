@@ -62,6 +62,9 @@ Route::group(['middleware' => 'auth'], function () {
 // jobrequests Routes
     \App\Http\Controllers\JobRequestsController::routes();
 
+    //Job Candidates Routes
+    \App\Http\Controllers\JobCandidatesController::routes();
+
 // JobTests Routes
     \App\Http\Controllers\JobTestsController::routes();
     

@@ -42,17 +42,17 @@
 											<h3>{{ $pageTitle }}</h3>
 										</div>
                              	<div class="col-md-8 nopadding">
-								 <form id="search" name="search" method="get" />
+								 <form id="search" name="search" method="get">
 											<div class="search-area-request">
 												<input type="text" placeholder="Search..."  name="search" class="search" id="search" value="{{isset($_GET['search'])?$_GET['search']:''}} "/>
 												<button style="cursor:pointer"><i class="fa fa-search"></i></button>
 											</div>
 											</form>
 											<div class="filter-btn-request">
-												<a href="{{ url('attendance') }}" alt="Dashboard"><i class="fa fa-refresh"></i></a>
+												<a href="{{ url('jobcandidates') }}" alt="Dashboard"><i class="fa fa-refresh"></i></a>
 											</div>
 											<div class="add-record-btn">
-												<a href="{{ url('attendance/add') }}"><i class="fa fa-plus"></i>Add Record</a>
+												<a href="{{ url('jobcandidates/add') }}"><i class="fa fa-plus"></i>Add Record</a>
 											</div>
 											
 										</div>
@@ -64,30 +64,32 @@
 									<table id="requesttab" border="0" cellspacing="0" cellpadding="3" width="100%" align="center">
 									 <thead>
 									  <tr>
-										  <td style="background-color:#0c64ae; " class="thbackgroud"><a style="color:#fff; " href="#">Employee</a></td>
-										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Date</a></td>
-										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Sign In Time</a></td>
-										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Sign Out Time</a></td>
-										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">	Approval Status</a></td>
+										  <td style="background-color:#0c64ae; " class="thbackgroud"><a style="color:#fff; " href="#">Candidate Name</a></td>
+										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Job Field</a></td>
+										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Email Address</a></td>
+										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Mobile Number</a></td>
+										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Applied On</a></td>
+										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Reference No</a></td>
 									      <td style="background-color:#0c64ae; width:1%;"></td>
 									  </tr>
 									</thead>
 										<tbody>
                                         @foreach($listData as $list)
 											<tr id="second" class="context-requst-one selected">
-											<td class="datainner" style="">{{$list->employee_name}}</td>
-											<td class="datainner" style="">{{$list->attendance_date}}</td>
-											<td class="datainner" style="">{{$list->sign_in_time}}</td> 
-											<td class="datainner" style="">{{$list->sign_out_time}}</td> 
-											<td class="datainner" style="">{{$list->approval_status}}</td>                      
+											<td class="datainner" style="">{{$list->first_name}}</td>
+											<td class="datainner" style="">{{$list->job_field}}</td>
+											<td class="datainner" style="">{{$list->email_address}}</td> 
+											<td class="datainner" style="">{{$list->mobile_number}}</td> 
+											<td class="datainner" style="">{{$list->record_added_on}}</td> 
+											<td class="datainner" style="">{{$list->reference_no}}</td>                     
 											<td align="right">
 												<div class="dropdown action-drop">
 													<a href="javascript:void(0);" class="dropdown-custom"><i style="font-size:16px;" class="fa fa-cog"></i></a>
 													<ul class="dropdown-menu">
 														<!-- <li><a href="#"><i class="fa fa-folder-open"></i>View Record</a></li> -->
-														<li><a href="{{url('/attendance/edit')}}/{{$list->id}}"><i class="fa fa-edit"></i>Edit Record</a></li>
+														<li><a href="{{url('/jobcandidates/edit')}}/{{$list->id}}"><i class="fa fa-edit"></i>Edit Record</a></li>
 														<!-- <li><a href="#"><i class="fa fa-sticky-note"></i>Notes</a></li> -->
-														<li><a href="{{url('/attendance/delete/')}}/{{$list->id}}" onclick="return confirm('Are you sure to want delete this?')"><i class="fa fa-times"></i>Delete Record</a></li>
+														<li><a href="{{url('/jobcandidates/delete/')}}/{{$list->id}}" onclick="return confirm('Are you sure to want delete this?')"><i class="fa fa-times"></i>Delete Record</a></li>
 													</ul>
 												</div>
 											</td> 

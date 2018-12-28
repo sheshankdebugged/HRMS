@@ -15,7 +15,7 @@
 								<div class="inner-heading-request">
 									<h2>{{$pageTitle}}</h2>
 								</div>
-								<div class="settings-buttons">
+								<!-- <div class="settings-buttons">
 									<ul>
 										<li>
 											<a href="#" alt="Dashboard"><i class="fa fa-cog"></i></a>
@@ -24,7 +24,7 @@
 											<a href="#" alt="Dashboard"><i class="fa fa-question-circle"></i></a>
 										</li>
 									</ul>
-								</div>
+								</div> -->
 							</div>
 							<div class="request-inner-table">
 								<div class="upper-header-request">
@@ -97,19 +97,16 @@
 												 </div>
 												 <div class="form-group">
 													<label>Forward Application To:</label>
-
 													<select  name ="forward_application_to" class="form-control-select">
 													<option style="" value="0">-</option>
 													<option style="" value="1">-</option>
 													<option style="" value="2">-</option>
-
 													</select>
-
-
 												 </div>
                                                  <div class="form-group">
 													<label>Purpose of Visit:</label>
 													<input type="text" class="form-control-spacial" placeholder="Purpose of Visit:" id="purpose_of_visit" name="purpose_of_visit" value="{{isset($result->purpose_of_visit)?$result->purpose_of_visit:''}}" >
+													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 
 												 </div>
 												 <div class="form-group">
@@ -127,36 +124,36 @@
 
 												 </div>
 												 </div>
-												 <div class="form-group">
+												<div class="form-group">
 													<h4>Travel Budget</h4>
-												 </div>
+												</div>
 
 
-												 <div class="form-group">
+												<div class="form-group">
 													<label>Expected Travel Budget:</label>
 													<input type="text" class="form-control-spacial" placeholder="$" id="expected_travel_budget" name="expected_travel_budget" value="{{isset($result->expected_travel_budget)?$result->expected_travel_budget:''}}" >
 
-												 </div>
-												 <div class="form-group">
+												</div>
+												<div class="form-group">
 													<label>Actual Travel Budget:</label>
 													<input type="text" class="form-control-spacial" placeholder="$" id="actual_travel_budget" name="actual_travel_budget" value="{{isset($result->actual_travel_budget)?$result->actual_travel_budget:''}}" >
 
-												 </div>
+												</div>
 												 <div class="form-group">
 													<h4>Travel Destinations</h4>
 												 </div>
 
 												 <!-- Add table -->
-																					 								 
 
 
-											 
+
+
 
 												<div class="form-group">
 													<h4>Travel Description</h4>
 												 </div>
 												  <div class="form-group">
-											      <textarea class="tinyeditorclass" name="travel_description" id="travel_description" value="{{isset($result->notes)?$result->travel_description:''}}</textarea>
+											      <textarea class="tinyeditorclass" name="travel_description" id="travel_description" value="{{isset($result->notes)?$result->travel_description:''}}"></textarea>
 										        </div>
 
 												<div class="form-group">

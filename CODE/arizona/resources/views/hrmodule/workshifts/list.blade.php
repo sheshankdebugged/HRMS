@@ -17,7 +17,7 @@
 									<h2>{{ $pageTitle }}</h2>
 								</div>
                                 
-								<div class="settings-buttons">
+								<!-- <div class="settings-buttons">
 									<ul>
 										<li>
 											<a href="#" alt="Dashboard"><i class="fa fa-cog"></i></a>
@@ -26,7 +26,7 @@
 											<a href="#" alt="Dashboard"><i class="fa fa-question-circle"></i></a>
 										</li>
 									</ul>
-								</div>
+								</div> -->
 							</div>
 
                             @if(Session::get('message'))
@@ -94,7 +94,7 @@
 														    <li><a href="#"><i class="fa fa-print"></i>Print Record</a></li>
 															<li><a href="#"><i class="fa fa-comments"></i>Discussions</a></li>
 															<li><a href="#"><i class="fa fa-file"></i>Documents</a></li>
-															<li><a href="{{url('/workshifts/delete/')}}/{{$list->id}}"><i class="fa fa-times"></i>Delete Record</a></li>
+															<li><a href="{{url('/workshifts/delete/')}}/{{$list->id}}" onclick="return confirm('Are you sure to want delete this?')"><i class="fa fa-times"></i>Delete Record</a></li>
 														</ul>
 													</div>
 												</td>                     
@@ -102,9 +102,9 @@
 										</tr>
                                         @endforeach
 
-                                        <tr>
+                                        <!-- <tr>
                      <td colspan="6"> <div class="pull-right"> {{ $listData->links() }} </div> </td>
-                     </tr>
+                     </tr> -->
 										</tbody>
 												</table>
 								</div>

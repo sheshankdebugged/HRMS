@@ -74,6 +74,7 @@ class AssignmentsController extends Controller
 
             $validator = Validator::make($request->all(), [
                 'assigned_to' => 'required',
+                'assignment_name' => 'required',
 
 
             ]);

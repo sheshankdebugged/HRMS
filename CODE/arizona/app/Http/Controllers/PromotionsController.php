@@ -72,7 +72,7 @@ class PromotionsController extends Controller
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                // 'poll_question' => 'required',
+                'promotion_for_employee_id' => 'required',
                 // 'poll_answer_1' => 'required',
                 // 'poll_answer_2' => 'required'
             ]);

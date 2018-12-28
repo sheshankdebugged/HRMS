@@ -73,11 +73,12 @@ class employeesexitController extends Controller
 
             $validator = Validator::make($request->all(), [
                 'employee' => 'required',
+                'exit_date' => 'required',
 
             ]);
             if ($validator->fails()) {
                 $action = 'addemployeesexit';
-                return redirect('/addemployeesexit')
+                return redirect('employeesexit/add')
                     ->withErrors($validator)
                     ->withInput()
                     ->with([

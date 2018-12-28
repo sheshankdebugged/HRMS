@@ -15,7 +15,7 @@
 								<div class="inner-heading-request">
 									<h2>{{$pageTitle}}</h2>
 								</div>
-								<div class="settings-buttons">
+								<!-- <div class="settings-buttons">
 									<ul>
 										<li>
 											<a href="#" alt="Dashboard"><i class="fa fa-cog"></i></a>
@@ -24,7 +24,7 @@
 											<a href="#" alt="Dashboard"><i class="fa fa-question-circle"></i></a>
 										</li>
 									</ul>
-								</div>
+								</div> -->
 							</div>
 							<div class="request-inner-table">
 								<div class="upper-header-request">
@@ -110,7 +110,7 @@
 
 												 <div class="form-group">
 													<label>Warning Date:</label>
-													<input type="text" placeholder="" class="form-control-spacial date" id="warning_date" name="warning_date" value="{{isset($result->travel_start_date)?$result->warning_date:''}}">
+													<input type="text" placeholder="" class="form-control-spacial date" id="warning_date" name="warning_date" value="{{isset($result->warning_date)?$result->warning_date:''}}">
 
 												 </div>
 
@@ -128,11 +128,12 @@
 												 </div>
                                                  <div class="form-group">
 													<label>Subject:</label>
-													<input type="text" class="form-control-spacial" placeholder="Subject" id="subject" name="subject" value="{{isset($result->subject)?$result->purpose_of_visit:''}}" >										 
-												 								 
+													<input type="text" class="form-control-spacial" placeholder="" id="subject" name="subject" value="{{isset($result->subject)?$result->subject:''}}" >
+													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 
 
-											 
+
+
 
 												<div class="form-group">
 													<h4>Description</h4>
@@ -165,12 +166,6 @@
 												 @endphp
 												 {{$date}}
 												</div>
-
-
-
-
-
-
 												 <div class="form-group">
 													<input class="submit-office" type="submit" value="Save">
 												</div>

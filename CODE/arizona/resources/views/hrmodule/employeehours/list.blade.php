@@ -17,7 +17,7 @@
 									<h2>{{ $pageTitle }}</h2>
 								</div>
                                 
-								<div class="settings-buttons">
+								<!-- <div class="settings-buttons">
 									<ul>
 										<li>
 											<a href="#" alt="Dashboard"><i class="fa fa-cog"></i></a>
@@ -26,7 +26,7 @@
 											<a href="#" alt="Dashboard"><i class="fa fa-question-circle"></i></a>
 										</li>
 									</ul>
-								</div>
+								</div> -->
 							</div>
 
                             @if(Session::get('message'))
@@ -86,17 +86,17 @@
 												<div class="dropdown action-drop">
 													<a href="javascript:void(0);" class="dropdown-custom"><i style="font-size:16px;" class="fa fa-cog"></i></a>
 													<ul class="dropdown-menu">
-														<li><a href="{{url('/transfers/edit')}}/{{$list->id}}"><i class="fa fa-edit"></i>Edit Record</a></li>
-														<li><a href="{{url('/transfers/delete/')}}/{{$list->id}}"><i class="fa fa-times"></i>Delete Record</a></li>
+														<li><a href="{{url('/employeehours/edit')}}/{{$list->id}}"><i class="fa fa-edit"></i>Edit Record</a></li>
+														<li><a href="{{url('/employeehours/delete/')}}/{{$list->id}}" onclick="return confirm('Are you sure to want delete this?')"><i class="fa fa-times"></i>Delete Record</a></li>
 													</ul>
 												</div>
 											</td> 
 										</tr>
                                         @endforeach
 
-                                        <tr>
+                                        <!-- <tr>
                      <td colspan="6"> <div class="pull-right"> {{ $listData->links() }} </div> </td>
-                     </tr>
+                     </tr> -->
 										</tbody>
 												</table>
 								</div>

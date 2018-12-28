@@ -21,8 +21,19 @@ class DepartmentsController extends Controller
      */
     public function index()
     {
+        $user_id = Auth::id();
+        $searchQuery  = isset($_GET['search'])?trim($_GET['search']):"";
+        $where   = ['status'=>1,'user_id'=>$user_id];
+        
+        if(!empty($searchQuery)){
+            $where = [
+                ['department_name', 'LIKE', "%$searchQuery%"],
+                ['status', '=', 1],
+                ['user_id', '=', $user_id],
+            ];   
+        }
 
-        $list = Departments::where(['status' => 1])->paginate(10);
+        $list = Departments::where($where)->paginate(10);
         return view('hrmodule.departments.list')->with([
             'listData' => $list,
             'pageTitle' => "Departments",
