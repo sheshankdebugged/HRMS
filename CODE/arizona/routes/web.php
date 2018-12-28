@@ -104,13 +104,20 @@ Route::group(['middleware' => 'auth'], function () {
       // Terminations Routes
       \App\Http\Controllers\TerminationsController::routes();
 
+      
+    // Time sheet Routes
 
-      // Workshifts Routes
-      \App\Http\Controllers\WorkshiftsController::routes();
+    // Worksheet Routes
+    \App\Http\Controllers\WorksheetController::routes();
 
        // Holidays Routes
        \App\Http\Controllers\HolidaysController::routes();
     // Time sheet Routes
+    // Workshifts Routes
+    \App\Http\Controllers\WorkshiftsController::routes();
+
+     // Holidays Routes
+     \App\Http\Controllers\HolidaysController::routes();
 
     //   Attandance
     

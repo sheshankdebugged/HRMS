@@ -382,6 +382,7 @@ header .header-menu li.dropdown .dropdown-menu  .menu-list a i{
 .upper-header-request h3 {
     font-weight: normal;
     font-size: 20px;
+        color: #fff;
 }
 
 .search-area-request {
@@ -926,3 +927,75 @@ div#profile {
     display: inline-block;
 }
 .inner-setting-db .nav-pills a.active {background: #fff;color: #205275;}
+.alert.alert-success {
+    height: auto;
+    display: inline-block;
+    width: 100%;
+    font-weight: bold;
+}
+.inner-home-db h3 {
+    color: #fff;
+    font-weight: 100;
+}
+
+.search-filter {
+    display: flex;
+    flex: 0 0 100%;
+    align-items: center;
+    text-align: center;
+}
+
+.single-search-an {
+    width: 20%;
+}
+
+.single-search-an input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+}
+.single-pai-db {
+    display: inline-block;
+    width: 100%;
+    background: #fff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 30px 0;
+}
+
+.single-pai-db h3 {
+    color: #000;
+    font-size: 18px;
+}
+
+.pai-table-data table td {
+    border: 1px solid #ccc7c7;
+    padding: 4px;
+    font-size: 14px;
+}
+.hr-data-an .single-search-an {
+    width: 100%;
+    display: block;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.hr-data-an .search-filter {
+    flex-direction: column;
+}
+.table-data-hr {
+    display: block;
+    background: #163850;
+    padding: 10px;
+    width: 100%;
+}
+
+.table-data-hr td {
+    color: #fff;
+}
+.hr-data-an .single-search-button-an {
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+}
