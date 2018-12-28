@@ -2,16 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Worksheet;
+use App\Models\Providentfunds;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Form;
-use Session;
+use Illuminate\Support\Facades\Auth;
 use Validator;
+use Session;
 
-class WorksheetController extends Controller
+class ProvidentfundsController extends Controller
 {
 
     /**
@@ -28,17 +32,17 @@ class WorksheetController extends Controller
         
         if(!empty($searchQuery)){
             $where = [
-                ['task', 'LIKE', "%$searchQuery%"],
+                ['provident_fund_type', 'LIKE', "%$searchQuery%"],
                 ['status', '=', 1],
                 ['user_id', '=', $user_id],
             ];   
         }
-        $list = worksheet::where($where)->paginate(10);
+        $list = providentfunds::where($where)->paginate(10);
 
-        // $list = worksheet::where(['status' => 1])->paginate(10);
-        return view('hrmodule.worksheet.list')->with([
+        // $list = providentfunds::where(['status' => 1])->paginate(10);
+        return view('hrmodule.providentfunds.list')->with([
             'listData' => $list,
-            'pageTitle' => "worksheet",
+            'pageTitle' => "Provident funds",
         ]);
 
     }
@@ -51,10 +55,10 @@ class WorksheetController extends Controller
     public function create()
     {
         $action = 'add';
-        return view('hrmodule.worksheet.add')->with([
+        return view('hrmodule.providentfunds.add')->with([
             'action' => $action,
-            'pageTitle' => "worksheet",
-            'Addform' => "Add New Worksheet",
+            'pageTitle' => "Provident funds",
+            'Addform' => "Add New Provident funds",
         ]);
     }
 
@@ -72,13 +76,12 @@ class WorksheetController extends Controller
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                // 'poll_question' => 'required',
-                // 'poll_answer_1' => 'required',
-                // 'poll_answer_2' => 'required'
+                'employee_name' => 'required',
+               
             ]);
             if ($validator->fails()) {
-                $action = 'addworksheet';
-                return redirect('/worksheet/add')
+                $action = 'addprovidentfunds';
+                return redirect('/providentfunds/add')
                     ->withErrors($validator)
                     ->withInput()
                     ->with([
@@ -90,30 +93,30 @@ class WorksheetController extends Controller
             if (request()->hasFile('icon_img')) {
                 $file = request()->file('icon_img');
                 $input['icon_img'] = md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
-                $file->move('./img/uploads/worksheet/', $input['icon_img']);
+                $file->move('./img/uploads/providentfunds/', $input['icon_img']);
             }
 
             echo "<pre>";
 
        
         
-            $input['worksheet_date'] = ($input['worksheet_date'] !="")?date('Y-m-d',strtotime($input['worksheet_date'])):$input['worksheet_date'];
+            // $input['providentfunds_date'] = ($input['providentfunds_date'] !="")?date('Y-m-d',strtotime($input['providentfunds_date'])):$input['providentfunds_date'];
             
             $input['status'] =  1;
             $input['user_id'] =  $user_id;
             unset($input['_token']);
             if($input['id']>0){
                 $input['updated_at']=date("Y-m-d H:i:s");
-                Session::flash('message', 'worksheet Updated Successfully.');
-                worksheet::where('id', $input['id'])->update($input);
+                Session::flash('message', 'Provident funds Updated Successfully.');
+                providentfunds::where('id', $input['id'])->update($input);
             }else{
                 unset($input['id']);
                 $input['created_at']=date("Y-m-d H:i:s");
                 $input['updated_at']=date("Y-m-d H:i:s");
-                Session::flash('message', 'worksheet  Added Successfully.');
-                worksheet::insertGetId($input);
+                Session::flash('message', 'Provident funds  Added Successfully.');
+                providentfunds::insertGetId($input);
             }
-            return redirect('/worksheet');
+            return redirect('/providentfunds');
         }
     }
 
@@ -138,12 +141,12 @@ class WorksheetController extends Controller
     {
 
         $action = 'edit';
-        $result = worksheet::find($id);
+        $result = providentfunds::find($id);
         $action = 'add';
-        $editname = "Edit Worksheet " . $result->employee;
-        return view('hrmodule.worksheet.add')->with([
+        $editname = "Edit providentfunds " . $result->employee;
+        return view('hrmodule.providentfunds.add')->with([
             'action' => $action,
-            'pageTitle' => "worksheet",
+            'pageTitle' => "Provident funds",
             'Addform' => $editname,
             'result' => $result,
         ]);
@@ -158,21 +161,21 @@ class WorksheetController extends Controller
      */
     public function destroy($id)
     {
-        $worksheet = worksheet::find($id);
-        $worksheet->status = 0;
-        $worksheet->save();
-        Session::flash('message', ' worksheet delete successfully');
-        return redirect("/worksheet");
+        $providentfunds = providentfunds::find($id);
+        $providentfunds->status = 0;
+        $providentfunds->save();
+        Session::flash('message', ' Provident funds delete successfully');
+        return redirect("/providentfunds");
     }
     public static function routes()
     {
-            Route::group(array('prefix' => 'worksheet'), function () {
-            Route::get('/', array('as' => 'worksheet.index', 'uses' => 'WorksheetController@index'));
-            Route::get('/add', array('as' => 'worksheet.create', 'uses' => 'WorksheetController@create'));
-            Route::post('/save', array('as' => 'worksheet.save', 'uses' => 'WorksheetController@store'));
-            Route::get('/edit/{id}', array('as' => 'worksheet.edit', 'uses' => 'WorksheetController@edit'));
-            Route::post('/update/{id}', array('as' => 'worksheet.update', 'uses' => 'WorksheetController@update'));
-            Route::get('/delete/{id}', array('as' => 'worksheet.destroy', 'uses' => 'WorksheetController@destroy'));
+            Route::group(array('prefix' => 'providentfunds'), function () {
+            Route::get('/', array('as' => 'providentfunds.index', 'uses' => 'ProvidentfundsController@index'));
+            Route::get('/add', array('as' => 'providentfunds.create', 'uses' => 'ProvidentfundsController@create'));
+            Route::post('/save', array('as' => 'providentfunds.save', 'uses' => 'ProvidentfundsController@store'));
+            Route::get('/edit/{id}', array('as' => 'providentfunds.edit', 'uses' => 'ProvidentfundsController@edit'));
+            Route::post('/update/{id}', array('as' => 'providentfunds.update', 'uses' => 'ProvidentfundsController@update'));
+            Route::get('/delete/{id}', array('as' => 'providentfunds.destroy', 'uses' => 'ProvidentfundsController@destroy'));
         });
     }
 }

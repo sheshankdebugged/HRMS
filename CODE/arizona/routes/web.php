@@ -134,5 +134,22 @@ Route::group(['middleware' => 'auth'], function () {
     
       \App\Http\Controllers\LeavesController::routes();
 
+      //   Hourly Wages
+    
+      \App\Http\Controllers\HourlywagesController::routes();
+      
+      //   Overtime
+    
+      \App\Http\Controllers\overtimesController::routes();
+
+      //   Provident Funds
+      
+      \App\Http\Controllers\ProvidentfundsController::routes();
+
+     //   Advance Salary
+      
+     \App\Http\Controllers\AdvancesalaryController::routes();
+
+
 
 });

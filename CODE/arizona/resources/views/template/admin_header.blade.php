@@ -186,7 +186,7 @@ Password: @7tN$i2cF5~5
 
                 <li class="dropdown">
                     <a href="#" class="nav-link">
-                        <i class="fa fa-group"></i>
+                    <i class="fa fa-adjust"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-left">
                         <div class="sub-menu-title">Time Sheet</div>
@@ -213,6 +213,78 @@ Password: @7tN$i2cF5~5
 
                     </div>
                 </li>
+
+                <li class="dropdown">
+                    <a href="#" class="nav-link">
+                    <i class="fa fa-calculator"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-left">
+                        <div class="sub-menu-title">Payroll</div>
+
+                        <div class="d-block menu-list">
+                           <div class="row">
+                              <div class="col-sm-6 list-unstyled">
+                                 <a href="#"><i class="fa fa-columns"></i></i>Dashboard</a>
+                                 <a href="{{('salary')}}"><i class="fa fa-bitcoin"></i>Salary</a>
+                                 <a href="{{('salarypayslips')}}"><i class="fa fa-bitcoin"></i>Salary Payslips</a>
+                                 <a href="{{('payrollsetup')}}"><i class="fa fa-coins"></i>Payroll Setup</a>
+                                 <a href="{{('hourlywages')}}"><i class="fa fa-briefcase"></i>Hourly Wages</a>
+                                 <a href="{{('overtimes')}}"><i class="fa fa-briefcase"></i>Overtimes</a>
+                                 <a href="{{('providentfund')}}"><i class="fa fa-briefcase"></i>Provident Fund</a>
+                                 <a href="{{('advancesalary')}}"><i class="fa fa-briefcase"></i>Advance Salary</a>
+                                 <a href="{{('loans')}}"><i class="fa fa-briefcase"></i>Loans</a>
+                                 <a href="{{('insurance')}}"><i class="fa fa-briefcase"></i>Insurance</a>
+                                
+                                                                  
+                              </div>
+                              <div class="col-sm-6 list-unstyled">
+                                    <a href="{{url('deductions')}}"><i class="fa fa-trophy"></i>Deductions</a>
+                                    <a href="{{url('bonuses')}}"><i class="fa fa-plane"></i>Bonuses</a>
+                                    <a href="{{url('Commissions')}}"><i class="fa fa-star"></i>Commissions</a>
+                                    <a href="{{url('adjustments')}}"><i class="fa fa-star"></i>Adjustments</a>
+                                    <a href="{{url('reimbursements')}}"><i class="fa fa-star"></i>Reimbursements</a>
+
+                                   
+                              </div>
+                           </div>
+                        </div>
+
+                    </div>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="nav-link">
+                    <i class="fa fa-calculator"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-left">
+                        <div class="sub-menu-title">Reports</div>
+
+                        <div class="d-block menu-list">
+                           <div class="row">
+                              <div class="col-sm-6 list-unstyled">
+                                 <a href="#"><i class="fa fa-columns"></i></i>HR Reports</a>
+                                 <a href="{{('recruitmentreports')}}"><i class="fa fa-bitcoin"></i>Recruitment Reports</a>
+                                 <a href="{{('employeesreports')}}"><i class="fa fa-bitcoin"></i>Employees Reports</a>
+                                 <a href="{{('timesheetreports')}}"><i class="fa fa-coins"></i>Timesheet Reports</a>
+                                 <a href="{{('payrollreports')}}"><i class="fa fa-briefcase"></i>Payroll Reports</a>
+                                                               
+                                                                  
+                              </div>
+                              <div class="col-sm-6 list-unstyled">
+                                    <a href="{{url('trainingsreports')}}"><i class="fa fa-trophy"></i>Trainings Reports/a>
+                                    <a href="{{url('graphs')}}"><i class="fa fa-plane"></i>Graphs</a>
+                                    <a href="{{url('reportsgenerator')}}"><i class="fa fa-star"></i>Reports Generator</a>
+                                    <a href="{{url('addonmodulesreports')}}"><i class="fa fa-star"></i>Add On Modules Reports</a>
+
+                                   
+                              </div>
+                           </div>
+                        </div>
+
+                    </div>
+                </li>
+
+                
             </ul>
         </div>
     </nav>
