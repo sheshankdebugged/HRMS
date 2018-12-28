@@ -33,6 +33,7 @@ a:hover{
     margin-bottom: 40px;
 }
 
+
 .form-group {
     position: relative;
     display: block;
@@ -41,7 +42,7 @@ a:hover{
 
 .form-group label {
     font-size: 15px;
-    color: #888888;
+    color: #fff;
     font-weight: 400;
     margin: 0px 0px 3px 0px;
     min-height: 21px;
@@ -421,6 +422,8 @@ header .header-menu li.dropdown .dropdown-menu  .menu-list a i{
 .inner-form-main {
     display: inline-block;
     width: 100%;
+    background-color: #205275;
+    padding:30px;
 }
 .form-field-inner {
     max-width: 500px;
@@ -451,6 +454,7 @@ header .header-menu li.dropdown .dropdown-menu  .menu-list a i{
 }
 .form-heading-space {
     text-align: center;
+    color: #fff;
 }
 .form-upper-main {
     margin-bottom: 30px;
@@ -458,7 +462,7 @@ header .header-menu li.dropdown .dropdown-menu  .menu-list a i{
 
 .form-upper-main h4 {
     font-weight: 400;
-    color: #0c64ae;
+    color:yellow;
 }
 .form-heading-space h3 {
     font-weight: lighter;
@@ -466,7 +470,8 @@ header .header-menu li.dropdown .dropdown-menu  .menu-list a i{
 }
 .form-field-inner h4 {
     font-weight: 400;
-    color: #0c64ae;
+    color:yellow;
+}
 }
 .form-subsets .form-group input.submit-office {
     color: #fff;

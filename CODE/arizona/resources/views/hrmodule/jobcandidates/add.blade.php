@@ -55,7 +55,7 @@
                                             </div>
                                         @endif 
                                         
-                                        <form method="post" action="{{ url('attendance/save') }}">
+                                        <form method="post" action="{{ url('jobcandidates/save') }}">
                                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                           <input type="hidden" name="id" value="{{isset($result->id)?$result->id:''}}">
 

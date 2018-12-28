@@ -138,9 +138,7 @@
               </div>
               <div class="field-value-an">
                 <select>
-                  <option>India</option>
-                  <option>India1</option>
-                  <option>India2</option>
+                
                 </select>
               </div>
             </div>
@@ -159,7 +157,7 @@
                     <input type="file" name="o_year" value="">
                   </div>
                   <div class="image-an-company">
-                    <img src="https://s3.amazonaws.com/a.webhr.co/logo/demo_OdCFED.png">
+                    <!-- <img src="https://s3.amazonaws.com/a.webhr.co/logo/demo_OdCFED.png"> -->
                   </div>
                 </div>
 
