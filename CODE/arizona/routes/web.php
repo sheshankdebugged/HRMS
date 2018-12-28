@@ -112,7 +112,7 @@ Route::group(['middleware' => 'auth'], function () {
 
        // Holidays Routes
        \App\Http\Controllers\HolidaysController::routes();
-    // Time sheet Routes
+
     // Workshifts Routes
     \App\Http\Controllers\WorkshiftsController::routes();
 
