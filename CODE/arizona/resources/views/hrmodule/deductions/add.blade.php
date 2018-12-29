@@ -31,7 +31,7 @@
 									<div class="col-md-12 nopadding">
 										<div class="back-button">
 											<div class="add-record-btn">
-												<a href="{{ url('bonuses') }}"><i class="fa fa-angle-left"></i>Back</a>
+												<a href="{{ url('deductions') }}"><i class="fa fa-angle-left"></i>Back</a>
 											</div>
 										</div>
 									</div>
@@ -41,7 +41,7 @@
 										<h3>{{$Addform}}</h3>
 									</div>
 									<div class="form-upper-main">
-										<h4>Bonus Information</h4>
+										<h4>Deduction Information</h4>
 									</div>
 									<div class="form-subsets">
 
@@ -55,7 +55,7 @@
                                             </div>
                                         @endif 
                                         
-                                        <form method="post" action="{{ url('bonuses/save') }}">
+                                        <form method="post" action="{{ url('deductions/save') }}">
                                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                           <input type="hidden" name="id" value="{{isset($result->id)?$result->id:''}}">
 
@@ -75,32 +75,32 @@
 												 </div>
 												 <div class="form-group">
 													<label>Title:</label>
-													<input type="text" placeholder="bonuses Title" class="form-control-spacial" id="bonuses_title" name="bonuses_title" value="{{isset($result->bonuses_title)?$result->bonuses_title:''}}">
+													<input type="text" placeholder="Deductions Title" class="form-control-spacial" id="deductions_title" name="deductions_title" value="{{isset($result->deductions_title)?$result->deductions_title:''}}">
 													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 
 												 </div>
 												 <div class="form-group">
 													<label>Amount:</label>
-													<input type="text" placeholder="Bonuses Amount" class="form-control-spacial" id="bonuses_amount" name="bonuses_amount" value="{{isset($result->bonuses_amount)?$result->bonuses_amount:''}}">
+													<input type="text" placeholder="Deductions Amount" class="form-control-spacial" id="deductions_amount" name="deductions_amount" value="{{isset($result->deductions_amount)?$result->deductions_amount:''}}">
 													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 
 												 </div>
 												 <div class="form-group">
 													<label>Date:</label>
-													<input type="text" placeholder="" class="form-control-spacial date" id="bonuses_date" name="bonuses_date" value="{{isset($result->bonuses_date)?$result->bonuses_date:''}}">
+													<input type="text" placeholder="" class="form-control-spacial date" id="deductions_date" name="deductions_date" value="{{isset($result->deductions_date)?$result->deductions_date:''}}">
 													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 
 												
 												 <div class="form-group">
-													<h4>Bonus Description</h4>
+													<h4>Deduction Description</h4>
 												 </div>
 
                                                  <div class="form-group">
 												 <label>Notes:</label>
-													<textarea class="tinyeditorclass" name="bonus_description" id="bonus_description">{{isset($result->bonus_description)?$result->bonus_description:''}}</textarea>
+													<textarea class="tinyeditorclass" name="deduction_description" id="deduction_description">{{isset($result->deduction_description)?$result->deduction_description:''}}</textarea>
 												</div> 
 												<div class="form-group">
-													<h4>Bonus Document (Optional)</h4>
+													<h4>Deduction Document (Optional)</h4>
 												 </div>
 												 <div class="back-button">
 													<div class="add-record-btn">

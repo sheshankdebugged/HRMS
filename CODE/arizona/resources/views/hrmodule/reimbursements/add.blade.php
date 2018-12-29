@@ -31,7 +31,7 @@
 									<div class="col-md-12 nopadding">
 										<div class="back-button">
 											<div class="add-record-btn">
-												<a href="{{ url('bonuses') }}"><i class="fa fa-angle-left"></i>Back</a>
+												<a href="{{ url('reimbursements') }}"><i class="fa fa-angle-left"></i>Back</a>
 											</div>
 										</div>
 									</div>
@@ -41,7 +41,7 @@
 										<h3>{{$Addform}}</h3>
 									</div>
 									<div class="form-upper-main">
-										<h4>Bonus Information</h4>
+										<h4>Reimbursement Information</h4>
 									</div>
 									<div class="form-subsets">
 
@@ -55,7 +55,7 @@
                                             </div>
                                         @endif 
                                         
-                                        <form method="post" action="{{ url('bonuses/save') }}">
+                                        <form method="post" action="{{ url('reimbursements/save') }}">
                                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                           <input type="hidden" name="id" value="{{isset($result->id)?$result->id:''}}">
 
@@ -75,32 +75,58 @@
 												 </div>
 												 <div class="form-group">
 													<label>Title:</label>
-													<input type="text" placeholder="bonuses Title" class="form-control-spacial" id="bonuses_title" name="bonuses_title" value="{{isset($result->bonuses_title)?$result->bonuses_title:''}}">
+													<input type="text" placeholder="reimbursements title" class="form-control-spacial" id="reimbursements_title" name="reimbursements_title" value="{{isset($result->reimbursements_title)?$result->reimbursements_title:''}}">
 													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 
 												 </div>
-												 <div class="form-group">
+												 <!-- <div class="form-group">
 													<label>Amount:</label>
-													<input type="text" placeholder="Bonuses Amount" class="form-control-spacial" id="bonuses_amount" name="bonuses_amount" value="{{isset($result->bonuses_amount)?$result->bonuses_amount:''}}">
+													<input type="text" placeholder="Reimbursements Amount" class="form-control-spacial" id="reimbursements_amount" name="reimbursements_amount" value="{{isset($result->reimbursements_amount)?$result->reimbursements_amount:''}}">
 													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 
-												 </div>
+												 </div> -->
 												 <div class="form-group">
 													<label>Date:</label>
-													<input type="text" placeholder="" class="form-control-spacial date" id="bonuses_date" name="bonuses_date" value="{{isset($result->bonuses_date)?$result->bonuses_date:''}}">
+													<input type="text" placeholder="" class="form-control-spacial date" id="reimbursements_date" name="reimbursements_date" value="{{isset($result->reimbursements_date)?$result->reimbursements_date:''}}">
 													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
+												</div>
 
-												
+												<div class="form-group">
+													<label>Include in Payslip:</label>
+													<input class="switch" id="iip" checked="true" type="checkbox">
+												</div>
+												<div class="form-group">
+													<h4>Reimbursement Items</h4>
+													<div class="inner-table-main" style="min-height:590px;">
+								                   <div class="inner-table-main" style="min-height:590px;">
+									              <table id="requesttab" border="0" cellspacing="0" cellpadding="3" width="100%" align="center">
+									             		<thead>
+									               			<tr>
+										  						<td style="background-color:#0c64ae; " class="thbackgroud"><a style="color:#fff; " href="#">S#</a></td>
+										  						<td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Date</a></td>
+										  						<td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Category</a></td>
+										  						<td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Item</a></td>
+										  						<td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Receipt #</a></td>
+										  						<td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Country</a></td>
+										  						<td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Amount (Local Currency)</a></td>
+										  						<td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Tax</a></td>
+										  						<td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Amount</a></td>
+														  		<td style="background-color:#0c64ae; width:1%;"></td>
+									  						</tr>
+														</thead>
+													</table>
+													</div>
+												</div>
 												 <div class="form-group">
-													<h4>Bonus Description</h4>
+													<h4>Reimbursement Description</h4>
 												 </div>
 
                                                  <div class="form-group">
 												 <label>Notes:</label>
-													<textarea class="tinyeditorclass" name="bonus_description" id="bonus_description">{{isset($result->bonus_description)?$result->bonus_description:''}}</textarea>
+													<textarea class="tinyeditorclass" name="reimbursement_description" id="reimbursement_description">{{isset($result->reimbursement_description)?$result->reimbursement_description:''}}</textarea>
 												</div> 
 												<div class="form-group">
-													<h4>Bonus Document (Optional)</h4>
+													<h4>Reimbursement Document (Optional)</h4>
 												 </div>
 												 <div class="back-button">
 													<div class="add-record-btn">

@@ -74,9 +74,8 @@ class BonusesController extends Controller
             $validator = Validator::make($request->all(), [
                 'employee_name' => 'required',
                 'bonuses_title' => 'required',
-                'bonuses_date' => 'required',
-                'monthly_repayment_amount' => 'required',
-                'repayment_start_date' => 'required'                    
+                'bonuses_amount' => 'required',
+                'bonuses_date' => 'required'                 
             ]);
             if ($validator->fails()) {
                 $action = 'addbonuses';
@@ -100,7 +99,7 @@ class BonusesController extends Controller
        
         
             $input['bonuses_date'] = ($input['bonuses_date'] !="")?date('Y-m-d',strtotime($input['bonuses_date'])):$input['bonuses_date'];
-            $input['repayment_start_date'] = ($input['repayment_start_date'] !="")?date('Y-m-d',strtotime($input['repayment_start_date'])):$input['repayment_start_date'];
+            // $input['repayment_start_date'] = ($input['repayment_start_date'] !="")?date('Y-m-d',strtotime($input['repayment_start_date'])):$input['repayment_start_date'];
 
             $input['status'] =  1;
             $input['user_id'] =  $user_id;
@@ -143,7 +142,7 @@ class BonusesController extends Controller
         $action = 'edit';
         $result = bonuses::find($id);
         $action = 'add';
-        $editname = "Edit bonuses " . $result->employee;
+        $editname = "Edit Bonus " . $result->employee;
         return view('hrmodule.bonuses.add')->with([
             'action' => $action,
             'pageTitle' => "Bonuses",

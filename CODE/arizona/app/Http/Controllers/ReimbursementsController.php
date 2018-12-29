@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Loans;
+use App\Models\Reimbursements;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -11,7 +11,8 @@ use Illuminate\Support\Form;
 use Session;
 use Validator;
 
-class LoansController extends Controller
+
+class ReimbursementsController extends Controller
 {
 
     /**
@@ -28,17 +29,17 @@ class LoansController extends Controller
         
         if(!empty($searchQuery)){
             $where = [
-                ['loans_title', 'LIKE', "%$searchQuery%"],
+                ['reimbursements_title', 'LIKE', "%$searchQuery%"],
                 ['status', '=', 1],
                 ['user_id', '=', $user_id],
             ];   
         }
-        $list = loans::where($where)->paginate(10);
+        $list = reimbursements::where($where)->paginate(10);
 
-        // $list = loans::where(['status' => 1])->paginate(10);
-        return view('hrmodule.loans.list')->with([
+        // $list = reimbursements::where(['status' => 1])->paginate(10);
+        return view('hrmodule.reimbursements.list')->with([
             'listData' => $list,
-            'pageTitle' => "Loans",
+            'pageTitle' => "Reimbursements",
         ]);
 
     }
@@ -51,10 +52,10 @@ class LoansController extends Controller
     public function create()
     {
         $action = 'add';
-        return view('hrmodule.loans.add')->with([
+        return view('hrmodule.reimbursements.add')->with([
             'action' => $action,
-            'pageTitle' => "Loans",
-            'Addform' => "Add New Loan",
+            'pageTitle' => "Reimbursements",
+            'Addform' => "Add New Reimbursement",
         ]);
     } 
 
@@ -73,14 +74,13 @@ class LoansController extends Controller
 
             $validator = Validator::make($request->all(), [
                 'employee_name' => 'required',
-                'loans_title' => 'required',
-                'loans_date' => 'required',
-                'monthly_repayment_amount' => 'required',
-                'repayment_stayrt_date' => 'required'                    
+                'reimbursements_title' => 'required',
+                'reimbursements_date' => 'required',
+                // 'reimbursements_amount' => 'required',                   
             ]);
             if ($validator->fails()) {
-                $action = 'addloans';
-                return redirect('/loans/add')
+                $action = 'addreimbursements';
+                return redirect('/reimbursements/add')
                     ->withErrors($validator)
                     ->withInput()
                     ->with([
@@ -92,31 +92,31 @@ class LoansController extends Controller
             if (request()->hasFile('icon_img')) {
                 $file = request()->file('icon_img');
                 $input['icon_img'] = md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
-                $file->move('./img/uploads/loans/', $input['icon_img']);
+                $file->move('./img/uploads/reimbursements/', $input['icon_img']);
             }
 
             echo "<pre>";
 
        
         
-            $input['loans_date'] = ($input['loans_date'] !="")?date('Y-m-d',strtotime($input['loans_date'])):$input['loans_date'];
-            $input['repayment_start_date'] = ($input['repayment_start_date'] !="")?date('Y-m-d',strtotime($input['repayment_start_date'])):$input['repayment_start_date'];
+            $input['reimbursements_date'] = ($input['reimbursements_date'] !="")?date('Y-m-d',strtotime($input['reimbursements_date'])):$input['reimbursements_date'];
+            // $input['repayment_start_date'] = ($input['repayment_start_date'] !="")?date('Y-m-d',strtotime($input['repayment_start_date'])):$input['repayment_start_date'];
 
             $input['status'] =  1;
             $input['user_id'] =  $user_id;
             unset($input['_token']);
             if($input['id']>0){
                 $input['updated_at']=date("Y-m-d H:i:s");
-                Session::flash('message', 'Loan Updated Successfully.');
-                loans::where('id', $input['id'])->update($input);
+                Session::flash('message', 'Reimbursement Updated Successfully.');
+                reimbursements::where('id', $input['id'])->update($input);
             }else{
                 unset($input['id']);
                 $input['created_at']=date("Y-m-d H:i:s");
                 $input['updated_at']=date("Y-m-d H:i:s");
-                Session::flash('message', 'Loan  Added Successfully.');
-                loans::insertGetId($input);
+                Session::flash('message', 'Reimbursement  Added Successfully.');
+                reimbursements::insertGetId($input);
             }
-            return redirect('/loans');
+            return redirect('/reimbursements');
         }
     }
 
@@ -141,12 +141,12 @@ class LoansController extends Controller
     {
 
         $action = 'edit';
-        $result = loans::find($id);
+        $result = reimbursements::find($id);
         $action = 'add';
-        $editname = "Edit Boan " . $result->employee;
-        return view('hrmodule.loans.add')->with([
+        $editname = "Edit Reimbursement " . $result->employee;
+        return view('hrmodule.reimbursements.add')->with([
             'action' => $action,
-            'pageTitle' => "Loans",
+            'pageTitle' => "Reimbursements",
             'Addform' => $editname,
             'result' => $result,
         ]);
@@ -161,21 +161,21 @@ class LoansController extends Controller
      */
     public function destroy($id)
     {
-        $loans = loans::find($id);
-        $loans->status = 0;
-        $loans->save();
-        Session::flash('message', ' Loan delete successfully');
-        return redirect("/loans");
+        $reimbursements = reimbursements::find($id);
+        $reimbursements->status = 0;
+        $reimbursements->save();
+        Session::flash('message', ' Reimbursement delete successfully');
+        return redirect("/reimbursements");
     }
     public static function routes()
     {
-            Route::group(array('prefix' => 'loans'), function () {
-            Route::get('/', array('as' => 'loans.index', 'uses' => 'LoansController@index'));
-            Route::get('/add', array('as' => 'loans.create', 'uses' => 'LoansController@create'));
-            Route::post('/save', array('as' => 'loans.save', 'uses' => 'LoansController@store'));
-            Route::get('/edit/{id}', array('as' => 'loans.edit', 'uses' => 'LoansController@edit'));
-            Route::post('/update/{id}', array('as' => 'loans.update', 'uses' => 'LoansController@update'));
-            Route::get('/delete/{id}', array('as' => 'loans.destroy', 'uses' => 'LoansController@destroy'));
+            Route::group(array('prefix' => 'reimbursements'), function () {
+            Route::get('/', array('as' => 'reimbursements.index', 'uses' => 'ReimbursementsController@index'));
+            Route::get('/add', array('as' => 'reimbursements.create', 'uses' => 'ReimbursementsController@create'));
+            Route::post('/save', array('as' => 'reimbursements.save', 'uses' => 'ReimbursementsController@store'));
+            Route::get('/edit/{id}', array('as' => 'reimbursements.edit', 'uses' => 'ReimbursementsController@edit'));
+            Route::post('/update/{id}', array('as' => 'reimbursements.update', 'uses' => 'ReimbursementsController@update'));
+            Route::get('/delete/{id}', array('as' => 'reimbursements.destroy', 'uses' => 'ReimbursementsController@destroy'));
         });
     }
 }

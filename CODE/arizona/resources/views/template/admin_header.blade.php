@@ -86,7 +86,7 @@ Password: @7tN$i2cF5~5
         <div class="container navbar-collapse d-none d-sm-block header-main">
             <ul class="rtl navbar-nav mr-auto header-menu">
                 <li>
-                    <a href="#" class="nav-link">
+                    <a href="{{url('dashboard')}}" class="nav-link">
                         <i id="navHome_Icon" class="fa fa-home"></i>
                     </a>
                 </li>
@@ -240,7 +240,7 @@ Password: @7tN$i2cF5~5
                               <div class="col-sm-6 list-unstyled">
                                     <a href="{{url('deductions')}}"><i class="fa fa-trophy"></i>Deductions</a>
                                     <a href="{{url('bonuses')}}"><i class="fa fa-plane"></i>Bonuses</a>
-                                    <a href="{{url('Commissions')}}"><i class="fa fa-star"></i>Commissions</a>
+                                    <a href="{{url('commissions')}}"><i class="fa fa-star"></i>Commissions</a>
                                     <a href="{{url('adjustments')}}"><i class="fa fa-star"></i>Adjustments</a>
                                     <a href="{{url('reimbursements')}}"><i class="fa fa-star"></i>Reimbursements</a>
 

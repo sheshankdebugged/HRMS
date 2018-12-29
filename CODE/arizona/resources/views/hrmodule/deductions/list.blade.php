@@ -50,13 +50,13 @@
 											</form>
 											<div class="filter-btn-request">
 												<!-- <a href="#" alt="Dashboard"><i class="fa fa-filter"></i></a> -->
-												<a href="{{ url('bonuses') }}" alt="Dashboard"><i class="fa fa-refresh"></i></a>
+												<a href="{{ url('deductions') }}" alt="Dashboard"><i class="fa fa-refresh"></i></a>
 											</div>
 											<div class="add-record-btn">
-												<a href="{{ url('bonuses/add') }}"><i class="fa fa-plus"></i>Add Record</a>
+												<a href="{{ url('deductions/add') }}"><i class="fa fa-plus"></i>Add Record</a>
 											</div>
 											<div class="add-record-btn">
-												<a href="{{ url('bonuses/add_multiple_bonus') }}">Add Multiple Bonuses</a>
+												<a href="{{ url('deductions/adds') }}">Recurring Deduction</a>
 											</div>
 										</div>
 										
@@ -81,9 +81,9 @@
                                         @foreach($listData as $list)
 											<tr id="second" class="context-requst-one selected">
 											<td class="datainner" style="">{{$list->employee_name}}</td>
-											<td class="datainner" style="">{{$list->bonuses_title}}</td>
-											<td class="datainner" style="">{{$list->bonuses_amount}}</td>  
-											<td class="datainner" style="">{{$list->bonuses_date}}</td>
+											<td class="datainner" style="">{{$list->deductions_title}}</td>
+											<td class="datainner" style="">{{$list->deductions_amount}}</td>  
+											<td class="datainner" style="">{{$list->deductions_date}}</td>
 											<td class="datainner" style="">{{$list->approval_status}}</td>
 											                      
 											<td align ="right">
@@ -91,9 +91,9 @@
 													<a href="javascript:void(0);" class="dropdown-custom"><i style="font-size:16px;" class="fa fa-cog"></i></a>
 													<ul class="dropdown-menu">
 														<!-- <li><a href="#"><i class="fa fa-folder-open"></i>View Record</a></li> -->
-														<li><a href="{{url('/bonuses/edit')}}/{{$list->id}}"><i class="fa fa-edit"></i>Edit Record</a></li>
+														<li><a href="{{url('/deductions/edit')}}/{{$list->id}}"><i class="fa fa-edit"></i>Edit Record</a></li>
 														<!-- <li><a href="#"><i class="fa fa-sticky-note"></i>Notes</a></li> -->
-														<li><a href="{{url('/bonuses/delete/')}}/{{$list->id}}" onclick="return confirm('Are you sure to want delete this?')"><i class="fa fa-times"></i>Delete Record</a></li>
+														<li><a href="{{url('/deductions/delete/')}}/{{$list->id}}" onclick="return confirm('Are you sure to want delete this?')"><i class="fa fa-times"></i>Delete Record</a></li>
 													</ul>
 												</div>
 											</td> 

@@ -151,14 +151,25 @@ Route::group(['middleware' => 'auth'], function () {
       
      \App\Http\Controllers\AdvancesalaryController::routes();
 
-      //   Advance Loans
+      // Loans
       
       \App\Http\Controllers\LoansController::routes();
 
-     //   Advance Bonuses
+     //   Bonuses
       
       \App\Http\Controllers\BonusesController::routes();
 
+     //   Deductions
+      
+      \App\Http\Controllers\DeductionsController::routes();
+
+     //  Commissions
+      
+        \App\Http\Controllers\commissionsController::routes();
+
+        //  Reimbursements
+      
+        \App\Http\Controllers\reimbursementsController::routes();
 
 
 });
