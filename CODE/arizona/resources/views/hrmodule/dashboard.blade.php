@@ -13,7 +13,7 @@
 								<div class="inner-heading-request">
 									<h2>My Dashboard</h2>
 								</div>
-								<div class="settings-buttons">
+								<!-- <div class="settings-buttons">
 									<ul>
 										<li>
 											<a href="#" alt="Dashboard"><i class="fa fa-cog"></i></a>
@@ -22,7 +22,7 @@
 											<a href="#" alt="Dashboard"><i class="fa fa-question-circle"></i></a>
 										</li>
 									</ul>
-								</div>
+								</div> -->
 							</div>
 							<div class="main-dashboard-out">
 								<div class="dash-board-bd">
