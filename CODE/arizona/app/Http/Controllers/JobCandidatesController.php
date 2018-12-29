@@ -72,7 +72,7 @@ class JobCandidatesController extends Controller
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                'test_title' => 'required',
+                'employee_name' => 'required',
 
             ]);
 

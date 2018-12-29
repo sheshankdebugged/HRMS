@@ -1,7 +1,7 @@
 @include('template.home_header')
 <body class="login-bg"> 
 <!-- Login header start -->
-<div class="login-logo"><a href="index.html"><img src="{{ url('/admin/images/WebHR_White.svg') }}" alt="Ofeloz" /></a></div>
+<div class="login-logo"></div>
 <!-- header end -->
 <section class="full-wrapper common-padding login-section">
     <div class="container">

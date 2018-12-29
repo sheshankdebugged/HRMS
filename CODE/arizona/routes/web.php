@@ -24,6 +24,7 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+    Route::get('/home', 'DashboardController@index')->name('home');
 
 // Companies Routes
     \App\Http\Controllers\CompaniesController::routes();
@@ -140,7 +141,7 @@ Route::group(['middleware' => 'auth'], function () {
       
       //   Overtime
     
-      \App\Http\Controllers\overtimesController::routes();
+      \App\Http\Controllers\OvertimesController::routes();
 
       //   Provident Funds
       
