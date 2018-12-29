@@ -41,7 +41,7 @@
 										<h3>{{$Addform}}</h3>
 									</div>
 									<div class="form-upper-main">
-										<h4>Employee Attendance Information</h4>
+										<h4>Candidate Information</h4>
 									</div>
 									<div class="form-subsets">
 

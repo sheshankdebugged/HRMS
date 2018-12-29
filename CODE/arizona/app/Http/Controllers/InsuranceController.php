@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Insurance;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\employeesexit;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
@@ -73,8 +72,11 @@ class InsuranceController extends Controller
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                'employee' => 'required',
-                'exit_date' => 'required',
+                'employee_name' => 'required',
+                'insurance_title' => 'required',
+                'employee_amount' => 'required',
+                'organization_share' => 'required',
+                'expiry_date' => 'required',
 
             ]);
             if ($validator->fails()) {
@@ -90,7 +92,7 @@ class InsuranceController extends Controller
             $input = $request->all();
             echo "<pre>";
 
-            $input['exit_date'] = ($input['exit_date'] != "") ? date('Y-m-d', strtotime($input['exit_date'])) : $input['exit_date'];
+            $input['expiry_date'] = ($input['expiry_date'] != "") ? date('Y-m-d', strtotime($input['expiry_date'])) : $input['expiry_date'];
             $input['status'] = 1;
             $input['user_id'] = $user_id;
             unset($input['_token']);
@@ -100,7 +102,7 @@ class InsuranceController extends Controller
                 Insurance::where('id', $input['id'])->update($input);
             } else {
                 unset($input['id']);
-                $input['exit_date'] = date("Y-m-d H:i:s");
+                $input['expiry_date'] = date("Y-m-d H:i:s");
                 $input['updated_at'] = date("Y-m-d H:i:s");
                 Session::flash('message', 'Employee Insurance Added Successfully.');
                 Insurance::insertGetId($input);
@@ -133,7 +135,7 @@ class InsuranceController extends Controller
         $result = Insurance::find($id);
         $result = Insurance::find($id);
         $action = 'add';
-        $editname = "Edit " . $result->employees_exit;
+        $editname = "Edit " . $result->insurance;
         return view('hrmodule.insurance.add')->with([
             'action' => $action,
             'pageTitle' => "Insurance",

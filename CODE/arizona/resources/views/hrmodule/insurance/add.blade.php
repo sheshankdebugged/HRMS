@@ -76,32 +76,42 @@
 													<option style="" value="6">6</option>
 													<option style="" value="7">7</option>
 													<option style="" value="8">8</option>
-
-
-													</select>
+											        </select>
 													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 
 												 </div>
 
 												 <div class="form-group">
-													<label>Forward Application To:</label>
-													<select id ="forward_application_to_id"  name ="forward_application_to_id" class="form-control-select">
+													<label>Insurance Type:</label>
+													<select id ="insurance_type"  name ="insurance_type" class="form-control-select">
 													<option style="" value="0"> - </option>
 													<option style="" value="1">1</option>
 													<option style="" value="2">2</option>
 													</select>
 												 </div>
-
 												 <div class="form-group">
+												   <label>Insurance Title:</label>
+												   <input type="text" class="form-control-spacial" placeholder="Insurance Title" id="insurance_title" name="insurance_title" value="{{isset($result->insurance_title)?$result->insurance_title:''}}" >
+												   <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
+												   <div class="form-group">
+												   <label>Employee Amount (Per Month):</label>
+												   <input type="text" class="form-control-spacial" placeholder="" id="employee_amount" name="employee_amount" value="{{isset($result->employee_amount)?$result->employee_amount:''}}" >
+												   <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
+												   <div class="form-group">
+												   <label>Organization Share (Per Month):</label>
+												   <input type="text" class="form-control-spacial" placeholder="" id="organization_share" name="organization_share" value="{{isset($result->organization_share)?$result->organization_share:''}}" >
+												   <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
+
+												 <!-- <div class="form-group">
 													<label>Notice Date:</label>
 													<input type="text" placeholder="" class="form-control-spacial date" id="notice_date" name="notice_date" value="{{isset($result->notice_date)?$result->notice_date:''}}">
 
-												 </div>
+												 </div> -->
 
 												 <div class="form-group">
-													<label>Resignation Date:</label>
-													<input type="text" placeholder="" class="form-control-spacial date" id="resignation_date" name="resignation_date" value="{{isset($result->assignment_employees)?$result->assignment_employees:''}}">
-
+													<label>Expiry Date:</label>
+													<input type="text" placeholder="" class="form-control-spacial date" id="expiry_date" name="expiry_date" value="{{isset($result->expiry_date)?$result->expiry_date:''}}">
+													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 												 </div>
 
 
@@ -112,11 +122,11 @@
 
 
 												 <div class="form-group">
-													<h4>Resignation Reason</h4>
+													<h4>Insurance Description:</h4>
 												 </div>
 												 <div class="form-group">
-												 <label>Notes:</label>
-													<textarea class="tinyeditorclass" name="notes" id="notes">{{isset($result->notes)?$result->notes:''}}</textarea>
+												 <label>Description:</label>
+													<textarea class="tinyeditorclass" name="insurance_description" id="insurance_description">{{isset($result->insurance_description)?$result->insurance_description:''}}</textarea>
 												</div>
 
 
@@ -125,7 +135,7 @@
 												 </div>
 												 <div class="form-group">
 												 <label>Notes:</label>
-													<textarea class="tinyeditorclass" name="notes" id="notes">{{isset($result->notes)?$result->notes:''}}</textarea>
+													<textarea class="tinyeditorclass" name="additional_information" id="additional_information">{{isset($result->additional_information)?$result->additional_information:''}}</textarea>
 												</div>
 
 

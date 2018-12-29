@@ -151,6 +151,17 @@ Route::group(['middleware' => 'auth'], function () {
       
      \App\Http\Controllers\AdvancesalaryController::routes();
 
+     //   Insurance 
+      
+     \App\Http\Controllers\InsuranceController::routes();
 
+     //   Adjustments 
+      
+     \App\Http\Controllers\AdjustmentsController::routes();
+
+
+
+
+     
 
 });
