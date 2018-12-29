@@ -56,7 +56,7 @@ class LoansController extends Controller
             'pageTitle' => "Loans",
             'Addform' => "Add New Loan",
         ]);
-    }
+    } 
 
     /**
      * Store a newly created resource in storage.

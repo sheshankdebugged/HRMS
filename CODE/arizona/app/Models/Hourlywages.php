@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Hourlywages extends Model
 {
-    protected $table = 'Hourlywages';
+    protected $table = 'hourlywages';
 }
