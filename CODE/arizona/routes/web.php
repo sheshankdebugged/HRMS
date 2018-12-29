@@ -151,6 +151,7 @@ Route::group(['middleware' => 'auth'], function () {
       
      \App\Http\Controllers\AdvancesalaryController::routes();
 
+<<<<<<< HEAD
      //   Insurance 
       
      \App\Http\Controllers\InsuranceController::routes();
@@ -161,6 +162,27 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 
+=======
+      // Loans
+      
+      \App\Http\Controllers\LoansController::routes();
+
+     //   Bonuses
+      
+      \App\Http\Controllers\BonusesController::routes();
+
+     //   Deductions
+      
+      \App\Http\Controllers\DeductionsController::routes();
+
+     //  Commissions
+      
+        \App\Http\Controllers\commissionsController::routes();
+
+        //  Reimbursements
+      
+        \App\Http\Controllers\reimbursementsController::routes();
+>>>>>>> 6d8bb1f542ca3c181e4fa6b63cd0c4d4ce4cdc62
 
      
 
