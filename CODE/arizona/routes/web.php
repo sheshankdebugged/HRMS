@@ -160,7 +160,6 @@ Route::group(['middleware' => 'auth'], function () {
      \App\Http\Controllers\AdjustmentsController::routes();
 
 
-
       // Loans
       
       \App\Http\Controllers\LoansController::routes();
