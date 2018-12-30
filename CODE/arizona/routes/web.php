@@ -23,7 +23,9 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
 
-    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+
+Route::get('/dashboard','DashboardController@index')->name('dashboard');
+Route::get('/home','DashboardController@index')->name('dashboard');
 
 // Companies Routes
     \App\Http\Controllers\CompaniesController::routes();
@@ -127,6 +129,8 @@ Route::group(['middleware' => 'auth'], function () {
       //   Leaves
     
       \App\Http\Controllers\LeavesController::routes();
+
+      
 
 
 });
