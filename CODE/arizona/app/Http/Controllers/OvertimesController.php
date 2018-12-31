@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Overtimes;
+use App\Models\Employees;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -51,10 +52,12 @@ class OvertimesController extends Controller
     public function create()
     {
         $action = 'add';
+        $master = $this->getmasterfields();
         return view('hrmodule.overtimes.add')->with([
             'action' => $action,
             'pageTitle' => "Overtimes",
             'Addform' => "Add New Overtime",
+            'master' => $master
         ]);
     }
 
@@ -69,10 +72,11 @@ class OvertimesController extends Controller
     {
 
         $user_id = Auth::id();
+        $master = $this->getmasterfields();
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                'employee_name' => 'required',
+                'employee_id' => 'required',
                 'overtimes_title' => 'required',
                 'overtimes_date' => 'required',
                     
@@ -139,6 +143,7 @@ class OvertimesController extends Controller
     {
 
         $action = 'edit';
+        $master = $this->getmasterfields();
         $result = overtimes::find($id);
         $action = 'add';
         $editname = "Edit overtimes " . $result->employee;
@@ -147,6 +152,7 @@ class OvertimesController extends Controller
             'pageTitle' => "Overtimes",
             'Addform' => $editname,
             'result' => $result,
+            'master' => $master
         ]);
 
     }
@@ -175,6 +181,13 @@ class OvertimesController extends Controller
             Route::post('/update/{id}', array('as' => 'overtimes.update', 'uses' => 'OvertimesController@update'));
             Route::get('/delete/{id}', array('as' => 'overtimes.destroy', 'uses' => 'OvertimesController@destroy'));
         });
+    }
+    public function getmasterfields()
+    {
+        $master = array();
+        $master['Employees'] = Employees::where(['status' => 1])->get()->toArray();
+               
+        return $master;
     }
 }
 

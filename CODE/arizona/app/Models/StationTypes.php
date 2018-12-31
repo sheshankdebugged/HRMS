@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Countries extends Model
+class StationTypes extends Model
 {
-    protected $table = 'countries';
+    protected $table = 'station_type';
 }

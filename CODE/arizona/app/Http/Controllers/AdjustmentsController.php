@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Adjustments;
+use App\Models\Employees;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -51,10 +52,12 @@ class AdjustmentsController extends Controller
     public function create()
     {
         $action = 'add';
+        $master = $this->getmasterfields();
         return view('hrmodule.adjustments.add')->with([
             'action' => $action,
             'pageTitle' => "Adjustments",
             'Addform' => "Add New Adjustments",
+            'master' => $master
         ]);
     }
 
@@ -69,6 +72,7 @@ class AdjustmentsController extends Controller
     {
 
         $user_id = Auth::id();
+        $master = $this->getmasterfields();
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
@@ -174,5 +178,12 @@ class AdjustmentsController extends Controller
             Route::get('/delete/{id}', array('as' => 'adjustments.destroy', 'uses' => 'AdjustmentsController@destroy'));
         });
 
+    }
+    public function getmasterfields()
+    {
+        $master = array();
+        $master['EmployeeName'] = Employees::where(['status' => 1])->get()->toArray();
+       
+        return $master;
     }
 }

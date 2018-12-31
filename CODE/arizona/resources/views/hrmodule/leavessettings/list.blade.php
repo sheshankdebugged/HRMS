@@ -17,16 +17,16 @@
 									<h2>{{ $pageTitle }}</h2>
 								</div>
                                 
-								<!-- <div class="settings-buttons">
+								<div class="settings-buttons">
 									<ul>
-										<li>
+										<!-- <li>
 											<a href="#" alt="Dashboard"><i class="fa fa-cog"></i></a>
 										</li>
 										<li>
 											<a href="#" alt="Dashboard"><i class="fa fa-question-circle"></i></a>
-										</li>
+										</li> -->
 									</ul>
-								</div> -->
+								</div>
 							</div>
 
                             @if(Session::get('message'))
@@ -42,17 +42,18 @@
 											<h3>{{ $pageTitle }}</h3>
 										</div>
                              	<div class="col-md-8 nopadding">
-								 <form id="search" name="search" method="get" >
+								 <form id="search" name="search" method="get">
 											<div class="search-area-request">
 												<input type="text" placeholder="Search..."  name="search" class="search" id="search" value="{{isset($_GET['search'])?$_GET['search']:''}} "/>
 												<button style="cursor:pointer"><i class="fa fa-search"></i></button>
 											</div>
 											</form>
 											<div class="filter-btn-request">
-												<a href="{{ url('employeehours') }}" alt="Dashboard"><i class="fa fa-refresh"></i></a>
+												<!-- <a href="#" alt="Dashboard"><i class="fa fa-filter"></i></a> -->
+												<a href="{{ url('leavessettings') }}" alt="Dashboard"><i class="fa fa-refresh"></i></a>
 											</div>
 											<div class="add-record-btn">
-												<a href="{{ url('employeehours/add') }}"><i class="fa fa-plus"></i>Add Record</a>
+												<a href="{{ url('leavessettings/add') }}"><i class="fa fa-plus"></i>Add Record</a>
 											</div>
 											
 										</div>
@@ -64,30 +65,36 @@
 									<table id="requesttab" border="0" cellspacing="0" cellpadding="3" width="100%" align="center">
 									 <thead>
 									  <tr>
-										  <td style="background-color:#0c64ae; " class="thbackgroud"><a style="color:#fff; " href="#">Employee</a></td>
-										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Project</a></td>
-										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Date</a></td>
-										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Regular Hours</a></td>
-										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Overtime Hours</a></td>
-										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Approval Status</a></td>
-									      <td style="background-color:#0c64ae; width:1%;"></td>
+										  <td style="background-color:#0c64ae; " class="thbackgroud"><a style="color:#fff; " href="#">Employee Name</a></td>
+										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Title</a></td>
+										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Loan Date</a></td>
+										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Repayment Start Date</a></td>
+										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Amount</a></td>
+										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Remaining Amount</a></td>
+										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">	Approval Status</a></td>
+
+										  <td style="background-color:#0c64ae; width:1%;"></td>
 									  </tr>
 									</thead>
 										<tbody>
                                         @foreach($listData as $list)
 											<tr id="second" class="context-requst-one selected">
-											<td class="datainner" style="">{{$list->employee_id}}</td>
-											<td class="datainner" style="">{{$list->project_id}}</td>
-											<td class="datainner" style="">{{$list->date}}</td> 
-											<td class="datainner" style="">{{$list->regular_hours}}</td> 
-											<td class="datainner" style="">{{$list->overtime_hours}}</td>
-											<td class="datainner" style="">{{$list->approval_status}}</td>                       
+											<td class="datainner" style="">{{$list->employee_name}}</td>
+											<td class="datainner" style="">{{$list->loans_title}}</td>
+											<td class="datainner" style="">{{$list->loans_date}}</td>  
+											<td class="datainner" style="">{{$list->repayment_start_date}}</td>
+											<td class="datainner" style="">{{$list->monthly_repayment_amount}}</td>
+											<td class="datainner" style="">{{$list->remaining_amount}}</td>
+											<td class="datainner" style="">{{$list->approval_status}}</td>
+											                      
 											<td align="right">
 												<div class="dropdown action-drop">
 													<a href="javascript:void(0);" class="dropdown-custom"><i style="font-size:16px;" class="fa fa-cog"></i></a>
 													<ul class="dropdown-menu">
-														<li><a href="{{url('/employeehours/edit')}}/{{$list->id}}"><i class="fa fa-edit"></i>Edit Record</a></li>
-														<li><a href="{{url('/employeehours/delete/')}}/{{$list->id}}" onclick="return confirm('Are you sure to want delete this?')"><i class="fa fa-times"></i>Delete Record</a></li>
+														<!-- <li><a href="#"><i class="fa fa-folder-open"></i>View Record</a></li> -->
+														<li><a href="{{url('/leavessettings/edit')}}/{{$list->id}}"><i class="fa fa-edit"></i>Edit Record</a></li>
+														<!-- <li><a href="#"><i class="fa fa-sticky-note"></i>Notes</a></li> -->
+														<li><a href="{{url('/leavessettings/delete/')}}/{{$list->id}}" onclick="return confirm('Are you sure to want delete this?')"><i class="fa fa-times"></i>Delete Record</a></li>
 													</ul>
 												</div>
 											</td> 

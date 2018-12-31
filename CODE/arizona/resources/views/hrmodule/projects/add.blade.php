@@ -60,9 +60,12 @@
 											<div class="form-field-inner">
 												<div class="form-group">
 													<label>Project Category:</label>
-													<select  name ="company_type" class="form-control-select">
-													<option style="" value="0"> - </option><option style="" value="1">Corporation</option><option style="" value="2">Exempt Organization</option><option style="" value="3">Partnership</option><option style="" value="4">Private Foundation</option><option style="" value="5">S Corporation</option><option style="" value="6">Sole Proprietor</option><option style="" value="7">Limited Liability Company</option><option style="" value="8">Trading LLC</option><option style="" value="9">Private Limited</option><option style="" value="10">General Partnership</option><option style="" value="11">Limited Partnership</option><option style="" value="12">Non Profit Organization</option><option style="" value="13">Trust</option><option style="" value="14">Joint Venture</option><option style="" value="15">Association</option><option style="" value="16">Free Zone</option>
-												 	</select>												</div>
+													<select id ="project_cat_id" name ="project_cat_id" class="WebHRForm1" style="width:180px;">
+													@foreach($master['ProjectCategories'] as $val)
+													<option  value="{{$val['id']}}" @php if(isset($result->project_cat_id) && $result->project_cat_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['project_category_name']}}</option>
+													@endforeach
+													</select>		
+												</div>
 												 <div class="form-group">
 													<label>Project Title:</label>
 													<input type="text" class="form-control-spacial" id="project_title" name="project_title" value="{{isset($result->project_title)?$result->project_title:''}}" placeholder="Project Title">
@@ -70,9 +73,11 @@
 												 </div>
 												 <div class="form-group">
 													<label>Client Name:</label>
-													<select  name ="client_name" id="client_name" class="form-control-select">
-													<option style="" value="0"> - </option><option style="" value="1">Corporation</option><option style="" value="2">Exempt Organization</option><option style="" value="3">Partnership</option><option style="" value="4">Private Foundation</option><option style="" value="5">S Corporation</option><option style="" value="6">Sole Proprietor</option><option style="" value="7">Limited Liability Company</option><option style="" value="8">Trading LLC</option><option style="" value="9">Private Limited</option><option style="" value="10">General Partnership</option><option style="" value="11">Limited Partnership</option><option style="" value="12">Non Profit Organization</option><option style="" value="13">Trust</option><option style="" value="14">Joint Venture</option><option style="" value="15">Association</option><option style="" value="16">Free Zone</option>
-												 	</select>
+													<select id ="client_id" name ="client_id" class="WebHRForm1" style="width:180px;">
+													@foreach($master['Clients'] as $val)
+													<option  value="{{$val['id']}}" @php if(isset($result->client_id) && $result->client_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['name']}}</option>
+													@endforeach
+													</select>	
 												 </div>
 												 <div class="form-group">
 													<label>Client Name (Old):</label>
@@ -94,40 +99,54 @@
 												 </div>
 												 <div class="form-group">
 													<label>Company:</label>
-													<select  name ="company_type" id="company_type" class="form-control-select">
-													<option style="" value="0"> - </option><option style="" value="1">Corporation</option><option style="" value="2">Exempt Organization</option><option style="" value="3">Partnership</option><option style="" value="4">Private Foundation</option><option style="" value="5">S Corporation</option><option style="" value="6">Sole Proprietor</option><option style="" value="7">Limited Liability Company</option><option style="" value="8">Trading LLC</option><option style="" value="9">Private Limited</option><option style="" value="10">General Partnership</option><option style="" value="11">Limited Partnership</option><option style="" value="12">Non Profit Organization</option><option style="" value="13">Trust</option><option style="" value="14">Joint Venture</option><option style="" value="15">Association</option><option style="" value="16">Free Zone</option>
-												 	</select>
+													<select id ="company_id" name ="company_id" class="WebHRForm1" style="width:180px;">
+													@foreach($master['Companies'] as $val)
+													<option  value="{{$val['id']}}" @php if(isset($result->company_id) && $result->company_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['company_name']}}</option>
+													@endforeach
+													</select>
 												 </div>
 												 <div class="form-group">
 													<label>Station:</label>
-													<select  name ="station" id="station" class="form-control-select">
-													<option style="" value="0"> - </option><option style="" value="1">Corporation</option><option style="" value="2">Exempt Organization</option><option style="" value="3">Partnership</option><option style="" value="4">Private Foundation</option><option style="" value="5">S Corporation</option><option style="" value="6">Sole Proprietor</option><option style="" value="7">Limited Liability Company</option><option style="" value="8">Trading LLC</option><option style="" value="9">Private Limited</option><option style="" value="10">General Partnership</option><option style="" value="11">Limited Partnership</option><option style="" value="12">Non Profit Organization</option><option style="" value="13">Trust</option><option style="" value="14">Joint Venture</option><option style="" value="15">Association</option><option style="" value="16">Free Zone</option>
-												 	</select>
+													<select id ="station_id" name ="station_id" class="WebHRForm1" style="width:180px;">
+													@foreach($master['Stations'] as $val)
+													<option  value="{{$val['id']}}" @php if(isset($result->station_id) && $result->station_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['station_name']}}</option>
+													@endforeach
+													</select>
 												 </div>
 												 <div class="form-group">
 													<label>Department:</label>
-													<select  name ="department" id="department" class="form-control-select">
-													<option style="" value="0"> - </option><option style="" value="1">Corporation</option><option style="" value="2">Exempt Organization</option><option style="" value="3">Partnership</option><option style="" value="4">Private Foundation</option><option style="" value="5">S Corporation</option><option style="" value="6">Sole Proprietor</option><option style="" value="7">Limited Liability Company</option><option style="" value="8">Trading LLC</option><option style="" value="9">Private Limited</option><option style="" value="10">General Partnership</option><option style="" value="11">Limited Partnership</option><option style="" value="12">Non Profit Organization</option><option style="" value="13">Trust</option><option style="" value="14">Joint Venture</option><option style="" value="15">Association</option><option style="" value="16">Free Zone</option>
-												 	</select>
+													<select id ="station_id" name ="department_id" class="WebHRForm1" style="width:180px;">
+													@foreach($master['Departments'] as $val)
+													<option  value="{{$val['id']}}" @php if(isset($result->department_id) && $result->department_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['department_name']}}</option>
+													@endforeach
+													</select>
 												 </div>
 												 <div class="form-group">
 													<h4>Project Employees</h4>
 												 </div>
 												 <div class="form-group">
 													<label>Project Employees:</label>
-													<input type="text" class="project_employees" id="project_employees" placeholder="" role="combobox">
+													<select id ="project_employees" name ="project_employees" class="WebHRForm1" style="width:180px;">
+													@foreach($master['Employees'] as $val)
+													<option  value="{{$val['id']}}" @php if(isset($result->project_employees) && $result->project_employees == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
+													@endforeach
+													</select>
 												 </div>
 												 <div class="form-group">
 													<label>Project Manager:</label>
-													<select  name ="project_manager" id="project_manager" class="form-control-select">
-													<option style="" value="0"> - </option><option style="" value="1">Corporation</option><option style="" value="2">Exempt Organization</option><option style="" value="3">Partnership</option><option style="" value="4">Private Foundation</option><option style="" value="5">S Corporation</option><option style="" value="6">Sole Proprietor</option><option style="" value="7">Limited Liability Company</option><option style="" value="8">Trading LLC</option><option style="" value="9">Private Limited</option><option style="" value="10">General Partnership</option><option style="" value="11">Limited Partnership</option><option style="" value="12">Non Profit Organization</option><option style="" value="13">Trust</option><option style="" value="14">Joint Venture</option><option style="" value="15">Association</option><option style="" value="16">Free Zone</option>
-												 	</select>
+													<select id ="project_manager_employee_id" name ="project_manager_employee_id" class="WebHRForm1" style="width:180px;">
+													@foreach($master['Employees'] as $val)
+													<option  value="{{$val['id']}}" @php if(isset($result->project_manager_employee_id) && $result->project_manager_employee_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
+													@endforeach
+													</select>
 												 </div>
 												 <div class="form-group">
 													<label>Project Coordinator:</label>
-													<select  name ="project_coordinator" id="project_coordinator" class="form-control-select">
-													<option style="" value="0"> - </option><option style="" value="1">Corporation</option><option style="" value="2">Exempt Organization</option><option style="" value="3">Partnership</option><option style="" value="4">Private Foundation</option><option style="" value="5">S Corporation</option><option style="" value="6">Sole Proprietor</option><option style="" value="7">Limited Liability Company</option><option style="" value="8">Trading LLC</option><option style="" value="9">Private Limited</option><option style="" value="10">General Partnership</option><option style="" value="11">Limited Partnership</option><option style="" value="12">Non Profit Organization</option><option style="" value="13">Trust</option><option style="" value="14">Joint Venture</option><option style="" value="15">Association</option><option style="" value="16">Free Zone</option>
-												 	</select>
+													<select id ="project_coordinator_employee_id" name ="project_coordinator_employee_id" class="WebHRForm1" style="width:180px;">
+													@foreach($master['Employees'] as $val)
+													<option  value="{{$val['id']}}" @php if(isset($result->project_coordinator_employee_id) && $result->project_coordinator_employee_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
+													@endforeach
+													</select>
 												 </div>
 												 <div class="form-group">
 													<h4>Project Description</h4>

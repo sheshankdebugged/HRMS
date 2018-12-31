@@ -108,10 +108,9 @@ Route::get('/home','DashboardController@index')->name('dashboard');
 
       // Terminations Routes
       \App\Http\Controllers\TerminationsController::routes();
-
       
     // Time sheet Routes
-
+    
     // Worksheet Routes
     \App\Http\Controllers\WorksheetController::routes();
 
@@ -136,8 +135,12 @@ Route::get('/home','DashboardController@index')->name('dashboard');
     
       \App\Http\Controllers\LeavesController::routes();
 
+      //   Leaves Settigs
+    
+      \App\Http\Controllers\LeavesSettingsController::routes();
 
-      //   Hourly Wages
+
+      //   Hourly Wages\
     
       \App\Http\Controllers\HourlywagesController::routes();
       
@@ -162,6 +165,7 @@ Route::get('/home','DashboardController@index')->name('dashboard');
      \App\Http\Controllers\AdjustmentsController::routes();
 
 
+
       // Loans
       
       \App\Http\Controllers\LoansController::routes();
@@ -176,11 +180,11 @@ Route::get('/home','DashboardController@index')->name('dashboard');
 
      //  Commissions
       
-        \App\Http\Controllers\commissionsController::routes();
+        \App\Http\Controllers\CommissionsController::routes();
 
         //  Reimbursements
       
-        \App\Http\Controllers\reimbursementsController::routes();
+        \App\Http\Controllers\ReimbursementsController::routes();
 
      
 

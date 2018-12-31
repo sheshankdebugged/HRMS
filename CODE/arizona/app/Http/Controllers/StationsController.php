@@ -3,7 +3,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Companies;
+use App\Models\Divisions;
 use App\Models\Stations;
+use App\Models\StationTypes;
+use App\Models\Employees;
+use App\Models\Countries;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -50,13 +54,11 @@ class StationsController extends Controller
     {
         $action = 'add';
         $master = $this->getmasterfields();
-
-     
         return view('hrmodule.stations.add')->with([
             'action' => $action,
             'pageTitle' => "Stations",
             'Addform' => "Add New Station",
-            'master' => $master,
+            'master' => $master
         ]);
     }
 
@@ -69,13 +71,12 @@ class StationsController extends Controller
      */
     public function store(Request $request)
     {
-
         $user_id = Auth::id();
+        $master = $this->getmasterfields();
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                'station_name' => 'required',
-
+                'station_name' => 'required'
             ]);
             if ($validator->fails()) {
                 $action = 'addstations';
@@ -132,7 +133,6 @@ class StationsController extends Controller
      */
     public function edit($id)
     {
-
         $action = 'edit';
         $result = Stations::find($id);
         $action = 'add';
@@ -145,7 +145,6 @@ class StationsController extends Controller
             'result' => $result,
             'master' => $master,
         ]);
-
     }
 
     /**
@@ -167,9 +166,12 @@ class StationsController extends Controller
      *
     */
     function getmasterfields(){
-
             $master                     = array();
             $master['Companies']        = Companies::where(['status'=>1])->get()->toArray();
+            $master['Employees']        = Employees::where(['status'=>1])->get()->toArray();
+            $master['Divisions']        = Divisions::where(['status'=>1])->get()->toArray();
+            $master['StationTypes']     = StationTypes::where(['status'=>1])->get()->toArray();
+            $master['Countries']        = Countries::where(['status' => 1])->get()->toArray();
             return $master;
     }
 

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Attendance;
+use App\Models\Employees;
+use App\Models\Stations;
+use App\Models\Projects;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -51,10 +54,12 @@ class AttendanceController extends Controller
     public function create()
     {
         $action = 'add';
+        $master = $this->getmasterfields();
         return view('hrmodule.attendance.add')->with([
             'action' => $action,
             'pageTitle' => "Attendance",
             'Addform' => "Add New Attendance",
+            'master' => $master
         ]);
     }
 
@@ -69,11 +74,12 @@ class AttendanceController extends Controller
     {
 
         $user_id = Auth::id();
+        $master = $this->getmasterfields();
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
                   'employee_name' => 'required',
-                  'forward_application_to' => 'required',
+                  'employee_name' => 'required',
                   'attendance_date' => 'required'
             ]);
             if ($validator->fails()) {
@@ -173,5 +179,14 @@ class AttendanceController extends Controller
             Route::post('/update/{id}', array('as' => 'attendance.update', 'uses' => 'AttendanceController@update'));
             Route::get('/delete/{id}', array('as' => 'attendance.destroy', 'uses' => 'AttendanceController@destroy'));
         });
+    }
+
+    public function getmasterfields()
+    {
+        $master = array();
+        $master['Employees']               = Employees::where(['status' => 1])->get()->toArray();
+        $master['Stations']                = Stations::where(['status'=>1])->get()->toArray();
+        $master['Projects']               = Projects::where(['status' => 1])->get()->toArray();               
+        return $master;
     }
 }

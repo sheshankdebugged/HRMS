@@ -63,7 +63,12 @@
 												
 											<div class="form-group">
 													<label>Employee:</label>
-													<select id="employee" name="employee" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">1</option></select>
+													<select id="employee_id" class="WebHRForm1" style="width:180px;" name="employee_id">
+													@foreach($master['Employees'] as $val)
+													<option  value="{{$val['id']}}" @php if(isset($result->employee_name) && $result->id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
+													@endforeach
+													</select>
+													<!-- <select id="employee" name="employee" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">1</option></select> -->
 													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 													<!-- <input type="text" placeholder="Contact Person" class="form-control-spacial" id="registration_name" name="contact_person" value="{{isset($result->contact_person)?$result->contact_person:''}}"> -->
                                                    
@@ -72,7 +77,12 @@
 
 												 <div class="form-group">
 												   <label>Project:</label>
-												   <select id="project" name="project" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">forward 2</option></select>
+												   <select id="project_id" class="WebHRForm1" style="width:180px;" name="project_id">
+													@foreach($master['Projects'] as $val)
+													<option  value="{{$val['id']}}" @php if(isset($result->project_title) && $result->project_title == $val['id']  ) { echo "selected";  } @endphp >{{$val['project_title']}}</option>
+													@endforeach
+													</select>
+												   <!-- <select id="project" name="project" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">forward 2</option></select> -->
 												   <!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 													<!-- <input type="text" placeholder="Contact Person Designation" class="form-control-spacial" id="contact_person_designation" name="contact_person_designation" value="{{isset($result->contact_person_designation)?$result->contact_person_designation:''}}"> -->
                                 

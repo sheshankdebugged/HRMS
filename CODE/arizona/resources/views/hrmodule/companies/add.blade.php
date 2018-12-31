@@ -81,11 +81,10 @@
 
 												 <div class="form-group">
 													<label>Company Type:</label>
-													
-													<select  name ="company_type" class="form-control-select">
-													 
-													<option style="" value="0"> - </option><option style="" value="1">Corporation</option><option style="" value="2">Exempt Organization</option><option style="" value="3">Partnership</option><option style="" value="4">Private Foundation</option><option style="" value="5">S Corporation</option><option style="" value="6">Sole Proprietor</option><option style="" value="7">Limited Liability Company</option><option style="" value="8">Trading LLC</option><option style="" value="9">Private Limited</option><option style="" value="10">General Partnership</option><option style="" value="11">Limited Partnership</option><option style="" value="12">Non Profit Organization</option><option style="" value="13">Trust</option><option style="" value="14">Joint Venture</option><option style="" value="15">Association</option><option style="" value="16">Free Zone</option>
-
+													<select id ="company_type_id" name ="company_type_id" class="WebHRForm1" style="width:180px;">
+													@foreach($master['CompanyType'] as $val)
+													<option  value="{{$val['id']}}" @php if(isset($result->company_type_id) && $result->company_type_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['company_type_title']}}</option>
+													@endforeach
 													</select>
 
 
@@ -187,8 +186,12 @@
 
 												 <div class="form-group">
 												   <label>Country:</label>
-												   <input type="text"  placeholder="Country" placeholder="State Tax Number" class="form-control-spacial" id="country" name="country" value="{{isset($result->country)?$result->country:''}}">
-                
+												   <!-- <input type="text"  placeholder="Country" placeholder="State Tax Number" class="form-control-spacial" id="country" name="country" value="{{isset($result->country)?$result->country:''}}"> -->
+												   <select id ="country_id" name ="country_id" class="WebHRForm1" style="width:180px;">
+													@foreach($master['Countries'] as $val)
+													<option  value="{{$val['country_id']}}" @php if(isset($result->country_id) && $result->country_id == $val['country_id']  ) { echo "selected";  } @endphp >{{$val['title']}}</option>
+													@endforeach
+													</select>
 												 </div>
 
 

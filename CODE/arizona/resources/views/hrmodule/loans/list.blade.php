@@ -17,16 +17,16 @@
 									<h2>{{ $pageTitle }}</h2>
 								</div>
                                 
-								<div class="settings-buttons">
+								<!-- <div class="settings-buttons">
 									<ul>
-										<!-- <li>
+										<li>
 											<a href="#" alt="Dashboard"><i class="fa fa-cog"></i></a>
 										</li>
 										<li>
 											<a href="#" alt="Dashboard"><i class="fa fa-question-circle"></i></a>
-										</li> -->
+										</li> 
 									</ul>
-								</div>
+								</div> -->
 							</div>
 
                             @if(Session::get('message'))

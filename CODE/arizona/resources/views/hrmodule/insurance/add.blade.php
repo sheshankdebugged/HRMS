@@ -65,17 +65,10 @@
 											<div class="form-group">
 													<label>Employee Name:</label>
 
-													<select  name ="employee_name" id="employee_name" class="form-control-select" >
-
-													<option style="" value="0"> 0 </option>
-													<option style="" value="1">1</option>
-													<option style="" value="2">2</option>
-													<option style="" value="3">3</option>
-													<option style="" value="4">4</option>
-													<option style="" value="5">5</option>
-													<option style="" value="6">6</option>
-													<option style="" value="7">7</option>
-													<option style="" value="8">8</option>
+													<select  name ="employee_id" id="employee_id" class="form-control-select" >
+													@foreach($master['Employees'] as $val)
+													<option  value="{{$val['id']}}">{{$val['employee_name']}}</option>
+													@endforeach													
 											        </select>
 													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 
@@ -84,9 +77,8 @@
 												 <div class="form-group">
 													<label>Insurance Type:</label>
 													<select id ="insurance_type"  name ="insurance_type" class="form-control-select">
-													<option style="" value="0"> - </option>
-													<option style="" value="1">1</option>
-													<option style="" value="2">2</option>
+													<option style="" value="0">Life Insurance</option>
+													<option style="" value="1">Health Insurance</option>
 													</select>
 												 </div>
 												 <div class="form-group">

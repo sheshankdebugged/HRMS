@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reimbursements;
+use App\Models\Employees;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -52,10 +53,13 @@ class ReimbursementsController extends Controller
     public function create()
     {
         $action = 'add';
+        $master = $this->getmasterfields();
+
         return view('hrmodule.reimbursements.add')->with([
             'action' => $action,
             'pageTitle' => "Reimbursements",
             'Addform' => "Add New Reimbursement",
+            'master' => $master
         ]);
     } 
 
@@ -70,6 +74,7 @@ class ReimbursementsController extends Controller
     {
 
         $user_id = Auth::id();
+        $master = $this->getmasterfields();
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
@@ -177,6 +182,13 @@ class ReimbursementsController extends Controller
             Route::post('/update/{id}', array('as' => 'reimbursements.update', 'uses' => 'ReimbursementsController@update'));
             Route::get('/delete/{id}', array('as' => 'reimbursements.destroy', 'uses' => 'ReimbursementsController@destroy'));
         });
+    }
+    public function getmasterfields()
+    {
+        $master = array();
+        $master['EmployeeName'] = Employees::where(['status' => 1])->get()->toArray();
+       
+        return $master;
     }
 }
 

@@ -64,30 +64,22 @@
 
 											<div class="form-group">
 													<label>Employee Name:</label>
-
-													<select  name ="employee_name" id="employee_name" class="form-control-select" >
-
-													<option style="" value="0"> 0 </option>
-													<option style="" value="1">1</option>
-													<option style="" value="2">2</option>
-													<option style="" value="3">3</option>
-													<option style="" value="4">4</option>
-													<option style="" value="5">5</option>
-													<option style="" value="6">6</option>
-													<option style="" value="7">7</option>
-													<option style="" value="8">8</option>
-											        </select>
+													<select id="employee_name" name="employee_name" class="WebHRForm1" style="width:180px;">
+													<!-- <option value="ALL"> All </option> -->
+													@foreach($master['EmployeeName'] as $val)
+													<option  value="{{$val['id']}}">{{$val['employee_name']}}</option>
+													@endforeach</select>
 													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 
 												 </div>
 
 												 <div class="form-group">
-													<label>Forward Application To:</label>
-													<select id ="forward_application_to"  name ="forward_application_to" class="form-control-select">
-													<option style="" value="0"> - </option>
-													<option style="" value="1">1</option>
-													<option style="" value="2">2</option>
-													</select>
+												 <label>Forward Application To:</label>
+												 <select id="employee_name" name="employee_name" class="WebHRForm1" style="width:180px;">
+													<!-- <option value="ALL"> All </option> -->
+													@foreach($master['EmployeeName'] as $val)
+													<option  value="{{$val['id']}}">{{$val['employee_name']}}</option>
+													@endforeach</select>
 												 </div>
 												 <div class="form-group">
 												   <label>Title:</label>
@@ -96,9 +88,8 @@
 												   <div class="form-group">
 													<label>Adjustment Type:</label>
 													<select id ="adjustment_type"  name ="adjustment_type" class="form-control-select">
-													<option style="" value="0"> - </option>
-													<option style="" value="1">1</option>
-													<option style="" value="2">2</option>
+													<option style="" value="0">Increment</option>
+													<option style="" value="1">Decrement</option>
 													</select>
 												 </div>
 												   <div class="form-group">

@@ -80,9 +80,9 @@
 													<a href="javascript:void(0);" class="dropdown-custom"><i style="font-size:16px;" class="fa fa-cog"></i></a>
 													<ul class="dropdown-menu">
 														<!-- <li><a href="#"><i class="fa fa-folder-open"></i>View Record</a></li> -->
-														<li><a href="{{url('/jobtest/edit')}}/{{$list->id}}"><i class="fa fa-edit"></i>Edit Record</a></li>
+														<li><a href="{{url('/jobtests/edit')}}/{{$list->id}}"><i class="fa fa-edit"></i>Edit Record</a></li>
 														<!-- <li><a href="#"><i class="fa fa-sticky-note"></i>Notes</a></li> -->
-														<li><a href="{{url('/jobtest/delete/')}}/{{$list->id}}" onclick="return confirm('Are you sure to want delete this?')"><i class="fa fa-times"></i>Delete Record</a></li>
+														<li><a href="{{url('/jobtests/delete/')}}/{{$list->id}}" onclick="return confirm('Are you sure to want delete this?')"><i class="fa fa-times"></i>Delete Record</a></li>
 													</ul>
 												</div>
 											</td> 
