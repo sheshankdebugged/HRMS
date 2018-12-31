@@ -58,25 +58,11 @@
                                  <input type="hidden" name="id" value="{{isset($result->id)?$result->id:''}}">
                                  <div class="form-field-inner">
                                     <div class="form-group">
-                                       <label>Job Post::</label>
-                                       <select  name ="job_post" id="job_post" class="form-control-select">
-                                          <option style="" value="0"> - </option>
-                                          <option style="" value="1">Corporation</option>
-                                          <option style="" value="2">Exempt Organization</option>
-                                          <option style="" value="3">Partnership</option>
-                                          <option style="" value="4">Private Foundation</option>
-                                          <option style="" value="5">S Corporation</option>
-                                          <option style="" value="6">Sole Proprietor</option>
-                                          <option style="" value="7">Limited Liability Company</option>
-                                          <option style="" value="8">Trading LLC</option>
-                                          <option style="" value="9">Private Limited</option>
-                                          <option style="" value="10">General Partnership</option>
-                                          <option style="" value="11">Limited Partnership</option>
-                                          <option style="" value="12">Non Profit Organization</option>
-                                          <option style="" value="13">Trust</option>
-                                          <option style="" value="14">Joint Venture</option>
-                                          <option style="" value="15">Association</option>
-                                          <option style="" value="16">Free Zone</option>
+                                       <label>Job Post:</label>
+                                       <select id="job_post_id" class="WebHRForm1" style="width:180px;" name="job_post_id">
+                                          @foreach($master['JobPosts'] as $val)
+                                          <option  value="{{$val['id']}}" @php if(isset($result->job_post_id) && $result->job_post_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['job_title']}}</option>
+                                          @endforeach
                                        </select>
                                     </div>
                                     <div class="form-group">

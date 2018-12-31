@@ -107,10 +107,9 @@ Route::group(['middleware' => 'auth'], function () {
 
       // Terminations Routes
       \App\Http\Controllers\TerminationsController::routes();
-
       
     // Time sheet Routes
-
+    
     // Worksheet Routes
     \App\Http\Controllers\WorksheetController::routes();
 
