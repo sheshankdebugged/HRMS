@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Providentfunds;
+use App\Models\Employees;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -55,10 +57,12 @@ class ProvidentfundsController extends Controller
     public function create()
     {
         $action = 'add';
+        $master = $this->getmasterfields();
         return view('hrmodule.providentfunds.add')->with([
             'action' => $action,
             'pageTitle' => "Provident funds",
             'Addform' => "Add New Provident funds",
+            'master' => $master
         ]);
     }
 
@@ -73,10 +77,11 @@ class ProvidentfundsController extends Controller
     {
 
         $user_id = Auth::id();
+        $master = $this->getmasterfields();
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                'employee_name' => 'required',
+                'employee_id' => 'required',
                
             ]);
             if ($validator->fails()) {
@@ -177,6 +182,14 @@ class ProvidentfundsController extends Controller
             Route::post('/update/{id}', array('as' => 'providentfunds.update', 'uses' => 'ProvidentfundsController@update'));
             Route::get('/delete/{id}', array('as' => 'providentfunds.destroy', 'uses' => 'ProvidentfundsController@destroy'));
         });
+    }
+    public function getmasterfields()
+    {
+        $master = array();
+        $master['Employees'] = Employees::where(['status' => 1])->get()->toArray();
+        $master['Provident_Fund_Type'] = Providentfunds::where(['status' => 1])->get()->toArray();
+       
+        return $master;
     }
 }
 

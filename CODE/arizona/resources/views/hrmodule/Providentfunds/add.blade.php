@@ -63,13 +63,23 @@
 												
 												 <div class="form-group">
 													<label>Employee Name:</label>
-													<select id="employee_name" name="employee_name" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">employee_name</option></select>
+													<select id="employee_id" name="employee_id" class="WebHRForm1" style="width:180px;">
+													<!-- <option value="ALL"> All </option> -->
+													@foreach($master['Employees'] as $val)
+													<option  value="{{$val['id']}}">{{$val['employee_name']}}</option>
+													@endforeach
+													</select>
 													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 
 												 </div>
 												 <div class="form-group">
 													<label>Provident Fund Type:</label>
-													<select id="provident_fund_type" name="provident_fund_type" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Provident Fund Type</option></select>
+													<select id="provident_fund_type" name="provident_fund_type" class="WebHRForm1" style="width:180px;">
+													<!-- <option value="ALL"> All </option> -->
+													@foreach($master['Provident_Fund_Type'] as $val)
+													<option  value="{{$val['provident_fund_type']}}">{{$val['provident_fund_type']}}</option>
+													@endforeach
+													</select>
 													<!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 
 												 </div>
@@ -117,7 +127,7 @@
 												 <label>Record Added On:</label>
 
 												 @php 
-												 $date  = date("F j, Y, g:i a"); 
+												 $date  = date("F j, Y, g a"); 
 
 												 @endphp
 												 {{$date}}

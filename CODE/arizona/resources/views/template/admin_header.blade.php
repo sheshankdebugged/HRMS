@@ -230,7 +230,7 @@ Password: @7tN$i2cF5~5
                                  <a href="{{url('payrollsetup')}}"><i class="fa fa-coins"></i>Payroll Setup</a>
                                  <a href="{{url('hourlywages')}}"><i class="fa fa-briefcase"></i>Hourly Wages</a>
                                  <a href="{{url('overtimes')}}"><i class="fa fa-briefcase"></i>Overtimes</a>
-                                 <a href="{{url('providentfund')}}"><i class="fa fa-briefcase"></i>Provident Fund</a>
+                                 <a href="{{url('providentfunds')}}"><i class="fa fa-briefcase"></i>Provident Fund</a>
                                  <a href="{{url('advancesalary')}}"><i class="fa fa-briefcase"></i>Advance Salary</a>
                                  <a href="{{url('loans')}}"><i class="fa fa-briefcase"></i>Loans</a>
                                  <a href="{{url('insurance')}}"><i class="fa fa-briefcase"></i>Insurance</a>

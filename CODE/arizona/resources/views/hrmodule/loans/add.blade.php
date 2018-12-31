@@ -61,16 +61,25 @@
 
 											<div class="form-field-inner">
 												
-												 <div class="form-group">
+													<div class="form-group">
 													<label>Employee Name:</label>
-													<select id="employee_name" name="employee_name" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">employee_name</option></select>
+													<select id="employee_id" name="employee_id" class="WebHRForm1" style="width:180px;">
+													<!-- <option value="ALL"> All </option> -->
+													@foreach($master['Employees'] as $val)
+													<option  value="{{$val['id']}}">{{$val['employee_name']}}</option>
+													@endforeach
+													</select>
 													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 
 												 </div>
 												 <div class="form-group">
 													<label>Forward Application To:</label>
-													<select id="forward_application_to" name="forward_application_to" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Forward Application To</option></select>
-													<!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
+													<select id="forward_employee_id" name="forward_employee_id" class="WebHRForm1" style="width:180px;">
+													<!-- <option value="ALL"> All </option> -->
+													@foreach($master['Employees'] as $val)
+													<option  value="{{$val['id']}}">{{$val['employee_name']}}</option>
+													@endforeach
+													</select>
 
 												 </div>
 												 <div class="form-group">
@@ -96,18 +105,28 @@
 												 </div>
 												 <div class="form-group">
 													<label>Include Loan Amount in Payslip:</label>
-													<!-- <input type="text" placeholder="" class="form-control-spacial time" id="time_in" name="time_in" value="{{isset($result->time_in)?$result->time_in:''}}"> -->
-													<input class="switch" id="iip" checked="true" type="checkbox">
-												 </div>
+													<label style="width:60px; !important" class="switch">
+														<input type="checkbox">
+														<span class="slider round"></span>
+														</label>
+												 </div> 
 												 												
 												<div class="form-group">
 													<h4>Loan Repayment</h4>
 												 </div>
 												 <div class="form-group">
 													<label>Repayment Type:</label>
-													<select id="repayment_type" name="repayment_type" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Repayment Type</option></select>
+													<select id="repayment_type" name="repayment_type" class="WebHRForm1" style="width:180px;" onchange="RepaymentsType();" class="FieldValue">
+													<option style="" value="Head Office">Specific Amount</option><option style="" value="1">Monthly</option></select>
+													<div style="clear:both;"></div>		
+												 </div>
+												 <!-- <div class="form-group">
+													<label>Repayment Months:</label>
+													<select id="repayment_months" name="repayment_months" class="WebHRForm1" style="width:180px;" onchange="RepaymentsMonths();" class="FieldValue">
+													<div style="clear:both;"></div>
 
 												 </div>
+												  -->
 												 <div class="form-group">
 													<label>Monthly Repayment Amount:</label>
 													<input type="text" placeholder="" class="form-control-spacial time" id="monthly_repayment_amount" name="monthly_repayment_amount" value="{{isset($result->monthly_repayment_amount)?$result->monthly_repayment_amount:''}}">

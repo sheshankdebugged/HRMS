@@ -63,7 +63,12 @@
 												
 												 <div class="form-group">
 													<label>Employee Name:</label>
-													<select id="employee_name" name="employee_name" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">employee_name</option></select>
+    												<select id="employee_id" name="employee_id" class="WebHRForm1" style="width:180px;">
+													<!-- <option value="ALL"> All </option> -->
+													@foreach($master['Employees'] as $val)
+													  <option  value="{{$val['id']}}" @php if(isset($result->employee_id) && $result->employee_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
+													@endforeach
+													</select>
 													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 
 												 </div>

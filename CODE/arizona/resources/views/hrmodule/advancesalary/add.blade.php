@@ -61,19 +61,27 @@
 
 											<div class="form-field-inner">
 												
-												 <div class="form-group">
+											    <div class="form-group">
 													<label>Employee Name:</label>
-													<select id="employee_name" name="employee_name" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">employee_name</option></select>
+													<select id="employee_id" name="employee_id" class="WebHRForm1" style="width:180px;">
+													<!-- <option value="ALL"> All </option> -->
+													@foreach($master['Employees'] as $val)
+													<option  value="{{$val['id']}}">{{$val['employee_name']}}</option>
+													@endforeach
+													</select>
 													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 
 												 </div>
-
 												 <div class="form-group">
 													<label>Forward Application To:</label>
-													<select id="forward_application_to" name="employee_name" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Forward Application To</option></select>
+													<select id="forward_application_to" name="forward_application_to" class="WebHRForm1" style="width:180px;">
+													<!-- <option value="ALL"> All </option> -->
+													@foreach($master['Employees'] as $val)
+													<option  value="{{$val['id']}}">{{$val['employee_name']}}</option>
+													@endforeach
+													</select>
 
 												 </div>
-												 
 												 <div class="form-group">
 													<label>Title:</label>
 													<input type="text" placeholder="Advancesalary Title" class="form-control-spacial" id="advancesalary_title" name="advancesalary_title" value="{{isset($result->advancesalary_title)?$result->advancesalary_title:''}}">
@@ -95,7 +103,12 @@
 
 												 <div class="form-group">
 													<label>Generate Payslip for Advance Salary:</label>
-													<select id="payslip_advance_salary" name="payslip_advance_salary" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Generate Payslip for Advance Salary:</option></select>
+													<select id="payslip_advance_salary" name="payslip_advance_salary" class="WebHRForm1" style="width:180px;">
+													<!-- <option value="ALL"> All </option> -->
+													@foreach($master['Payslip'] as $val)
+													<option  value="{{$val['payslip_advance_salary']}}">{{$val['payslip_advance_salary']}}</option>
+													@endforeach
+													</select>
 
 												 </div>
 												 												

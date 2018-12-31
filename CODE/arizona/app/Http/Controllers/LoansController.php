@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Loans;
+use App\Models\Employees;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -51,10 +52,12 @@ class LoansController extends Controller
     public function create()
     {
         $action = 'add';
+        $master = $this->getmasterfields();
         return view('hrmodule.loans.add')->with([
             'action' => $action,
             'pageTitle' => "Loans",
             'Addform' => "Add New Loan",
+            'master' => $master
         ]);
     } 
 
@@ -69,14 +72,15 @@ class LoansController extends Controller
     {
 
         $user_id = Auth::id();
+        $master = $this->getmasterfields();
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                'employee_name' => 'required',
+                'employee_id' => 'required',
                 'loans_title' => 'required',
                 'loans_date' => 'required',
                 'monthly_repayment_amount' => 'required',
-                'repayment_stayrt_date' => 'required'                    
+                'repayment_start_date' => 'required'                    
             ]);
             if ($validator->fails()) {
                 $action = 'addloans';
@@ -141,6 +145,7 @@ class LoansController extends Controller
     {
 
         $action = 'edit';
+        $master = $this->getmasterfields();
         $result = loans::find($id);
         $action = 'add';
         $editname = "Edit Boan " . $result->employee;
@@ -149,6 +154,7 @@ class LoansController extends Controller
             'pageTitle' => "Loans",
             'Addform' => $editname,
             'result' => $result,
+            'master'  =>  $master
         ]);
 
     }
@@ -177,6 +183,15 @@ class LoansController extends Controller
             Route::post('/update/{id}', array('as' => 'loans.update', 'uses' => 'LoansController@update'));
             Route::get('/delete/{id}', array('as' => 'loans.destroy', 'uses' => 'LoansController@destroy'));
         });
+    }
+    public function getmasterfields()
+    {
+        $master = array();
+        $master['Employees'] = Employees::where(['status' => 1])->get()->toArray();
+        $master['Repayment_Type'] = Loans::where(['status' => 1])->get()->toArray();
+
+       
+        return $master;
     }
 }
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\commissions;
+use App\Models\Employees;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -40,6 +41,8 @@ class CommissionsController extends Controller
         return view('hrmodule.commissions.list')->with([
             'listData' => $list,
             'pageTitle' => "Commissions",
+          
+
         ]);
 
     }
@@ -52,10 +55,12 @@ class CommissionsController extends Controller
     public function create()
     {
         $action = 'add';
+        $master = $this->getmasterfields();
         return view('hrmodule.commissions.add')->with([
             'action' => $action,
             'pageTitle' => "Commissions",
             'Addform' => "Add New Commission",
+            'master' => $master
         ]);
     } 
 
@@ -70,6 +75,7 @@ class CommissionsController extends Controller
     {
 
         $user_id = Auth::id();
+        $master = $this->getmasterfields();
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
@@ -177,6 +183,13 @@ class CommissionsController extends Controller
             Route::post('/update/{id}', array('as' => 'commissions.update', 'uses' => 'CommissionsController@update'));
             Route::get('/delete/{id}', array('as' => 'commissions.destroy', 'uses' => 'CommissionsController@destroy'));
         });
+    }
+    public function getmasterfields()
+    {
+        $master = array();
+        $master['EmployeeName'] = Employees::where(['status' => 1])->get()->toArray();
+       
+        return $master;
     }
 }
 

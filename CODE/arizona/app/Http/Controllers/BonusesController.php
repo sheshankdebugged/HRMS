@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bonuses;
+use App\Models\Employees;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -51,10 +52,12 @@ class BonusesController extends Controller
     public function create()
     {
         $action = 'add';
+        $master = $this->getmasterfields();
         return view('hrmodule.bonuses.add')->with([
             'action' => $action,
             'pageTitle' => "Bonuses",
             'Addform' => "Add New Bonus",
+            'master' => $master
         ]);
     }
 
@@ -69,6 +72,7 @@ class BonusesController extends Controller
     {
 
         $user_id = Auth::id();
+        $master = $this->getmasterfields();
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
@@ -176,6 +180,13 @@ class BonusesController extends Controller
             Route::post('/update/{id}', array('as' => 'bonuses.update', 'uses' => 'BonusesController@update'));
             Route::get('/delete/{id}', array('as' => 'bonuses.destroy', 'uses' => 'BonusesController@destroy'));
         });
+    }
+    public function getmasterfields()
+    {
+        $master = array();
+        $master['EmployeeName'] = Employees::where(['status' => 1])->get()->toArray();
+       
+        return $master;
     }
 }
 
