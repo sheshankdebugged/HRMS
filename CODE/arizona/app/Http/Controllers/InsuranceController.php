@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Insurance;
+use App\Models\Employees;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -51,10 +52,13 @@ class InsuranceController extends Controller
     public function create()
     {
         $action = 'add';
+        $master = $this->getmasterfields();
+
         return view('hrmodule.insurance.add')->with([
             'action' => $action,
             'pageTitle' => "Insurance",
             'Addform' => "Add New Employee Insurance",
+            'master' => $master
         ]);
     }
 
@@ -69,10 +73,12 @@ class InsuranceController extends Controller
     {
 
         $user_id = Auth::id();
+        $master = $this->getmasterfields();
+
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                'employee_name' => 'required',
+                'employee_id' => 'required',
                 'insurance_title' => 'required',
                 'employee_amount' => 'required',
                 'organization_share' => 'required',
@@ -132,6 +138,7 @@ class InsuranceController extends Controller
     {
 
         $action = 'edit';
+        $master = $this->getmasterfields();
         $result = Insurance::find($id);
         $result = Insurance::find($id);
         $action = 'add';
@@ -141,6 +148,7 @@ class InsuranceController extends Controller
             'pageTitle' => "Insurance",
             'Addform' => $editname,
             'result' => $result,
+            'master' => $master,
         ]);
 
     }
@@ -174,5 +182,13 @@ class InsuranceController extends Controller
             Route::get('/delete/{id}', array('as' => 'insurance.destroy', 'uses' => 'InsuranceController@destroy'));
         });
 
+    }
+    public function getmasterfields()
+    {
+        $master = array();
+        $master['Employees'] = Employees::where(['status' => 1])->get()->toArray();
+        $master['InsuranceType'] = Insurance::where(['status' => 1])->get()->toArray();
+       
+        return $master;
     }
 }

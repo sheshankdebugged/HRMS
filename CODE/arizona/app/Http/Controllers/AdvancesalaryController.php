@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Advancesalary;
+use App\Models\Employees;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -55,10 +57,12 @@ class AdvancesalaryController extends Controller
     public function create()
     {
         $action = 'add';
+        $master = $this->getmasterfields();
         return view('hrmodule.advancesalary.add')->with([
             'action' => $action,
             'pageTitle' => "Advance Salary",
             'Addform' => "Add New Advance Salary",
+            'master' => $master
         ]);
     }
 
@@ -73,10 +77,11 @@ class AdvancesalaryController extends Controller
     {
 
         $user_id = Auth::id();
+        $master = $this->getmasterfields();
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                'employee_name' => 'required',
+                'employee_id' => 'required',
                 'advancesalary_title' => 'required',
                 'advancesalary_amount' => 'required',
                 'advancesalary_date' => 'required'
@@ -143,6 +148,7 @@ class AdvancesalaryController extends Controller
     {
 
         $action = 'edit';
+        $master = $this->getmasterfields();
         $result = advancesalary::find($id);
         $action = 'add';
         $editname = "Edit advancesalary " . $result->employee;
@@ -151,6 +157,7 @@ class AdvancesalaryController extends Controller
             'pageTitle' => "Advance Salary",
             'Addform' => $editname,
             'result' => $result,
+            'master' =>  $master
         ]);
 
     }
@@ -179,6 +186,16 @@ class AdvancesalaryController extends Controller
             Route::post('/update/{id}', array('as' => 'advancesalary.update', 'uses' => 'AdvancesalaryController@update'));
             Route::get('/delete/{id}', array('as' => 'advancesalary.destroy', 'uses' => 'AdvancesalaryController@destroy'));
         });
+    }
+
+    public function getmasterfields()
+    {
+        $master = array();
+        $master['Employees'] = Employees::where(['status' => 1])->get()->toArray();
+        $master['Payslip'] = Advancesalary::where(['status' => 1])->get()->toArray();
+
+       
+        return $master;
     }
 }
 

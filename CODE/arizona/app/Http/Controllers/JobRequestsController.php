@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Form;
+use App\Models\Employees;
+use App\Models\Departments;
+use App\Models\JobType;
+use App\Models\CandidateAgeRange;
+use App\Models\JobRequestType;
 use Session;
 use Validator;
 
@@ -35,7 +40,7 @@ class JobRequestsController extends Controller
         }
         // $list =Stations::where($where)->paginate(10);
         $user_id = Auth::id();
-        $list = jobRequests::where($where)->paginate(10);
+        $list = JobRequests::where($where)->paginate(10);
         return view('hrmodule.jobrequest.list')->with([
             'listData' => $list,
             'pageTitle' => "Job Requests",
@@ -51,11 +56,12 @@ class JobRequestsController extends Controller
     public function create()
     {
         $action = 'add';
+        $master = $this->getmasterfields();
         return view('hrmodule.jobrequest.add')->with([
             'action' => $action,
             'pageTitle' => "Job Requests",
-            'Addform' => "Add New Job Request
-            ",
+            'Addform' => "Add New Job Request",
+            'master' => $master,
         ]);
     }
 
@@ -70,6 +76,7 @@ class JobRequestsController extends Controller
     {
 
         $user_id = Auth::id();
+        $master = $this->getmasterfields();
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
@@ -136,11 +143,14 @@ class JobRequestsController extends Controller
         $result = jobRequests::find($id);
         $action = 'add';
         $editname = "Edit " . $result->job_title;
+        $master = $this->getmasterfields();
         return view('hrmodule.jobrequest.add')->with([
             'action' => $action,
             'pageTitle' => "Job Requests",
             'Addform' => $editname,
             'result' => $result,
+            'master' => $master,
+
         ]);
 
     }
@@ -169,6 +179,17 @@ class JobRequestsController extends Controller
             Route::post('/update/{id}', array('as' => 'jobrequests.update', 'uses' => 'JobRequestsController@update'));
             Route::get('/delete/{id}', array('as' => 'jobrequests.destroy', 'uses' => 'JobRequestsController@destroy'));
         });
+    }
+    public function getmasterfields()
+    {
+        $master = array();
+        $master['Departments']             = Departments::where(['status'=>1])->get()->toArray();
+        $master['Employees']            = Employees::where(['status'=>1])->get()->toArray();
+        $master['JobTypes']            = JobType::where(['status'=>1])->get()->toArray();
+        $master['JobRequests']            = JobRequests::where(['status'=>1])->get()->toArray();
+        $master['CandidateAgeRange']            = CandidateAgeRange::where(['status'=>1])->get()->toArray();
+        $master['JobRequestType']            = JobRequestType::where(['status'=>1])->get()->toArray();
+        return $master;
     }
 
 }

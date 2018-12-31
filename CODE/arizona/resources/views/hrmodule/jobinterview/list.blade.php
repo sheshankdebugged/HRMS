@@ -9,14 +9,14 @@
                         @include('template.organisation_nav_icon')
 						</div>
 					</div>
-            
+
 					<div class="right-bar-request">
 						<div class="request-section">
 							<div class="main-heading">
 								<div class="inner-heading-request">
 									<h2>{{ $pageTitle }}</h2>
 								</div>
-                                
+
 								<!-- <div class="settings-buttons">
 									<ul>
 										<li>
@@ -55,9 +55,9 @@
 											<div class="add-record-btn">
 												<a href="{{ url('jobinterviews/add') }}"><i class="fa fa-plus"></i>Add Record</a>
 											</div>
-											
+
 										</div>
-										
+
 									</div>
 								</div>
 								<div class="inner-table-main" style="min-height:590px;">
@@ -66,15 +66,19 @@
 									 <thead>
 									  <tr>
 										  <td style="background-color:#0c64ae; " class="thbackgroud"><a style="color:#fff; " href="#">Job Title</a></td>
-										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Job Type</a></td>
+										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Interview Date</a> </td>
+										  <td style="background-color:#0c64ae; " class="thbackgroud"><a style="color:#fff; " href="#">Interview Time</a></td>
+										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">	Place Of Interview</a></td>
 										  <td style="background-color:#0c64ae; width:1%;"></td>
 									  </tr>
 									</thead>
 										<tbody>
                                         @foreach($listData as $list)
 											<tr id="second" class="context-requst-one selected">
-											<td class="datainner" style="">{{$list->test_title	}}</td>
-											<td class="datainner" style="">{{$list->job_post}}</td>                        
+											<td class="datainner" style="">{{$list->job_post_id	}}</td>
+											<td class="datainner" style="">{{$list->interviews_date}}</td>
+											<td class="datainner" style="">{{$list->interviews_time}}</td>
+											<td class="datainner" style="">{{$list->place_of_interviews}}</td>
 											<td align="right">
 												<div class="dropdown action-drop">
 													<a href="javascript:void(0);" class="dropdown-custom"><i style="font-size:16px;" class="fa fa-cog"></i></a>
@@ -85,7 +89,7 @@
 														<li><a href="{{url('/jobinterviews/delete/')}}/{{$list->id}}" onclick="return confirm('Are you sure to want delete this?')"><i class="fa fa-times"></i>Delete Record</a></li>
 													</ul>
 												</div>
-											</td> 
+											</td>
 										</tr>
                                         @endforeach
 

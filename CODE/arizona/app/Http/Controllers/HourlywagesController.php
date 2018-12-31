@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hourlywages;
+use App\Models\Employees;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -51,10 +52,12 @@ class HourlywagesController extends Controller
     public function create()
     {
         $action = 'add';
+        $master = $this->getmasterfields();
         return view('hrmodule.hourlywages.add')->with([
             'action' => $action,
             'pageTitle' => "Hourly Wages",
             'Addform' => "Add New hourly wages",
+            'master' => $master,
         ]);
     }
 
@@ -69,10 +72,11 @@ class HourlywagesController extends Controller
     {
 
         $user_id = Auth::id();
+        $master = $this->getmasterfields();
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                'employee_name' => 'required',
+                'employee_id' => 'required',
                 'hourlywages_date' => 'required',
                 'hourlywages_title' => 'required',
                 'regular_hours' => 'required',
@@ -143,11 +147,13 @@ class HourlywagesController extends Controller
         $result = hourlywages::find($id);
         $action = 'add';
         $editname = "Edit hourlywages " . $result->employee;
+        $master = $this->getmasterfields();
         return view('hrmodule.hourlywages.add')->with([
             'action' => $action,
             'pageTitle' => "Hourly Wages",
             'Addform' => $editname,
             'result' => $result,
+            'master' => $master
         ]);
 
     }
@@ -176,6 +182,13 @@ class HourlywagesController extends Controller
             Route::post('/update/{id}', array('as' => 'hourlywages.update', 'uses' => 'HourlywagesController@update'));
             Route::get('/delete/{id}', array('as' => 'hourlywages.destroy', 'uses' => 'HourlywagesController@destroy'));
         });
+    }
+    public function getmasterfields()
+    {
+        $master = array();
+        $master['Employees'] = Employees::where(['status' => 1])->get()->toArray();
+       
+        return $master;
     }
 }
 

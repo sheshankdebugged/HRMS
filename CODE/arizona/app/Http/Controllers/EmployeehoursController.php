@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employeehours;
+use App\Models\Employees;
+use App\Models\Projects;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -50,10 +52,12 @@ class EmployeehoursController extends Controller
     public function create()
     {
         $action = 'add';
+        $master = $this->getmasterfields();
         return view('hrmodule.employeehours.add')->with([
             'action' => $action,
             'pageTitle' => "Employee Hours",
             'Addform' => "Add New Employee Hours",
+            'master' => $master
         ]);
     }
 
@@ -71,7 +75,7 @@ class EmployeehoursController extends Controller
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                  'employee' => 'required',
+                  'employee_id' => 'required',
                   'regular_hours' => 'required',
                   
             ]);
@@ -173,4 +177,14 @@ class EmployeehoursController extends Controller
             Route::get('/delete/{id}', array('as' => 'employeehours.destroy', 'uses' => 'EmployeehoursController@destroy'));
         });
     }
+    public function getmasterfields()
+    {
+        $master = array();
+        $master['Employees']               = Employees::where(['status' => 1])->get()->toArray();
+        // $master['Stations']                = Stations::where(['status'=>1])->get()->toArray();
+        $master['Projects']               = Projects::where(['status' => 1])->get()->toArray();               
+        return $master;
+    }
 }
+
+

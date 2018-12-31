@@ -65,8 +65,6 @@
 											<div class="form-field-inner">
 												 <div class="form-group">
 													<label>Company:</label>
-													<!-- <input type="text" class="form-control-spacial" id="employee_name" name="employee_name" value="{{isset($result->employee_name)?$result->employee_name:''}}"> -->
-													<!-- <select id="st" name="company_name" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Company 1</option></select> -->
 													<select id="st" class="WebHRForm1" style="width:180px;" name="station_type">
 
 													<!-- <option value="ALL"> All </option> -->

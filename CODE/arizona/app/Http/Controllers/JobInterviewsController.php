@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Form;
 use Session;
 use Validator;
+use App\Models\JobPosts;
+use App\Models\Employees;
+use App\Models\Candidates;
+use App\Models\JobCandidates;
+
 
 class JobInterviewsController extends Controller
 {
@@ -48,11 +53,12 @@ class JobInterviewsController extends Controller
     public function create()
     {
         $action = 'add';
+        $master = $this->getmasterfields();
         return view('hrmodule.jobinterview.add')->with([
             'action' => $action,
             'pageTitle' => "Job Interviews",
-            'Addform' => "Add New Job Interviews
-            ",
+            'Addform' => "Add New Job Interviews",
+            'master' => $master,
         ]);
     }
 
@@ -68,7 +74,7 @@ class JobInterviewsController extends Controller
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                'test_title' => 'required',
+                'place_of_interviews' => 'required',
 
             ]);
 
@@ -94,13 +100,15 @@ class JobInterviewsController extends Controller
             unset($input['_token']);
             if ($input['id'] > 0) {
                 $input['updated_at'] = date("Y-m-d H:i:s");
+                $input['interviews_date'] = date("Y-m-d");
                 Session::flash('message', 'JobInterview  Updated Successfully.');
                 JobInterviews::where('id', $input['id'])->update($input);
             } else {
                 unset($input['id']);
                 $input['created_at'] = date("Y-m-d H:i:s");
                 $input['updated_at'] = date("Y-m-d H:i:s");
-                Session::flash('message', 'JobInterview  Added Successfully.');
+                $input['interviews_date'] = date("Y-m-d");
+                Session::flash('message', 'Job Interview  Added Successfully.');
                 JobInterviews::insertGetId($input);
             }
             return redirect('/jobinterviews');
@@ -115,6 +123,7 @@ class JobInterviewsController extends Controller
     {
         $action = 'edit';
         $result = JobInterviews::find($id);
+        $master = $this->getmasterfields();
         $action = 'add';
         $editname = "Edit " . $result->test_title;
         return view('hrmodule.jobinterview.add')->with([
@@ -122,6 +131,7 @@ class JobInterviewsController extends Controller
             'pageTitle' => "Job Interviews",
             'Addform' => $editname,
             'result' => $result,
+            'master' => $master,
         ]);
     }
 
@@ -144,5 +154,13 @@ class JobInterviewsController extends Controller
             Route::post('/update/{id}', array('as' => 'jobinterviews.update', 'uses' => 'JobInterviewsController@update'));
             Route::get('/delete/{id}', array('as' => 'jobinterviews.destroy', 'uses' => 'JobInterviewsController@destroy'));
         });
+    }
+    public function getmasterfields()
+    {
+        $master = array();
+        $master['JobPosts']  = JobPosts::where(['status'=>1])->get()->toArray();
+        $master['Employees'] = Employees::where(['status'=>1])->get()->toArray();
+        $master['JobCandidates'] = JobCandidates::where(['status'=>1])->get()->toArray();
+        return $master;
     }
 }

@@ -63,14 +63,23 @@
 												
 												 <div class="form-group">
 													<label>Employee Name:</label>
-													<select id="employee_name" name="employee_name" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">employee_name</option></select>
+													<select id="employee_id" name="employee_id" class="WebHRForm1" style="width:180px;">
+													<!-- <option value="ALL"> All </option> -->
+													@foreach($master['Employees'] as $val)
+													<option  value="{{$val['id']}}">{{$val['employee_name']}}</option>
+													@endforeach
+													</select>
 													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 
 												 </div>
 												 <div class="form-group">
 													<label>Forward Application To:</label>
-													<select id="forward_application_to" name="forward_application_to" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Forward Application To</option></select>
-													<!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
+													<select id="forward_employee_id" name="forward_employee_id" class="WebHRForm1" style="width:180px;">
+													<!-- <option value="ALL"> All </option> -->
+													@foreach($master['Employees'] as $val)
+													<option  value="{{$val['id']}}">{{$val['employee_name']}}</option>
+													@endforeach
+													</select>
 
 												 </div>
 												 <div class="form-group">
@@ -97,12 +106,12 @@
 												 </div>
 												 <div class="form-group">
 													<label>Time In (Optional):</label>
-													<input type="text" placeholder="" class="form-control-spacial time" id="time_in" name="time_in" value="{{isset($result->time_in)?$result->time_in:''}}">
+													<input type="time" placeholder="" class="form-control-spacial time" id="time_in" name="time_in" value="{{isset($result->time_in)?$result->time_in:''}}">
 
 												 </div>
 												 <div class="form-group">
 													<label>Time Out (Optional):</label>
-													<input type="text" placeholder="" class="form-control-spacial time" id="time_out" name="time_out" value="{{isset($result->time_out)?$result->time_out:''}}">
+													<input type="time" placeholder="" class="form-control-spacial time" id="time_out" name="time_out" value="{{isset($result->time_out)?$result->time_out:''}}">
 
 												 </div>
 

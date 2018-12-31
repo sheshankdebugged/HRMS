@@ -10,18 +10,16 @@
 								<a href="{{url('stations')}}"><i class="fa fa-building"></i></a>
 								</li>
 								<li>
-								<a href="#noanchor"><i class="fa fa-sitemap"></i></a>
+								<a href="{{url('departments')}}"><i class="fa fa-sitemap"></i></a>
 								</li>
 								<li>
-									<a href="{{url('stations')}}" alt="Dashboard"><i class="fa fa-envelope-o"></i></a>
+									<a href="{{url('organizationnews')}}"><i class="fa fa-newspaper-o"></i></a>
 								</li>
 								<li>
-									<a href="{{url('stations')}}" alt="Dashboard"><i class="fa fa-user"></i></a>
+									<a href="{{url('setting')}}"><i class="fa fa-cogs"></i></i></a>
 								</li>
 								<li>
-									<a href="{{url('stations')}}" alt="Dashboard"><i class="fa fa-clipboard"></i></a>
+									<a href="{{url('#')}}"><i class="fa fa-file-o"></i></a>
 								</li>
-								<li>
-									<a href="{{url('stations')}}" alt="Dashboard"><i class="fa fa-comments"></i></a>
-								</li>
+								
  </ul>

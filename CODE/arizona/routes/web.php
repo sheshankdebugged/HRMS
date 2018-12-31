@@ -107,10 +107,9 @@ Route::group(['middleware' => 'auth'], function () {
 
       // Terminations Routes
       \App\Http\Controllers\TerminationsController::routes();
-
       
     // Time sheet Routes
-
+    
     // Worksheet Routes
     \App\Http\Controllers\WorksheetController::routes();
 
@@ -135,7 +134,12 @@ Route::group(['middleware' => 'auth'], function () {
     
       \App\Http\Controllers\LeavesController::routes();
 
-      //   Hourly Wages
+      //   Leaves Settigs
+    
+      \App\Http\Controllers\LeavesSettingsController::routes();
+
+
+      //   Hourly Wages\
     
       \App\Http\Controllers\HourlywagesController::routes();
       
@@ -160,6 +164,7 @@ Route::group(['middleware' => 'auth'], function () {
      \App\Http\Controllers\AdjustmentsController::routes();
 
 
+
       // Loans
       
       \App\Http\Controllers\LoansController::routes();
@@ -174,11 +179,11 @@ Route::group(['middleware' => 'auth'], function () {
 
      //  Commissions
       
-        \App\Http\Controllers\commissionsController::routes();
+        \App\Http\Controllers\CommissionsController::routes();
 
         //  Reimbursements
       
-        \App\Http\Controllers\reimbursementsController::routes();
+        \App\Http\Controllers\ReimbursementsController::routes();
 
      
 
