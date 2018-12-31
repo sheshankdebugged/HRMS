@@ -2,44 +2,40 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Employeehours;
-use App\Models\Employees;
-use App\Models\Projects;
+use App\Models\LeavesSettings;
 use Illuminate\Http\Request;
+use App\Models\Leaves;
+use App\Models\Employees;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Form;
-use Session;
-use Validator;
 
-class EmployeehoursController extends Controller
+class LeavesSettingsController extends Controller
 {
-     /**
+   /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        
         $user_id = Auth::id();
         $searchQuery  = isset($_GET['search'])?trim($_GET['search']):"";
         $where   = ['status'=>1,'user_id'=>$user_id];
         
         if(!empty($searchQuery)){
             $where = [
-                ['regular_hours', 'LIKE', "%$searchQuery%"],
+                ['reason', 'LIKE', "%$searchQuery%"],
                 ['status', '=', 1],
                 ['user_id', '=', $user_id],
             ];   
         }
-        $list =Employeehours::where($where)->paginate(10);
+        $list =LeavesSettings::where($where)->paginate(10);
 
         // $list = complaints::where(['status' => 1])->paginate(10);
-        return view('hrmodule.employeehours.list')->with([
+        return view('hrmodule.leavessettings.list')->with([
             'listData' => $list,
-            'pageTitle' => "Employee Hours",
+            'pageTitle' => "Leaves Settings",
         ]);
 
     }
@@ -53,10 +49,10 @@ class EmployeehoursController extends Controller
     {
         $action = 'add';
         $master = $this->getmasterfields();
-        return view('hrmodule.employeehours.add')->with([
+        return view('hrmodule.leavessettings.add')->with([
             'action' => $action,
-            'pageTitle' => "Employee Hours",
-            'Addform' => "Add New Employee Hours",
+            'pageTitle' => "Leaves Settings",
+            'Addform' => "Leaves Settings",
             'master' => $master
         ]);
     }
@@ -75,13 +71,13 @@ class EmployeehoursController extends Controller
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                  'employee_id' => 'required',
-                  'regular_hours' => 'required',
+                //   'employee' => 'required',
+                //   'regular_hours' => 'required',
                   
             ]);
             if ($validator->fails()) {
                 $action = 'addRegularhours';
-                return redirect('/employeehours/add')
+                return redirect('/leavessettings/add')
                     ->withErrors($validator)
                     ->withInput()
                     ->with([
@@ -93,29 +89,29 @@ class EmployeehoursController extends Controller
             if (request()->hasFile('icon_img')) {
                 $file = request()->file('icon_img');
                 $input['icon_img'] = md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
-                $file->move('./img/uploads/employeehours/', $input['icon_img']);
+                $file->move('./img/uploads/leavessettings/', $input['icon_img']);
             }
 
             echo "<pre>";
 
        
-             $input['date'] = ($input['date'] !="")?date('Y-m-d',strtotime($input['date'])):$input['date'];
+             $input['leave_from'] = ($input['leave_from'] !="")?date('Y-m-d',strtotime($input['leave_from'])):$input['leave_from'];
             // $input['poll_end_date']   = ($input['poll_end_date'] !="")?date('Y-m-d',strtotime($input['poll_end_date'])):$input['poll_end_date'];
             $input['status'] =  1;
             $input['user_id'] =  $user_id;
             unset($input['_token']);
             if($input['id']>0){
                 $input['updated_at']=date("Y-m-d H:i:s");
-                Session::flash('message', 'Employee Hours Updated Successfully.');
-                Employeehours::where('id', $input['id'])->update($input);
+                Session::flash('message', 'Employee Leaves Updated Successfully.');
+                Leaves::where('id', $input['id'])->update($input);
             }else{
                 unset($input['id']);
                 $input['created_at']=date("Y-m-d H:i:s");
                 $input['updated_at']=date("Y-m-d H:i:s");
-                Session::flash('message', 'Employee Hours  Added Successfully.');
-                Employeehours::insertGetId($input);
+                Session::flash('message', 'Employee Leaves  Added Successfully.');
+                Leaves::insertGetId($input);
             }
-            return redirect('/employeehours');
+            return redirect('/leavessettings');
         }
     }
 
@@ -140,12 +136,12 @@ class EmployeehoursController extends Controller
     {
 
         $action = 'edit';
-        $result = Employeehours::find($id);
+        $result = LeavesSettings::find($id);
         $action = 'add';
-        $editname = "Edit Employee Hours " . $result->employee;
-        return view('hrmodule.employeehours.add')->with([
+        $editname = "Edit Leaves  " . $result->employee;
+        return view('hrmodule.leavessettings.add')->with([
             'action' => $action,
-            'pageTitle' => "Employee Hours",
+            'pageTitle' => "Leaves Settings",
             'Addform' => $editname,
             'result' => $result,
         ]);
@@ -160,21 +156,21 @@ class EmployeehoursController extends Controller
      */
     public function destroy($id)
     {
-        $attendance = Employeehours::find($id);
-        $attendance->status = 0;
-        $attendance->save();
-        Session::flash('message', ' Employee Hours delete successfully');
-        return redirect("/employeehours");
+        $LeavesSettings = LeavesSettings::find($id);
+        $LeavesSettings->status = 0;
+        $LeavesSettings->save();
+        Session::flash('message', ' Leaves Settings delete successfully');
+        return redirect("/leavessettings");
     }
     public static function routes()
     {
-            Route::group(array('prefix' => 'employeehours'), function () {
-            Route::get('/', array('as' => 'employeehours.index', 'uses' => 'EmployeehoursController@index'));
-            Route::get('/add', array('as' => 'employeehours.create', 'uses' => 'EmployeehoursController@create'));
-            Route::post('/save', array('as' => 'employeehours.save', 'uses' => 'EmployeehoursController@store'));
-            Route::get('/edit/{id}', array('as' => 'employeehours.edit', 'uses' => 'EmployeehoursController@edit'));
-            Route::post('/update/{id}', array('as' => 'employeehours.update', 'uses' => 'EmployeehoursController@update'));
-            Route::get('/delete/{id}', array('as' => 'employeehours.destroy', 'uses' => 'EmployeehoursController@destroy'));
+            Route::group(array('prefix' => 'leavessettings'), function () {
+            Route::get('/', array('as' => 'leavessettings.index', 'uses' => 'LeavesSettingsController@index'));
+            Route::get('/add', array('as' => 'leavessettings.create', 'uses' => 'LeavesSettingsController@create'));
+            Route::post('/save', array('as' => 'leavessettings.save', 'uses' => 'LeavesSettingsController@store'));
+            Route::get('/edit/{id}', array('as' => 'leavessettings.edit', 'uses' => 'LeavesSettingsController@edit'));
+            Route::post('/update/{id}', array('as' => 'leavessettings.update', 'uses' => 'LeavesSettingsController@update'));
+            Route::get('/delete/{id}', array('as' => 'leavessettings.destroy', 'uses' => 'LeavesSettingsController@destroy'));
         });
     }
     public function getmasterfields()
@@ -182,9 +178,7 @@ class EmployeehoursController extends Controller
         $master = array();
         $master['Employees']               = Employees::where(['status' => 1])->get()->toArray();
         // $master['Stations']                = Stations::where(['status'=>1])->get()->toArray();
-        $master['Projects']               = Projects::where(['status' => 1])->get()->toArray();               
+        // $master['Projects']               = Projects::where(['status' => 1])->get()->toArray();               
         return $master;
     }
 }
-
-

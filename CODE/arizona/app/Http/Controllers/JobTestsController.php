@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Form;
+use App\Models\JobPosts;
 use Session;
 use Validator;
 
@@ -48,11 +49,12 @@ class JobTestsController extends Controller
     public function create()
     {
         $action = 'add';
+        $master = $this->getmasterfields();
         return view('hrmodule.jobtest.add')->with([
             'action' => $action,
             'pageTitle' => "Job Tests",
-            'Addform' => "Add New Job Test
-            ",
+            'Addform' => "Add New Job Test",
+            'master' => $master,
         ]);
     }
 
@@ -100,7 +102,7 @@ class JobTestsController extends Controller
                 unset($input['id']);
                 $input['created_at'] = date("Y-m-d H:i:s");
                 $input['updated_at'] = date("Y-m-d H:i:s");
-                Session::flash('message', 'JobTests  Added Successfully.');
+                Session::flash('message', 'Job Test  Added Successfully.');
                 JobTests::insertGetId($input);
             }
             return redirect('/jobtests');
@@ -130,11 +132,13 @@ class JobTestsController extends Controller
         $result = JobTests::find($id);
         $action = 'add';
         $editname = "Edit " . $result->test_title;
+        $master = $this->getmasterfields();
         return view('hrmodule.jobtest.add')->with([
             'action' => $action,
             'pageTitle' => "Job Tests",
             'Addform' => $editname,
             'result' => $result,
+            'master' => $master,
         ]);
     }
 
@@ -158,9 +162,9 @@ class JobTestsController extends Controller
      */
     public function destroy($id)
     {
-        $jontest = JobTests::find($id);
-        $jontest->status = 0;
-        $jontest->save();
+        $jobtest = JobTests::find($id);
+        $jobtest->status = 0;
+        $jobtest->save();
         Session::flash('message', 'Job Test delete successfully');
         return redirect("/jobtests");
     }
@@ -174,5 +178,11 @@ class JobTestsController extends Controller
             Route::post('/update/{id}', array('as' => 'jobtests.update', 'uses' => 'JobTestsController@update'));
             Route::get('/delete/{id}', array('as' => 'jobtests.destroy', 'uses' => 'JobTestsController@destroy'));
         });
+    }
+    public function getmasterfields()
+    {
+        $master = array();
+        $master['JobPosts']  = JobPosts::where(['status'=>1])->get()->toArray();
+        return $master;
     }
 }

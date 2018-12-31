@@ -15,16 +15,16 @@
 								<div class="inner-heading-request">
 									<h2>{{$pageTitle}}</h2>
 								</div>
-								<!-- <div class="settings-buttons">
+								<div class="settings-buttons">
 									<ul>
 										<li>
-											<a href="#" alt="Dashboard"><i class="fa fa-cog"></i></a>
+											<a href="{{ url('leavessettings/add') }}" alt="Dashboard"><i class="fa fa-cog"></i></a>
 										</li>
-										<li>
+										<!-- <li>
 											<a href="#" alt="Dashboard"><i class="fa fa-question-circle"></i></a>
-										</li>
+										</li> -->
 									</ul>
-								</div> -->
+								</div>
 							</div>
 							<div class="request-inner-table">
 								<div class="upper-header-request">
@@ -68,8 +68,13 @@
 													<!-- <input type="text" placeholder="Contact Person" class="form-control-spacial" id="registration_name" name="contact_person" value="{{isset($result->contact_person)?$result->contact_person:''}}"> -->
                                                    
 												 </div>
+												<!-- <div class="form-group">
+													<label style="width:60px; !important" class="switch">
+														<input type="checkbox">
+														<span class="slider round"></span>
+													</label>
 
-
+												</div> -->
 												 <div class="form-group">
 												   <label>Forward Application To:</label>
 												   <select id="forward_application_to" name="forward_application_to" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">forward 2</option></select>
