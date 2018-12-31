@@ -23,8 +23,9 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
 
-    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
-    Route::get('/home', 'DashboardController@index')->name('home');
+
+Route::get('/dashboard','DashboardController@index')->name('dashboard');
+Route::get('/home','DashboardController@index')->name('dashboard');
 
 // Companies Routes
     \App\Http\Controllers\CompaniesController::routes();
@@ -186,5 +187,6 @@ Route::group(['middleware' => 'auth'], function () {
         \App\Http\Controllers\ReimbursementsController::routes();
 
      
+
 
 });
