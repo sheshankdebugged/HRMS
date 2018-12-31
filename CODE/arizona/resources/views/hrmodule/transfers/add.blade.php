@@ -15,7 +15,7 @@
 								<div class="inner-heading-request">
 									<h2>{{$pageTitle}}</h2>
 								</div>
-								<div class="settings-buttons">
+								<!-- <div class="settings-buttons">
 									<ul>
 										<li>
 											<a href="#" alt="Dashboard"><i class="fa fa-cog"></i></a>
@@ -24,14 +24,14 @@
 											<a href="#" alt="Dashboard"><i class="fa fa-question-circle"></i></a>
 										</li>
 									</ul>
-								</div>
+								</div> -->
 							</div>
 							<div class="request-inner-table">
 								<div class="upper-header-request">
 									<div class="col-md-12 nopadding">
 										<div class="back-button">
 											<div class="add-record-btn">
-												<a href="{{ url('companies') }}"><i class="fa fa-angle-left"></i>Back</a>
+												<a href="{{ url('transfers') }}"><i class="fa fa-angle-left"></i>Back</a>
 											</div>
 										</div>
 									</div>
@@ -64,6 +64,7 @@
 											<div class="form-group">
 													<label>Employee to Transfer:</label>
 													<select id="employee_to_transfer" name="employee_to_transfer"" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Employee to Transfer 1</option></select>
+													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 													<!-- <input type="text" placeholder="Contact Person" class="form-control-spacial" id="registration_name" name="contact_person" value="{{isset($result->contact_person)?$result->contact_person:''}}"> -->
                                                    
 												 </div>
@@ -80,8 +81,8 @@
 												 <div class="form-group">
 												   <label>Transfer Date:</label>
 												   <!-- <select id="Transfer Date" name="employee_category" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Employee Category 1</option></select> -->
-													<input type="text" placeholder="Transfer Date" class="form-control-spacial" id="transfer_date" name="transfer_date" value="{{isset($result->transfer_date)?$result->transfer_date:''}}">
-                                
+													<!-- <input type="text" placeholder="Transfer Date" class="form-control-spacial" id="transfer_date" name="transfer_date" value="{{isset($result->transfer_date)?$result->transfer_date:''}}"> -->
+													<input type="text" placeholder="" class="form-control-spacial date" id="transfer_date" name="transfer_date" value="{{isset($result->transfer_date)?$result->transfer_date:''}}">
 												 </div>
 												 <div class="form-group">
 													<h4>Transfer To</h4>

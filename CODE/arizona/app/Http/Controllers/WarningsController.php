@@ -21,11 +21,23 @@ class WarningsController extends Controller
      */
     public function index()
     {
-
-        $list = warnings::where(['status'=>1])->paginate(10);
-        return view('hrmodule.warnings.list')->with([
+        
+        $user_id = Auth::id();
+        $searchQuery  = isset($_GET['search'])?trim($_GET['search']):"";
+        $where   = ['status'=>1,'user_id'=>$user_id];
+        
+        if(!empty($searchQuery)){
+            $where = [
+                ['warning_to', 'LIKE', "%$searchQuery%"],
+                ['status', '=', 1],
+                ['user_id', '=', $user_id],
+            ];   
+        }
+         $list =Warnings::where($where)->paginate(10);
+        //   $list = warnings::where(['status'=>1])->paginate(10);
+         return view('hrmodule.warnings.list')->with([
             'listData' => $list,
-            'pageTitle'=>"warnings"
+            'pageTitle'=>"Warnings"
         ]);
 
     }
@@ -54,13 +66,12 @@ class WarningsController extends Controller
      */
     public function store(Request $request)
     {
+        // die('I am here');
         $user_id = Auth::id();
         if($request->all()){
 
             $validator = Validator::make($request->all(), [
-                'purpose_of_visit' => 'required',
-
-
+                'subject' => 'required'
             ]);
            if ($validator->fails()) {
                 $action = 'warnings';
@@ -76,8 +87,7 @@ class WarningsController extends Controller
             echo "<pre>";
 
        
-            $input['travel_start_date'] = ($input['travel_start_date'] !="")?date('Y-m-d',strtotime($input['travel_start_date'])):$input['travel_start_date'];
-            $input['travel_end_date']   = ($input['travel_end_date'] !="")?date('Y-m-d',strtotime($input['travel_end_date'])):$input['travel_end_date'];
+            $input['warning_date'] = ($input['warning_date'] !="")?date('Y-m-d',strtotime($input['warning_date'])):$input['warning_date'];
             $input['status']=  1;
             $input['user_id'] =  $user_id;
             unset($input['_token']);

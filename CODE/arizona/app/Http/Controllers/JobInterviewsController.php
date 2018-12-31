@@ -21,7 +21,18 @@ class JobInterviewsController extends Controller
     public function index()
     {
         $user_id = Auth::id();
-        $list = JobInterviews::where(['status' => 1, 'user_id' => $user_id])->paginate(10);
+        $searchQuery  = isset($_GET['search'])?trim($_GET['search']):"";
+        $where   = ['status'=>1,'user_id'=>$user_id];
+        
+        if(!empty($searchQuery)){
+            $where = [
+                ['test_title', 'LIKE', "%$searchQuery%"],
+                ['status', '=', 1],
+                ['user_id', '=', $user_id],
+            ];   
+        }
+        $user_id = Auth::id();
+        $list = JobInterviews::where($where)->paginate(10);
         return view('hrmodule.jobinterview.list')->with([
             'listData' => $list,
             'pageTitle' => "Job Interviews",

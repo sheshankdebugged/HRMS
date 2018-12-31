@@ -21,8 +21,19 @@ class CompaniesController extends Controller
      */
     public function index()
     {
+        $user_id = Auth::id();
+        $searchQuery  = isset($_GET['search'])?trim($_GET['search']):"";
+        $where   = ['status'=>1,'user_id'=>$user_id];
+        
+        if(!empty($searchQuery)){
+            $where = [
+                ['company_name', 'LIKE', "%$searchQuery%"],
+                ['status', '=', 1],
+                ['user_id', '=', $user_id],
+            ];   
+        }
 
-        $list = Companies::where(['status' => 1])->paginate(10);
+        $list = Companies::where($where)->paginate(10);
         return view('hrmodule.companies.list')->with([
             'listData' => $list,
             'pageTitle' => "Companies",
@@ -64,7 +75,7 @@ class CompaniesController extends Controller
             ]);
             if ($validator->fails()) {
                 $action = 'addcompanies';
-                return redirect('/addcompanies')
+                return redirect('companies/add')
                     ->withErrors($validator)
                     ->withInput()
                     ->with([

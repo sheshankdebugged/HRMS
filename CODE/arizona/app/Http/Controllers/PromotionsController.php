@@ -21,8 +21,21 @@ class PromotionsController extends Controller
      */
     public function index()
     {
+        
+        $user_id = Auth::id();
+        $searchQuery  = isset($_GET['search'])?trim($_GET['search']):"";
+        $where   = ['status'=>1,'user_id'=>$user_id];
+        
+        if(!empty($searchQuery)){
+            $where = [
+                ['promotion_title', 'LIKE', "%$searchQuery%"],
+                ['status', '=', 1],
+                ['user_id', '=', $user_id],
+            ];   
+        }
+        $list = promotions::where($where)->paginate(10);
 
-        $list = promotions::where(['status' => 1])->paginate(10);
+        // $list = promotions::where(['status' => 1])->paginate(10);
         return view('hrmodule.promotions.list')->with([
             'listData' => $list,
             'pageTitle' => "Promotions",
@@ -59,7 +72,7 @@ class PromotionsController extends Controller
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                // 'poll_question' => 'required',
+                'promotion_for_employee_id' => 'required',
                 // 'poll_answer_1' => 'required',
                 // 'poll_answer_2' => 'required'
             ]);
@@ -83,7 +96,7 @@ class PromotionsController extends Controller
             echo "<pre>";
 
        
-            // $input['promotion_date'] = ($input['promotion_date'] !="")?date('Y-m-d',strtotime($input['promotion_date'])):$input['promotion_date'];
+            $input['promotion_date'] = ($input['promotion_date'] !="")?date('Y-m-d',strtotime($input['promotion_date'])):$input['promotion_date'];
             // $input['poll_end_date']   = ($input['poll_end_date'] !="")?date('Y-m-d',strtotime($input['poll_end_date'])):$input['poll_end_date'];
             $input['status'] =  1;
             $input['user_id'] =  $user_id;

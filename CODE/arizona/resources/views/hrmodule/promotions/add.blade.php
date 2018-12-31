@@ -15,7 +15,7 @@
 								<div class="inner-heading-request">
 									<h2>{{$pageTitle}}</h2>
 								</div>
-								<div class="settings-buttons">
+								<!-- <div class="settings-buttons">
 									<ul>
 										<li>
 											<a href="#" alt="Dashboard"><i class="fa fa-cog"></i></a>
@@ -24,7 +24,7 @@
 											<a href="#" alt="Dashboard"><i class="fa fa-question-circle"></i></a>
 										</li>
 									</ul>
-								</div>
+								</div> -->
 							</div>
 							<div class="request-inner-table">
 								<div class="upper-header-request">
@@ -64,6 +64,7 @@
 												 <div class="form-group">
 													<label>Promotion For:</label>
 													<select id="promotion_for_employee_id" name="promotion_for_employee_id" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Employee Name-</option></select>
+													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 
 												 </div>
 												 
@@ -106,8 +107,8 @@
 
 												 <div class="form-group">
 													<label>Promotion Date:</label>
+													<!-- <input type="text" placeholder="" class="form-control-spacial date" id="promotion_date" name="promotion_date" value="{{isset($result->promotion_date)?$result->promotion_date:''}}"> -->
 													<input type="text" placeholder="" class="form-control-spacial date" id="promotion_date" name="promotion_date" value="{{isset($result->promotion_date)?$result->promotion_date:''}}">
-
 												 </div>
 
 												 <div class="form-group">

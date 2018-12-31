@@ -21,8 +21,21 @@ class ComplaintsController extends Controller
      */
     public function index()
     {
+        
+        $user_id = Auth::id();
+        $searchQuery  = isset($_GET['search'])?trim($_GET['search']):"";
+        $where   = ['status'=>1,'user_id'=>$user_id];
+        
+        if(!empty($searchQuery)){
+            $where = [
+                ['complaint_title', 'LIKE', "%$searchQuery%"],
+                ['status', '=', 1],
+                ['user_id', '=', $user_id],
+            ];   
+        }
+        $list =complaints::where($where)->paginate(10);
 
-        $list = complaints::where(['status' => 1])->paginate(10);
+        // $list = complaints::where(['status' => 1])->paginate(10);
         return view('hrmodule.complaints.list')->with([
             'listData' => $list,
             'pageTitle' => "Complaints",
@@ -59,8 +72,8 @@ class ComplaintsController extends Controller
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                // 'poll_question' => 'required',
-                // 'poll_answer_1' => 'required',
+                  'complaint_from' => 'required',
+                  'complaint_title' => 'required',
                 // 'poll_answer_2' => 'required'
             ]);
             if ($validator->fails()) {
@@ -83,7 +96,7 @@ class ComplaintsController extends Controller
             echo "<pre>";
 
        
-            // $input['promotion_date'] = ($input['promotion_date'] !="")?date('Y-m-d',strtotime($input['promotion_date'])):$input['promotion_date'];
+             $input['complaint_date'] = ($input['complaint_date'] !="")?date('Y-m-d',strtotime($input['complaint_date'])):$input['complaint_date'];
             // $input['poll_end_date']   = ($input['poll_end_date'] !="")?date('Y-m-d',strtotime($input['poll_end_date'])):$input['poll_end_date'];
             $input['status'] =  1;
             $input['user_id'] =  $user_id;
@@ -153,12 +166,12 @@ class ComplaintsController extends Controller
     public static function routes()
     {
             Route::group(array('prefix' => 'complaints'), function () {
-            Route::get('/', array('as' => 'complaints.index', 'uses' => 'complaintsController@index'));
-            Route::get('/add', array('as' => 'complaints.create', 'uses' => 'complaintsController@create'));
-            Route::post('/save', array('as' => 'complaints.save', 'uses' => 'complaintsController@store'));
-            Route::get('/edit/{id}', array('as' => 'complaints.edit', 'uses' => 'complaintsController@edit'));
-            Route::post('/update/{id}', array('as' => 'complaints.update', 'uses' => 'complaintsController@update'));
-            Route::get('/delete/{id}', array('as' => 'complaints.destroy', 'uses' => 'complaintsController@destroy'));
+            Route::get('/', array('as' => 'complaints.index', 'uses' => 'ComplaintsController@index'));
+            Route::get('/add', array('as' => 'complaints.create', 'uses' => 'ComplaintsController@create'));
+            Route::post('/save', array('as' => 'complaints.save', 'uses' => 'ComplaintsController@store'));
+            Route::get('/edit/{id}', array('as' => 'complaints.edit', 'uses' => 'ComplaintsController@edit'));
+            Route::post('/update/{id}', array('as' => 'complaints.update', 'uses' => 'ComplaintsController@update'));
+            Route::get('/delete/{id}', array('as' => 'complaints.destroy', 'uses' => 'ComplaintsController@destroy'));
         });
     }
 }

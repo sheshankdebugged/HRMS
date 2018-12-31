@@ -21,8 +21,21 @@ class employeesexitController extends Controller
      */
     public function index()
     {
+        $user_id = Auth::id();
+        $searchQuery  = isset($_GET['search'])?trim($_GET['search']):"";
+        $where   = ['status'=>1,'user_id'=>$user_id];
+        
+        if(!empty($searchQuery)){
+            $where = [
+                ['employee', 'LIKE', "%$searchQuery%"],
+                ['status', '=', 1],
+                ['user_id', '=', $user_id],
+            ];   
+        }
+        $list = employeesexit::where($where)->paginate(10);
 
-        $list = employeesexit::where(['status' => 1])->paginate(10);
+
+        // $list = employeesexit::where(['status' => 1])->paginate(10);
         return view('hrmodule.employeesexit.list')->with([
             'listData' => $list,
             'pageTitle' => "Employees Exit",
@@ -54,16 +67,18 @@ class employeesexitController extends Controller
      */
     public function store(Request $request)
     {
+
         $user_id = Auth::id();
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
                 'employee' => 'required',
+                'exit_date' => 'required',
 
             ]);
             if ($validator->fails()) {
                 $action = 'addemployeesexit';
-                return redirect('/addemployeesexit')
+                return redirect('employeesexit/add')
                     ->withErrors($validator)
                     ->withInput()
                     ->with([

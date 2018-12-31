@@ -22,7 +22,18 @@ class JobPostsController extends Controller
      */
     public function index()
     {
-        $list = JobPosts::where(['is_deleted' => 0])->paginate(10);
+        $user_id = Auth::id();
+        $searchQuery  = isset($_GET['search'])?trim($_GET['search']):"";
+        $where   = ['status'=>1,'user_id'=>$user_id];
+        
+        if(!empty($searchQuery)){
+            $where = [
+                ['job_title', 'LIKE', "%$searchQuery%"],
+                ['status', '=', 1],
+                ['user_id', '=', $user_id],
+            ];   
+        }
+        $list = JobPosts::where($where)->paginate(10);
         // $list['job_post_closing_date'] = date('MM d, y', strtotime($list['job_post_closing_date']))
         return view('hrmodule.jobposts.list')->with([
             'listData' => $list,
@@ -67,8 +78,8 @@ class JobPostsController extends Controller
                 'job_title' => 'required',
             ]);
             if ($validator->fails()) {
-                $action = 'add jobpost';
-                return redirect('/
+                $action = 'addjobpost';
+                return redirect('jobposts/add
                 ')
                     ->withErrors($validator)
                     ->withInput()

@@ -21,8 +21,21 @@ class PollsController extends Controller
      */
     public function index()
     {
+        $user_id = Auth::id();
+        $searchQuery  = isset($_GET['search'])?trim($_GET['search']):"";
+        $where   = ['status'=>1,'user_id'=>$user_id];
+        
+        if(!empty($searchQuery)){
+            $where = [
+                ['poll_question', 'LIKE', "%$searchQuery%"],
+                ['status', '=', 1],
+                ['user_id', '=', $user_id],
+            ];   
+        }
+        $list = polls::where($where)->paginate(10);
 
-        $list = polls::where(['status' => 1])->paginate(10);
+
+        // $list = polls::where(['status' => 1])->paginate(10);
         return view('hrmodule.polls.list')->with([
             'listData' => $list,
             'pageTitle' => "Polls",
@@ -153,12 +166,12 @@ class PollsController extends Controller
     public static function routes()
     {
             Route::group(array('prefix' => 'polls'), function () {
-            Route::get('/', array('as' => 'polls.index', 'uses' => 'pollsController@index'));
-            Route::get('/add', array('as' => 'polls.create', 'uses' => 'pollsController@create'));
-            Route::post('/save', array('as' => 'polls.save', 'uses' => 'pollsController@store'));
-            Route::get('/edit/{id}', array('as' => 'polls.edit', 'uses' => 'pollsController@edit'));
-            Route::post('/update/{id}', array('as' => 'polls.update', 'uses' => 'pollsController@update'));
-            Route::get('/delete/{id}', array('as' => 'polls.destroy', 'uses' => 'pollsController@destroy'));
+            Route::get('/', array('as' => 'polls.index', 'uses' => 'PollsController@index'));
+            Route::get('/add', array('as' => 'polls.create', 'uses' => 'PollsController@create'));
+            Route::post('/save', array('as' => 'polls.save', 'uses' => 'PollsController@store'));
+            Route::get('/edit/{id}', array('as' => 'polls.edit', 'uses' => 'PollsController@edit'));
+            Route::post('/update/{id}', array('as' => 'polls.update', 'uses' => 'PollsController@update'));
+            Route::get('/delete/{id}', array('as' => 'polls.destroy', 'uses' => 'PollsController@destroy'));
         });
     }
 }

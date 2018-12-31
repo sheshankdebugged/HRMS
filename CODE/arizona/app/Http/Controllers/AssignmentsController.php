@@ -24,8 +24,20 @@ class AssignmentsController extends Controller
      */
     public function index()
     {
+        $user_id = Auth::id();
+        $searchQuery  = isset($_GET['search'])?trim($_GET['search']):"";
+        $where   = ['status'=>1,'user_id'=>$user_id];
+        
+        if(!empty($searchQuery)){
+            $where = [
+                ['assignment_name', 'LIKE', "%$searchQuery%"],
+                ['status', '=', 1],
+                ['user_id', '=', $user_id],
+            ];   
+        }
+        $list =Assignments::where($where)->paginate(10);
 
-        $list = Assignments::where(['status'=>1])->paginate(10);
+        // $list = Assignments::where(['status'=>1])->paginate(10);
         return view('hrmodule.assignments.list')->with([
             'listData' => $list,
             'pageTitle'=>"Assignments"
@@ -62,6 +74,7 @@ class AssignmentsController extends Controller
 
             $validator = Validator::make($request->all(), [
                 'assigned_to' => 'required',
+                'assignment_name' => 'required',
 
 
             ]);

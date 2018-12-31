@@ -20,9 +20,19 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        //
+        $user_id = Auth::id();
+        $searchQuery  = isset($_GET['search'])?trim($_GET['search']):"";
+        $where   = ['status'=>1,'user_id'=>$user_id];
+        
+        if(!empty($searchQuery)){
+            $where = [
+                ['project_title', 'LIKE', "%$searchQuery%"],
+                ['status', '=', 1],
+                ['user_id', '=', $user_id],
+            ];   
+        }
 
-        $list = Projects::where(['status' => 1])->paginate(10);
+        $list = Projects::where($where)->paginate(10);
 
         // echo "<pre>";
         //print_r($list);
@@ -67,7 +77,7 @@ class ProjectsController extends Controller
             ]);
             if ($validator->fails()) {
                 $action = 'addprojects';
-                return redirect('/addprojects')
+                return redirect('/projects/add')
                     ->withErrors($validator)
                     ->withInput()
                     ->with([

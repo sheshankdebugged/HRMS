@@ -21,8 +21,22 @@ class AchievementsController extends Controller
      */
     public function index()
     {
+        $user_id = Auth::id();
+        $searchQuery  = isset($_GET['search'])?trim($_GET['search']):"";
+        $where   = ['status'=>1,'user_id'=>$user_id];
+        
+        if(!empty($searchQuery)){
+            $where = [
+                ['achievement_title', 'LIKE', "%$searchQuery%"],
+                ['status', '=', 1],
+                ['user_id', '=', $user_id],
+            ];   
+        }
+        $list = achievements::where($where)->paginate(10);
 
-        $list = achievements::where(['status' => 1])->paginate(10);
+
+
+        // $list = achievements::where(['status' => 1])->paginate(10);
         return view('hrmodule.achievements.list')->with([
             'listData' => $list,
             'pageTitle' => "Achievements",
@@ -151,12 +165,12 @@ class AchievementsController extends Controller
     public static function routes()
     {
             Route::group(array('prefix' => 'achievements'), function () {
-            Route::get('/', array('as' => 'achievements.index', 'uses' => 'achievementsController@index'));
-            Route::get('/add', array('as' => 'achievements.create', 'uses' => 'achievementsController@create'));
-            Route::post('/save', array('as' => 'achievements.save', 'uses' => 'achievementsController@store'));
-            Route::get('/edit/{id}', array('as' => 'achievements.edit', 'uses' => 'achievementsController@edit'));
-            Route::post('/update/{id}', array('as' => 'achievements.update', 'uses' => 'achievementsController@update'));
-            Route::get('/delete/{id}', array('as' => 'achievements.destroy', 'uses' => 'achievementsController@destroy'));
+            Route::get('/', array('as' => 'achievements.index', 'uses' => 'AchievementsController@index'));
+            Route::get('/add', array('as' => 'achievements.create', 'uses' => 'AchievementsController@create'));
+            Route::post('/save', array('as' => 'achievements.save', 'uses' => 'AchievementsController@store'));
+            Route::get('/edit/{id}', array('as' => 'achievements.edit', 'uses' => 'AchievementsController@edit'));
+            Route::post('/update/{id}', array('as' => 'achievements.update', 'uses' => 'AchievementsController@update'));
+            Route::get('/delete/{id}', array('as' => 'achievements.destroy', 'uses' => 'AchievementsController@destroy'));
         });
     }
 }

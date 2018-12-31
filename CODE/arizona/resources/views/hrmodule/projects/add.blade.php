@@ -15,7 +15,7 @@
 								<div class="inner-heading-request">
 									<h2>{{$pageTitle}}</h2>
 								</div>
-								<div class="settings-buttons">
+								<!-- <div class="settings-buttons">
 									<ul>
 										<li>
 											<a href="#" alt="Dashboard"><i class="fa fa-cog"></i></a>
@@ -24,7 +24,7 @@
 											<a href="#" alt="Dashboard"><i class="fa fa-question-circle"></i></a>
 										</li>
 									</ul>
-								</div>
+								</div> -->
 							</div>
 							<div class="request-inner-table">
 								<div class="upper-header-request">
@@ -65,8 +65,8 @@
 												 	</select>												</div>
 												 <div class="form-group">
 													<label>Project Title:</label>
-													<input type="text" class="form-control-spacial" id="project_title" name="project_title" value="{{isset($result->project_title)?$result->project_title:''}}" placeholder="Company name">
-                                                    <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fal fa-asterisk"></i>
+													<input type="text" class="form-control-spacial" id="project_title" name="project_title" value="{{isset($result->project_title)?$result->project_title:''}}" placeholder="Project Title">
+                                                    <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 												 </div>
 												 <div class="form-group">
 													<label>Client Name:</label>
@@ -77,17 +77,17 @@
 												 <div class="form-group">
 													<label>Client Name (Old):</label>
 													<input type="text"  id="client_name_old" name="client_name_old"  placeholder="Client Name">
-                                                    <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fal fa-asterisk"></i>
+                                                    <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 												 </div>
 												 <div class="form-group">
 													<label>Project Start Date:</label>
 													<input type="date" class "form-control-spacial date" id="created_at" name="created_at">
-                                                    <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fal fa-asterisk"></i>
+                                                    <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 												 </div>
 												<div class="form-group">
 													<label>Project End Date:</label>
 													<input type="date" class "form-control-spacial date" id="updated_at" name="updated_at" value="{{isset($result->updated_at)?$result->updated_at:''}}">
-													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fal fa-asterisk"></i>
+													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 												</div>
 												<div class="form-group">
 													<h4>Project Audience</h4>

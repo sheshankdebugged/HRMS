@@ -23,6 +23,11 @@
     $(function(){
         $( ".date" ).datepicker();
     });
+
+    $( ".fa-refresh" ).click(function() {
+          $("#search").val('');
+          location.reload();
+});
 </script>
 <script src="{{ url('/admin/js/popper.min.js') }}"></script>
 <script src="{{ url('/admin/js/bootstrap-datepicker.js') }}"></script>

@@ -21,8 +21,21 @@ class JobRequestsController extends Controller
      */
     public function index()
     {
+        
         $user_id = Auth::id();
-        $list = jobRequests::where(['status' => 1, 'user_id' => $user_id])->paginate(10);
+        $searchQuery  = isset($_GET['search'])?trim($_GET['search']):"";
+        $where   = ['status'=>1,'user_id'=>$user_id];
+        
+        if(!empty($searchQuery)){
+            $where = [
+                ['job_title', 'LIKE', "%$searchQuery%"],
+                ['status', '=', 1],
+                ['user_id', '=', $user_id],
+            ];   
+        }
+        // $list =Stations::where($where)->paginate(10);
+        $user_id = Auth::id();
+        $list = jobRequests::where($where)->paginate(10);
         return view('hrmodule.jobrequest.list')->with([
             'listData' => $list,
             'pageTitle' => "Job Requests",
@@ -125,7 +138,7 @@ class JobRequestsController extends Controller
         $editname = "Edit " . $result->job_title;
         return view('hrmodule.jobrequest.add')->with([
             'action' => $action,
-            'pageTitle' => "jobrequest",
+            'pageTitle' => "Job Requests",
             'Addform' => $editname,
             'result' => $result,
         ]);
@@ -149,12 +162,12 @@ class JobRequestsController extends Controller
     public static function routes()
     {
         Route::group(array('prefix' => 'jobrequests'), function () {
-            Route::get('/', array('as' => 'jobrequest.index', 'uses' => 'JobRequestsController@index'));
-            Route::get('/add', array('as' => 'jobrequest.create', 'uses' => 'JobRequestsController@create'));
-            Route::post('/save', array('as' => 'jobrequest.save', 'uses' => 'JobRequestsController@store'));
-            Route::get('/edit/{id}', array('as' => 'jobrequest.edit', 'uses' => 'JobRequestsController@edit'));
-            Route::post('/update/{id}', array('as' => 'jobrequest.update', 'uses' => 'JobRequestsController@update'));
-            Route::get('/delete/{id}', array('as' => 'jobrequest.destroy', 'uses' => 'JobRequestsController@destroy'));
+            Route::get('/', array('as' => 'jobrequests.index', 'uses' => 'JobRequestsController@index'));
+            Route::get('/add', array('as' => 'jobrequests.create', 'uses' => 'JobRequestsController@create'));
+            Route::post('/save', array('as' => 'jobrequests.save', 'uses' => 'JobRequestsController@store'));
+            Route::get('/edit/{id}', array('as' => 'jobrequests.edit', 'uses' => 'JobRequestsController@edit'));
+            Route::post('/update/{id}', array('as' => 'jobrequests.update', 'uses' => 'JobRequestsController@update'));
+            Route::get('/delete/{id}', array('as' => 'jobrequests.destroy', 'uses' => 'JobRequestsController@destroy'));
         });
     }
 

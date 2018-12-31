@@ -21,8 +21,21 @@ class TransfersController extends Controller
      */
     public function index()
     {
+        $user_id = Auth::id();
+        $searchQuery  = isset($_GET['search'])?trim($_GET['search']):"";
+        $where   = ['status'=>1,'user_id'=>$user_id];
+        
+        if(!empty($searchQuery)){
+            $where = [
+                ['transfer_date', 'LIKE', "%$searchQuery%"],
+                ['status', '=', 1],
+                ['user_id', '=', $user_id],
+            ];   
+        }
+        $list = transfers::where($where)->paginate(10);
 
-        $list = transfers::where(['status' => 1])->paginate(10);
+
+        // $list = transfers::where(['status' => 1])->paginate(10);
         return view('hrmodule.transfers.list')->with([
             'listData' => $list,
             'pageTitle' => "Transfers",
@@ -78,19 +91,22 @@ class TransfersController extends Controller
                 $input['icon_img'] = md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
                 $file->move('./img/uploads/transfers/', $input['icon_img']);
             }
+            echo "<pre>";
 
+       
+            $input['transfer_date'] = ($input['transfer_date'] !="")?date('Y-m-d',strtotime($input['transfer_date'])):$input['transfer_date'];
             $input['status'] = 1;
             $input['user_id'] = $user_id;
             unset($input['_token']);
             if ($input['id'] > 0) {
                 $input['updated_at'] = date("Y-m-d H:i:s");
-                Session::flash('message', 'Companie  Updated Successfully.');
+                Session::flash('message', 'Transfer  Updated Successfully.');
                 transfers::where('id', $input['id'])->update($input);
             } else {
                 unset($input['id']);
                 $input['created_at'] = date("Y-m-d H:i:s");
                 $input['updated_at'] = date("Y-m-d H:i:s");
-                Session::flash('message', 'Companie  Added Successfully.');
+                Session::flash('message', 'Transfer  Added Successfully.');
                 transfers::insertGetId($input);
             }
             return redirect('/transfers');
@@ -147,12 +163,12 @@ class TransfersController extends Controller
     public static function routes()
     {
             Route::group(array('prefix' => 'transfers'), function () {
-            Route::get('/', array('as' => 'transfers.index', 'uses' => 'transfersController@index'));
-            Route::get('/add', array('as' => 'transfers.create', 'uses' => 'transfersController@create'));
-            Route::post('/save', array('as' => 'transfers.save', 'uses' => 'transfersController@store'));
-            Route::get('/edit/{id}', array('as' => 'transfers.edit', 'uses' => 'transfersController@edit'));
-            Route::post('/update/{id}', array('as' => 'transfers.update', 'uses' => 'transfersController@update'));
-            Route::get('/delete/{id}', array('as' => 'transfers.destroy', 'uses' => 'transfersController@destroy'));
+            Route::get('/', array('as' => 'transfers.index', 'uses' => 'TransfersController@index'));
+            Route::get('/add', array('as' => 'transfers.create', 'uses' => 'TransfersController@create'));
+            Route::post('/save', array('as' => 'transfers.save', 'uses' => 'TransfersController@store'));
+            Route::get('/edit/{id}', array('as' => 'transfers.edit', 'uses' => 'TransfersController@edit'));
+            Route::post('/update/{id}', array('as' => 'transfers.update', 'uses' => 'TransfersController@update'));
+            Route::get('/delete/{id}', array('as' => 'transfers.destroy', 'uses' => 'TransfersController@destroy'));
         });
     }
 }

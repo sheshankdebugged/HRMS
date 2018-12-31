@@ -15,7 +15,7 @@
 								<div class="inner-heading-request">
 									<h2>{{$pageTitle}}</h2>
 								</div>
-								<div class="settings-buttons">
+								<!-- <div class="settings-buttons">
 									<ul>
 										<li>
 											<a href="#" alt="Dashboard"><i class="fa fa-cog"></i></a>
@@ -24,7 +24,7 @@
 											<a href="#" alt="Dashboard"><i class="fa fa-question-circle"></i></a>
 										</li>
 									</ul>
-								</div>
+								</div> -->
 							</div>
 							<div class="request-inner-table">
 								<div class="upper-header-request">
@@ -65,21 +65,36 @@
 											<div class="form-group">
 													<label>Employee:</label>
 
-													<select  name ="employee" id="employee" class="form-control-select" >
+												<select  name ="employee" id="employee" class="form-control-select" >
 
-													<option style="" value="0"> - </option><option style="" value="1">Corporation</option><option style="" value="2">Exempt Organization</option><option style="" value="3">Partnership</option><option style="" value="4">Private Foundation</option><option style="" value="5">S Corporation</option><option style="" value="6">Sole Proprietor</option><option style="" value="7">Limited Liability Company</option><option style="" value="8">Trading LLC</option><option style="" value="9">Private Limited</option><option style="" value="10">General Partnership</option><option style="" value="11">Limited Partnership</option><option style="" value="12">Non Profit Organization</option><option style="" value="13">Trust</option><option style="" value="14">Joint Venture</option><option style="" value="15">Association</option><option style="" value="16">Free Zone</option>
+													<option style="" value="0"> - </option>
+													<option style="" value="1">Corporation</option>
+													<option style="" value="2">Exempt Organization</option>
+													<option style="" value="3">Partnership</option>
+													<option style="" value="4">Private Foundation</option>
+													<option style="" value="5">S Corporation</option>
+													<option style="" value="6">Sole Proprietor</option>
+													<option style="" value="7">Limited Liability Company</option>
+													<option style="" value="8">Trading LLC</option>
+													<option style="" value="9">Private Limited</option>
+													<option style="" value="10">General Partnership</option>
+													<option style="" value="11">Limited Partnership</option>
+													<option style="" value="12">Non Profit Organization</option>
+													<option style="" value="13">Trust</option>
+													<option style="" value="14">Joint Venture</option>
+													<option style="" value="15">Association</option>
+													<option style="" value="16">Free Zone</option>				        
+												</select>
+												<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 
 
-
-													</select>
-
-
-												 </div>
+											</div>
 
 												 
                                                   <div class="form-group">
 													<label>Exit Date:</label>
 													<input type="text" placeholder="" class="form-control-spacial date" id="exit_date" name="exit_date" value="{{isset($result->employee)?$result->employee:''}}">
+													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 
 												 </div>
 												 <div class="form-group">

@@ -26,10 +26,25 @@ class resignationsController extends Controller
     public function index()
     {
 
-        $list = Resignations::where(['status'=>1])->paginate(10);
+        // $list = Resignations::where(['status'=>1])->paginate(10);
+        // return view('hrmodule.resignations.list')->with([
+        //     'listData' => $list,
+        //     'pageTitle'=>"Resignations"
+        $user_id = Auth::id();
+        $searchQuery  = isset($_GET['search'])?trim($_GET['search']):"";
+        $where   = ['status'=>1,'user_id'=>$user_id];
+        
+        if(!empty($searchQuery)){
+            $where = [
+                ['resignation_date', 'LIKE', "%$searchQuery%"],
+                ['status', '=', 1],
+                ['user_id', '=', $user_id],
+            ];   
+        }
+        $list =Resignations::where($where)->paginate(10);
         return view('hrmodule.resignations.list')->with([
             'listData' => $list,
-            'pageTitle'=>"Resignations"
+            'pageTitle' => "Resignations",
         ]);
 
     }
@@ -63,8 +78,6 @@ class resignationsController extends Controller
 
             $validator = Validator::make($request->all(), [
                 'resigning_employee' => 'required',
-
-
             ]);
            if ($validator->fails()) {
                 $action = 'addresignations';
