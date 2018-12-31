@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Form;
+use App\Models\CandidateAgeRange;
+use App\Models\JobType;
+use App\Models\JobField;
 use Session;
 use Validator;
 
@@ -49,19 +52,14 @@ class JobPostsController extends Controller
     public function create()
     {
         $action = 'add';
-        $jobFields = array("Information Technology", "Graphics & Multimedia", "Human Resource", "Administration", "Accounts & Finance");
-        $jobTypes = array("Permanent", "Contract", "Project Based", "Intern");
-        $countries = Countries::where(['status' => 1])->orderBy('title', 'ASC')->get();
-        // echo "<pre>";
-        // print_r($countries); die;
+
+        $master = $this->getmasterfields();
 
         return view('hrmodule.jobposts.add')->with([
             'action' => $action,
-            'jobFields' => $jobFields,
-            'jobTypes' => $jobTypes,
-            'countries' => $countries,
             'pageTitle' => "Job Posts",
             'Addform' => "Add New Job Post",
+            'master' => $master,
         ]);
     }
 
@@ -73,6 +71,7 @@ class JobPostsController extends Controller
      */
     public function store(Request $request)
     {
+        $master = $this->getmasterfields();
         if ($request->all()) {
             $validator = Validator::make($request->all(), [
                 'job_title' => 'required',
@@ -134,20 +133,17 @@ class JobPostsController extends Controller
     public function edit($id)
     {
         $action = 'edit';
-        $jobFields = array("Information Technology", "Graphics & Multimedia", "Human Resource", "Administration", "Accounts & Finance");
-        $jobTypes = array("Permanent", "Contract", "Project Based", "Intern");
-        $countries = Countries::where(['status' => 1])->orderBy('title', 'ASC')->get();
+       
         $result = JobPosts::find($id);
         $action = 'add';
         $editname = "Edit " . $result->job_title;
+        $master = $this->getmasterfields();
         return view('hrmodule.jobposts.add')->with([
             'action' => $action,
-            'jobFields' => $jobFields,
-            'jobTypes' => $jobTypes,
-            'countries' => $countries,
             'pageTitle' => "Job Posts",
             'Addform' => $editname,
             'result' => $result,
+            'master' => $master,
         ]);
     }
 
@@ -194,5 +190,15 @@ class JobPostsController extends Controller
             Route::get('/delete/{id}', array('as' => 'jobposts.destroy', 'uses' => 'JobPostsController@destroy'));
         });
 
+    }
+    public function getmasterfields()
+    {
+        $master = array();
+        $master['JobType']             = JobType::where(['status'=>1])->get()->toArray();
+        $master['CandidateAgeRange']   = CandidateAgeRange::where(['status'=>1])->get()->toArray();
+        $master['Countries']             = Countries::where(['status'=>1])->get()->toArray();
+        $master['JobField']             = JobField::where(['status'=>1])->get()->toArray();
+
+        return $master;
     }
 }
