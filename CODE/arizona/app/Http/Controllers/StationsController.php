@@ -159,7 +159,7 @@ class StationsController extends Controller
         $stations = Stations::find($id);
         $stations->status = 0;
         $stations->save();
-        Session::flash('message', 'Company delete successfully');
+        Session::flash('message', 'Stations delete successfully');
         return redirect("/stations");
     }
 

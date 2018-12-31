@@ -1,7 +1,7 @@
 @include('template.home_header')
 <body class="login-bg"> 
 <!-- Login header start -->
-<div class="login-logo"><a href="index.html"></div>
+<div class="login-logo"><a href="#"></div>
 <!-- header end -->
 <section class="full-wrapper common-padding login-section">
     <div class="container">

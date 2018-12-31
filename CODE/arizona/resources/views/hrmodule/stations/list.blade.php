@@ -17,7 +17,7 @@
 									<h2>{{ $pageTitle }}</h2>
 								</div>
                                 
-								<div class="settings-buttons">
+								<!-- <div class="settings-buttons">
 									<ul>
 										<li>
 											<a href="#" alt="Dashboard"><i class="fa fa-cog"></i></a>
@@ -26,7 +26,7 @@
 											<a href="#" alt="Dashboard"><i class="fa fa-question-circle"></i></a>
 										</li>
 									</ul>
-								</div>
+								</div> -->
 							</div>
 
                             @if(Session::get('message'))
@@ -97,9 +97,9 @@
 										</tr>
                                         @endforeach
 
-                                        <tr>
+                                        <!-- <tr>
                      <td colspan="6"> <div class="pull-right"> {{ $listData->links() }} </div> </td>
-                     </tr>
+                     </tr> -->
 										</tbody>
 												</table>
 								</div>

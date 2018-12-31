@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\SystemSettings;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class SystemSettingsController extends Controller
@@ -15,7 +16,16 @@ class SystemSettingsController extends Controller
   
     public function index()
     {
-        return view('hrmodule.setting');
+
+        $user_id = Auth::id();
+
+        $list =SystemSettings::where(['user_id'=>$user_id])->paginate(10);
+        // $list = complaints::where(['status' => 1])->paginate(10);
+        return view('hrmodule.setting')->with([
+            'listData' => $list,
+            'pageTitle' => "System Settings",
+        ]);
+        //return view('hrmodule.setting');
     }
 
     /**

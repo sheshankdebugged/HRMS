@@ -28,7 +28,7 @@ class WorksheetController extends Controller
         
         if(!empty($searchQuery)){
             $where = [
-                ['Worksheet_title', 'LIKE', "%$searchQuery%"],
+                ['task', 'LIKE', "%$searchQuery%"],
                 ['status', '=', 1],
                 ['user_id', '=', $user_id],
             ];   

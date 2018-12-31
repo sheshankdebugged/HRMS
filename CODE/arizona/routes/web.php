@@ -64,6 +64,9 @@ Route::get('/home','DashboardController@index')->name('dashboard');
 // jobrequests Routes
     \App\Http\Controllers\JobRequestsController::routes();
 
+    //Job Candidates Routes
+    \App\Http\Controllers\JobCandidatesController::routes();
+
 // JobTests Routes
     \App\Http\Controllers\JobTestsController::routes();
     
@@ -110,7 +113,10 @@ Route::get('/home','DashboardController@index')->name('dashboard');
     // Time sheet Routes
 
     // Worksheet Routes
-    // \App\Http\Controllers\WorksheetController::routes();
+    \App\Http\Controllers\WorksheetController::routes();
+
+       // Holidays Routes
+       \App\Http\Controllers\HolidaysController::routes();
 
     // Workshifts Routes
     \App\Http\Controllers\WorkshiftsController::routes();
@@ -130,7 +136,53 @@ Route::get('/home','DashboardController@index')->name('dashboard');
     
       \App\Http\Controllers\LeavesController::routes();
 
+
+      //   Hourly Wages
+    
+      \App\Http\Controllers\HourlywagesController::routes();
       
+      //   Overtime
+    
+      \App\Http\Controllers\OvertimesController::routes();
+
+      //   Provident Funds
+      
+      \App\Http\Controllers\ProvidentfundsController::routes();
+
+     //   Advance Salary
+      
+     \App\Http\Controllers\AdvancesalaryController::routes();
+
+     //   Insurance 
+      
+     \App\Http\Controllers\InsuranceController::routes();
+
+     //   Adjustments 
+      
+     \App\Http\Controllers\AdjustmentsController::routes();
+
+
+      // Loans
+      
+      \App\Http\Controllers\LoansController::routes();
+
+     //   Bonuses
+      
+      \App\Http\Controllers\BonusesController::routes();
+
+     //   Deductions
+      
+      \App\Http\Controllers\DeductionsController::routes();
+
+     //  Commissions
+      
+        \App\Http\Controllers\commissionsController::routes();
+
+        //  Reimbursements
+      
+        \App\Http\Controllers\reimbursementsController::routes();
+
+     
 
 
 });

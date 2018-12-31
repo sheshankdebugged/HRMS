@@ -66,11 +66,12 @@ class WarningsController extends Controller
      */
     public function store(Request $request)
     {
+        // die('I am here');
         $user_id = Auth::id();
         if($request->all()){
 
             $validator = Validator::make($request->all(), [
-                'warning_to' => 'required'
+                'subject' => 'required'
             ]);
            if ($validator->fails()) {
                 $action = 'warnings';
