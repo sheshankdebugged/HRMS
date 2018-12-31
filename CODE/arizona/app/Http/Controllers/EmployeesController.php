@@ -194,9 +194,10 @@ class EmployeesController extends Controller
     {
         $master = array();
         $master['Companies']               = Companies::where(['status' => 1])->get()->toArray();
+        // $master['Divisions']               = Divisions::where(['status' => 1])->get()->toArray();
         $master['Stations']                = Stations::where(['status'=>1])->get()->toArray();
         $master['Departments']             = Departments::where(['status'=>1])->get()->toArray();
-        $master['EmployeeType']            = [];//EmployeeType::where(['status'=>1])->get()->toArray();
+        $master['EmployeeType']            = EmployeeType::where(['status'=>1])->get()->toArray();
         $master['EmployeeCategory']        = [];//EmployeeCategory::where(['status'=>1])->get()->toArray();
         $master['EmployeeDesignation']     = [];//EmployeeDesignation::where(['status'=>1])->get()->toArray();
         return $master;

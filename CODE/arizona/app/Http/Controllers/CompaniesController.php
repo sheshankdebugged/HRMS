@@ -3,6 +3,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Companies;
+use App\Models\CompanyType;
+use App\Models\Countries;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -49,10 +51,12 @@ class CompaniesController extends Controller
     public function create()
     {
         $action = 'add';
+        $master = $this->getmasterfields();
         return view('hrmodule.companies.add')->with([
             'action' => $action,
             'pageTitle' => "Companies",
             'Addform' => "Add New Company",
+            'master' => $master
         ]);
     }
 
@@ -65,13 +69,11 @@ class CompaniesController extends Controller
      */
     public function store(Request $request)
     {
-
         $user_id = Auth::id();
+        $master = $this->getmasterfields();
         if ($request->all()) {
-
             $validator = Validator::make($request->all(), [
-                'company_name' => 'required',
-
+                'company_name' => 'required'
             ]);
             if ($validator->fails()) {
                 $action = 'addcompanies';
@@ -127,16 +129,17 @@ class CompaniesController extends Controller
      */
     public function edit($id)
     {
-
         $action = 'edit';
         $result = Companies::find($id);
         $action = 'add';
+        $master = $this->getmasterfields();
         $editname = "Edit " . $result->company_name;
         return view('hrmodule.companies.add')->with([
             'action' => $action,
             'pageTitle' => "Companies",
             'Addform' => $editname,
             'result' => $result,
+            'master' => $master
         ]);
 
     }
@@ -152,7 +155,7 @@ class CompaniesController extends Controller
         $Companies = Companies::find($id);
         $Companies->status = 0;
         $Companies->save();
-        Session::flash('message', 'Company delete successfully');
+        Session::flash('message', 'Company deletd successfully');
         return redirect("/companies");
     }
     public static function routes()
@@ -165,5 +168,22 @@ class CompaniesController extends Controller
             Route::post('/update/{id}', array('as' => 'companies.update', 'uses' => 'CompaniesController@update'));
             Route::get('/delete/{id}', array('as' => 'companies.destroy', 'uses' => 'CompaniesController@destroy'));
         });
+    }
+
+    /*
+     *
+     */
+
+    public function getmasterfields()
+    {
+        $master = array();
+        $master['CompanyType']             = CompanyType::where(['status' => 1])->get()->toArray();
+        $master['Countries']               = Countries::where(['status' => 1])->get()->toArray();
+        // $master['Stations']                = Stations::where(['status'=>1])->get()->toArray();
+        // $master['Departments']             = Departments::where(['status'=>1])->get()->toArray();
+        // $master['EmployeeType']            = EmployeeType::where(['status'=>1])->get()->toArray();
+        // $master['EmployeeCategory']        = [];//EmployeeCategory::where(['status'=>1])->get()->toArray();
+        // $master['EmployeeDesignation']     = [];//EmployeeDesignation::where(['status'=>1])->get()->toArray();
+        return $master;
     }
 }

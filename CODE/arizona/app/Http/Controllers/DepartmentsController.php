@@ -3,6 +3,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Departments;
+use App\Models\Stations;
+use App\Models\Employees;
+use App\Models\Companies;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -49,10 +52,12 @@ class DepartmentsController extends Controller
     public function create()
     {
         $action = 'add';
+        $master = $this->getmasterfields();
         return view('hrmodule.departments.add')->with([
             'action' => $action,
             'pageTitle' => "Departments",
             'Addform' => "Add New Departments",
+            'master' => $master
         ]);
     }
 
@@ -154,6 +159,25 @@ class DepartmentsController extends Controller
         Session::flash('message', 'Department delete successfully');
         return redirect("/departments");
     }
+
+    /*
+     *
+     */
+
+    public function getmasterfields()
+    {
+        $master = array();
+        // $master['CompanyType']             = CompanyType::where(['status' => 1])->get()->toArray();
+        // $master['Countries']               = Countries::where(['status' => 1])->get()->toArray();
+        $master['Stations']                   = Stations::where(['status'=>1])->get()->toArray();
+        $master['Employees']                  = Employees::where(['status'=>1])->get()->toArray();
+        // $master['Departments']             = Departments::where(['status'=>1])->get()->toArray();
+        // $master['EmployeeType']            = EmployeeType::where(['status'=>1])->get()->toArray();
+        // $master['EmployeeCategory']        = [];//EmployeeCategory::where(['status'=>1])->get()->toArray();
+        // $master['EmployeeDesignation']     = [];//EmployeeDesignation::where(['status'=>1])->get()->toArray();
+        return $master;
+    }
+
     public static function routes()
     {
         Route::group(array('prefix' => 'departments'), function () {

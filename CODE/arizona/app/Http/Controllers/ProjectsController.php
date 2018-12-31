@@ -3,6 +3,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Projects;
+use App\Models\ProjectCategories;
+use App\Models\Clients;
+use App\Models\Stations;
+use App\Models\Departments;
+use App\Models\Employees;
+use App\Models\Companies;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -53,10 +59,12 @@ class ProjectsController extends Controller
     public function create()
     {
         $action = 'add';
+        $master = $this->getmasterfields();
         return view('hrmodule.projects.add')->with([
             'action' => $action,
             'pageTitle' => "Projects",
             'Addform' => "Add New Projects",
+            'master' => $master
         ]);
     }
 
@@ -169,6 +177,24 @@ class ProjectsController extends Controller
         Session::flash('message', 'Project delete successfully');
         return redirect("/projects");
     }
+
+    /*
+     *
+     */
+
+    public function getmasterfields()
+    {
+        $master = array();
+        $master['ProjectCategories']          = ProjectCategories::where(['status'=>1])->get()->toArray();
+        $master['Clients']                    = Clients::where(['status'=>1])->get()->toArray();
+        $master['Companies']                  = Companies::where(['status'=>1])->get()->toArray();
+        $master['Stations']                   = Stations::where(['status'=>1])->get()->toArray();
+        $master['Departments']                = Departments::where(['status'=>1])->get()->toArray();
+        $master['Employees']                  = Employees::where(['status'=>1])->get()->toArray();
+        return $master;
+    }
+
+
     public static function routes()
     {
            Route::group(array('prefix' => 'projects'), function () {

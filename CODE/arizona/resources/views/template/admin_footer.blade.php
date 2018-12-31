@@ -29,6 +29,11 @@
           location.reload();
 });
 </script>
+<script>
+    $(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
 <script src="{{ url('/admin/js/popper.min.js') }}"></script>
 <script src="{{ url('/admin/js/bootstrap-datepicker.js') }}"></script>
 <script src="{{ url('/admin/js/custom.js') }}"></script>

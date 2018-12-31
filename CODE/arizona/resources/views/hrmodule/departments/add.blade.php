@@ -63,8 +63,10 @@
 
 												<div class="form-group">
 													<label>Station:</label>
-													<select  name ="station" id="station" class="form-control-select">
-													<option style="" value="0"> - </option><option style="" value="1">Corporation</option><option style="" value="2">Exempt Organization</option><option style="" value="3">Partnership</option><option style="" value="4">Private Foundation</option><option style="" value="5">S Corporation</option><option style="" value="6">Sole Proprietor</option><option style="" value="7">Limited Liability Company</option><option style="" value="8">Trading LLC</option><option style="" value="9">Private Limited</option><option style="" value="10">General Partnership</option><option style="" value="11">Limited Partnership</option><option style="" value="12">Non Profit Organization</option><option style="" value="13">Trust</option><option style="" value="14">Joint Venture</option><option style="" value="15">Association</option><option style="" value="16">Free Zone</option>
+													<select id ="station_id" name ="station_id" class="WebHRForm1" style="width:180px;">
+													@foreach($master['Stations'] as $val)
+													<option  value="{{$val['id']}}" @php if(isset($result->station_id) && $result->station_id == $val['country_id']  ) { echo "selected";  } @endphp >{{$val['station_name']}}</option>
+													@endforeach
 													</select>
 												</div>
 
@@ -76,23 +78,25 @@
 
 												<div class="form-group">
 													<label>Parent Department:</label>
-													<select  name ="parent_department" id="parent_department" class="form-control-select">
-													<option style="" value="0"> - </option><option style="" value="1">Corporation</option><option style="" value="2">Exempt Organization</option><option style="" value="3">Partnership</option><option style="" value="4">Private Foundation</option><option style="" value="5">S Corporation</option><option style="" value="6">Sole Proprietor</option><option style="" value="7">Limited Liability Company</option><option style="" value="8">Trading LLC</option><option style="" value="9">Private Limited</option><option style="" value="10">General Partnership</option><option style="" value="11">Limited Partnership</option><option style="" value="12">Non Profit Organization</option><option style="" value="13">Trust</option><option style="" value="14">Joint Venture</option><option style="" value="15">Association</option><option style="" value="16">Free Zone</option>
-												 	</select>
+													<select id="pd" class="WebHRForm1" style="width:180px;"><option style="" value="0">No Parent</option><option style="" value="39">Administration</option></select>
 												</div>
 												<div class="form-upper-main">
 													<h4>Head of Department</h4>
                                                 </div>
 												 <div class="form-group">
 													<label>Department Head:</label>
-													<select  name ="department_head" id="department_head" class="form-control-select">
-													<option style="" value="0"> - </option><option style="" value="1">Corporation</option><option style="" value="2">Exempt Organization</option><option style="" value="3">Partnership</option><option style="" value="4">Private Foundation</option><option style="" value="5">S Corporation</option><option style="" value="6">Sole Proprietor</option><option style="" value="7">Limited Liability Company</option><option style="" value="8">Trading LLC</option><option style="" value="9">Private Limited</option><option style="" value="10">General Partnership</option><option style="" value="11">Limited Partnership</option><option style="" value="12">Non Profit Organization</option><option style="" value="13">Trust</option><option style="" value="14">Joint Venture</option><option style="" value="15">Association</option><option style="" value="16">Free Zone</option>
+													<select id ="department_head_employee_id" name ="department_head_employee_id" class="WebHRForm1" style="width:180px;">
+													@foreach($master['Employees'] as $val)
+													<option  value="{{$val['id']}}" @php if(isset($result->department_head_employee_id) && $result->department_head_employee_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
+													@endforeach
 													</select>
 												</div>
 												<div class="form-group">
 													<label>Assistant Department Head:</label>
-													<select  name ="assistant_departmant_head" id="assistant_departmant_head" class="form-control-select">
-													<option style="" value="0"> - </option><option style="" value="1">Corporation</option><option style="" value="2">Exempt Organization</option><option style="" value="3">Partnership</option><option style="" value="4">Private Foundation</option><option style="" value="5">S Corporation</option><option style="" value="6">Sole Proprietor</option><option style="" value="7">Limited Liability Company</option><option style="" value="8">Trading LLC</option><option style="" value="9">Private Limited</option><option style="" value="10">General Partnership</option><option style="" value="11">Limited Partnership</option><option style="" value="12">Non Profit Organization</option><option style="" value="13">Trust</option><option style="" value="14">Joint Venture</option><option style="" value="15">Association</option><option style="" value="16">Free Zone</option>
+													<select id ="ass_department_head_employee_id" name ="ass_department_head_employee_id" class="WebHRForm1" style="width:180px;">
+													@foreach($master['Employees'] as $val)
+													<option  value="{{$val['id']}}" @php if(isset($result->ass_department_head_employee_id) && $result->ass_department_head_employee_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
+													@endforeach
 													</select>
 												</div>
 												<div class="form-upper-main">
