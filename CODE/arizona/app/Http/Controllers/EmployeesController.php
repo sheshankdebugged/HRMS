@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Companies;
 use App\Models\Departments;
-use App\Models\Employees;
-use App\Models\EmployeeCategory;
 use App\Models\Divisions;
+use App\Models\EmployeeCategory;
+use App\Models\Employees;
+use App\Models\Salutation;
 use App\Models\EmployeeType;
 use App\Models\Stations;
 use Illuminate\Http\Request;
@@ -82,7 +83,6 @@ class EmployeesController extends Controller
      */
     public function store(Request $request)
     {
-
         $user_id = Auth::id();
         $master = $this->getmasterfields();
         if ($request->all()) {
@@ -107,20 +107,21 @@ class EmployeesController extends Controller
                 $input['employee_profile'] = md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
                 $file->move('./img/uploads/employees/', $input['employee_profile']);
             }
-
             $input['status'] = 1;
             $input['user_id'] = $user_id;
             unset($input['_token']);
             if ($input['id'] > 0) {
                 $input['updated_at'] = date("Y-m-d H:i:s");
+                $input['dob'] = date("Y-m-d H:i:s");
                 Session::flash('message', 'Employee Updated Successfully.');
                 employees::where('id', $input['id'])->update($input);
             } else {
                 unset($input['id']);
                 $input['created_at'] = date("Y-m-d H:i:s");
                 $input['updated_at'] = date("Y-m-d H:i:s");
-                Session::flash('message', 'Employee  Added Successfully.');
-                employees::insertGetId($input);
+                $input['dob'] = date("Y-m-d H:i:s");
+                Session::flash('message', 'Employee Added Successfully.');
+                Employees::insertGetId($input);
             }
             return redirect('/employees');
         }
@@ -149,11 +150,13 @@ class EmployeesController extends Controller
         $result = employees::find($id);
         $action = 'add';
         $editname = "Edit " . $result->employee_name;
+        $master = $this->getmasterfields();
         return view('hrmodule.employees.add')->with([
             'action' => $action,
             'pageTitle' => "employees",
             'Addform' => $editname,
             'result' => $result,
+            'master' => $master
         ]);
 
     }
@@ -196,7 +199,9 @@ class EmployeesController extends Controller
         $master['Stations'] = Stations::where(['status' => 1])->get()->toArray();
         $master['Departments'] = Departments::where(['status' => 1])->get()->toArray();
         $master['EmployeeType'] = EmployeeType::where(['status' => 1])->get()->toArray();
-        $master['EmployeeCategory'] = EmployeeCategory::where(['status'=>1])->get()->toArray();
+        $master['EmployeeCategory'] = EmployeeCategory::where(['status' => 1])->get()->toArray();
+        $master['Employees'] = Employees::where(['status' => 1])->get()->toArray();
+        $master['Salutation'] = Salutation::where(['status' => 1])->get()->toArray();
         $master['EmployeeDesignation'] = []; //EmployeeDesignation::where(['status'=>1])->get()->toArray();
         return $master;
     }
