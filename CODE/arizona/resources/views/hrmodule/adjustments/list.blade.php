@@ -6,7 +6,7 @@
 				<div class="col-md-12 col-sm-12">
 					<div class="left-bar-request nopadding">
 						<div class="sidebar-menu">
-                        @include('template.organisation_nav_icon')
+                        @include('template.payroll_nav_icon')
 						</div>
 					</div>
             
@@ -77,7 +77,7 @@
 										<tbody>
                                         @foreach($listData as $list)
 											<tr id="second" class="context-requst-one selected">
-											<td class="datainner" style="">{{$list->employee_name}}</td>
+											<td class="datainner" style="">{{$list->employee_id}}</td>
 											<td class="datainner" style="">{{$list->title}}</td>
 											<td class="datainner" style="">{{$list->adjustment_type}}</td>
 											<td class="datainner" style="">{{$list->amount}}</td>

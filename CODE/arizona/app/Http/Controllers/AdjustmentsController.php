@@ -76,7 +76,7 @@ class AdjustmentsController extends Controller
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                'employee_name' => 'required',
+                'employee_id' => 'required',
                 'amount' => 'required',
                 'date' => 'required',
                 // 'organization_share' => 'required',
@@ -136,6 +136,7 @@ class AdjustmentsController extends Controller
     {
 
         $action = 'edit';
+        $master = $this->getmasterfields();
         $result = Adjustments::find($id);
         $result = Adjustments::find($id);
         $action = 'add';
@@ -145,6 +146,7 @@ class AdjustmentsController extends Controller
             'pageTitle' => "Adjustments",
             'Addform' => $editname,
             'result' => $result,
+            'master' =>  $master  
         ]);
 
     }
@@ -182,7 +184,7 @@ class AdjustmentsController extends Controller
     public function getmasterfields()
     {
         $master = array();
-        $master['EmployeeName'] = Employees::where(['status' => 1])->get()->toArray();
+        $master['Employees'] = Employees::where(['status' => 1])->get()->toArray();
        
         return $master;
     }

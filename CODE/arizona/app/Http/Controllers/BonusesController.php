@@ -76,7 +76,7 @@ class BonusesController extends Controller
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                'employee_name' => 'required',
+                'employee_id' => 'required',
                 'bonuses_title' => 'required',
                 'bonuses_amount' => 'required',
                 'bonuses_date' => 'required'                 
@@ -144,6 +144,7 @@ class BonusesController extends Controller
     {
 
         $action = 'edit';
+        $master = $this->getmasterfields();
         $result = bonuses::find($id);
         $action = 'add';
         $editname = "Edit Bonus " . $result->employee;
@@ -152,6 +153,7 @@ class BonusesController extends Controller
             'pageTitle' => "Bonuses",
             'Addform' => $editname,
             'result' => $result,
+            'master' => $master
         ]);
 
     }
@@ -184,7 +186,7 @@ class BonusesController extends Controller
     public function getmasterfields()
     {
         $master = array();
-        $master['EmployeeName'] = Employees::where(['status' => 1])->get()->toArray();
+        $master['Employees'] = Employees::where(['status' => 1])->get()->toArray();
        
         return $master;
     }

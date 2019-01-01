@@ -75,8 +75,8 @@
                                         	@foreach($listData as $list)
 											<tr id="second" class="context-requst-one selected">
 												<td class="datainner" style="">{{$list->project_title}}</td>
-												<td class="datainner" style="">{{$list->created_at}}</td>
-												<td class="datainner" style="">{{$list->updated_at}}</td>
+												<td class="datainner" style="">{{$list->start_date}}</td>
+												<td class="datainner" style="">{{$list->end_date}}</td>
 												<td class="datainner" style="">-</td>
 												<td class="datainner" style="">-</td>
 												<td class="datainner" style="">Initiated</td>

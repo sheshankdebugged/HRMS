@@ -17,7 +17,7 @@
 									<h2>{{ $pageTitle }}</h2>
 								</div>
                                 
-								<!-- <div class="settings-buttons">
+								<div class="settings-buttons">
 									<ul>
 										<li>
 											<a href="#" alt="Dashboard"><i class="fa fa-cog"></i></a>
@@ -26,7 +26,7 @@
 											<a href="#" alt="Dashboard"><i class="fa fa-question-circle"></i></a>
 										</li>
 									</ul>
-								</div> -->
+								</div>
 							</div>
 
                             @if(Session::get('message'))
@@ -69,7 +69,7 @@
 										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Reason</a></td>
 										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Leave From</a></td>
 										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Leave To</a></td>
-										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Leave Days</a></td>
+										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Leave Duration</a></td>
 										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Approval Status</a></td>
 									      <td style="background-color:#0c64ae; width:1%;"></td>
 									  </tr>
@@ -77,12 +77,12 @@
 										<tbody>
                                         @foreach($listData as $list)
 											<tr id="second" class="context-requst-one selected">
-											<td class="datainner" style="">{{$list->employee}}</td>
-											<td class="datainner" style="">{{$list->leave_type}}</td>
+											<td class="datainner" style="">{{$list->employee_id}}</td>
+											<td class="datainner" style="">{{$list->leave_type_id}}</td>
 											<td class="datainner" style="">{{$list->reason}}</td> 
 											<td class="datainner" style="">{{$list->leave_from}}</td> 
 											<td class="datainner" style="">{{$list->leave_to}}</td>
-											<td class="datainner" style="">{{$list->leave_duration}}</td>
+											<td class="datainner" style="">{{$list->leave_duration_id}}</td>
 											<td class="datainner" style="">{{$list->approval_status}}</td>                       
 											<td align="right">
 												<div class="dropdown action-drop">

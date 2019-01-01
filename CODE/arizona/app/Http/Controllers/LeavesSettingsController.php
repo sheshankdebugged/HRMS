@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\LeavesSettings;
 use Illuminate\Http\Request;
 use App\Models\Leaves;
+use App\Models\ManageLeavesTypes;
 use App\Models\Employees;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -103,13 +104,13 @@ class LeavesSettingsController extends Controller
             if($input['id']>0){
                 $input['updated_at']=date("Y-m-d H:i:s");
                 Session::flash('message', 'Employee Leaves Updated Successfully.');
-                Leaves::where('id', $input['id'])->update($input);
+                LeavesSettings::where('id', $input['id'])->update($input);
             }else{
                 unset($input['id']);
                 $input['created_at']=date("Y-m-d H:i:s");
                 $input['updated_at']=date("Y-m-d H:i:s");
                 Session::flash('message', 'Employee Leaves  Added Successfully.');
-                Leaves::insertGetId($input);
+                LeavesSettings::insertGetId($input);
             }
             return redirect('/leavessettings');
         }

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Leaves;
+use App\Models\Employees;
+use App\Models\Manageleavestypes;
+use App\Models\LeaveDuration;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -50,10 +53,12 @@ class LeavesController extends Controller
     public function create()
     {
         $action = 'add';
+        $master = $this->getmasterfields();
         return view('hrmodule.leaves.add')->with([
             'action' => $action,
             'pageTitle' => "Leaves",
             'Addform' => "Add New Leaves",
+            'master' => $master
         ]);
     }
 
@@ -68,10 +73,11 @@ class LeavesController extends Controller
     {
 
         $user_id = Auth::id();
+        $master = $this->getmasterfields();
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                  'employee' => 'required',
+                  'employee_id' => 'required',
                 //   'regular_hours' => 'required',
                   
             ]);
@@ -96,6 +102,7 @@ class LeavesController extends Controller
 
        
              $input['leave_from'] = ($input['leave_from'] !="")?date('Y-m-d',strtotime($input['leave_from'])):$input['leave_from'];
+             $input['leave_to'] = ($input['leave_to'] !="")?date('Y-m-d',strtotime($input['leave_to'])):$input['leave_to'];
             // $input['poll_end_date']   = ($input['poll_end_date'] !="")?date('Y-m-d',strtotime($input['poll_end_date'])):$input['poll_end_date'];
             $input['status'] =  1;
             $input['user_id'] =  $user_id;
@@ -108,7 +115,7 @@ class LeavesController extends Controller
                 unset($input['id']);
                 $input['created_at']=date("Y-m-d H:i:s");
                 $input['updated_at']=date("Y-m-d H:i:s");
-                Session::flash('message', 'Employee Leaves  Added Successfully.');
+                Session::flash('message', 'Employee Leave Added Successfully.');
                 Leaves::insertGetId($input);
             }
             return redirect('/leaves');
@@ -138,12 +145,14 @@ class LeavesController extends Controller
         $action = 'edit';
         $result = Leaves::find($id);
         $action = 'add';
+        $master = $this->getmasterfields();
         $editname = "Edit Leaves  " . $result->employee;
         return view('hrmodule.leaves.add')->with([
             'action' => $action,
             'pageTitle' => "Employee Leaves",
             'Addform' => $editname,
             'result' => $result,
+            'master' => $master
         ]);
 
     }
@@ -172,5 +181,13 @@ class LeavesController extends Controller
             Route::post('/update/{id}', array('as' => 'leaves.update', 'uses' => 'LeavesController@update'));
             Route::get('/delete/{id}', array('as' => 'leaves.destroy', 'uses' => 'LeavesController@destroy'));
         });
+    }
+    public function getmasterfields()
+    {
+        $master = array();
+        $master['Employees']               = Employees::where(['status' => 1])->get()->toArray();
+        $master['ManageLeavesTypes']      = Manageleavestypes::where(['status'=>1])->get()->toArray();
+        $master['LeaveDurations']          = LeaveDuration::where(['status' => 1])->get()->toArray();               
+        return $master;
     }
 }

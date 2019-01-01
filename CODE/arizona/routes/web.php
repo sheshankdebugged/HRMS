@@ -182,6 +182,57 @@ Route::group(['middleware' => 'auth'], function () {
     \App\Http\Controllers\ReimbursementsController::routes();
 
     //  HR Reports
+    //   Hourly Wages\
+    
+      \App\Http\Controllers\HourlywagesController::routes();
+      
+    //   Overtime
+    
+      \App\Http\Controllers\OvertimesController::routes();
+
+    //   Provident Funds
+      
+      \App\Http\Controllers\ProvidentfundsController::routes();
+
+    //   Advance Salary
+      
+     \App\Http\Controllers\AdvancesalaryController::routes();
+
+    //   Insurance 
+      
+     \App\Http\Controllers\InsuranceController::routes();
+
+    //   Adjustments 
+      
+     \App\Http\Controllers\AdjustmentsController::routes();
+
+    // Loans
+      
+      \App\Http\Controllers\LoansController::routes();
+
+    //   Bonuses
+      
+      \App\Http\Controllers\BonusesController::routes();
+
+    //   Deductions
+      
+      \App\Http\Controllers\DeductionsController::routes();
+
+    //  Commissions
+      
+        \App\Http\Controllers\CommissionsController::routes();
+
+    //  Reimbursements
+      
+        \App\Http\Controllers\ReimbursementsController::routes();
+        
+    //  Manage Leaves Types
+        
+        \App\Http\Controllers\ManageLeavesTypesController::routes();
+        
+        //  Delete Multiple Leaves
+        
+        \App\Http\Controllers\DelMultipleLeavesController::routes();
 
     \App\Http\Controllers\HRReportsController::routes();
 

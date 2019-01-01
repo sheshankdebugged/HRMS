@@ -63,7 +63,11 @@
 												
 											<div class="form-group">
 													<label>Employee:</label>
-													<select id="employee" name="employee" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">1</option></select>
+													<select id="st" class="WebHRForm1" style="width:180px;" name="employee_id">
+													@foreach($master['Employees'] as $val)
+													<option  value="{{$val['id']}}" @php if(isset($result->employee_id) && $result->employee_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
+													@endforeach
+													</select>
 													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 													<!-- <input type="text" placeholder="Contact Person" class="form-control-spacial" id="registration_name" name="contact_person" value="{{isset($result->contact_person)?$result->contact_person:''}}"> -->
                                                    
@@ -77,14 +81,22 @@
 												</div> -->
 												 <div class="form-group">
 												   <label>Forward Application To:</label>
-												   <select id="forward_application_to" name="forward_application_to" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">forward 2</option></select>
+												   <select id="st" class="WebHRForm1" style="width:180px;" name="forward_employee_id">
+													@foreach($master['Employees'] as $val)
+													<option  value="{{$val['id']}}" @php if(isset($result->forward_employee_id) && $result->forward_employee_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
+													@endforeach
+													</select>
 												   <!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 													<!-- <input type="text" placeholder="Contact Person Designation" class="form-control-spacial" id="contact_person_designation" name="contact_person_designation" value="{{isset($result->contact_person_designation)?$result->contact_person_designation:''}}"> -->
                                 
 												 </div>
 												 <div class="form-group">
 												   <label>Leave Type:</label>
-												   <select id="leave_type" name="leave_type" class="WebHRForm1" style="width:180px;"><option style="" value="{{isset($result->leave_type)?$result->leave_type:''}}">-</option></select>
+												   <select id="st" class="WebHRForm1" style="width:180px;" name="leave_type_id">
+													@foreach($master['ManageLeavesTypes'] as $val)
+													<option  value="{{$val['id']}}" @php if(isset($result->leave_type_id) && $result->leave_type_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['title']}}</option>
+													@endforeach
+													</select>
 													<!-- <input type="text" placeholder="Fax Number" class="form-control-spacial" id="fax_number" name="fax_number" value="{{isset($result->fax_number)?$result->fax_number:''}}"> -->
 
 																								 										 
@@ -102,10 +114,11 @@
 									              </div>
 												  <div class="form-group">
 												   <label>Leave Duration:</label>
-												   <select id="leave_duration" name="leave_duration" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">forward 2</option></select>
-												   <!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
-													<!-- <input type="text" placeholder="Contact Person Designation" class="form-control-spacial" id="contact_person_designation" name="contact_person_designation" value="{{isset($result->contact_person_designation)?$result->contact_person_designation:''}}"> -->
-                                
+												   <select id="st" class="WebHRForm1" style="width:180px;" name="leave_duration_id">
+													@foreach($master['LeaveDurations'] as $val)
+													<option  value="{{$val['id']}}" @php if(isset($result->leave_duration_id) && $result->leave_duration_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['title']}}</option>
+													@endforeach
+													</select>
 												 </div>
 
 												 <div class="form-group">
@@ -136,10 +149,11 @@
 												 </div>
 												 <div class="form-group">
 													<label>Alternate Employee:</label>
-													<select id="alternate_employee" name="alternate_employee" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">1</option></select>
-													<!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
-													<!-- <input type="text" placeholder="Contact Person" class="form-control-spacial" id="registration_name" name="contact_person" value="{{isset($result->contact_person)?$result->contact_person:''}}"> -->
-                                                   
+													<select id="st" class="WebHRForm1" style="width:180px;" name="alternate_employee_id">
+													@foreach($master['Employees'] as $val)
+													<option  value="{{$val['id']}}" @php if(isset($result->alternate_employee_id) && $result->alternate_employee_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
+													@endforeach
+													</select>
 												 </div>
 
 												 
@@ -149,11 +163,13 @@
 												 </div>
 												 
 												 <div class="form-group">
-												 <textarea class="tinyeditorclass" name="leave_description" id="leave_description">{{isset($result->leave_description)?$result->detailleave_descriptions:''}}</textarea>
+												 <textarea class="tinyeditorclass" name="leave_description" id="leave_description">{{isset($result->leave_description)?$result->leave_description:''}}</textarea>
 												</div>	
 
 												<div class="form-group">
 													<h4>Leave Document (Optional)</h4>
+												 </div>
+												 <input type="file" name="leave_document" id="leave_document" />
 												 </div>
 
 												 			 <!--Add Attachment Button  -->
@@ -167,7 +183,7 @@
 												 
 												 <div class="form-group">
 												 <label>Notes:</label>
-													<textarea class="tinyeditorclass" name="additional_information" id="additional_information">{{isset($result->notes)?$result->additional_information:''}}</textarea>
+													<textarea class="tinyeditorclass" name="additional_information" id="additional_information">{{isset($result->additional_information)?$result->additional_information:''}}</textarea>
 												</div> 
 
 												
