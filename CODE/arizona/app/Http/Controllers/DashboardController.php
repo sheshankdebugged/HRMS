@@ -56,8 +56,7 @@ class DashboardController extends Controller
         $result = array();
         $result['EmployeeGender'] = $obj->getCountGender($where);
         $result['EmployeeAgeBye'] = $obj->getCountEmployeetype($where);
-        echo "<pre>";
-        print_r( $result);
+      
         return $result;
 
         

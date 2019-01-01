@@ -31,14 +31,25 @@ FROM
   employees
 Inner JOIN employee_type ON employee_type.id = employees.employee_type_id'); */
 
-return  DB::table('employees')
+$result =  DB::table('employees')
 ->join('employee_type', 'employee_type.id', '=', 'employees.employee_type_id')
-->select('employee_type.name as name',DB::raw('count(employee_type.id) as total'))
+->select('employee_type.*')
 
 ->get();
 
+$a = array();
+if(!empty($result )){
+   
+    foreach($result as $val):
+      $c = array();
+      $c['employee_type'] = $val->name;
+      $c['total'] = DB::table('employees')->where('employee_type_id', $val->id)->count();
+      array_push($a, $c);
+    endforeach;
 
+}
 
+return $a;
 /*
  SELECT
   employee_type.name,
