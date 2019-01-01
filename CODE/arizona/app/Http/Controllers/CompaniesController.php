@@ -97,13 +97,13 @@ class CompaniesController extends Controller
             unset($input['_token']);
             if ($input['id'] > 0) {
                 $input['updated_at'] = date("Y-m-d H:i:s");
-                Session::flash('message', 'Companie  Updated Successfully.');
+                Session::flash('message', 'Company  Updated Successfully.');
                 Companies::where('id', $input['id'])->update($input);
             } else {
                 unset($input['id']);
                 $input['created_at'] = date("Y-m-d H:i:s");
                 $input['updated_at'] = date("Y-m-d H:i:s");
-                Session::flash('message', 'Companie  Added Successfully.');
+                Session::flash('message', 'Company  Added Successfully.');
                 Companies::insertGetId($input);
             }
             return redirect('/companies');
@@ -155,7 +155,7 @@ class CompaniesController extends Controller
         $Companies = Companies::find($id);
         $Companies->status = 0;
         $Companies->save();
-        Session::flash('message', 'Company deletd successfully');
+        Session::flash('message', 'Company deleted successfully');
         return redirect("/companies");
     }
     public static function routes()

@@ -81,7 +81,8 @@ class ProjectsController extends Controller
 
             $validator = Validator::make($request->all(), [
                 'project_title' => 'required',
-
+                'start_date' => 'required',
+                'end_date' => 'required'
             ]);
             if ($validator->fails()) {
                 $action = 'addprojects';
@@ -105,13 +106,13 @@ class ProjectsController extends Controller
             unset($input['_token']);
             if ($input['id'] > 0) {
                 $input['updated_at'] = date("Y-m-d H:i:s");
-                Session::flash('message', 'Projects  Updated Successfully.');
+                Session::flash('message', 'Project Updated Successfully.');
                 Projects::where('id', $input['id'])->update($input);
             } else {
                 unset($input['id']);
                 $input['created_at'] = date("Y-m-d H:i:s");
                 $input['updated_at'] = date("Y-m-d H:i:s");
-                Session::flash('message', 'Projects  Added Successfully.');
+                Session::flash('message', 'Project Added Successfully.');
                 Projects::insertGetId($input);
             }
             return redirect('/projects');
@@ -137,7 +138,7 @@ class ProjectsController extends Controller
      */
     public function edit($id)
     {
-
+        $master = $this->getmasterfields();
         $action = 'edit';
         $result = Projects::find($id);
         $action = 'add';
@@ -147,6 +148,7 @@ class ProjectsController extends Controller
             'pageTitle' => "Project",
             'Addform' => $editname,
             'result' => $result,
+            'master' => $master
         ]);
     }
 
@@ -174,7 +176,7 @@ class ProjectsController extends Controller
         $Companies = Projects::find($id);
         $Companies->status = 0;
         $Companies->save();
-        Session::flash('message', 'Project delete successfully');
+        Session::flash('message', 'Project Deleted Successfully');
         return redirect("/projects");
     }
 

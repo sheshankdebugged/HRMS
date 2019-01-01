@@ -99,13 +99,13 @@ class DepartmentsController extends Controller
             unset($input['_token']);
             if ($input['id'] > 0) {
                 $input['updated_at'] = date("Y-m-d H:i:s");
-                Session::flash('message', 'Companie  Updated Successfully.');
+                Session::flash('message', 'Department Updated Successfully.');
                 Departments::where('id', $input['id'])->update($input);
             } else {
                 unset($input['id']);
                 $input['created_at'] = date("Y-m-d H:i:s");
                 $input['updated_at'] = date("Y-m-d H:i:s");
-                Session::flash('message', 'Companie  Added Successfully.');
+                Session::flash('message', 'Department Added Successfully.');
                 Departments::insertGetId($input);
             }
             return redirect('/departments');
@@ -131,16 +131,17 @@ class DepartmentsController extends Controller
      */
     public function edit($id)
     {
-
         $action = 'edit';
         $result = Departments::find($id);
         $action = 'add';
+        $master = $this->getmasterfields();
         $editname = "Edit " . $result->department_name;
         return view('hrmodule.departments.add')->with([
             'action' => $action,
             'pageTitle' => "Departments",
             'Addform' => $editname,
             'result' => $result,
+            'master' => $master
         ]);
 
     }
@@ -156,7 +157,7 @@ class DepartmentsController extends Controller
         $Departments = Departments::find($id);
         $Departments->status = 0;
         $Departments->save();
-        Session::flash('message', 'Department delete successfully');
+        Session::flash('message', 'Department deleted Successfully');
         return redirect("/departments");
     }
 

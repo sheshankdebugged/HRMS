@@ -64,13 +64,19 @@
 												 <div class="form-group">
 													<label>Company:</label>
 
-													<select id="station_type_id" class="WebHRForm1" style="width:180px;" name="station_type_id">
-
-													<option value="ALL"> All </option>
+													<select id="company_id" class="WebHRForm1" style="width:180px;" name="company_id">
+													<!-- <option value="ALL"> All </option> -->
 													@foreach($master['Companies'] as $val)
-													<option  value="{{$val['company_name']}}">{{$val['company_name']}}</option>
+													<!-- <option  value="{{$val['company_name']}}">{{$val['company_name']}}</option> -->
+													<option  value="{{$val['id']}}" @php if(isset($result->company_id) && $result->company_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['company_name']}}</option>
 													@endforeach
 													</select>
+
+													<!-- <select id ="division_id" name ="division_id" class="WebHRForm1" style="width:180px;">
+													@foreach($master['Divisions'] as $val)
+													<option  value="{{$val['id']}}" @php if(isset($result->division_id) && $result->division_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['division_name']}}</option>
+													@endforeach
+													</select> -->
 													
 												 </div>
 
