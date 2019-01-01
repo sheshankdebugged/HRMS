@@ -186,7 +186,12 @@ Route::get('/home','DashboardController@index')->name('dashboard');
       
         \App\Http\Controllers\ReimbursementsController::routes();
 
-     
+          
+        //  Employees Settings
+      
+        \App\Http\Controllers\EmployeesSettingsController::routes();
 
+        // Employee Designations
 
+        \App\Http\Controllers\EmployeeDesignationsController::routes();
 });
