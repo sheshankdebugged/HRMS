@@ -198,16 +198,41 @@
                     </div>
                     <div class="search-filter">
                         <div class="single-search-an">
-                            <input type="text" placeholder="search">
+                            
+                        <select id="st" class="WebHRForm1" style="width:180px;" name="companies[]">
+                            <option value="ALL"> All Companies</option>
+                            @foreach($master['Companies'] as $val)
+                            <option  value="{{$val['id']}}">{{$val['company_name']}}</option>
+                            @endforeach
+                            </select>
                         </div>
                         <div class="single-search-an">
-                            <input type="text" placeholder="search">
+                           
+                                 
+                        <select id="st" class="WebHRForm1" style="width:180px;" name="stations[]">
+                            <option value="ALL"> All Stations</option>
+                            @foreach($master['Stations'] as $val)
+                            <option  value="{{$val['id']}}">{{$val['station_name']}}</option>
+                            @endforeach
+                            </select>
                         </div>
                         <div class="single-search-an">
-                            <input type="text" placeholder="search">
+                        <select id="st" class="WebHRForm1" style="width:180px;" name="departments[]">
+                        <option value="ALL"> All Departments</option>
+                            @foreach($master['Departments'] as $val)
+                            <option  value="{{$val['id']}}">{{$val['department_name']}}</option>
+                            @endforeach
+                         </select>
+
                         </div>
                         <div class="single-search-an">
-                            <input type="text" placeholder="search">
+                            
+                        <select id="st" class="WebHRForm1" style="width:180px;" name="departments[]">
+                        <option value="ALL"> All Employees</option>
+                        <option value="1">   Active Employees</option>
+                        <option value="2">   Inactive Employees</option>
+                         </select>
+
                         </div>
                         <div class="single-search-button-an">
                             <input type="submit" value="Apply Filters" class="submit-buttton-an">
@@ -222,25 +247,31 @@
                             <div class="single-pai-db">
                                 <h3>Male to Female Employees</h3>
                                 <div class="pai-cart-an">
-                                    <img src="{{ url('admin/images/pai.png') }}">
+                                    
+                                <div id="chartContainer" style="height: 300px; width: 100%;"></div>
                                 </div>
                                 <div class="pai-table-data">
                                     <table border="0" width="100%">
 		                                <tbody>
-                                            <tr>
-                                                 <td>Age Group</td>
-                                                 <td style="width:30%;" align="center">Employees</td>
-                                                 <td style="width:16px;"></td>
-                                                 </tr><tr>
-                                                 <td class="WebHRTable_Body">31-40</td>
-                                                 <td align="center">14</td>
+                                            <tr>    
+                                                 <td  align="right" colspan="3">Employees</td>   
+                                                 </tr>
+                                                 <tr>
+                                                 <td style="width:63%;">Male Employees </td>
+                                                 <td>{{$result['EmployeeGender']['total_male']}} </td>
                                                  <td align="center"><a href="#"><i style="color:#b9b9b9;" class="fa fa-external-link"></i></a></td>
-                                                 </tr><tr><td>41-50</td>
-                                                 <td align="center">3</td>
+
+                                                 </tr>
+
+                                                 <tr>
+                                                 <td style="width:63%;">Female Employees </td>
+                                                 <td>{{$result['EmployeeGender']['total_female']}} </td>
                                                  <td align="center"><a href="#"><i style="color:#b9b9b9;" class="fa fa-external-link"></i></a></td>
-                                                 </tr><tr><td>51-60</td>
-                                                 <td align="center">1</td>
-                                                 <td align="center"><a href="#"><i style="color:#b9b9b9;" class="fa fa-external-link"></i></a></td>
+
+                                                 </tr>
+                                                 
+                                               
+                                               
                                              </tr>
                                          </tbody>
                                      </table>
@@ -527,3 +558,8 @@
 </div>
 
 @include('template.admin_footer')
+
+
+
+ 
+
