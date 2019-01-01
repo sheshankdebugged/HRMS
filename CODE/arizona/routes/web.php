@@ -23,9 +23,8 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
 
-
-Route::get('/dashboard','DashboardController@index')->name('dashboard');
-Route::get('/home','DashboardController@index')->name('dashboard');
+    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+    Route::get('/home', 'DashboardController@index')->name('dashboard');
 
 // Companies Routes
     \App\Http\Controllers\CompaniesController::routes();
@@ -41,7 +40,6 @@ Route::get('/home','DashboardController@index')->name('dashboard');
 
 // Departments Routes
     \App\Http\Controllers\DepartmentsController::routes();
-
 
 //Stations Routes
     \App\Http\Controllers\StationsController::routes();
@@ -60,7 +58,7 @@ Route::get('/home','DashboardController@index')->name('dashboard');
 
 // job Routes
     \App\Http\Controllers\JobRequestsController::routes();
-    
+
 // jobrequests Routes
     \App\Http\Controllers\JobRequestsController::routes();
 
@@ -69,124 +67,122 @@ Route::get('/home','DashboardController@index')->name('dashboard');
 
 // JobTests Routes
     \App\Http\Controllers\JobTestsController::routes();
-    
+
 // JobInterviews Routes
     \App\Http\Controllers\JobInterviewsController::routes();
 
 // Contracts Routes
     \App\Http\Controllers\ContractsController::routes();
 
- // Transfers Routes
-     \App\Http\Controllers\TransfersController::routes();
+    // Transfers Routes
+    \App\Http\Controllers\TransfersController::routes();
 
- // Employees Exit
-     \App\Http\Controllers\EmployeesexitController::routes();
+    // Employees Exit
+    \App\Http\Controllers\EmployeesexitController::routes();
 
 // Travels
-     \App\Http\Controllers\TravelsController::routes();
+    \App\Http\Controllers\TravelsController::routes();
 
 // Warnings
-     \App\Http\Controllers\WarningsController::routes();
+    \App\Http\Controllers\WarningsController::routes();
 
 // Achievements
-     \App\Http\Controllers\AchievementsController::routes();
+    \App\Http\Controllers\AchievementsController::routes();
 
-     // Polls Routes
-     \App\Http\Controllers\PollsController::routes();
+    // Polls Routes
+    \App\Http\Controllers\PollsController::routes();
 
-     // Achievements Routes
-     \App\Http\Controllers\AchievementsController::routes();
+    // Achievements Routes
+    \App\Http\Controllers\AchievementsController::routes();
 
-     // Promotions Routes
-     \App\Http\Controllers\PromotionsController::routes();
+    // Promotions Routes
+    \App\Http\Controllers\PromotionsController::routes();
 
-     // Complaints Routes
-     \App\Http\Controllers\ComplaintsController::routes();
+    // Complaints Routes
+    \App\Http\Controllers\ComplaintsController::routes();
 
-     // Memos Routes
-     \App\Http\Controllers\MemosController::routes();
+    // Memos Routes
+    \App\Http\Controllers\MemosController::routes();
 
-      // Terminations Routes
-      \App\Http\Controllers\TerminationsController::routes();
-      
+    // Terminations Routes
+    \App\Http\Controllers\TerminationsController::routes();
+
     // Time sheet Routes
-    
+
     // Worksheet Routes
     \App\Http\Controllers\WorksheetController::routes();
 
-       // Holidays Routes
-       \App\Http\Controllers\HolidaysController::routes();
+    // Holidays Routes
+    \App\Http\Controllers\HolidaysController::routes();
 
     // Workshifts Routes
     \App\Http\Controllers\WorkshiftsController::routes();
 
-     // Holidays Routes
-     \App\Http\Controllers\HolidaysController::routes();
+    // Holidays Routes
+    \App\Http\Controllers\HolidaysController::routes();
 
     //   Attandance
-    
-      \App\Http\Controllers\AttendanceController::routes();
 
-      //   Employee hours
-    
-      \App\Http\Controllers\EmployeehoursController::routes();
+    \App\Http\Controllers\AttendanceController::routes();
 
-      //   Leaves
-    
-      \App\Http\Controllers\LeavesController::routes();
+    //   Employee hours
 
-      //   Leaves Settigs
-    
-      \App\Http\Controllers\LeavesSettingsController::routes();
+    \App\Http\Controllers\EmployeehoursController::routes();
 
+    //   Leaves
 
-      //   Hourly Wages\
-    
-      \App\Http\Controllers\HourlywagesController::routes();
-      
-      //   Overtime
-    
-      \App\Http\Controllers\OvertimesController::routes();
+    \App\Http\Controllers\LeavesController::routes();
 
-      //   Provident Funds
-      
-      \App\Http\Controllers\ProvidentfundsController::routes();
+    //   Leaves Settigs
 
-     //   Advance Salary
-      
-     \App\Http\Controllers\AdvancesalaryController::routes();
+    \App\Http\Controllers\LeavesSettingsController::routes();
 
-     //   Insurance 
-      
-     \App\Http\Controllers\InsuranceController::routes();
+    //   Hourly Wages\
 
-     //   Adjustments 
-      
-     \App\Http\Controllers\AdjustmentsController::routes();
+    \App\Http\Controllers\HourlywagesController::routes();
 
+    //   Overtime
 
+    \App\Http\Controllers\OvertimesController::routes();
 
-      // Loans
-      
-      \App\Http\Controllers\LoansController::routes();
+    //   Provident Funds
 
-     //   Bonuses
-      
-      \App\Http\Controllers\BonusesController::routes();
+    \App\Http\Controllers\ProvidentfundsController::routes();
 
-     //   Deductions
-      
-      \App\Http\Controllers\DeductionsController::routes();
+    //   Advance Salary
 
-     //  Commissions
-      
-        \App\Http\Controllers\CommissionsController::routes();
+    \App\Http\Controllers\AdvancesalaryController::routes();
 
-        //  Reimbursements
-      
-        \App\Http\Controllers\ReimbursementsController::routes();
+    //   Insurance
 
-     
+    \App\Http\Controllers\InsuranceController::routes();
 
+    //   Adjustments
+
+    \App\Http\Controllers\AdjustmentsController::routes();
+
+    // Loans
+
+    \App\Http\Controllers\LoansController::routes();
+
+    //   Bonuses
+
+    \App\Http\Controllers\BonusesController::routes();
+
+    //   Deductions
+
+    \App\Http\Controllers\DeductionsController::routes();
+
+    //  Commissions
+
+    \App\Http\Controllers\CommissionsController::routes();
+
+    //  Reimbursements
+
+    \App\Http\Controllers\ReimbursementsController::routes();
+
+    //  HR Reports
+
+    \App\Http\Controllers\HRReportsController::routes();
 
 });

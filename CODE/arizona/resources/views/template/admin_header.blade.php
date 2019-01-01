@@ -262,7 +262,7 @@ Password: @7tN$i2cF5~5
                         <div class="d-block menu-list">
                            <div class="row">
                               <div class="col-sm-6 list-unstyled">
-                                 <a href="#"><i class="fa fa-columns"></i></i>HR Reports</a>
+                                 <a href="{{url('hrreports')}}"><i class="fa fa-columns"></i></i>HR Reports</a>
                                  <a href="{{url('recruitmentreports')}}"><i class="fa fa-bitcoin"></i>Recruitment Reports</a>
                                  <a href="{{url('employeesreports')}}"><i class="fa fa-bitcoin"></i>Employees Reports</a>
                                  <a href="{{url('timesheetreports')}}"><i class="fa fa-coins"></i>Timesheet Reports</a>

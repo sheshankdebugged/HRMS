@@ -77,10 +77,10 @@
                                         @foreach($listData as $list)
 											<tr id="second" class="context-requst-one selected">
 											<td class="datainner" style="">{{$list->first_name}}</td>
-											<td class="datainner" style="">{{$list->job_field}}</td>
+											<td class="datainner" style="">{{$list->job_field_id}}</td>
 											<td class="datainner" style="">{{$list->email_address}}</td> 
 											<td class="datainner" style="">{{$list->mobile_number}}</td> 
-											<td class="datainner" style="">{{$list->record_added_on}}</td> 
+											<td class="datainner" style="">{{$list->created_at}}</td> 
 											<td class="datainner" style="">{{$list->reference_no}}</td>                     
 											<td align="right">
 												<div class="dropdown action-drop">
