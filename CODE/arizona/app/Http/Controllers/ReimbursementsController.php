@@ -78,7 +78,7 @@ class ReimbursementsController extends Controller
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                'employee_name' => 'required',
+                'employee_id' => 'required',
                 'reimbursements_title' => 'required',
                 'reimbursements_date' => 'required',
                 // 'reimbursements_amount' => 'required',                   
@@ -146,6 +146,7 @@ class ReimbursementsController extends Controller
     {
 
         $action = 'edit';
+        $master = $this->getmasterfields();
         $result = reimbursements::find($id);
         $action = 'add';
         $editname = "Edit Reimbursement " . $result->employee;
@@ -154,6 +155,7 @@ class ReimbursementsController extends Controller
             'pageTitle' => "Reimbursements",
             'Addform' => $editname,
             'result' => $result,
+            'master' => $master
         ]);
 
     }
@@ -186,7 +188,7 @@ class ReimbursementsController extends Controller
     public function getmasterfields()
     {
         $master = array();
-        $master['EmployeeName'] = Employees::where(['status' => 1])->get()->toArray();
+        $master['Employees'] = Employees::where(['status' => 1])->get()->toArray();
        
         return $master;
     }

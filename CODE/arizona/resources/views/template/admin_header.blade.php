@@ -186,7 +186,7 @@ Password: @7tN$i2cF5~5
 
                 <li class="dropdown">
                     <a href="#" class="nav-link">
-                    <i class="fa fa-adjust"></i>
+                    <i class="fa fa-clock-o"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-left">
                         <div class="sub-menu-title">Time Sheet</div>
@@ -225,24 +225,24 @@ Password: @7tN$i2cF5~5
                            <div class="row">
                               <div class="col-sm-6 list-unstyled">
                                  <a href="#"><i class="fa fa-columns"></i></i>Dashboard</a>
-                                 <a href="{{url('salary')}}"><i class="fa fa-bitcoin"></i>Salary</a>
-                                 <a href="{{url('salarypayslips')}}"><i class="fa fa-bitcoin"></i>Salary Payslips</a>
-                                 <a href="{{url('payrollsetup')}}"><i class="fa fa-coins"></i>Payroll Setup</a>
-                                 <a href="{{url('hourlywages')}}"><i class="fa fa-briefcase"></i>Hourly Wages</a>
-                                 <a href="{{url('overtimes')}}"><i class="fa fa-briefcase"></i>Overtimes</a>
-                                 <a href="{{url('providentfunds')}}"><i class="fa fa-briefcase"></i>Provident Fund</a>
-                                 <a href="{{url('advancesalary')}}"><i class="fa fa-briefcase"></i>Advance Salary</a>
-                                 <a href="{{url('loans')}}"><i class="fa fa-briefcase"></i>Loans</a>
-                                 <a href="{{url('insurance')}}"><i class="fa fa-briefcase"></i>Insurance</a>
+                                 <a href="{{url('salary')}}"><i class="fa fa-usd"></i>Salary</a>
+                                 <a href="{{url('salarypayslips')}}"><i class="fa fa-file-text"></i>Salary Payslips</a>
+                                 <a href="{{url('payrollsetup')}}"><i class="fa fa-tasks"></i>Payroll Setup</a>
+                                 <a href="{{url('hourlywages')}}"><i class="fa fa-hourglass-o"></i>Hourly Wages</a>
+                                 <a href="{{url('overtimes')}}"><i class="fa fa-clock-o"></i>Overtimes</a>
+                                 <a href="{{url('providentfunds')}}"><i class="fa fa-university"></i>Provident Fund</a>
+                                 <a href="{{url('advancesalary')}}"><i class="fa fa-money"></i>Advance Salary</a>
+                                 <a href="{{url('loans')}}"><i class="fa fa-credit-card"></i>Loans</a>
+                                 <a href="{{url('insurance')}}"><i class="fa fa-heartbeat"></i>Insurance</a>
                                 
                                                                   
                               </div>
                               <div class="col-sm-6 list-unstyled">
-                                    <a href="{{url('deductions')}}"><i class="fa fa-trophy"></i>Deductions</a>
-                                    <a href="{{url('bonuses')}}"><i class="fa fa-plane"></i>Bonuses</a>
-                                    <a href="{{url('commissions')}}"><i class="fa fa-star"></i>Commissions</a>
-                                    <a href="{{url('adjustments')}}"><i class="fa fa-star"></i>Adjustments</a>
-                                    <a href="{{url('reimbursements')}}"><i class="fa fa-star"></i>Reimbursements</a>
+                                    <a href="{{url('deductions')}}"><i class="fa fa-minus-circle"></i>Deductions</a>
+                                    <a href="{{url('bonuses')}}"><i class="fa fa-plus-circle"></i>Bonuses</a>
+                                    <a href="{{url('commissions')}}"><i class="fa fa-male"></i>Commissions</a>
+                                    <a href="{{url('adjustments')}}"><i class="fa fa-link"></i>Adjustments</a>
+                                    <a href="{{url('reimbursements')}}"><i class="fa fa-get-pocket"></i>Reimbursements</a>
 
                                    
                               </div>
@@ -262,19 +262,19 @@ Password: @7tN$i2cF5~5
                         <div class="d-block menu-list">
                            <div class="row">
                               <div class="col-sm-6 list-unstyled">
-                                 <a href="#"><i class="fa fa-columns"></i></i>HR Reports</a>
-                                 <a href="{{url('recruitmentreports')}}"><i class="fa fa-bitcoin"></i>Recruitment Reports</a>
-                                 <a href="{{url('employeesreports')}}"><i class="fa fa-bitcoin"></i>Employees Reports</a>
-                                 <a href="{{url('timesheetreports')}}"><i class="fa fa-coins"></i>Timesheet Reports</a>
-                                 <a href="{{url('payrollreports')}}"><i class="fa fa-briefcase"></i>Payroll Reports</a>
+                                 <a href="#"><i class="fa fa-database"></i></i>HR Reports</a>
+                                 <a href="{{url('recruitmentreports')}}"><i class="fa fa-handshake-o"></i>Recruitment Reports</a>
+                                 <a href="{{url('employeesreports')}}"><i class="fa fa-users"></i>Employees Reports</a>
+                                 <a href="{{url('timesheetreports')}}"><i class="fa fa-clock-o"></i>Timesheet Reports</a>
+                                 <a href="{{url('payrollreports')}}"><i class="fa fa-calculator"></i>Payroll Reports</a>
                                                                
                                                                   
                               </div>
                               <div class="col-sm-6 list-unstyled">
-                                    <a href="{{url('trainingsreports')}}"><i class="fa fa-trophy"></i>Trainings Reports/a>
-                                    <a href="{{url('graphs')}}"><i class="fa fa-plane"></i>Graphs</a>
-                                    <a href="{{url('reportsgenerator')}}"><i class="fa fa-star"></i>Reports Generator</a>
-                                    <a href="{{url('addonmodulesreports')}}"><i class="fa fa-star"></i>Add On Modules Reports</a>
+                                    <a href="{{url('trainingsreports')}}"><i class="fa fa-graduation-cap"></i>Trainings Reports</a>
+                                    <a href="{{url('graphs')}}"><i class="fa fa-bar-chart"></i>Graphs</a>
+                                    <a href="{{url('reportsgenerator')}}"><i class="fa fa-chrome"></i>Reports Generator</a>
+                                    <a href="{{url('addonmodulesreports')}}"><i class="fa fa-plus"></i>Add On Modules Reports</a>
 
                                    
                               </div>

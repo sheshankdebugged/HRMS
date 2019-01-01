@@ -6,7 +6,7 @@
 				<div class="col-md-12 col-sm-12">
 					<div class="left-bar-request nopadding">
 						<div class="sidebar-menu">
-                        @include('template.organisation_nav_icon')
+                        @include('template.payroll_nav_icon')
 						</div>
 					</div>
 					<div class="right-bar-request">
@@ -64,22 +64,22 @@
 
 											<div class="form-group">
 													<label>Employee Name:</label>
-													<select id="employee_name" name="employee_name" class="WebHRForm1" style="width:180px;">
-													<!-- <option value="ALL"> All </option> -->
-													@foreach($master['EmployeeName'] as $val)
+													<select  name ="employee_id" id="employee_id" class="form-control-select" >
+													@foreach($master['Employees'] as $val)
 													<option  value="{{$val['id']}}">{{$val['employee_name']}}</option>
-													@endforeach</select>
+													@endforeach													
+											        </select>
 													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 
 												 </div>
 
 												 <div class="form-group">
 												 <label>Forward Application To:</label>
-												 <select id="employee_name" name="employee_name" class="WebHRForm1" style="width:180px;">
-													<!-- <option value="ALL"> All </option> -->
-													@foreach($master['EmployeeName'] as $val)
+												 <select  name ="forward_employee_id" id="forward_employee_id" class="form-control-select" >
+													@foreach($master['Employees'] as $val)
 													<option  value="{{$val['id']}}">{{$val['employee_name']}}</option>
-													@endforeach</select>
+													@endforeach													
+											        </select>
 												 </div>
 												 <div class="form-group">
 												   <label>Title:</label>
