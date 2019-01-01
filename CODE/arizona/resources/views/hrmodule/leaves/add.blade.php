@@ -53,14 +53,14 @@
                                                     @endforeach
                                                 </ul>
                                             </div>
-                                        @endif 
-                                        
+                                        @endif
+
                                         <form method="post" action="{{ url('leaves/save') }}">
                                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                           <input type="hidden" name="id" value="{{isset($result->id)?$result->id:''}}">
 
 											<div class="form-field-inner">
-												
+
 											<div class="form-group">
 													<label>Employee:</label>
 													<select id="st" class="WebHRForm1" style="width:180px;" name="employee_id">
@@ -70,7 +70,7 @@
 													</select>
 													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 													<!-- <input type="text" placeholder="Contact Person" class="form-control-spacial" id="registration_name" name="contact_person" value="{{isset($result->contact_person)?$result->contact_person:''}}"> -->
-                                                   
+
 												 </div>
 												<!-- <div class="form-group">
 													<label style="width:60px; !important" class="switch">
@@ -88,7 +88,7 @@
 													</select>
 												   <!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 													<!-- <input type="text" placeholder="Contact Person Designation" class="form-control-spacial" id="contact_person_designation" name="contact_person_designation" value="{{isset($result->contact_person_designation)?$result->contact_person_designation:''}}"> -->
-                                
+
 												 </div>
 												 <div class="form-group">
 												   <label>Leave Type:</label>
@@ -99,14 +99,14 @@
 													</select>
 													<!-- <input type="text" placeholder="Fax Number" class="form-control-spacial" id="fax_number" name="fax_number" value="{{isset($result->fax_number)?$result->fax_number:''}}"> -->
 
-																								 										 
+
 												 <div class="form-group">
 												   <label>Reason:</label>
 												   <input type="text" class="form-control-spacial" placeholder="Reason" id="reason" name="reason" value="{{isset($result->reason)?$result->reason:''}}" >
 												   <!-- <select id="regular_hours" name="regular_hours" class="WebHRForm1" style="width:180px;"><option style="" value="{{isset($result->regular_hours)?$result->regular_hours:''}}">10</option></select> -->
 												   <!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 													<!-- <input type="text" placeholder="Contact Number" class="form-control-spacial" id="contact_number" name="contact_number" value="{{isset($result->contact_number)?$result->contact_number:''}}"> -->
-                                
+
 												 </div>
 
 												<div class="form-upper-main">
@@ -145,7 +145,7 @@
 												   <!-- <select id="regular_hours" name="regular_hours" class="WebHRForm1" style="width:180px;"><option style="" value="{{isset($result->regular_hours)?$result->regular_hours:''}}">10</option></select> -->
 												   <!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 													<!-- <input type="text" placeholder="Contact Number" class="form-control-spacial" id="contact_number" name="contact_number" value="{{isset($result->contact_number)?$result->contact_number:''}}"> -->
-                                
+
 												 </div>
 												 <div class="form-group">
 													<label>Alternate Employee:</label>
@@ -156,15 +156,15 @@
 													</select>
 												 </div>
 
-												 
-                                
+
+
 												 <div class="form-group">
 													<h4>Leave Description</h4>
 												 </div>
-												 
+
 												 <div class="form-group">
 												 <textarea class="tinyeditorclass" name="leave_description" id="leave_description">{{isset($result->leave_description)?$result->leave_description:''}}</textarea>
-												</div>	
+												</div>
 
 												<div class="form-group">
 													<h4>Leave Document (Optional)</h4>
@@ -173,44 +173,44 @@
 												 </div>
 
 												 			 <!--Add Attachment Button  -->
-										
-											 
-											 											 											 
+
+
+
 
 												 <div class="form-group">
 													<h4>Additional Information</h4>
 												 </div>
-												 
+
 												 <div class="form-group">
 												 <label>Notes:</label>
 													<textarea class="tinyeditorclass" name="additional_information" id="additional_information">{{isset($result->additional_information)?$result->additional_information:''}}</textarea>
-												</div> 
+												</div>
 
-												
-												 
-												 
+
+
+
 
 												<div class="form-group">
 												 <label>Record Added By:</label>
-												System Administrator	 
-												</div> 
+												System Administrator
+												</div>
 
-												
+
 												<div class="form-group">
 												 <label>Record Added On:</label>
 
-												 @php 
-												 $date  = date("F j, Y, g:i a"); 
+												 @php
+												 $date  = date("F j, Y, g:i a");
 
 												 @endphp
 												 {{$date}}
-												</div> 
-
-												
+												</div>
 
 
-												 
-											
+
+
+
+
 												 <div class="form-group">
 													<input class="submit-office" type="submit" value="Save">
 												</div>

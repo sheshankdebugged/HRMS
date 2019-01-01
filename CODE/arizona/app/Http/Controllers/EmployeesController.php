@@ -8,8 +8,8 @@ use App\Models\Departments;
 use App\Models\Divisions;
 use App\Models\EmployeeCategory;
 use App\Models\Employees;
-use App\Models\Salutation;
 use App\Models\EmployeeType;
+use App\Models\Salutation;
 use App\Models\Stations;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,8 +28,6 @@ class EmployeesController extends Controller
     public function index()
     {
         $user_id = Auth::id();
-
-        //     $user_id = 1;
         //     $list = employees::where(['status'=>1,'user_id'=>$user_id])->paginate(10);
         //     return view('hrmodule.employees.list')->with([
         //         'listData' => $list,
@@ -108,13 +106,14 @@ class EmployeesController extends Controller
                 $file->move('./img/uploads/employees/', $input['employee_profile']);
             }
             $input['status'] = 1;
+            $input['employee_name'] = $input['first_name'] +' ' +$input['last_name'];
             $input['user_id'] = $user_id;
             unset($input['_token']);
             if ($input['id'] > 0) {
                 $input['updated_at'] = date("Y-m-d H:i:s");
                 $input['dob'] = date("Y-m-d H:i:s");
                 Session::flash('message', 'Employee Updated Successfully.');
-                employees::where('id', $input['id'])->update($input);
+                Employees::where('id', $input['id'])->update($input);
             } else {
                 unset($input['id']);
                 $input['created_at'] = date("Y-m-d H:i:s");
@@ -156,7 +155,7 @@ class EmployeesController extends Controller
             'pageTitle' => "employees",
             'Addform' => $editname,
             'result' => $result,
-            'master' => $master
+            'master' => $master,
         ]);
 
     }
