@@ -49,11 +49,11 @@
 											</div>
 											</form>
 											<div class="filter-btn-request">
-												<a href="{{ url('leaves') }}" alt="Dashboard"><i class="fa fa-refresh"></i></a>
+												<a href="{{ url('delmultipleleaves') }}" alt="Dashboard"><i class="fa fa-refresh"></i></a>
 											</div>
-											<div class="add-record-btn">
+											<!-- <div class="add-record-btn">
 												<a href="{{ url('leaves/add') }}"><i class="fa fa-plus"></i>Add Record</a>
-											</div>
+											</div> -->
 											
 										</div>
 										
@@ -64,43 +64,43 @@
 									<table id="requesttab" border="0" cellspacing="0" cellpadding="3" width="100%" align="center">
 									 <thead>
 									  <tr>
-										  <td style="background-color:#0c64ae; " class="thbackgroud"><a style="color:#fff; " href="#">Employee</a></td>
-										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Leave Type</a></td>
-										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Reason</a></td>
-										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Leave From</a></td>
-										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Leave To</a></td>
-										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Leave Duration</a></td>
-										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Approval Status</a></td>
+										  <td style="background-color:#0c64ae; " class="thbackgroud"><a style="color:#fff; " href="#">UserName</a></td>
+										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Employee</a></td>
+										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Leave From - To</a></td>
+										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Leave Days</a></td>
+										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Leave Status</a></td>
+										  <!-- <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Leave Days</a></td>
+										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Approval Status</a></td> -->
 									      <td style="background-color:#0c64ae; width:1%;"></td>
 									  </tr>
 									</thead>
 										<tbody>
                                         @foreach($listData as $list)
 											<tr id="second" class="context-requst-one selected">
-											<td class="datainner" style="">{{$list->employee_id}}</td>
-											<td class="datainner" style="">{{$list->leave_type_id}}</td>
+											<td class="datainner" style="">{{$list->employee}}</td>
+											<td class="datainner" style="">{{$list->leave_type}}</td>
 											<td class="datainner" style="">{{$list->reason}}</td> 
 											<td class="datainner" style="">{{$list->leave_from}}</td> 
 											<td class="datainner" style="">{{$list->leave_to}}</td>
-											<td class="datainner" style="">{{$list->leave_duration_id}}</td>
+											<td class="datainner" style="">{{$list->leave_duration}}</td>
 											<td class="datainner" style="">{{$list->approval_status}}</td>                       
 											<td align="right">
 												<div class="dropdown action-drop">
 													<a href="javascript:void(0);" class="dropdown-custom"><i style="font-size:16px;" class="fa fa-cog"></i></a>
 													<ul class="dropdown-menu">
 														<li><a href="{{url('/leaves/edit')}}/{{$list->id}}"><i class="fa fa-edit"></i>Edit Record</a></li>
-														<li><a href="{{url('/leaves/delete/')}}/{{$list->id}}" onclick="return confirm('Are you sure to want delete this?')"><i class="fa fa-times"></i>Delete Record</a></li>
+														<li><a href="{{url('/delmultipleleaves/delete/')}}/{{$list->id}}" onclick="return confirm('Are you sure to want delete this?')"><i class="fa fa-times"></i>Delete Record</a></li>
 													</ul>
 												</div>
 											</td> 
 										</tr>
                                         @endforeach
-
+                                          
                                         <!-- <tr>
                      <td colspan="6"> <div class="pull-right"> {{ $listData->links() }} </div> </td>
                      </tr> -->
 										</tbody>
-												</table>
+										</table>
 								</div>
 							</div>
 						</div>
