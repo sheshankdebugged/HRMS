@@ -11,6 +11,3 @@ for (var selector in config) {
 }
 
 
-$(".chosen-select").chosen({ width:"95%" });
-
-$(".chosen-select").val("Legal").trigger("chosen:updated");

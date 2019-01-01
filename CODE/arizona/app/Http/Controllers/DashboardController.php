@@ -90,7 +90,7 @@ class DashboardController extends Controller
            
             if(!empty($_GET['status'])){
                 
-                $status ="AND employees.stattus =".$_GET['status'];
+                $status ="AND employees.status =".$_GET['status'];
             }
              
             $stations ="";
