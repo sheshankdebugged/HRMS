@@ -55,8 +55,8 @@ class DashboardController extends Controller
         $obj = new Employees();
         $result = array();
         $result['EmployeeGender'] = $obj->getCountGender($where);
-        $result['EmployeeAgeBye'] = $obj->getCountEmployeetype($where);
-      
+        $result['EmployeeType']   = $obj->getCountEmployeetype($where);
+        $result['EmployessByCategory']   = $obj->getCountEmployeeCategory($where);
         return $result;
 
         

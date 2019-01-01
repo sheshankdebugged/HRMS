@@ -309,7 +309,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="single-pai-db">
-                                <h3>Employees by Types</h3>
+                                <h3>Employees By Types</h3>
                                 <div class="pai-cart-an">
                                     <img src="{{ url('admin/images/pai.png') }}">
                                 </div>
@@ -317,20 +317,17 @@
                                     <table border="0" width="100%">
 		                                <tbody>
                                             <tr>
-                                                 <td>Age Group</td>
+                                                 <td>Employee Type</td>
                                                  <td style="width:30%;" align="center">Employees</td>
                                                  <td style="width:16px;"></td>
-                                                 </tr><tr>
-                                                 <td class="WebHRTable_Body">31-40</td>
-                                                 <td align="center">14</td>
+                                                 </tr>
+                                                @foreach($result['EmployeeType'] as $val) 
+                                                 <tr>
+                                                 <td>{{$val['employee_type']}}</td>
+                                                 <td align="center">{{$val['total']}}</td>
                                                  <td align="center"><a href="#"><i style="color:#b9b9b9;" class="fa fa-external-link"></i></a></td>
-                                                 </tr><tr><td>41-50</td>
-                                                 <td align="center">3</td>
-                                                 <td align="center"><a href="#"><i style="color:#b9b9b9;" class="fa fa-external-link"></i></a></td>
-                                                 </tr><tr><td>51-60</td>
-                                                 <td align="center">1</td>
-                                                 <td align="center"><a href="#"><i style="color:#b9b9b9;" class="fa fa-external-link"></i></a></td>
-                                             </tr>
+                                                 </tr>
+                                                @endforeach
                                          </tbody>
                                      </table>
                                 </div>
@@ -344,22 +341,20 @@
                                 </div>
                                 <div class="pai-table-data">
                                     <table border="0" width="100%">
-		                                <tbody>
+		                                
+                                    <tbody>
                                             <tr>
-                                                 <td>Age Group</td>
+                                                 <td>Category</td>
                                                  <td style="width:30%;" align="center">Employees</td>
                                                  <td style="width:16px;"></td>
-                                                 </tr><tr>
-                                                 <td class="WebHRTable_Body">31-40</td>
-                                                 <td align="center">14</td>
+                                                 </tr>
+                                                @foreach($result['EmployessByCategory'] as $val) 
+                                                 <tr>
+                                                 <td>{{$val['employee_type']}}</td>
+                                                 <td align="center">{{$val['total']}}</td>
                                                  <td align="center"><a href="#"><i style="color:#b9b9b9;" class="fa fa-external-link"></i></a></td>
-                                                 </tr><tr><td>41-50</td>
-                                                 <td align="center">3</td>
-                                                 <td align="center"><a href="#"><i style="color:#b9b9b9;" class="fa fa-external-link"></i></a></td>
-                                                 </tr><tr><td>51-60</td>
-                                                 <td align="center">1</td>
-                                                 <td align="center"><a href="#"><i style="color:#b9b9b9;" class="fa fa-external-link"></i></a></td>
-                                             </tr>
+                                                 </tr>
+                                                @endforeach
                                          </tbody>
                                      </table>
                                 </div>

@@ -61,4 +61,28 @@ Inner JOIN employee_type ON employee_type.id = employees.employee_type_id
    }
 
 
+   function getCountEmployeeCategory($where){
+
+      $result =  DB::table('employees')
+      ->join('employee_category', 'employee_category.id', '=', 'employees.employee_category_id')
+      ->select('employee_category.*')
+      ->get();
+      
+      $a = array();
+      if(!empty($result )){
+        
+          foreach($result as $val):
+            $c = array();
+            $c['employee_type'] = $val->name;
+            $c['total'] = DB::table('employees')->where('employee_category_id', $val->id)->count();
+            array_push($a, $c);
+          endforeach;
+      
+      }
+  
+  return $a;
+ 
+     }
+
+
 }
