@@ -6,7 +6,7 @@
 				<div class="col-md-12 col-sm-12">
 					<div class="left-bar-request nopadding">
 						<div class="sidebar-menu">
-                        @include('template.organisation_nav_icon')
+                        @include('template.recruitment_nav_icon')
 						</div>
 					</div>
 					<div class="right-bar-request">

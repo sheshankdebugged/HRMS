@@ -100,14 +100,14 @@ class StationsController extends Controller
             unset($input['_token']);
             if ($input['id'] > 0) {
                 $input['updated_at'] = date("Y-m-d H:i:s");
-                Session::flash('message', 'Stations  Updated Successfully.');
+                Session::flash('message', 'Station Updated Successfully.');
 
                 Stations::where('id', $input['id'])->update($input);
             } else {
                 unset($input['id']);
                 $input['created_at'] = date("Y-m-d H:i:s");
                 $input['updated_at'] = date("Y-m-d H:i:s");
-                Session::flash('message', 'Stations  Added Successfully.');
+                Session::flash('message', 'Station Added Successfully.');
                 Stations::insertGetId($input);
             }
             return redirect('/stations');
@@ -158,7 +158,7 @@ class StationsController extends Controller
         $stations = Stations::find($id);
         $stations->status = 0;
         $stations->save();
-        Session::flash('message', 'Stations delete successfully');
+        Session::flash('message', 'Station Deleted Successfully');
         return redirect("/stations");
     }
 

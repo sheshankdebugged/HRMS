@@ -72,7 +72,7 @@
 
                                                 <div class="form-group">
                                                     <label>Department Name:</label>
-                                                    <input type="text" class="form-control-spacial" id="department_name" name="department_name" value="{{isset($result->job_title)?$result->job_title:''}}">
+                                                    <input type="text" class="form-control-spacial" id="department_name" name="department_name" value="{{isset($result->department_name)?$result->department_name:''}}">
                                                     <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
                                                 </div>
 
