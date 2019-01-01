@@ -24,13 +24,14 @@ class Employees extends Model
 
     
 
-  /*return  DB::select('SELECT
+  return  DB::select('SELECT
   employee_type.name,
   COUNT(employee_type.id) AS Total
 FROM
   employees
-Inner JOIN employee_type ON employee_type.id = employees.employee_type_id'); */
+Inner JOIN employee_type ON employee_type.id = employees.employee_type_id  '); 
 
+/*
 $result =  DB::table('employees')
 ->join('employee_type', 'employee_type.id', '=', 'employees.employee_type_id')
 ->select('employee_type.*')
@@ -47,17 +48,18 @@ if(!empty($result )){
       array_push($a, $c);
     endforeach;
 
-}
+} 
 
 return $a;
-/*
+
  SELECT
   employee_type.name,
   COUNT(employee_type.id) AS Total
 FROM
   employees
 Inner JOIN employee_type ON employee_type.id = employees.employee_type_id
-*/
+*/ 
+
    }
 
 
@@ -66,6 +68,7 @@ Inner JOIN employee_type ON employee_type.id = employees.employee_type_id
       $result =  DB::table('employees')
       ->join('employee_category', 'employee_category.id', '=', 'employees.employee_category_id')
       ->select('employee_category.*')
+      ->groupBy('employees.employee_category_id')
       ->get();
       
       $a = array();

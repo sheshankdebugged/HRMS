@@ -323,8 +323,8 @@
                                                  </tr>
                                                 @foreach($result['EmployeeType'] as $val) 
                                                  <tr>
-                                                 <td>{{$val['employee_type']}}</td>
-                                                 <td align="center">{{$val['total']}}</td>
+                                                 <td>{{$val->name}}</td>
+                                                 <td align="center">{{$val->Total}}</td>
                                                  <td align="center"><a href="#"><i style="color:#b9b9b9;" class="fa fa-external-link"></i></a></td>
                                                  </tr>
                                                 @endforeach
