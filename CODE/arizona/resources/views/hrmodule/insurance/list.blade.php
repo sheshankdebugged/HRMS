@@ -6,7 +6,7 @@
 				<div class="col-md-12 col-sm-12">
 					<div class="left-bar-request nopadding">
 						<div class="sidebar-menu">
-                        @include('template.organisation_nav_icon')
+                        @include('template.payroll_nav_icon')
 						</div>
 					</div>
             
@@ -76,10 +76,11 @@
 										<tbody>
                                         @foreach($listData as $list)
 											<tr id="second" class="context-requst-one selected">
-											<td class="datainner" style="">{{$list->resigning_employee}}</td>
-											<td class="datainner" style="">{{$list->notice_date}}</td>
-											<td class="datainner" style="">{{$list->resignation_date}}</td>
-											<td class="datainner" style="">{{$list->approval_status_id}}</td>
+											<td class="datainner" style="">{{$list->employee_id}}</td>
+											<td class="datainner" style="">{{$list->insurance_title}}</td>
+											<td class="datainner" style="">{{$list->employee_amount}}</td>
+											<td class="datainner" style="">{{$list->organization_share}}</td>
+											<td class="datainner" style="">{{$list->expiry_date}}</td>
 											<td align="right">
 													<div class="dropdown action-drop">
 														<a href="javascript:void(0);" class="dropdown-custom"><i style="font-size:16px;" class="fa fa-cog"></i></a>

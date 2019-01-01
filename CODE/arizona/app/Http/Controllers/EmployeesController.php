@@ -3,20 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Employees;
 use App\Models\Companies;
-use App\Models\Stations;
 use App\Models\Departments;
-use App\Models\EmployeeType;
+use App\Models\Employees;
 use App\Models\EmployeeCategory;
-use App\Models\EmployeeDesignation;
+use App\Models\Divisions;
+use App\Models\EmployeeType;
+use App\Models\Stations;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Form;
 use Session;
-use Validator;
 
 class EmployeesController extends Controller
 {
@@ -25,36 +24,35 @@ class EmployeesController extends Controller
     //  *
     //  * @return \Illuminate\Http\Response
     //  */
-     public function index()
-     {
-       $user_id = Auth::id();
-        
-    //     $user_id = 1;
-    //     $list = employees::where(['status'=>1,'user_id'=>$user_id])->paginate(10);
-    //     return view('hrmodule.employees.list')->with([
-    //         'listData' => $list,
-    //         'pageTitle' => "Employees",
-    //     ]);
+    public function index()
+    {
+        $user_id = Auth::id();
 
-    // $user_id = Auth::id();
-        $searchQuery  = isset($_GET['search'])?trim($_GET['search']):"";
-        $where   = ['status'=>1,'user_id'=>$user_id];
-                
-        if(!empty($searchQuery)){
+        //     $user_id = 1;
+        //     $list = employees::where(['status'=>1,'user_id'=>$user_id])->paginate(10);
+        //     return view('hrmodule.employees.list')->with([
+        //         'listData' => $list,
+        //         'pageTitle' => "Employees",
+        //     ]);
+
+        // $user_id = Auth::id();
+        $searchQuery = isset($_GET['search']) ? trim($_GET['search']) : "";
+        $where = ['status' => 1, 'user_id' => $user_id];
+
+        if (!empty($searchQuery)) {
             $where = [
-            //     ['first_name', 'LIKE', "%$searchQuery%"],
-            //     ['email_address', 'LIKE', "%$searchQuery%"],
-            //     ['department', 'LIKE', "%$searchQuery%"],
-            //     ['status', '=', 1],
-            //     ['user_id', '=', $user_id],
-            ];   
+                //     ['first_name', 'LIKE', "%$searchQuery%"],
+                //     ['email_address', 'LIKE', "%$searchQuery%"],
+                //     ['department', 'LIKE', "%$searchQuery%"],
+                //     ['status', '=', 1],
+                //     ['user_id', '=', $user_id],
+            ];
         }
-        $list =employees::where($where)->paginate(10);
+        $list = employees::where($where)->paginate(10);
         return view('hrmodule.employees.list')->with([
             'listData' => $list,
             'pageTitle' => "Employees",
         ]);
-
 
     }
 
@@ -84,23 +82,23 @@ class EmployeesController extends Controller
      */
     public function store(Request $request)
     {
-       
+
         $user_id = Auth::id();
         $master = $this->getmasterfields();
         if ($request->all()) {
 
-          /*  $validator = Validator::make($request->all(), [
-                'employee_name' => 'required',
+            /*  $validator = Validator::make($request->all(), [
+            'employee_name' => 'required',
 
             ]);
             if ($validator->fails()) {
-                $action = 'addemployees';
-                return redirect('/employees/add')
-                    ->withErrors($validator)
-                    ->withInput()
-                    ->with([
-                        'action' => $action,
-                    ]);
+            $action = 'addemployees';
+            return redirect('/employees/add')
+            ->withErrors($validator)
+            ->withInput()
+            ->with([
+            'action' => $action,
+            ]);
             } */
 
             $input = $request->all();
@@ -176,7 +174,7 @@ class EmployeesController extends Controller
     }
     public static function routes()
     {
-            Route::group(array('prefix' => 'employees'), function () {
+        Route::group(array('prefix' => 'employees'), function () {
             Route::get('/', array('as' => 'employees.index', 'uses' => 'EmployeesController@index'));
             Route::get('/add', array('as' => 'employees.create', 'uses' => 'EmployeesController@create'));
             Route::post('/save', array('as' => 'employees.save', 'uses' => 'EmployeesController@store'));
@@ -186,20 +184,20 @@ class EmployeesController extends Controller
         });
     }
 
-     /*
+    /*
      *
      */
 
     public function getmasterfields()
     {
         $master = array();
-        $master['Companies']               = Companies::where(['status' => 1])->get()->toArray();
-        // $master['Divisions']               = Divisions::where(['status' => 1])->get()->toArray();
-        $master['Stations']                = Stations::where(['status'=>1])->get()->toArray();
-        $master['Departments']             = Departments::where(['status'=>1])->get()->toArray();
-        $master['EmployeeType']            = EmployeeType::where(['status'=>1])->get()->toArray();
-        $master['EmployeeCategory']        = [];//EmployeeCategory::where(['status'=>1])->get()->toArray();
-        $master['EmployeeDesignation']     = [];//EmployeeDesignation::where(['status'=>1])->get()->toArray();
+        $master['Companies'] = Companies::where(['status' => 1])->get()->toArray();
+        $master['Divisions'] = Divisions::where(['status' => 1])->get()->toArray();
+        $master['Stations'] = Stations::where(['status' => 1])->get()->toArray();
+        $master['Departments'] = Departments::where(['status' => 1])->get()->toArray();
+        $master['EmployeeType'] = EmployeeType::where(['status' => 1])->get()->toArray();
+        $master['EmployeeCategory'] = EmployeeCategory::where(['status'=>1])->get()->toArray();
+        $master['EmployeeDesignation'] = []; //EmployeeDesignation::where(['status'=>1])->get()->toArray();
         return $master;
     }
 }

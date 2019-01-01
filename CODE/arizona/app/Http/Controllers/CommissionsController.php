@@ -79,7 +79,7 @@ class CommissionsController extends Controller
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                'employee_name' => 'required',
+                'employee_id' => 'required',
                 'commissions_title' => 'required',
                 'commissions_date' => 'required',
                 'commissions_amount' => 'required',                   
@@ -147,6 +147,7 @@ class CommissionsController extends Controller
     {
 
         $action = 'edit';
+        $master = $this->getmasterfields();
         $result = commissions::find($id);
         $action = 'add';
         $editname = "Edit Commission " . $result->employee;
@@ -155,6 +156,7 @@ class CommissionsController extends Controller
             'pageTitle' => "Commissions",
             'Addform' => $editname,
             'result' => $result,
+            'master' => $master
         ]);
 
     }
@@ -187,7 +189,7 @@ class CommissionsController extends Controller
     public function getmasterfields()
     {
         $master = array();
-        $master['EmployeeName'] = Employees::where(['status' => 1])->get()->toArray();
+        $master['Employees'] = Employees::where(['status' => 1])->get()->toArray();
        
         return $master;
     }

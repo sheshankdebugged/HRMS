@@ -55,8 +55,8 @@
                                             </div>
                                         @endif
 
-	       
-		     
+
+
 
                                         <form method="post" action="{{ url('employees/save') }}" enctype='multipart/form-data' >
                                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -77,7 +77,12 @@
 
                                                  <div class="form-group">
 													<label>Division:</label>
-													<select id="st" name="division" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Division 1</option></select>
+													<!-- <select id="st" name="division" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Division 1</option></select> -->
+													<select id="st" class="WebHRForm1" style="width:180px;" name="station_type">
+													@foreach($master['Divisions'] as $val)
+													<option  value="{{$val['id']}}" @php if(isset($result->division_id) && $result->division_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['division_name']}}</option>
+													@endforeach
+													</select>
 													<!-- <input type="text" class="form-control-spacial" id="designation" value="{{isset($result->designation)?$result->designation:''}}" name="designation"> -->
 
 												 </div>
@@ -99,7 +104,7 @@
 													</select>
 
 												 </div>
-												 
+
 												 <div class="form-group">
 													<label>Department:</label>
 													<!-- <input type="text" class="form-control-spacial" id="station" name="station" value="{{isset($result->station)?$result->station:''}}"> -->
@@ -168,7 +173,7 @@
 													<label>Password:</label>
 													<input type="text" class="form-control-spacial" id="user_name" value="{{isset($result->password)?$result->password:''}}" name="password">
 												 </div>
-												 
+
 												 <div class="form-group">
 													<label>Roles Template:</label>
 													<select id="st" name="roles_template" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Roles Template 1</option></select>
@@ -450,7 +455,7 @@
 												 <div class="form-group">
 													<input class="submit-office" type="submit" value="Save">
 												</div>
-											</div>											
+											</div>
 										</form>
 									</div>
 								</div>

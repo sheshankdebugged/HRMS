@@ -78,7 +78,7 @@ class DeductionsController extends Controller
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                'employee_name' => 'required',
+                'employee_id' => 'required',
                 'deductions_title' => 'required',
                 'deductions_date' => 'required',
                 'deductions_amount' => 'required',                   
@@ -146,6 +146,7 @@ class DeductionsController extends Controller
     {
 
         $action = 'edit';
+        $master = $this->getmasterfields();
         $result = deductions::find($id);
         $action = 'add';
         $editname = "Edit Deduction " . $result->employee;
@@ -154,6 +155,7 @@ class DeductionsController extends Controller
             'pageTitle' => "Deductions",
             'Addform' => $editname,
             'result' => $result,
+            'master' => $master
         ]);
 
     }
@@ -186,7 +188,7 @@ class DeductionsController extends Controller
     public function getmasterfields()
     {
         $master = array();
-        $master['EmployeeName'] = Employees::where(['status' => 1])->get()->toArray();
+        $master['Employees'] = Employees::where(['status' => 1])->get()->toArray();
        
         return $master;
     }

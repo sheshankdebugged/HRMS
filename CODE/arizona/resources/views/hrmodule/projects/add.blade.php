@@ -86,12 +86,12 @@
 												 </div>
 												 <div class="form-group">
 													<label>Project Start Date:</label>
-													<input type="date" class "form-control-spacial date" id="created_at" name="created_at">
+													<input type="date" class "form-control-spacial date" id="start_date" name="start_date" value="{{isset($result->start_date)?$result->start_date:''}}">
                                                     <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 												 </div>
 												<div class="form-group">
 													<label>Project End Date:</label>
-													<input type="date" class "form-control-spacial date" id="updated_at" name="updated_at" value="{{isset($result->updated_at)?$result->updated_at:''}}">
+													<input type="date" class "form-control-spacial date" id="end_date" name="end_date" value="{{isset($result->end_date)?$result->end_date:''}}">
 													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 												</div>
 												<div class="form-group">
