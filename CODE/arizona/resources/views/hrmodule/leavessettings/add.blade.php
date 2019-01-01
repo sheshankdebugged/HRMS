@@ -62,7 +62,7 @@
 
 												 <div class="form-group">
 													<label>Leaves Types:</label>
-													<a href="#" style="font-size:18px;color:yellow"><i class="fa fa-cog"></i>&nbsp;&nbsp;Manage Leaves Types</a>
+													<a href="{{ url('manageleavestypes') }}" style="font-size:18px;color:yellow"><i class="fa fa-cog"></i>&nbsp;&nbsp;Manage Leaves Types</a>
 													<!-- <select id="employee_name" name="employee_name" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">employee_name</option></select> -->
 													<!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 
@@ -355,18 +355,18 @@
 
 												 </div>
 
-												<div class="form-upper-main">
+												 <!-- <div class="form-upper-main">
 										           <h4>Leaves Options</h4>
 									            </div>
 												<div class="form-field-inner">
 
 												 <div class="form-group">
 													<label>Delete</label>
-													<a href="{{url('#')}}" style="font-size:18px;color:yellow"><i class="fa fa-times"></i>&nbsp;&nbsp;Delete Multiple Leaves</a>
-													<!-- <select id="employee_name" name="employee_name" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">employee_name</option></select> -->
-													<!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
+													<a href="{{url('delmultipleleaves')}}" style="font-size:18px;color:yellow"><i class="fa fa-times"></i>&nbsp;&nbsp;Delete Multiple Leaves</a>
+													 <select id="employee_name" name="employee_name" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">employee_name</option></select>
+													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 
-												 </div>
+												 </div>  -->
 
 
 

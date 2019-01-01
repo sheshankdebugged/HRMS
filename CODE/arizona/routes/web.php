@@ -127,66 +127,70 @@ Route::get('/home','DashboardController@index')->name('dashboard');
     
       \App\Http\Controllers\AttendanceController::routes();
 
-      //   Employee hours
+    //   Employee hours
     
       \App\Http\Controllers\EmployeehoursController::routes();
 
-      //   Leaves
+    //   Leaves
     
       \App\Http\Controllers\LeavesController::routes();
 
-      //   Leaves Settigs
+    //   Leaves Settigs
     
       \App\Http\Controllers\LeavesSettingsController::routes();
 
 
-      //   Hourly Wages\
+    //   Hourly Wages\
     
       \App\Http\Controllers\HourlywagesController::routes();
       
-      //   Overtime
+    //   Overtime
     
       \App\Http\Controllers\OvertimesController::routes();
 
-      //   Provident Funds
+    //   Provident Funds
       
       \App\Http\Controllers\ProvidentfundsController::routes();
 
-     //   Advance Salary
+    //   Advance Salary
       
      \App\Http\Controllers\AdvancesalaryController::routes();
 
-     //   Insurance 
+    //   Insurance 
       
      \App\Http\Controllers\InsuranceController::routes();
 
-     //   Adjustments 
+    //   Adjustments 
       
      \App\Http\Controllers\AdjustmentsController::routes();
 
-
-
-      // Loans
+    // Loans
       
       \App\Http\Controllers\LoansController::routes();
 
-     //   Bonuses
+    //   Bonuses
       
       \App\Http\Controllers\BonusesController::routes();
 
-     //   Deductions
+    //   Deductions
       
       \App\Http\Controllers\DeductionsController::routes();
 
-     //  Commissions
+    //  Commissions
       
         \App\Http\Controllers\CommissionsController::routes();
 
-        //  Reimbursements
+    //  Reimbursements
       
         \App\Http\Controllers\ReimbursementsController::routes();
-
-     
+        
+    //  Manage Leaves Types
+        
+        \App\Http\Controllers\ManageLeavesTypesController::routes();
+        
+        //  Delete Multiple Leaves
+        
+        \App\Http\Controllers\DelMultipleLeavesController::routes();
 
 
 });
