@@ -224,6 +224,6 @@
 		</div>
 	</div>
 </div>
-
-
 @include('template.admin_footer')
+COPY TO CLIPBOARD	 SELECT ALL
+© FreeFormatter.com - FREEFORMATTER is a d/b/a of 10174785 Canada Inc. - Copyright N

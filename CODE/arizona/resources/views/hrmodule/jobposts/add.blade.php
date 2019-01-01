@@ -161,7 +161,7 @@
                                                     <label>Country:</label>
                                                     <select class="form-control-spacial" id="country_id" name="country_id">
                                                         @foreach($master['Countries'] as $val)
-                                                        <option  value="{{$val['country_id']}}" @php if(isset($result->country_id) && $result->country_id == $val['country_id']  ) { echo "selected";  } @endphp >{{$val['title']}}</option>
+                                                        <option  value="{{$val['id']}}" @php if(isset($result->country_id) && $result->country_id == $val['country_id']  ) { echo "selected";  } @endphp >{{$val['title']}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -249,7 +249,7 @@
                                                     <label>Approval Levels:</label>
                                                     <select class="form-control-spacial" id="approval_levels" name="approval_levels">
                                                             @foreach($master['Countries'] as $val)
-                                                            <option value="{{$val['country_id']}}" <?php if (isset($result->country)) {echo ($country['country_id'] == $result->country) ? "selected" : "";}?> >{{$val['title']}}</option>
+                                                            <option value="{{$val['id']}}" <?php if (isset($result->country)) {echo ($country['country_id'] == $result->country) ? "selected" : "";}?> >{{$val['title']}}</option>
                                                             @endforeach
                                                     </select>
                                                 </div>

@@ -11,8 +11,13 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Form;
+use App\Models\JobField;
 use Session;
 use Validator;
+use App\Models\Employees;
+use App\Models\Gender;
+use App\Models\Nationality;
+use App\Models\Source;
 
 class JobCandidatesController extends Controller
 {
@@ -52,11 +57,12 @@ class JobCandidatesController extends Controller
     public function create()
     {
         $action = 'add';
+        $master = $this->getmasterfields();
         return view('hrmodule.jobcandidates.add')->with([
             'action' => $action,
             'pageTitle' => "Job Candidates",
-            'Addform' => "Add New Job Candidates
-            ",
+            'Addform' => "Add New Job Candidates",
+            'master' => $master,
         ]);
     }
 
@@ -72,7 +78,8 @@ class JobCandidatesController extends Controller
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                'employee_name' => 'required',
+                'first_name' => 'required',
+                'last_name' => 'required',
 
             ]);
 
@@ -98,12 +105,14 @@ class JobCandidatesController extends Controller
             unset($input['_token']);
             if ($input['id'] > 0) {
                 $input['updated_at'] = date("Y-m-d H:i:s");
+                $input['date_of_birth'] = date("Y-m-d H:i:s");
                 Session::flash('message', 'Job Candidates  Updated Successfully.');
                 JobCandidates::where('id', $input['id'])->update($input);
             } else {
                 unset($input['id']);
                 $input['created_at'] = date("Y-m-d H:i:s");
                 $input['updated_at'] = date("Y-m-d H:i:s");
+                $input['date_of_birth'] = date("Y-m-d H:i:s");
                 Session::flash('message', 'Job Candidates  Added Successfully.');
                 JobCandidates::insertGetId($input);
             }
@@ -121,11 +130,13 @@ class JobCandidatesController extends Controller
         $result = JobCandidates::find($id);
         $action = 'add';
         $editname = "Edit " . $result->test_title;
+        $master = $this->getmasterfields();
         return view('hrmodule.jobcandidates.add')->with([
             'action' => $action,
             'pageTitle' => "Job Candidates",
             'Addform' => $editname,
             'result' => $result,
+            'master' => $master,
         ]);
     }
 
@@ -148,5 +159,17 @@ class JobCandidatesController extends Controller
             Route::post('/update/{id}', array('as' => 'jobcandidates.update', 'uses' => 'JobCandidatesController@update'));
             Route::get('/delete/{id}', array('as' => 'jobcandidates.destroy', 'uses' => 'JobCandidatesController@destroy'));
         });
+    }
+    public function getmasterfields()
+    {
+        $master = array();
+        $master['JobCandidates'] = JobCandidates::where(['status'=>1])->get()->toArray();
+        $master['JobField'] = JobField::where(['status'=>1])->get()->toArray();
+        $master['Gender'] = Gender::where(['status'=>1])->get()->toArray();
+        $master['Nationality'] = Nationality::where(['status'=>1])->get()->toArray();
+        $master['Countries'] = Countries::where(['status'=>1])->get()->toArray();
+        $master['Source'] = Source::where(['status'=>1])->get()->toArray();
+
+        return $master;
     }
 }
