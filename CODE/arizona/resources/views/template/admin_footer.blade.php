@@ -37,7 +37,7 @@
 <script src="{{ url('/admin/js/popper.min.js') }}"></script>
 <script src="{{ url('/admin/js/bootstrap-datepicker.js') }}"></script>
 <script src="{{ url('/admin/js/custom.js') }}"></script>
-
-
+<script src="{{ url('/admin/bower_components/chosen/chosen.jquery.js') }}"></script>
+<script src="{{ url('/admin/bower_components/chosen/docsupport/init.js') }}"></script>
 </body>
 </html>
