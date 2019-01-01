@@ -3,12 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\BloodGroup;
 use App\Models\Companies;
+use App\Models\Countries;
 use App\Models\Departments;
 use App\Models\Divisions;
 use App\Models\EmployeeCategory;
 use App\Models\Employees;
 use App\Models\EmployeeType;
+use App\Models\Gender;
+use App\Models\MaritalStatus;
+use App\Models\Nationality;
+use App\Models\Religion;
 use App\Models\Salutation;
 use App\Models\Stations;
 use Illuminate\Http\Request;
@@ -106,7 +112,7 @@ class EmployeesController extends Controller
                 $file->move('./img/uploads/employees/', $input['employee_profile']);
             }
             $input['status'] = 1;
-            $input['employee_name'] = $input['first_name'] +' ' +$input['last_name'];
+            $input['employee_name'] = $input['first_name']+' '+$input['last_name'];
             $input['user_id'] = $user_id;
             unset($input['_token']);
             if ($input['id'] > 0) {
@@ -194,13 +200,19 @@ class EmployeesController extends Controller
     {
         $master = array();
         $master['Companies'] = Companies::where(['status' => 1])->get()->toArray();
+        $master['Countries'] = Countries::where(['status' => 1])->get()->toArray();
         $master['Divisions'] = Divisions::where(['status' => 1])->get()->toArray();
         $master['Stations'] = Stations::where(['status' => 1])->get()->toArray();
         $master['Departments'] = Departments::where(['status' => 1])->get()->toArray();
         $master['EmployeeType'] = EmployeeType::where(['status' => 1])->get()->toArray();
         $master['EmployeeCategory'] = EmployeeCategory::where(['status' => 1])->get()->toArray();
         $master['Employees'] = Employees::where(['status' => 1])->get()->toArray();
-        $master['Salutation'] = Salutation::where(['status' => 1])->get()->toArray();
+        $master['Salutations'] = Salutation::where(['status' => 1])->get()->toArray();
+        $master['Genders'] = Gender::where(['status' => 1])->get()->toArray();
+        $master['BloodGroups'] = BloodGroup::where(['status' => 1])->get()->toArray();
+        $master['Nationalities'] = Nationality::where(['status' => 1])->get()->toArray();
+        $master['Religions'] = Religion::where(['status' => 1])->get()->toArray();
+        $master['MaritalStatus'] = MaritalStatus::where(['status' => 1])->get()->toArray();
         $master['EmployeeDesignation'] = []; //EmployeeDesignation::where(['status'=>1])->get()->toArray();
         return $master;
     }
