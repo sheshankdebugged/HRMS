@@ -81,7 +81,7 @@
 
 												 <div class="form-group">
 													<label>Company Type:</label>
-													<select id ="company_type_id" name ="company_type_id" class="WebHRForm1" style="width:180px;">
+													<select id ="company_type_id" name ="company_type_id" class="WebHRForm1">
 													@foreach($master['CompanyType'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->company_type_id) && $result->company_type_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['company_type_title']}}</option>
 													@endforeach
@@ -187,7 +187,7 @@
 												 <div class="form-group">
 												   <label>Country:</label>
 												   <!-- <input type="text"  placeholder="Country" placeholder="State Tax Number" class="form-control-spacial" id="country" name="country" value="{{isset($result->country)?$result->country:''}}"> -->
-												   <select id ="country_id" name ="country_id" class="WebHRForm1" style="width:180px;">
+												   <select id ="country_id" name ="country_id" class="WebHRForm1">
 													@foreach($master['Countries'] as $val)
 													<option  value="{{$val['country_id']}}" @php if(isset($result->country_id) && $result->country_id == $val['country_id']  ) { echo "selected";  } @endphp >{{$val['title']}}</option>
 													@endforeach

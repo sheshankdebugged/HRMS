@@ -290,7 +290,7 @@ header .header-menu li.dropdown .dropdown-menu  .menu-list a i{
 }
 .left-bar-request {
     float: left;
-    width: 36px;
+    width: 56px;
 }
 .dashboard-bar-request {
     float: left;
@@ -325,7 +325,7 @@ header .header-menu li.dropdown .dropdown-menu  .menu-list a i{
 .request-inner-table {
     float: left;
     width: 100%;
-    background: transparent;
+    background-color: #205275;
     padding: 10px;
     border: none;
     -webkit-box-shadow: 0 1px 2px #777;
@@ -422,7 +422,6 @@ header .header-menu li.dropdown .dropdown-menu  .menu-list a i{
 .inner-form-main {
     display: inline-block;
     width: 100%;
-    background-color: #205275;
     padding:30px;
 }
 .form-field-inner {
@@ -444,6 +443,8 @@ header .header-menu li.dropdown .dropdown-menu  .menu-list a i{
     padding: 2px;
       border: none;
     border-bottom: 1px solid #c1bebe;
+        font-size: 13px;
+    padding: 4px 10px;
 }
 .form-subsets .form-group select {
     display: inline-block;
@@ -451,6 +452,8 @@ header .header-menu li.dropdown .dropdown-menu  .menu-list a i{
     padding: 2px;
        border: none;
     border-bottom: 1px solid #c1bebe;
+        font-size: 13px;
+    padding: 4px 10px;
 }
 .form-heading-space {
     text-align: center;
@@ -817,7 +820,7 @@ input[type=submit] {
 }
 .right-bar-request {
     display: inline-block;
-    width: calc( 100% - 36px);
+    width: calc( 100% - 56px);
 }
 
 .bottom-update li a {
@@ -1066,3 +1069,69 @@ div#profile {
   .slider.round:before {
     border-radius: 50%;
   }
+  .sidebar-menu li a {
+    padding: 5px 0;
+    display: inline-block;
+    text-align: center;
+    width: 30px;
+    transition: all 0.5s;
+    width: 100%;
+}
+
+.sidebar-menu li a:hover {
+    background: #fff;
+}
+
+.sidebar-menu li a:hover i {
+    color: #112b3e;
+}
+
+.sidebar-menu li {
+    text-align: center;
+}
+
+.sidebar-menu {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.36);
+    margin-right: 20px;
+    padding: 13px 0;
+}
+
+
+
+
+
+
+
+@media screen and (max-width:640px){
+    .inner-table-main table {
+    width: 500px;
+}
+
+.inner-table-main {
+    width: 100%;
+    overflow: auto;
+}
+
+.left-bar-request {
+    width: 100%;
+}
+
+.sidebar-menu {
+    margin: 0;
+    padding: 6px 1px;
+}
+
+.sidebar-menu li {
+    display: inline-block;
+}
+
+.sidebar-menu ul {
+    display: flex;
+    align-items: end;
+    justify-content: space-around;
+}
+
+.right-bar-request {
+    width: 100%;
+}
+}
