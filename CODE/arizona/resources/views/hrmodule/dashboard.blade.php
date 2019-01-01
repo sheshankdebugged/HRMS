@@ -30,8 +30,8 @@
 	  <!-- Nav tabs -->
 	  <ul class="nav nav-tabs" role="tablist">
 	    <li role="presentation"><a href="#home" class="active" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-	    <li role="presentation"><a href="#hrdashboard" aria-controls="hrdashboard" role="tab" data-toggle="tab" id="hrtabclicktest">HR Dashboard</a></li>
-	    <li role="presentation"><a href="#hrdata" aria-controls="hrdata" role="tab" data-toggle="tab">HR Data</a></li>
+	    <li role="presentation"><a href="#hrdashboard" aria-controls="hrdashboard" role="tab" data-toggle="tab" id="hrdashboardtab">HR Dashboard</a></li>
+	    <li role="presentation"><a href="#hrdata" aria-controls="hrdata" role="tab" data-toggle="tab" id="hrdatatab">HR Data</a></li>
 	    <!--<li role="presentation"><a href="#organogram" aria-controls="organogram" role="tab" data-toggle="tab">Organogram</a></li> -->
 	  </ul>
 
@@ -202,7 +202,7 @@
                         <div class="single-search-an">
                             
                         <select id="company_id" class="WebHRForm1 chosen-select" style="width:180px;" name="companies[]" multiple>
-                            <option value="ALL"> All Companies</option>
+                            <option value=""> All Companies</option>
                             @foreach($master['Companies'] as $val)
                             <option  value="{{$val['id']}}">{{$val['company_name']}}</option>
                             @endforeach
@@ -212,7 +212,7 @@
                            
                                  
                         <select id="station_id" class="chosen-select" style="width:180px;" name="stations[]" multiple>
-                            <option value="ALL"> All Stations</option>
+                            <option value=""> All Stations</option>
                             @foreach($master['Stations'] as $val)
                             <option  value="{{$val['id']}}">{{$val['station_name']}}</option>
                             @endforeach
@@ -386,7 +386,7 @@
                                 <div class="search-filter">
                                     <div class="single-search-an">
                                         
-                                        <select id="st" class="WebHRForm1" style="width:180px;" name="companies[]" multiple>
+                                        <select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="companies[]" multiple>
                                         <option value=""> All Companies</option>
                                         @foreach($master['Companies'] as $val)
                                         <option  value="{{$val['id']}}">{{$val['company_name']}}</option>
@@ -395,8 +395,8 @@
 
 
                                     </div>
-                                    <div class="single-search-an">
-                                        <select id="st" class="WebHRForm1" style="width:180px;" name="stations[]" multiple>
+                                    <div class="single-search-an ">
+                                        <select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="stations[]" multiple>
                                         <option value=""> All Stations</option>
                                         @foreach($master['Stations'] as $val)
                                         <option  value="{{$val['id']}}">{{$val['station_name']}}</option>
@@ -405,7 +405,7 @@
                                     </div>
                                     <div class="single-search-an">
                                        
-                                    <select id="st" class="WebHRForm1" style="width:180px;" name="departments[]" multiple>
+                                    <select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="departments[]" multiple>
                                     <option value=""> All Departments</option>
                                         @foreach($master['Departments'] as $val)
                                         <option  value="{{$val['id']}}">{{$val['department_name']}}</option>
@@ -413,7 +413,7 @@
                                     </select>
                                     </div>
                                     <div class="single-search-an">
-                                    <select id="st" class="WebHRForm1" style="width:180px;" name="status">
+                                    <select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="status">
                                     <option value="">    All Employees</option>
                                     <option value="1">   Active Employees</option>
                                     <option value="0">   Inactive Employees</option>
@@ -522,13 +522,16 @@
 
 <script>
 
-$("#hrtabclicktest").click(function(){
- 
+$("#hrdatatab").click(function(){
 
     $('.chosen-container').css("width", "210px");;
-
-    
 });
+
+$("#hrdashboardtab").click(function(){
+
+$('.chosen-container').css("width", "210px");;
+});
+
 
 </script>
 
