@@ -92,12 +92,12 @@
                                                  <div class="form-group">
 													<label>Contract Start Date:</label>
 													<!-- <input type="text" placeholder="Contract Start Date" class="form-control-spacial" id="contract_start_date" name="contract_start_date" value="{{isset($result->contract_start_date)?$result->contract_start_date:''}}"> -->
-													<input type="text" placeholder="" class="form-control-spacial date" id="contract_start_date" name="contract_start_date" value="{{isset($result->contract_start_date)?$result->contract_start_date:''}}">
+													<input type="date" placeholder="" class "form-control-spacial date" id="contract_start_date" name="contract_start_date" value="{{isset($result->contract_start_date)?$result->contract_start_date:''}}">
 												 </div>
 												 <div class="form-group">
 													<label>Contract End Date:</label>
 													<!-- <input type="text" placeholder="Contract End Date" class="form-control-spacial" id="contract_end_date" name="contract_end_date" value="{{isset($result->contract_end_date)?$result->contract_end_date:''}}"> -->
-													<input type="text" placeholder="" class="form-control-spacial date" id="contract_end_date" name="contract_end_date" value="{{isset($result->contract_end_date)?$result->contract_end_date:''}}">
+													<input type="date" placeholder="" class "form-control-spacial date" id="contract_end_date" name="contract_end_date" value="{{isset($result->contract_end_date)?$result->contract_end_date:''}}">
 
 												 </div>
 
