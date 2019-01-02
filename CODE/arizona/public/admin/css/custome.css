@@ -273,9 +273,7 @@ header .header-menu li.dropdown .dropdown-menu  .menu-list a i{
     width: 100%;
     padding-top:20px;
 }
-.nopadding {
-    padding: 0;
-}
+
 .inner-main-section ul {
     padding: 0;
     margin: 0;
@@ -321,6 +319,9 @@ header .header-menu li.dropdown .dropdown-menu  .menu-list a i{
 }
 .settings-buttons li a {
     padding: 5px;
+    font-size: 26px;
+    margin-top: 5px;
+    display: inline-block;
 }
 .request-inner-table {
     float: left;
@@ -358,8 +359,13 @@ header .header-menu li.dropdown .dropdown-menu  .menu-list a i{
 .add-record-btn a i{
     transition: all 0.5s;
 }
-.add-record-btn a:hover i{
-    padding: 0 8px 0 0;
+.confirmation-inner h1 {
+    text-align: center;
+    color: #fff;
+}
+
+.confirmation-inner {
+    color: #fff;
 }
 .upper-header-request {
     float: left;
@@ -375,7 +381,7 @@ header .header-menu li.dropdown .dropdown-menu  .menu-list a i{
 .search-area-request button {
     position: absolute;
     right: 0;
-    top: 0;
+    top: 5px;
     background: transparent;
     border: none;
 }
@@ -392,7 +398,7 @@ header .header-menu li.dropdown .dropdown-menu  .menu-list a i{
 }
 .search-area-request input {
     font-size: 11px;
-    padding: 7px 10px;
+    padding: 10px;
     border-radius: 4px;
     border: 1px solid #dadada;
     outline: none;
@@ -428,7 +434,7 @@ header .header-menu li.dropdown .dropdown-menu  .menu-list a i{
     max-width: 500px;
 }
 
-.form-subsets .form-group label {
+.request-inner-table .form-group label,.form-subsets .form-group label {
     font-weight: 100;
     display: inline-block;
     width: 150px;
@@ -437,7 +443,7 @@ header .header-menu li.dropdown .dropdown-menu  .menu-list a i{
 .form-subsets .form-group {
     margin-bottom: 10px;
 }
-.form-subsets .form-group input {
+.form-subsets .form-group input,.request-inner-table .form-group input {
     display: inline-block;
     width: 220px;
     padding: 2px;
@@ -446,7 +452,7 @@ header .header-menu li.dropdown .dropdown-menu  .menu-list a i{
         font-size: 13px;
     padding: 4px 10px;
 }
-.form-subsets .form-group select {
+.request-inner-table .form-group select, .form-subsets .form-group select {
     display: inline-block;
     width: 220px;
     padding: 2px;
@@ -1095,13 +1101,112 @@ div#profile {
     margin-right: 20px;
     padding: 13px 0;
 }
+a[data-toggle="popover"]:before {
+    content: attr(data-content);
+    font-size: 12px;
+    line-height: normal;
+    position: absolute;
+    background: #205275;
+    padding: 6px;
+    border-radius: 9px;
+    top: 22px;
+    display: none;
+    width: 185px;
+    left: 0px;
+    z-index: 99999;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.27);
+}
 
+a[data-toggle="popover"]:hover:before {
+    display: block;
+}
 
+a[data-toggle="popover"] {
+    position: relative;
+}
+.form-group {
+    color: #fff;
+}
 
+@media screen and (min-width:767px){
 
+.nopadding {
+    padding: 0;
+}
+}
+@media screen and (max-width:767px){
+.logo {
+    text-align: center;
+}
+.an-bio-name {
+    width: 100%;
+}
+.search-filter {
+    flex-direction: column;
+}
+.upper-header-request .col-md-12 {
+    flex-direction: column;
+}
 
+.add-record-btn {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    float: none;
+    text-align: center;
+    display: inline-block;
+}
 
+.upper-header-request {
+    text-align: left;
+}
 
+.filter-btn-request {
+    float: left;
+    padding-left: 10px;
+}
+
+.search-area-request {
+    float: left;
+}
+
+.upper-header-request .nopadding {
+    padding: 0;
+}
+.an-header-main .navbar-nav {
+    flex-direction: row;
+    margin: auto;
+}
+.single-search-an {
+    width: 100%;
+    margin-bottom: 7px;
+}
+
+.upper-header-theme {
+    text-align: center;
+}
+.an-edit-info {
+    width: 100%;
+}
+
+.inner-home-db h3 {
+    font-size: 17px;
+}
+
+.an-published-name p {
+    font-size: 12px;
+}
+.header-top-right {
+    justify-content: center;
+    margin: 0;
+}
+
+.header-top h1 {
+    margin: 0 !important;
+}
+
+.dash-board-bd .nav-tabs li,.dash-board-bd .nav-tabs li a {display: inline-block;width: 100%;}
+}
 @media screen and (max-width:640px){
     .inner-table-main table {
     width: 500px;
@@ -1123,12 +1228,11 @@ div#profile {
 
 .sidebar-menu li {
     display: inline-block;
+    padding: 0 10px;
 }
 
 .sidebar-menu ul {
-    display: flex;
-    align-items: end;
-    justify-content: space-around;
+    display: inline-table;
 }
 
 .right-bar-request {

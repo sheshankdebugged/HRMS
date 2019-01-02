@@ -18,7 +18,9 @@ Route::get('/', function () {
 Route::get('/setting', function () {
     return view('hrmodule.setting');
 });
-
+Route::get('/confirmation', function () {
+    return view('hrmodule.confirm');
+});
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
