@@ -53,6 +53,9 @@
 												<a href="{{ url('manageleavestypes') }}" alt="Dashboard"><i class="fa fa-refresh"></i></a>
 											</div>
 											<div class="add-record-btn">
+												<a href="{{ url('leavessettings/add') }}"><i class="fa fa-angle-left"></i>Back</a>
+											</div>
+											<div class="add-record-btn">
 												<a href="{{ url('manageleavestypes/add') }}"><i class="fa fa-plus"></i>Add Leave Type</a>
 											</div>
 											
@@ -65,7 +68,7 @@
 									<table id="requesttab" border="0" cellspacing="0" cellpadding="3" width="100%" align="center">
 									 <thead>
 									  <tr>
-										  <td style="background-color:#0c64ae; " class="thbackgroud"><a style="color:#fff; " href="#">S#</a></td>
+										  <!-- <td style="background-color:#0c64ae; " class="thbackgroud"><a style="color:#fff; " href="#">S#</a></td> -->
 										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Title</a></td>
 										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Leave Type</a></td>
 										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Leaves Allowed Per Year</a></td>
@@ -79,13 +82,13 @@
 										<tbody>
                                         @foreach($listData as $list)
 											<tr id="second" class="context-requst-one selected">
-											<td class="datainner" style="">{{$list->employee_name}}</td>
-											<td class="datainner" style="">{{$list->loans_title}}</td>
-											<td class="datainner" style="">{{$list->loans_date}}</td>  
-											<td class="datainner" style="">{{$list->repayment_start_date}}</td>
-											<td class="datainner" style="">{{$list->monthly_repayment_amount}}</td>
-											<td class="datainner" style="">{{$list->remaining_amount}}</td>
-											<td class="datainner" style="">{{$list->approval_status}}</td>
+											<!-- <td class="datainner" style="">{{$list->title}}</td> -->
+											<td class="datainner" style="">{{$list->title}}</td>
+											<td class="datainner" style="">{{$list->leave_type_id}}</td>  
+											<td class="datainner" style="">{{$list->leave_allowed}}</td>
+											<td class="datainner" style="">{{$list->station_id}}</td>
+											<td class="datainner" style="">{{$list->company_id}}</td>
+											<!-- <td class="datainner" style="">{{$list->approval_status}}</td> -->
 											                      
 											<td align="right">
 												<div class="dropdown action-drop">

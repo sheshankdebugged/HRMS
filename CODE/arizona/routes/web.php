@@ -239,10 +239,22 @@ Route::group(['middleware' => 'auth'], function () {
         
         \App\Http\Controllers\ManageLeavesTypesController::routes();
         
-        //  Delete Multiple Leaves
+    //  Delete Multiple Leaves
         
         \App\Http\Controllers\DelMultipleLeavesController::routes();
 
+    //  HR Leaves
+
+        \App\Http\Controllers\HRReportsController::routes();
+
+    //  EmployeeDesignationsController Leaves
+
+        \App\Http\Controllers\EmployeeDesignationsController::routes();
+    
+    //  OrganizationDetailsController Leaves
+
+        \App\Http\Controllers\OrganizationDetailsController::routes();
+        
         // HR Reports
 
         \App\Http\Controllers\HRReportsController::routes();

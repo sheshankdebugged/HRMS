@@ -20,11 +20,11 @@
 								<div class="settings-buttons">
 									<ul>
 										<li>
-											<a href="#" alt="Dashboard"><i class="fa fa-cog"></i></a>
+											<a href="{{ url('leavessettings/add') }}" alt="Dashboard"><i class="fa fa-cog"></i></a>
 										</li>
-										<li>
+										<!-- <li>
 											<a href="#" alt="Dashboard"><i class="fa fa-question-circle"></i></a>
-										</li>
+										</li> -->
 									</ul>
 								</div>
 							</div>

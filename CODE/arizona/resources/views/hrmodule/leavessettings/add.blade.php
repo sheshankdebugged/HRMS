@@ -81,12 +81,11 @@
 												 </div>
 												 <div class="form-group">
 													<label>Forward Leaves To:</label>
-													<select id="forward_application_to" name="forward_application_to" class="WebHRForm1 chosen-select" style="width:180px;">
-													<option style="" value="Head Office">Forward Application To</option>
-													<option style="" value="Head Office">Forward Application To</option>
-													<option style="" value="Head Office">Forward Application To</option>
-													</select>
-													<!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
+													<select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="employee_id">
+													@foreach($master['Employees'] as $val)
+													<option  value="{{$val['id']}}" @php if(isset($result->employee_id) && $result->employee_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
+													@endforeach
+													</select>													<!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 
 												 </div>
 												 <div class="form-upper-main">

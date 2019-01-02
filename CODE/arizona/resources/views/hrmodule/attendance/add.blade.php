@@ -104,7 +104,6 @@
 												 <!-- Add Timepicker here -->
 												   <label>Sign In Time:</label>
 												   <select id="sign_in_time" name="sign_in_time" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="{{isset($result->sign_in_time)?$result->sign_in_time:''}}">-</option></select>
-													<!-- <input type="text" placeholder="Contact Number" class="form-control-spacial" id="contact_number" name="contact_number" value="{{isset($result->contact_number)?$result->contact_number:''}}"> -->
 													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
                                 
 												 </div>
