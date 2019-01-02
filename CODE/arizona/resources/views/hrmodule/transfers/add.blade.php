@@ -63,7 +63,7 @@
 												
 											<div class="form-group">
 													<label>Employee to Transfer:</label>
-													<select id="employee_to_transfer" name="employee_to_transfer"" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Employee to Transfer 1</option></select>
+													<select id="employee_to_transfer" name="employee_to_transfer" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Employee to Transfer 1</option></select>
 													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 													<!-- <input type="text" placeholder="Contact Person" class="form-control-spacial" id="registration_name" name="contact_person" value="{{isset($result->contact_person)?$result->contact_person:''}}"> -->
                                                    
@@ -72,7 +72,7 @@
 
 												 <div class="form-group">
 												   <label>Forward Application To:</label>
-												   <select id="forward_application_to" name="forward_application_to" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Forward Application To: 1</option></select>
+												   <select id="forward_application_to" name="forward_application_to" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Forward Application To: 1</option></select>
 													<!-- <input type="text" placeholder="Contact Person Designation" class="form-control-spacial" id="contact_person_designation" name="contact_person_designation" value="{{isset($result->contact_person_designation)?$result->contact_person_designation:''}}"> -->
                                 
 												 </div>
@@ -90,21 +90,21 @@
 										 
 												 <div class="form-group">
 												   <label>Transfer To (Company):</label>
-												   <select id="transfer_to_company" name="transfer_to_company" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">-</option></select>
+												   <select id="transfer_to_company" name="transfer_to_company" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">-</option></select>
 													<!-- <input type="text" placeholder="Contact Number" class="form-control-spacial" id="contact_number" name="contact_number" value="{{isset($result->contact_number)?$result->contact_number:''}}"> -->
                                 
 												 </div>
 
 												 <div class="form-group">
 												   <label>Transfer To (Station):</label>
-												   <select id="transfer_to_station" name="transfer_to_station" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">-</option></select>
+												   <select id="transfer_to_station" name="transfer_to_station" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">-</option></select>
 													<!-- <input type="text" placeholder="Fax Number" class="form-control-spacial" id="fax_number" name="fax_number" value="{{isset($result->fax_number)?$result->fax_number:''}}"> -->
                                 
 												 </div>
 
 												 <div class="form-group">
 												   <label>Transfer To (Department):</label>
-												   <select id="transfer_to_department" name="transfer_to_department" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">transfer_to_department 1</option></select>
+												   <select id="transfer_to_department" name="transfer_to_department" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">transfer_to_department 1</option></select>
 													<!-- <input type="text" placeholder="Email Address" class="form-control-spacial" id="email_address" name="email_address" value="{{isset($result->email_address)?$result->email_address:''}}"> -->
                                 
 												 </div>
@@ -112,7 +112,7 @@
 												 <div class="form-group">
 												   <label>Transfer To (Line Manager):</label>
 													<!-- <input type="text" placeholder="Department" class="form-control-spacial" id="website" name="website" value="{{isset($result->website)?$result->website:''}}"> -->
-													<select id="transfer_to_line_manager" name="transfer_to_line_manager" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">-</option></select>
+													<select id="transfer_to_line_manager" name="transfer_to_line_manager" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">-</option></select>
 												 </div>
 
 												

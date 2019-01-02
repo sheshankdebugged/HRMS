@@ -65,7 +65,7 @@
 											<div class="form-group">
 													<label>Resigning Employee:</label>
 
-													<select  name ="resigning_employee" id="resigning_employee" class="form-control-select" >
+													<select  name ="resigning_employee" id="resigning_employee" class="form-control-select chosen-select" >
 
 													<option style="" value="0"> 0 </option>
 													<option style="" value="1">1</option>
@@ -85,7 +85,7 @@
 
 												 <div class="form-group">
 													<label>Forward Application To:</label>
-													<select id ="forward_application_to_id"  name ="forward_application_to_id" class="form-control-select">
+													<select id ="forward_application_to_id"  name ="forward_application_to_id" class="form-control-select chosen-select">
 													<option style="" value="0"> - </option>
 													<option style="" value="1">1</option>
 													<option style="" value="2">2</option>

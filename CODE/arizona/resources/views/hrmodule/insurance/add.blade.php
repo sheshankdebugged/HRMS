@@ -65,7 +65,7 @@
 											<div class="form-group">
 													<label>Employee Name:</label>
 
-													<select  name ="employee_id" id="employee_id" class="form-control-select" >
+													<select  name ="employee_id" id="employee_id" class="form-control-select chosen-select" >
 													@foreach($master['Employees'] as $val)
 													<option  value="{{$val['id']}}">{{$val['employee_name']}}</option>
 													@endforeach													
@@ -76,7 +76,7 @@
 
 												 <div class="form-group">
 													<label>Insurance Type:</label>
-													<select id ="insurance_type"  name ="insurance_type" class="form-control-select">
+													<select id ="insurance_type"  name ="insurance_type" class="form-control-select chosen-select">
 													<option style="" value="0">Life Insurance</option>
 													<option style="" value="1">Health Insurance</option>
 													</select>

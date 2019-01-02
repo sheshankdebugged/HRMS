@@ -9,14 +9,17 @@ use App\Models\Countries;
 use App\Models\Departments;
 use App\Models\Divisions;
 use App\Models\EmployeeCategory;
+use App\Models\EmployeeDesignation;
 use App\Models\Employees;
 use App\Models\EmployeeType;
 use App\Models\Gender;
+use App\Models\Grade;
 use App\Models\MaritalStatus;
 use App\Models\Nationality;
 use App\Models\Religion;
 use App\Models\Salutation;
 use App\Models\Stations;
+use App\Models\WorkShifts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -112,7 +115,7 @@ class EmployeesController extends Controller
                 $file->move('./img/uploads/employees/', $input['employee_profile']);
             }
             $input['status'] = 1;
-            $input['employee_name'] = $input['first_name'].' '.$input['last_name'];
+            $input['employee_name'] = $input['first_name'] . ' ' . $input['last_name'];
             $input['user_id'] = $user_id;
             unset($input['_token']);
             if ($input['id'] > 0) {
@@ -213,7 +216,9 @@ class EmployeesController extends Controller
         $master['Nationalities'] = Nationality::where(['status' => 1])->get()->toArray();
         $master['Religions'] = Religion::where(['status' => 1])->get()->toArray();
         $master['MaritalStatus'] = MaritalStatus::where(['status' => 1])->get()->toArray();
-        $master['EmployeeDesignation'] = []; //EmployeeDesignation::where(['status'=>1])->get()->toArray();
+        $master['EmployeeDesignation'] = EmployeeDesignation::where(['status' => 1])->get()->toArray();
+        $master['Grades'] = Grade::where(['status' => 1])->get()->toArray();
+        $master['WorkShifts'] = WorkShifts::where(['status' => 1])->get()->toArray();
         return $master;
     }
 }

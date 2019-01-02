@@ -60,7 +60,7 @@
 											<div class="form-field-inner">
 												<div class="form-group">
 													<label>Project Category:</label>
-													<select id ="project_cat_id" name ="project_cat_id" class="WebHRForm1" style="width:180px;">
+													<select id ="project_cat_id" name ="project_cat_id" class="WebHRForm1 chosen-select" style="width:180px;">
 													@foreach($master['ProjectCategories'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->project_cat_id) && $result->project_cat_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['project_category_name']}}</option>
 													@endforeach
@@ -73,7 +73,7 @@
 												 </div>
 												 <div class="form-group">
 													<label>Client Name:</label>
-													<select id ="client_id" name ="client_id" class="WebHRForm1" style="width:180px;">
+													<select id ="client_id" name ="client_id" class="WebHRForm1 chosen-select" style="width:180px;">
 													@foreach($master['Clients'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->client_id) && $result->client_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['name']}}</option>
 													@endforeach
@@ -99,7 +99,7 @@
 												 </div>
 												 <div class="form-group">
 													<label>Company:</label>
-													<select id ="company_id" name ="company_id" class="WebHRForm1" style="width:180px;">
+													<select id ="company_id" name ="company_id" class="WebHRForm1 chosen-select" style="width:180px;">
 													@foreach($master['Companies'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->company_id) && $result->company_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['company_name']}}</option>
 													@endforeach
@@ -107,7 +107,7 @@
 												 </div>
 												 <div class="form-group">
 													<label>Station:</label>
-													<select id ="station_id" name ="station_id" class="WebHRForm1" style="width:180px;">
+													<select id ="station_id" name ="station_id" class="WebHRForm1 chosen-select" style="width:180px;">
 													@foreach($master['Stations'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->station_id) && $result->station_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['station_name']}}</option>
 													@endforeach
@@ -115,7 +115,7 @@
 												 </div>
 												 <div class="form-group">
 													<label>Department:</label>
-													<select id ="station_id" name ="department_id" class="WebHRForm1" style="width:180px;">
+													<select id ="station_id" name ="department_id" class="WebHRForm1 chosen-select" style="width:180px;">
 													@foreach($master['Departments'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->department_id) && $result->department_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['department_name']}}</option>
 													@endforeach
@@ -126,7 +126,7 @@
 												 </div>
 												 <div class="form-group">
 													<label>Project Employees:</label>
-													<select id ="project_employees" name ="project_employees" class="WebHRForm1" style="width:180px;">
+													<select id ="project_employees" name ="project_employees" class="WebHRForm1 chosen-select" style="width:180px;">
 													@foreach($master['Employees'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->project_employees) && $result->project_employees == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
 													@endforeach
@@ -134,7 +134,7 @@
 												 </div>
 												 <div class="form-group">
 													<label>Project Manager:</label>
-													<select id ="project_manager_employee_id" name ="project_manager_employee_id" class="WebHRForm1" style="width:180px;">
+													<select id ="project_manager_employee_id" name ="project_manager_employee_id" class="WebHRForm1 chosen-select" style="width:180px;">
 													@foreach($master['Employees'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->project_manager_employee_id) && $result->project_manager_employee_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
 													@endforeach
@@ -142,7 +142,7 @@
 												 </div>
 												 <div class="form-group">
 													<label>Project Coordinator:</label>
-													<select id ="project_coordinator_employee_id" name ="project_coordinator_employee_id" class="WebHRForm1" style="width:180px;">
+													<select id ="project_coordinator_employee_id" name ="project_coordinator_employee_id" class="WebHRForm1 chosen-select" style="width:180px;">
 													@foreach($master['Employees'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->project_coordinator_employee_id) && $result->project_coordinator_employee_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
 													@endforeach

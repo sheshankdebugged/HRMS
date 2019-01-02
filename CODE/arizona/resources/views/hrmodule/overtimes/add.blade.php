@@ -63,7 +63,7 @@
 												
 												 <div class="form-group">
 													<label>Employee Name:</label>
-													<select id="employee_id" name="employee_id" class="WebHRForm1" style="width:180px;">
+													<select id="employee_id" name="employee_id" class="WebHRForm1 chosen-select" style="width:180px;">
 													<!-- <option value="ALL"> All </option> -->
 													@foreach($master['Employees'] as $val)
 													<option  value="{{$val['id']}}">{{$val['employee_name']}}</option>
@@ -74,7 +74,7 @@
 												 </div>
 												 <div class="form-group">
 													<label>Forward Application To:</label>
-													<select id="forward_employee_id" name="forward_employee_id" class="WebHRForm1" style="width:180px;">
+													<select id="forward_employee_id" name="forward_employee_id" class="WebHRForm1 chosen-select" style="width:180px;">
 													<!-- <option value="ALL"> All </option> -->
 													@foreach($master['Employees'] as $val)
 													<option  value="{{$val['id']}}">{{$val['employee_name']}}</option>

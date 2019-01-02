@@ -2,10 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employees;
+use App\Models\LeaveTypesMaster;
+use App\Models\LeavesQuotaResetDate;
+use App\Models\Companies;
+use App\Models\Departments;
+use App\Models\EmployeeType;
+use App\Models\Stations;
+use App\Models\Divisions;
+use App\Models\EmployeeCategory;
+// use App\Models\Departments;
+// use App\Models\EmployeeType;
+// use App\Models\Stations;
+// use App\Models\Divisions;
+use App\Models\LeavesCarryOverLimit;
+use App\Models\GenderRestriction;
+use App\Models\LeavesAccrual;
+use App\Models\LeaveDuration;
 use App\Models\ManageLeavesTypes;
 use Illuminate\Http\Request;
-use App\Models\Leaves;
-use App\Models\Employees;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
@@ -14,7 +29,7 @@ use Validator;
 
 class ManageLeavesTypesController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -22,15 +37,15 @@ class ManageLeavesTypesController extends Controller
     public function index()
     {
         $user_id = Auth::id();
-        $searchQuery  = isset($_GET['search'])?trim($_GET['search']):"";
-        $where   = ['status'=>1,'user_id'=>$user_id];
-        
-        if(!empty($searchQuery)){
+        $searchQuery = isset($_GET['search']) ? trim($_GET['search']) : "";
+        $where = ['status' => 1, 'user_id' => $user_id];
+
+        if (!empty($searchQuery)) {
             $where = [
                 ['reason', 'LIKE', "%$searchQuery%"],
                 ['status', '=', 1],
                 ['user_id', '=', $user_id],
-            ];   
+            ];
         }
         $list = ManageLeavesTypes::where($where)->paginate(10);
 
@@ -55,7 +70,7 @@ class ManageLeavesTypesController extends Controller
             'action' => $action,
             'pageTitle' => "Manage Leaves Types",
             'Addform' => "Add Leaves Types",
-            'master' => $master
+            'master' => $master,
         ]);
     }
 
@@ -75,7 +90,7 @@ class ManageLeavesTypesController extends Controller
             $validator = Validator::make($request->all(), [
                 //   'employee' => 'required',
                 //   'regular_hours' => 'required',
-                  
+
             ]);
             if ($validator->fails()) {
                 $action = 'addRegularhours';
@@ -96,20 +111,19 @@ class ManageLeavesTypesController extends Controller
 
             echo "<pre>";
 
-       
-             $input['leave_from'] = ($input['leave_from'] !="")?date('Y-m-d',strtotime($input['leave_from'])):$input['leave_from'];
+            $input['leave_from'] = ($input['leave_from'] != "") ? date('Y-m-d', strtotime($input['leave_from'])) : $input['leave_from'];
             // $input['poll_end_date']   = ($input['poll_end_date'] !="")?date('Y-m-d',strtotime($input['poll_end_date'])):$input['poll_end_date'];
-            $input['status'] =  1;
-            $input['user_id'] =  $user_id;
+            $input['status'] = 1;
+            $input['user_id'] = $user_id;
             unset($input['_token']);
-            if($input['id']>0){
-                $input['updated_at']=date("Y-m-d H:i:s");
+            if ($input['id'] > 0) {
+                $input['updated_at'] = date("Y-m-d H:i:s");
                 Session::flash('message', 'Leaves Types Updated Successfully.');
                 ManageLeavesTypes::where('id', $input['id'])->update($input);
-            }else{
+            } else {
                 unset($input['id']);
-                $input['created_at']=date("Y-m-d H:i:s");
-                $input['updated_at']=date("Y-m-d H:i:s");
+                $input['created_at'] = date("Y-m-d H:i:s");
+                $input['updated_at'] = date("Y-m-d H:i:s");
                 Session::flash('message', 'Leaves Type  Added Successfully.');
                 ManageLeavesTypes::insertGetId($input);
             }
@@ -166,7 +180,7 @@ class ManageLeavesTypesController extends Controller
     }
     public static function routes()
     {
-            Route::group(array('prefix' => 'manageleavestypes'), function () {
+        Route::group(array('prefix' => 'manageleavestypes'), function () {
             Route::get('/', array('as' => 'manageleavestypes.index', 'uses' => 'ManageLeavesTypesController@index'));
             Route::get('/add', array('as' => 'manageleavestypes.create', 'uses' => 'ManageLeavesTypesController@create'));
             Route::post('/save', array('as' => 'manageleavestypes.save', 'uses' => 'ManageLeavesTypesController@store'));
@@ -178,9 +192,28 @@ class ManageLeavesTypesController extends Controller
     public function getmasterfields()
     {
         $master = array();
-        $master['Employees']               = Employees::where(['status' => 1])->get()->toArray();
-        // $master['Stations']                = Stations::where(['status'=>1])->get()->toArray();
-        // $master['Projects']               = Projects::where(['status' => 1])->get()->toArray();               
+        $master['Employees'] = Employees::where(['status' => 1])->get()->toArray();
+        $master['LeaveTypesMaster'] = LeaveTypesMaster::where(['status' => 1])->get()->toArray();
+        $master['LeaveDuration']               = LeaveDuration::where(['status' => 1])->get()->toArray();
+        $master['LeavesQuotaResetDate']               = LeavesQuotaResetDate::where(['status' => 1])->get()->toArray();
+        $master['LeavesAccrual']               = LeavesAccrual::where(['status' => 1])->get()->toArray();
+        $master['LeavesCarryOverLimit']               = LeavesCarryOverLimit::where(['status' => 1])->get()->toArray();
+        $master['GenderRestriction']               = GenderRestriction::where(['status' => 1])->get()->toArray();
+        $master['Companies']               = Companies::where(['status' => 1])->get()->toArray();
+        $master['Divisions']               = Divisions::where(['status' => 1])->get()->toArray();
+        $master['Stations']               = Stations::where(['status' => 1])->get()->toArray();
+        $master['Departments']               = Departments::where(['status' => 1])->get()->toArray();
+        $master['EmployeeType']               = EmployeeType::where(['status' => 1])->get()->toArray();
+        $master['EmployeeCategory']               = EmployeeCategory::where(['status' => 1])->get()->toArray();
+        // $master['Stations']               = Stations::where(['status' => 1])->get()->toArray();
+        // $master['Stations']               = Stations::where(['status' => 1])->get()->toArray();
+        // $master['Stations']               = Stations::where(['status' => 1])->get()->toArray();
+        // $master['Stations']               = Stations::where(['status' => 1])->get()->toArray();
+        // $master['Stations']               = Stations::where(['status' => 1])->get()->toArray();
+        // $master['Stations']               = Stations::where(['status' => 1])->get()->toArray();
+        // $master['Stations']               = Stations::where(['status' => 1])->get()->toArray();
+
+
         return $master;
     }
 }

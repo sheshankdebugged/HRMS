@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\EmployeeDesignations;
+use App\Models\EmployeeDesignation;
 use App\Models\Employees;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,8 +19,7 @@ class EmployeeDesignationsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        
+    {        
         $user_id = Auth::id();
         $searchQuery  = isset($_GET['search'])?trim($_GET['search']):"";
         $where   = ['status'=>1,'user_id'=>$user_id];
@@ -32,8 +31,7 @@ class EmployeeDesignationsController extends Controller
                 ['user_id', '=', $user_id],
             ];   
         }
-        $list =  EmployeeDesignations::where($where)->paginate(10);
-
+        $list =  EmployeeDesignation::where($where)->paginate(10);
           return view('hrmodule.employeedesignations.list')->with([
             'listData' => $list,
             'pageTitle' => "Employee Designations",
@@ -53,7 +51,7 @@ class EmployeeDesignationsController extends Controller
         return view('hrmodule.employeedesignations.add')->with([
             'action' => $action,
             'pageTitle' => "Employee Designations",
-            'Addform' => "Add New Employee Designations",
+            'Addform' => "Add New Employee Designation",
             'master' => $master
         ]);
     } 
@@ -67,7 +65,6 @@ class EmployeeDesignationsController extends Controller
      */
     public function store(Request $request)
     {
-
         $user_id = Auth::id();
         $master = $this->getmasterfields();
         if ($request->all()) {
@@ -108,14 +105,14 @@ class EmployeeDesignationsController extends Controller
             unset($input['_token']);
             if($input['id']>0){
                 $input['updated_at']=date("Y-m-d H:i:s");
-                Session::flash('message', 'Employee Designations Updated Successfully.');
-                EmployeeDesignations::where('id', $input['id'])->update($input);
+                Session::flash('message', 'Employee Designation Updated Successfully.');
+                EmployeeDesignation::where('id', $input['id'])->update($input);
             }else{
                 unset($input['id']);
                 $input['created_at']=date("Y-m-d H:i:s");
                 $input['updated_at']=date("Y-m-d H:i:s");
-                Session::flash('message', 'Employee Designations  Added Successfully.');
-                EmployeeDesignations::insertGetId($input);
+                Session::flash('message', 'Employee Designation Added Successfully.');
+                EmployeeDesignation::insertGetId($input);
             }
             return redirect('/employeedesignations');
         }
@@ -140,12 +137,11 @@ class EmployeeDesignationsController extends Controller
      */
     public function edit($id)
     {
-
         $action = 'edit';
         $master = $this->getmasterfields();
-        $result =  EmployeeDesignations::find($id);
+        $result =  EmployeeDesignation::find($id);
         $action = 'add';
-        $editname = "Edit Boan " . $result->employee;
+        $editname = "Edit " . $result->name;
         return view('hrmodule.employeedesignations.add')->with([
             'action' => $action,
             'pageTitle' => "Employee Designations",
@@ -185,9 +181,7 @@ class EmployeeDesignationsController extends Controller
     {
         $master = array();
         $master['Employees'] = Employees::where(['status' => 1])->get()->toArray();
-        // $master['Repayment_Type'] = Loans::where(['status' => 1])->get()->toArray();
-
-       
+        $master['ParentDesignations'] = EmployeeDesignation::where(['status' => 1])->get()->toArray();       
         return $master;
     }
 }

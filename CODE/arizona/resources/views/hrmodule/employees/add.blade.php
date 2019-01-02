@@ -77,7 +77,7 @@
 
                                                  <div class="form-group">
 													<label>Division:</label>
-													<select id="division_id" class="WebHRForm1" style="width:180px;" name="division_id">
+													<select id="division_id" class="WebHRForm1 chosen-select" style="width:180px;" name="division_id">
 													@foreach($master['Divisions'] as $val)
 														<option value="{{$val['id']}}" @php if(isset($result->division_id) && $result->division_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['division_name']}}</option>
 													@endforeach
@@ -93,7 +93,7 @@
 
                                                  <div class="form-group">
 													<label>Station:</label>
-													<select id="st" class="WebHRForm1" style="width:180px;" name="station_id">
+													<select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="station_id">
 													@foreach($master['Stations'] as $val)
 														<option  value="{{$val['id']}}" @php if(isset($result->station_id) && $result->station_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['station_name']}}</option>
 													@endforeach
@@ -102,7 +102,7 @@
 
 												 <div class="form-group">
 													<label>Department:</label>
-													<select id="st" class="WebHRForm1" style="width:180px;" name="department_id">
+													<select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="department_id">
 													@foreach($master['Departments'] as $val)
 														<option  value="{{$val['id']}}" @php if(isset($result->department_id) && $result->department_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['department_name']}}</option>
 													@endforeach
@@ -113,7 +113,7 @@
 												 <div class="form-group">
 													<label>Employee Type:</label>
 													<!-- <input type="text" class="form-control-spacial" id="user_name" name="user_name" value="{{isset($result->user_name)?$result->user_name:''}}"> -->
-													<select id="employee_type_id" class="WebHRForm1" style="width:180px;" name="employee_type_id">
+													<select id="employee_type_id" class="WebHRForm1 chosen-select" style="width:180px;" name="employee_type_id">
 													@foreach($master['EmployeeType'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->employee_type_id) && $result->employee_type_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['name']}}</option>
 													@endforeach
@@ -122,7 +122,7 @@
 
 												 <div class="form-group">
 													<label>Employee Category:</label>
-													<select id="employee_category_id" class="WebHRForm1" style="width:180px;" name="employee_category_id">
+													<select id="employee_category_id" class="WebHRForm1 chosen-select" style="width:180px;" name="employee_category_id">
 													@foreach($master['EmployeeCategory'] as $val)
 														<option  value="{{$val['id']}}" @php if(isset($result->employee_category_id) && $result->employee_category_id == $val['name']  ) { echo "selected";  } @endphp >{{$val['name']}}</option>
 													@endforeach
@@ -131,7 +131,7 @@
 
 												 <div class="form-group">
 													<label>Designation / Job Title:</label>
-													<select id="st" class="WebHRForm1" style="width:180px;" name="station_type">
+													<select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="station_type">
 													@foreach($master['EmployeeDesignation'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->name) && $result->name == $val['name']  ) { echo "selected";  } @endphp >{{$val['name']}}</option>
 													@endforeach
@@ -140,14 +140,23 @@
 
 												 <div class="form-group">
 													<label>Grade:</label>
-													<select id="grade_id" name="grade_id" class="WebHRForm1" style="width:180px;"><option style="" value="1">1</option></select>
-
+													<!-- <select id="grade_id" name="grade_id" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="1">1</option></select> -->
+													<select id="grade_id" class="WebHRForm1 chosen-select" style="width:180px;" name="grade_id">
+														@foreach($master['Grades'] as $val)
+															<option  value="{{$val['id']}}" @php if(isset($result->grade_id) && $result->grade_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['title']}}</option>
+														@endforeach
+													</select>
 												 </div>
 
 												 <div class="form-group">
 													<label>Work Shift:</label>
-													<select id="work_shift_id" name="work_shift_id" class="WebHRForm1" style="width:180px;"><option style="" value="1">Work Shift 1</option></select>
-
+													<!-- <select id="work_shift_id" name="work_shift_id" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="1">Work Shift 1</option></select> -->
+													<select id="grade_id" class="WebHRForm1 chosen-select" style="width:180px;" name="grade_id">
+													<!-- <option  value="0">-</option> -->
+														@foreach($master['WorkShifts'] as $val)
+															<option  value="{{$val['id']}}" @php if(isset($result->grade_id) && $result->grade_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['title']}}</option>
+														@endforeach
+													</select>
 												 </div>
 												<div class="form-upper-main">
 													<h4>Employee Information</h4>
@@ -173,8 +182,7 @@
 
 												 <div class="form-group">
 													<label>Roles Template:</label>
-													<select id="st" name="role_template_id" class="WebHRForm1" style="width:180px;"><option style="" value="1">Roles Template 1</option></select>
-
+													<select id="st" name="role_template_id" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="1">Roles Template 1</option></select>
 												 </div>
 
 												 <div class="form-group">
@@ -217,8 +225,8 @@
 												</div>
 												<div class="form-group">
 													<label>Reports To:</label>
-													<!-- <select id="st" name="company_name" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Senier 1</option></select> -->
-													<select id="st" class="WebHRForm1" style="width:180px;" name="report_to_employee_id">
+													<!-- <select id="st" name="company_name" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Senier 1</option></select> -->
+													<select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="report_to_employee_id">
 													@foreach($master['Employees'] as $val)
 														<option  value="{{$val['id']}}" @php if(isset($result->report_to_employee_id) && $result->report_to_employee_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
 													@endforeach
@@ -226,8 +234,8 @@
 												 </div>
 												 <div class="form-group">
 													<label>Reports To (Indirect Reporting):</label>
-													<!-- <select id="st" name="company_name" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Senier 1</option></select> -->
-													<select id="st" class="WebHRForm1" style="width:180px;" name="report_to_indirect_employee_id">
+													<!-- <select id="st" name="company_name" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Senier 1</option></select> -->
+													<select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="report_to_indirect_employee_id">
 													@foreach($master['Employees'] as $val)
 														<option  value="{{$val['id']}}" @php if(isset($result->report_to_indirect_employee_id) && $result->report_to_indirect_employee_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
 													@endforeach
@@ -235,8 +243,8 @@
 												 </div>
 												 <div class="form-group">
 													<label>Supervisor:</label>
-													<!-- <select id="st" name="company_name" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Senier 1</option></select> -->
-													<select id="st" class="WebHRForm1" style="width:180px;" name="supervisior_id">
+													<!-- <select id="st" name="company_name" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Senier 1</option></select> -->
+													<select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="supervisior_id">
 													@foreach($master['Employees'] as $val)
 														<option  value="{{$val['id']}}" @php if(isset($result->supervisior_id) && $result->supervisior_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
 													@endforeach
@@ -247,15 +255,15 @@
 												</div>
 												<div class="form-group">
 													<label>Approval Levels:</label>
-													<select id="st" name="company_name" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Auto Approved</option></select>
+													<select id="st" name="company_name" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Auto Approved</option></select>
 												 </div>
 												 <div class="form-upper-main">
 													<h4>Employee Personal Information</h4>
 												</div>
 												<div class="form-group">
 													<label>Salutation:</label>
-													<!-- <select id="st" name="salutation" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Mr.</option></select> -->
-													<select id="st" class="WebHRForm1" style="width:180px;" name="salutation_id">
+													<!-- <select id="st" name="salutation" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Mr.</option></select> -->
+													<select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="salutation_id">
 													@foreach($master['Salutations'] as $val)
 														<option  value="{{$val['id']}}" @php if(isset($result->salutation_id) && $result->salutation_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['name']}}</option>
 													@endforeach
@@ -277,12 +285,12 @@
 												 </div>
 												 <div class="form-group">
 													<label>Date of Birth:</label>
-													<input type="date" class "form-control-spacial date" id="dob" name="dob">
+													<input type="date" class "form-control-spacial date" id="dob" name="dob" value="{{isset($result->dob)?$result->dob:''}}">
 												 </div>
 												 <div class="form-group">
 													<label>Gender:</label>
-													<!-- <select id="st" name="company_name" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Male</option></select> -->
-													<select id="st" class="WebHRForm1" style="width:180px;" name="gender_id">
+													<!-- <select id="st" name="company_name" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Male</option></select> -->
+													<select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="gender_id">
 													@foreach($master['Genders'] as $val)
 														<option  value="{{$val['id']}}" @php if(isset($result->gender_id) && $result->gender_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['title']}}</option>
 													@endforeach
@@ -290,8 +298,8 @@
 												 </div>
 												 <div class="form-group">
 													<label>Blood Group:</label>
-													<!-- <select id="st" name="company_name" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">O+</option></select> -->
-													<select id="st" class="WebHRForm1" style="width:180px;" name="gender_id">
+													<!-- <select id="st" name="company_name" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">O+</option></select> -->
+													<select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="gender_id">
 													@foreach($master['BloodGroups'] as $val)
 														<option  value="{{$val['id']}}" @php if(isset($result->blood_group_id) && $result->blood_group_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['title']}}</option>
 													@endforeach
@@ -299,7 +307,7 @@
 												 </div>
 												 <div class="form-group">
 													<label>Nationality:</label>
-													<select id="st" class="WebHRForm1" style="width:180px;" name="gender_id">
+													<select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="gender_id">
 													@foreach($master['Nationalities'] as $val)
 														<option  value="{{$val['id']}}" @php if(isset($result->nationality_id) && $result->nationality_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['title']}}</option>
 													@endforeach
@@ -307,7 +315,7 @@
 												 </div>
 												 <div class="form-group">
 													<label>Religion:</label>
-													<select id="st" class="WebHRForm1" style="width:180px;" name="gender_id">
+													<select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="gender_id">
 													@foreach($master['Religions'] as $val)
 														<option  value="{{$val['id']}}" @php if(isset($result->religion_id) && $result->religion_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['title']}}</option>
 													@endforeach
@@ -315,7 +323,7 @@
 												 </div>
 												 <div class="form-group">
 													<label>Marital Status:</label>
-													<select id="st" class="WebHRForm1" style="width:180px;" name="gender_id">
+													<select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="gender_id">
 													@foreach($master['MaritalStatus'] as $val)
 														<option  value="{{$val['id']}}" @php if(isset($result->marital_status_id) && $result->marital_status_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['title']}}</option>
 													@endforeach
@@ -326,26 +334,26 @@
 												</div>
 												<div class="form-group">
 													<label>Joining Date:</label>
-													<input type="date" class "form-control-spacial date" id="dob" name="dob">
+													<input type="date" class "form-control-spacial date" id="joining_date" name="joining_date" value="{{isset($result->joining_date)?$result->joining_date:''}}">
 												 </div>
 												<div class="form-group">
 													<label>Government Id / Social Security:</label>
-													<input type="text" class="form-control-spacial" id="nick_name" name="nick_name" value="{{isset($result->nick_name)?$result->nick_name:''}}">
+													<input type="text" class="form-control-spacial" id="government_id" name="government_id" value="{{isset($result->government_id)?$result->government_id:''}}">
 												 </div>
 												 <div class="form-group">
 													<label>Employee Tax Number:</label>
-													<input type="text" class="form-control-spacial" id="nick_name" name="nick_name" value="{{isset($result->nick_name)?$result->nick_name:''}}">
+													<input type="text" class="form-control-spacial" id="employee_tax_number" name="employee_tax_number" value="{{isset($result->employee_tax_number)?$result->employee_tax_number:''}}">
 												 </div>
 												 <div class="form-upper-main">
 													<h4>Employee Driving License</h4>
 												</div>
 												<div class="form-group">
 													<label>Driving License Number:</label>
-													<input type="text" class="form-control-spacial" id="nick_name" name="nick_name" value="{{isset($result->nick_name)?$result->nick_name:''}}">
+													<input type="text" class="form-control-spacial" id="driving_license_number" name="driving_license_number" value="{{isset($result->driving_license_number)?$result->driving_license_number:''}}">
 												 </div>
 												 <div class="form-group">
 													<label>Driving License Expiration:</label>
-													<input type="text" class="form-control-spacial" id="nick_name" name="nick_name" value="{{isset($result->nick_name)?$result->nick_name:''}}">
+													<input type="date" class "form-control-spacial date" id="driving_expiration_date" name="driving_expiration_date" value="{{isset($result->driving_expiration_date)?$result->driving_expiration_date:''}}">
 												 </div>
 												 <div class="form-upper-main">
 													<h4>Employee Passport</h4>
@@ -360,7 +368,12 @@
 												 </div>
 												 <div class="form-group">
 													<label>Passport Issuance Country:</label>
-													<select id="st" name="company_name" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">India</option></select>
+													<!-- <select id="st" name="company_name" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">India</option></select> -->
+													<select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="gender_id">
+													@foreach($master['Countries'] as $val)
+														<option  value="{{$val['id']}}" @php if(isset($result->country_id) && $result->marital_status_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['title']}}</option>
+													@endforeach
+													</select>
 												 </div>
 												 <div class="form-upper-main">
 													<h4>Permanent Contact Information</h4>
@@ -383,7 +396,7 @@
 												 </div>
 												 <div class="form-group">
 													<label>Country:</label>
-													<select id="st" class="WebHRForm1" style="width:180px;" name="gender_id">
+													<select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="gender_id">
 													<!-- @foreach($master['Countries'] as $val)
 														<option  value="{{$val['id']}}" @php if(isset($result->country_id) && $result->marital_status_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['title']}}</option>
 													@endforeach -->
@@ -419,7 +432,7 @@
 												 </div>
 												 <div class="form-group">
 													<label>Country:</label>
-													<select id="st" name="company_name" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">India</option></select>
+													<select id="st" name="company_name" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">India</option></select>
 												 </div>
 												 <div class="form-group">
 													<label>Contact Number:</label>

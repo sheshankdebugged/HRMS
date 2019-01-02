@@ -63,7 +63,7 @@
 												
 											    <div class="form-group">
 													<label>Employee Name:</label>
-													<select id="employee_id" name="employee_id" class="WebHRForm1" style="width:180px;">
+													<select id="employee_id" name="employee_id" class="WebHRForm1 chosen-select" style="width:180px;">
 													<!-- <option value="ALL"> All </option> -->
 													@foreach($master['Employees'] as $val)
 													<option  value="{{$val['id']}}">{{$val['employee_name']}}</option>
@@ -74,7 +74,7 @@
 												 </div>
 												 <div class="form-group">
 													<label>Forward Application To:</label>
-													<select id="forward_application_to" name="forward_application_to" class="WebHRForm1" style="width:180px;">
+													<select id="forward_application_to" name="forward_application_to" class="WebHRForm1 chosen-select" style="width:180px;">
 													<!-- <option value="ALL"> All </option> -->
 													@foreach($master['Employees'] as $val)
 													<option  value="{{$val['id']}}">{{$val['employee_name']}}</option>
@@ -103,7 +103,7 @@
 
 												 <div class="form-group">
 													<label>Generate Payslip for Advance Salary:</label>
-													<select id="payslip_advance_salary" name="payslip_advance_salary" class="WebHRForm1" style="width:180px;">
+													<select id="payslip_advance_salary" name="payslip_advance_salary" class="WebHRForm1 chosen-select" style="width:180px;">
 													<!-- <option value="ALL"> All </option> -->
 													@foreach($master['Payslip'] as $val)
 													<option  value="{{$val['payslip_advance_salary']}}">{{$val['payslip_advance_salary']}}</option>

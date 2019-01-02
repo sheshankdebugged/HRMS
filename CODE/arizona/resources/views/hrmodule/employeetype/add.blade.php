@@ -6,7 +6,7 @@
 				<div class="col-md-12 col-sm-12">
 					<div class="left-bar-request nopadding">
 						<div class="sidebar-menu">
-                        @include('template.employees_nav_icon')
+                        @include('template.payroll_nav_icon')
 						</div>
 					</div>
 					<div class="right-bar-request">
@@ -31,17 +31,17 @@
 									<div class="col-md-12 nopadding">
 										<div class="back-button">
 											<div class="add-record-btn">
-												<a href="{{ url('employees') }}"><i class="fa fa-angle-left"></i>Back</a>
+												<a href="{{ url('employeetype') }}"><i class="fa fa-angle-left"></i>Back</a>
 											</div>
 										</div>
 									</div>
 								</div>
 								<div class="inner-form-main">
 									<div class="form-heading-space">
-										<h3>{{ $pageTitle }}</h3>
+										<h3>{{$Addform}}</h3>
 									</div>
 									<div class="form-upper-main">
-										<h4>Employee Categories</h4>
+										<h4>Employee Type</h4>
 									</div>
 									<div class="form-subsets">
 
@@ -55,43 +55,23 @@
                                             </div>
                                         @endif 
                                         
-                                        <form method="post" action="{{ url('employees/save') }}">
+                                        <form method="post" action="{{ url('employeetype/save') }}">
                                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                           <input type="hidden" name="id" value="{{isset($result->id)?$result->id:''}}">
 
 											<div class="form-field-inner">
-												
-											<div class="form-group">
-													<label>Employee Designations:</label>
-													<a href="{{ url('employeedesignations') }}">Manage Employee Designations</a>
-												 </div>
-
-                                                 <div class="form-group">
-													<label>Employee Grades:</label>
-													<a href="{{ url('employeegrades') }}">Manage Employee Grades </a>
-
-												 </div>
-
+											
+												<div class="form-group">
+													<label>New record Value</label>
+													<input type="text" placeholder="" class="form-control-spacial" id="name" name="name" value="{{isset($result->name)?$result->name:''}}">
+													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
+												</div>
+													
+											
 
 												 <div class="form-group">
-													<label>Employee Types:</label>
-													<a href="{{ url('employeetype') }}"> Manage Employee Types</a>
-												 </div>
-
-
-                                                 <div class="form-group">
-													<label>Employee Categories:</label>
-													<a href="{{ url('employeecategory') }}">Manage Employee Categories</a>
-												 </div>
-
-												
-
-
-												 
-												<!-- 											
-												 <div class="form-group">
-													<input class="submit-office" type="submit" value="Save Settings">
-												</div> -->
+													<input class="submit-office" type="submit" value="Add Record">
+												</div>
 											</div>
 										</form>
 									</div>

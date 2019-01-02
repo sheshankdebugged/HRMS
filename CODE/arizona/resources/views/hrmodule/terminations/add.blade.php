@@ -63,7 +63,7 @@
 												
 											<div class="form-group">
 													<label>Employee Terminated:</label>
-													<select id="employee_terminated" name="employee_terminated"" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Employee Terminated</option></select>
+													<select id="employee_terminated" name="employee_terminated" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Employee Terminated</option></select>
 													<!-- <input type="text" placeholder="Contact Person" class="form-control-spacial" id="registration_name" name="contact_person" value="{{isset($result->contact_person)?$result->contact_person:''}}"> -->
 													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 												 </div>
@@ -71,7 +71,7 @@
 
 												 <div class="form-group">
 												   <label>Forward Application To:</label>
-												   <select id="forward_application_to" name="forward_application_to" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Forward Application To:</option></select>
+												   <select id="forward_application_to" name="forward_application_to" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Forward Application To:</option></select>
 													<!-- <input type="text" placeholder="Termination Subject" class="form-control-spacial" id="Termination_subject" name="Termination_subject" value="{{isset($result->Termination_subject)?$result->Termination_subject:''}}"> -->
 													<!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 
@@ -80,7 +80,7 @@
 												 
 												 <div class="form-group">
 												   <label>Termination Type:</label>
-												   <select id="termination_type" name="termination_type" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Termination Type</option></select>
+												   <select id="termination_type" name="termination_type" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Termination Type</option></select>
 													<!-- <input type="text" placeholder="Termination Date" class="form-control-spacial" id="Termination_date" name="Termination_date" value="{{isset($result->Termination_date)?$result->Termination_date:''}}"> -->
 													<!-- <input type="text" placeholder="" class="form-control-spacial date" id="Termination_date" name="Termination_date" value="{{isset($result->Termination_date)?$result->Termination_date:''}}"> -->
 												 </div>

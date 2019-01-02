@@ -63,7 +63,7 @@
 
 											<div class="form-group">
 													<label>Employee:</label>
-													<select id="st" class="WebHRForm1" style="width:180px;" name="employee_id">
+													<select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="employee_id">
 													@foreach($master['Employees'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->employee_id) && $result->employee_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
 													@endforeach
@@ -81,7 +81,7 @@
 												</div> -->
 												 <div class="form-group">
 												   <label>Forward Application To:</label>
-												   <select id="st" class="WebHRForm1" style="width:180px;" name="forward_employee_id">
+												   <select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="forward_employee_id">
 													@foreach($master['Employees'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->forward_employee_id) && $result->forward_employee_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
 													@endforeach
@@ -92,7 +92,7 @@
 												 </div>
 												 <div class="form-group">
 												   <label>Leave Type:</label>
-												   <select id="st" class="WebHRForm1" style="width:180px;" name="leave_type_id">
+												   <select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="leave_type_id">
 													@foreach($master['ManageLeavesTypes'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->leave_type_id) && $result->leave_type_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['title']}}</option>
 													@endforeach
@@ -103,7 +103,7 @@
 												 <div class="form-group">
 												   <label>Reason:</label>
 												   <input type="text" class="form-control-spacial" placeholder="Reason" id="reason" name="reason" value="{{isset($result->reason)?$result->reason:''}}" >
-												   <!-- <select id="regular_hours" name="regular_hours" class="WebHRForm1" style="width:180px;"><option style="" value="{{isset($result->regular_hours)?$result->regular_hours:''}}">10</option></select> -->
+												   <!-- <select id="regular_hours" name="regular_hours" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="{{isset($result->regular_hours)?$result->regular_hours:''}}">10</option></select> -->
 												   <!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 													<!-- <input type="text" placeholder="Contact Number" class="form-control-spacial" id="contact_number" name="contact_number" value="{{isset($result->contact_number)?$result->contact_number:''}}"> -->
 
@@ -114,7 +114,7 @@
 									              </div>
 												  <div class="form-group">
 												   <label>Leave Duration:</label>
-												   <select id="st" class="WebHRForm1" style="width:180px;" name="leave_duration_id">
+												   <select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="leave_duration_id">
 													@foreach($master['LeaveDurations'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->leave_duration_id) && $result->leave_duration_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['title']}}</option>
 													@endforeach
@@ -123,7 +123,7 @@
 
 												 <div class="form-group">
 												   <label>Leave From:</label>
-												   <!-- <select id="Transfer Date" name="employee_category" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Employee Category 1</option></select> -->
+												   <!-- <select id="Transfer Date" name="employee_category" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Employee Category 1</option></select> -->
 													<!-- <input type="text" placeholder="Transfer Date" class="form-control-spacial" id="transfer_date" name="transfer_date" value="{{isset($result->transfer_date)?$result->transfer_date:''}}"> -->
 													<input type="text" placeholder="" class="form-control-spacial date" id="leave_from" name="leave_from" value="{{isset($result->leave_from)?$result->leave_from:''}}">
 													<!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
@@ -131,7 +131,7 @@
 
 												 <div class="form-group">
 												   <label>Leave To:</label>
-												   <!-- <select id="Transfer Date" name="employee_category" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Employee Category 1</option></select> -->
+												   <!-- <select id="Transfer Date" name="employee_category" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Employee Category 1</option></select> -->
 													<!-- <input type="text" placeholder="Transfer Date" class="form-control-spacial" id="transfer_date" name="transfer_date" value="{{isset($result->transfer_date)?$result->transfer_date:''}}"> -->
 													<input type="text" placeholder="" class="form-control-spacial date" id="leave_to" name="leave_to" value="{{isset($result->leave_to)?$result->leave_to:''}}">
 													<!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
@@ -142,14 +142,14 @@
 												  <div class="form-group">
 												   <label>Alternate Contact Number:</label>
 												   <input type="text" class="form-control-spacial" placeholder="" id="alternate_contact_number" name="alternate_contact_number" value="{{isset($result->alternate_contact_number)?$result->alternate_contact_number:''}}" >
-												   <!-- <select id="regular_hours" name="regular_hours" class="WebHRForm1" style="width:180px;"><option style="" value="{{isset($result->regular_hours)?$result->regular_hours:''}}">10</option></select> -->
+												   <!-- <select id="regular_hours" name="regular_hours" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="{{isset($result->regular_hours)?$result->regular_hours:''}}">10</option></select> -->
 												   <!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 													<!-- <input type="text" placeholder="Contact Number" class="form-control-spacial" id="contact_number" name="contact_number" value="{{isset($result->contact_number)?$result->contact_number:''}}"> -->
 
 												 </div>
 												 <div class="form-group">
 													<label>Alternate Employee:</label>
-													<select id="st" class="WebHRForm1" style="width:180px;" name="alternate_employee_id">
+													<select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="alternate_employee_id">
 													@foreach($master['Employees'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->alternate_employee_id) && $result->alternate_employee_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
 													@endforeach

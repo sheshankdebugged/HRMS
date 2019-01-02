@@ -255,4 +255,23 @@ Route::group(['middleware' => 'auth'], function () {
 
         \App\Http\Controllers\OrganizationDetailsController::routes();
         
+        // HR Reports
+
+        \App\Http\Controllers\HRReportsController::routes();
+
+        //  Employee Designations 
+
+        \App\Http\Controllers\EmployeeDesignationsController::routes();
+
+        // Employee Grades
+
+        \App\Http\Controllers\EmployeeGradesController::routes();
+
+        // Employee Type
+
+        \App\Http\Controllers\EmployeeTypeController::routes();
+
+        // Employee Category
+
+        \App\Http\Controllers\EmployeeCategoryController::routes();
 });

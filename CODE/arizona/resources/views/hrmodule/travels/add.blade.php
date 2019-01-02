@@ -65,7 +65,7 @@
 											<div class="form-group">
 													<label>Employee:</label>
 
-													<select  name ="employee" id="employee" class="form-control-select" >
+													<select  name ="employee" id="employee" class="form-control-select chosen-select" >
 
 													<option style="" value="0"> 0 </option>
 													<option style="" value="1">1</option>
@@ -86,7 +86,7 @@
 												 <div class="form-group">
 													<label>Travel Type:</label>
 
-													<select  name ="travel_type" class="form-control-select">
+													<select  name ="travel_type" class="form-control-select chosen-select">
 													<option style="" value="0"> - </option>
 													<option style="" value="1">1</option>
 													<option style="" value="2">2</option>
@@ -97,7 +97,7 @@
 												 </div>
 												 <div class="form-group">
 													<label>Forward Application To:</label>
-													<select  name ="forward_application_to" class="form-control-select">
+													<select  name ="forward_application_to" class="form-control-select chosen-select">
 													<option style="" value="0">-</option>
 													<option style="" value="1">-</option>
 													<option style="" value="2">-</option>
