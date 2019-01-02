@@ -48,52 +48,52 @@
                                              <div class="col-md-3">
                                                 <ul class="nav nav-pills nav-stacked" id="myTabs">
                                                    <li>
-                                                      <a class="active" href="#hrSummary" aria-controls="hrSummary" role="tab" data-toggle="tab">HR Summary</a>
+                                                      <a class="active" href="#hrSummary" aria-controls="hrSummary" role="tab" data-toggle="tab"><i class="fa fa-bar-chart"></i> HR Summary</a>
                                                    </li>
                                                    <li>
-                                                      <a href="#organogram" aria-controls="organogram" role="tab" data-toggle="tab">Organogram</a>
+                                                      <a href="#organogram" aria-controls="organogram" role="tab" data-toggle="tab"> <i class="fa fa-sitemap"></i> Organogram</a>
                                                    </li>
                                                    <li>
-                                                      <a href="#payrollSummary" aria-controls="payrollSummary" role="tab" data-toggle="tab">Payroll Summary</a>
+                                                      <a href="#payrollSummary" aria-controls="payrollSummary" role="tab" data-toggle="tab"><i class="fa fa-line-chart"></i></i>  Payroll Summary</a>
                                                    </li>
                                                    <li>
-                                                      <a href="#hrTimeline" aria-controls="hrTimeline" role="tab" data-toggle="tab">HR Timeline</a>
+                                                      <a href="#hrTimeline" aria-controls="hrTimeline" role="tab" data-toggle="tab"> <i class="fa fa-ellipsis-h"></i> HR Timeline</a>
                                                    </li>
                                                    <li>
-                                                      <a href="#stationsList" aria-controls="stationList" role="tab" data-toggle="tab">Stations List</a>
+                                                      <a href="#stationsList" aria-controls="stationList" role="tab" data-toggle="tab"><i class="fa fa-building"></i> Stations List</a>
                                                    </li>
                                                    <li>
-                                                      <a href="#departmentsList" aria-controls="departmentList" role="tab" data-toggle="tab">Departments List</a>
+                                                      <a href="#departmentsList" aria-controls="departmentList" role="tab" data-toggle="tab"><i class="fa fa-sitemap"></i> Departments List</a>
                                                    </li>
                                                    <li>
-                                                      <a href="#designationsList" aria-controls="designationsList" role="tab" data-toggle="tab">Designations List</a>
+                                                      <a href="#designationsList" aria-controls="designationsList" role="tab" data-toggle="tab"><i class="fa fa-address-card"></i> Designations List</a>
                                                    </li>
                                                    <li>
-                                                      <a href="#employeesList" aria-controls="employeesList" role="tab" data-toggle="tab">Employees List</a>
+                                                      <a href="#employeesList" aria-controls="employeesList" role="tab" data-toggle="tab"><i class="fa fa-users"></i> Employees List</a>
                                                    </li>
                                                    <li>
-                                                      <a href="#holidaysCalendar" aria-controls="holidaysCalendar" role="tab" data-toggle="tab">Holidays Calendar</a>
+                                                      <a href="#holidaysCalendar" aria-controls="holidaysCalendar" role="tab" data-toggle="tab"><i class=" fa fa-calendar-check-o"></i> Holidays Calendar</a>
                                                    </li>
                                                    <li>
-                                                      <a href="#birthdaysCalendar" aria-controls="birthdaysCalendar" role="tab" data-toggle="tab">Birthdays Calendar</a>
+                                                      <a href="#birthdaysCalendar" aria-controls="birthdaysCalendar" role="tab" data-toggle="tab"><i class="fa fa-birthday-cake"></i> Birthdays Calendar</a>
                                                    </li>
                                                    <li>
-                                                      <a href="#leavesCalendar" aria-controls="leavesCalendar" role="tab" data-toggle="tab">Leaves Calendar</a>
+                                                      <a href="#leavesCalendar" aria-controls="leavesCalendar" role="tab" data-toggle="tab"><i class="fa fa-calendar"></i> Leaves Calendar</a>
                                                    </li>
                                                    <li>
-                                                      <a href="#employeesTurnover" aria-controls="employeesTurnover" role="tab" data-toggle="tab">Employees Turnover</a>
+                                                      <a href="#employeesTurnover" aria-controls="employeesTurnover" role="tab" data-toggle="tab"><i class="fa fa-user"></i> Employees Turnover</a>
                                                    </li>
                                                    <li>
-                                                      <a href="#employeesRetention" aria-controls="employeesRetention" role="tab" data-toggle="tab">Employees Retention</a>
+                                                      <a href="#employeesRetention" aria-controls="employeesRetention" role="tab" data-toggle="tab"><i class="fa fa-user-plus"></i> Employees Retention</a>
                                                    </li>
                                                    <li>
-                                                      <a href="#projectsReport" aria-controls="projectsReport" role="tab" data-toggle="tab">Projects Report</a>
+                                                      <a href="#projectsReport" aria-controls="projectsReport" role="tab" data-toggle="tab"><i class="fa fa-archive"></i> Projects Report</a>
                                                    </li>
                                                    <li>
-                                                      <a href="#projectEmployees" aria-controls="projectEmployees" role="tab" data-toggle="tab">Project Employees</a>
+                                                      <a href="#projectEmployees" aria-controls="projectEmployees" role="tab" data-toggle="tab"><i class="fa fa-archive"></i> Project Employees</a>
                                                    </li>
                                                    <li>
-                                                      <a href="#documents" aria-controls="documents" role="tab" data-toggle="tab">Documents</a>
+                                                      <a href="#documents" aria-controls="documents" role="tab" data-toggle="tab"><i class="fa fa-folder"></i> Documents</a>
                                                    </li>
                                                 </ul>
                                              </div>

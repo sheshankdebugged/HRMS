@@ -6,7 +6,7 @@
 				<div class="col-md-12 col-sm-12">
 					<div class="left-bar-request nopadding">
 						<div class="sidebar-menu">
-                        @include('template.organisation_nav_icon')
+                        @include('template.timesheet_nav_icon')
 						</div>
 					</div>
             
@@ -20,11 +20,11 @@
 								<div class="settings-buttons">
 									<ul>
 										<li>
-											<a href="#" alt="Dashboard"><i class="fa fa-cog"></i></a>
+											<a href="{{ url('leavessettings/add') }}" alt="Dashboard"><i class="fa fa-cog"></i></a>
 										</li>
-										<li>
+										<!-- <li>
 											<a href="#" alt="Dashboard"><i class="fa fa-question-circle"></i></a>
-										</li>
+										</li> -->
 									</ul>
 								</div>
 							</div>

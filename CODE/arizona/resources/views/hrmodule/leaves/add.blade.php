@@ -6,7 +6,7 @@
 				<div class="col-md-12 col-sm-12">
 					<div class="left-bar-request nopadding">
 						<div class="sidebar-menu">
-                        @include('template.organisation_nav_icon')
+                        @include('template.timesheet_nav_icon')
 						</div>
 					</div>
 					<div class="right-bar-request">
@@ -171,12 +171,7 @@
 												 </div>
 												 <input type="file" name="leave_document" id="leave_document" />
 												 </div>
-
-												 			 <!--Add Attachment Button  -->
-
-
-
-
+												 	
 												 <div class="form-group">
 													<h4>Additional Information</h4>
 												 </div>

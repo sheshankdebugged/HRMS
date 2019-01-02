@@ -3,6 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contracts;
+use App\Models\ContractType;
+use App\Models\EmployeeCategory;
+use App\Models\Grade;
+use App\Models\Stations;
+use App\Models\Departments;
+use App\Models\EmployeeDesignation;
+use App\Models\Employees;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -32,12 +39,12 @@ class ContractsController extends Controller
                 ['user_id', '=', $user_id],
             ];   
         }
-        $list =contracts::where($where)->paginate(10);
+        $list =Contracts::where($where)->paginate(10);
 
         // $list = contracts::where(['status' => 1])->paginate(10);
         return view('hrmodule.contracts.list')->with([
             'listData' => $list,
-            'pageTitle' => "contracts",
+            'pageTitle' => "Contracts",
         ]);
 
     }
@@ -50,10 +57,12 @@ class ContractsController extends Controller
     public function create()
     {
         $action = 'add';
+        $master = $this->getmasterfields();
         return view('hrmodule.contracts.add')->with([
             'action' => $action,
-            'pageTitle' => "contracts",
+            'pageTitle' => "Contracts",
             'Addform' => "Add New Contract",
+            'master' => $master
         ]);
     }
 
@@ -71,7 +80,7 @@ class ContractsController extends Controller
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                'employee' => 'required',
+                'employee_id' => 'required',
                 'contract_title' => 'required'
             ]);
             if ($validator->fails()) {
@@ -101,13 +110,13 @@ class ContractsController extends Controller
             if ($input['id'] > 0) {
                 $input['updated_at'] = date("Y-m-d H:i:s");
                 Session::flash('message', 'Contracts Updated Successfully.');
-                contracts::where('id', $input['id'])->update($input);
+                Contracts::where('id', $input['id'])->update($input);
             } else {
                 unset($input['id']);
                 $input['created_at'] = date("Y-m-d H:i:s");
                 $input['updated_at'] = date("Y-m-d H:i:s");
                 Session::flash('message', 'Contracts Added Successfully.');
-                contracts::insertGetId($input);
+                Contracts::insertGetId($input);
             }
             return redirect('/contracts');
         }
@@ -134,14 +143,16 @@ class ContractsController extends Controller
     {
 
         $action = 'edit';
-        $result = contracts::find($id);
+        $master = $this->getmasterfields();
+        $result = Contracts::find($id);
         $action = 'add';
         $editname = "Edit " . $result->employee;
         return view('hrmodule.contracts.add')->with([
             'action' => $action,
-            'pageTitle' => "contracts",
+            'pageTitle' => "Contracts",
             'Addform' => $editname,
             'result' => $result,
+            'master' => $master
         ]);
 
     }
@@ -154,7 +165,7 @@ class ContractsController extends Controller
      */
     public function destroy($id)
     {
-        $contracts = contracts::find($id);
+        $contracts = Contracts::find($id);
         $contracts->status = 0;
         $contracts->save();
         Session::flash('message', 'Contracts delete successfully');
@@ -170,5 +181,17 @@ class ContractsController extends Controller
             Route::post('/update/{id}', array('as' => 'contracts.update', 'uses' => 'ContractsController@update'));
             Route::get('/delete/{id}', array('as' => 'contracts.destroy', 'uses' => 'ContractsController@destroy'));
         });
+    }
+    public function getmasterfields()
+    {
+        $master = array();
+           $master['Employees']               = Employees::where(['status' => 1])->get()->toArray();
+           $master['ContractType']            = ContractType::where(['status' => 1])->get()->toArray();
+           $master['EmployeeDesignation']     = EmployeeDesignation::where(['status' => 1])->get()->toArray();
+           $master['EmployeeCategory']        = EmployeeCategory::where(['status' => 1])->get()->toArray();
+           $master['Grade']                   = Grade::where(['status' => 1])->get()->toArray();
+           $master['Departments']             = Departments::where(['status' => 1])->get()->toArray();
+           $master['Stations']             = Stations::where(['status' => 1])->get()->toArray();
+        return $master;
     }
 }

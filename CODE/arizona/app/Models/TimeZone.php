@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class SystemSettings extends Model
+class TimeZone extends Model
 {
-    //
+    protected $table = 'time_zone';
 }

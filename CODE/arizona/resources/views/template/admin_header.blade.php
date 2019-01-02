@@ -200,17 +200,17 @@ Password: @7tN$i2cF5~5
                            <div class="row">
                               <div class="col-sm-6 list-unstyled">
                                  <a href="#"><i class="fa fa-dashboard"></i>Dashboard</a>
-                                 <a href="{{url('scheduler')}}"><i class="fa fa-group"></i>Scheduler</a>
-                                 <a href="{{url('attendance')}}"><i class="fa fa-sign-in"></i>Attendance</a>
-                                 <a href="{{url('employeehours')}}"><i class="fa fa-file"></i>Employee Hours</a>
-                                 <a href="{{url('leaves')}}"><i class="fa fa-briefcase"></i>Leaves</a>
+                                 <a href="{{url('scheduler')}}"><i class="fa fa-calendar"></i>Scheduler</a>
+                                 <a href="{{url('attendance')}}"><i class="fa fa-codepen"></i>Attendance</a>
+                                 <a href="{{url('employeehours')}}"><i class="fa fa-hourglass-half"></i>Employee Hours</a>
+                                 <a href="{{url('leaves')}}"><i class="fa fa-envelope"></i>Leaves</a>
                                 
                                                                   
                               </div>
                               <div class="col-sm-6 list-unstyled">
-                                    <a href="{{url('worksheet')}}"><i class="fa fa-trophy"></i>Worksheet</a>
-                                    <a href="{{url('workshifts')}}"><i class="fa fa-plane"></i>Work Shifts</a>
-                                    <a href="{{url('holidays')}}"><i class="fa fa-star"></i>Holidays</a>
+                                    <a href="{{url('worksheet')}}"><i class="fa fa-file-text-o"></i>Worksheet</a>
+                                    <a href="{{url('workshifts')}}"><i class="fa fa-connectdevelop"></i>Work Shifts</a>
+                                    <a href="{{url('holidays')}}"><i class="fa fa-chain-broken"></i>Holidays</a>
                                    
                               </div>
                            </div>
@@ -267,11 +267,11 @@ Password: @7tN$i2cF5~5
                         <div class="d-block menu-list">
                            <div class="row">
                               <div class="col-sm-6 list-unstyled">
-                                 <a href="{{url('hrreports')}}"><i class="fa fa-columns"></i></i>HR Reports</a>
-                                 <a href="{{url('recruitmentreports')}}"><i class="fa fa-bitcoin"></i>Recruitment Reports</a>
-                                 <a href="{{url('employeesreports')}}"><i class="fa fa-bitcoin"></i>Employees Reports</a>
-                                 <a href="{{url('timesheetreports')}}"><i class="fa fa-coins"></i>Timesheet Reports</a>
-                                 <a href="{{url('payrollreports')}}"><i class="fa fa-briefcase"></i>Payroll Reports</a>
+                                 <a href="{{url('hrreports')}}"><i class="fa fa-folder-open"></i></i>HR Reports</a>
+                                 <a href="{{url('recruitmentreports')}}"><i class="fa fa-black-tie"></i>Recruitment Reports</a>
+                                 <a href="{{url('employeesreports')}}"><i class="fa fa-group"></i>Employees Reports</a>
+                                 <a href="{{url('timesheetreports')}}"><i class="fa fa-clock-o"></i>Timesheet Reports</a>
+                                 <a href="{{url('payrollreports')}}"><i class="fa fa-calculator"></i>Payroll Reports</a>
                                                                
                                                                   
                               </div>

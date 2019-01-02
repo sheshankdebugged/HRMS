@@ -80,8 +80,8 @@
 										<tbody>
                                         @foreach($listData as $list)
 											<tr id="second" class="context-requst-one selected">
-											<td class="datainner" style="">{{$list->employee}}</td>
-											<td class="datainner" style="">{{$list->contract_title}}</td>
+											<td class="datainner" style="">{{$list->employee_id}}</td>
+											<td class="datainner" style="">{{$list->contract_type_id}}</td>
 											<td class="datainner" style="">{{$list->contract_start_date}}</td> 
 											<td class="datainner" style="">{{$list->contract_end_date}}</td> 
 											<td class="datainner" style="">{{$list->contract_type}}</td>                      

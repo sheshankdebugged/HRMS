@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\employeecategory;
+use App\Models\EmployeeCategor;
 use App\Models\Employees;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

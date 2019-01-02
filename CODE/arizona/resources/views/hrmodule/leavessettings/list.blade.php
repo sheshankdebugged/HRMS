@@ -53,6 +53,9 @@
 												<a href="{{ url('leavessettings') }}" alt="Dashboard"><i class="fa fa-refresh"></i></a>
 											</div>
 											<div class="add-record-btn">
+												<a href="{{ url('leaves') }}"><i class="fa fa-angle-left"></i>Back</a>
+											</div>
+											<div class="add-record-btn">
 												<a href="{{ url('leavessettings/add') }}"><i class="fa fa-plus"></i>Add Record</a>
 											</div>
 											
