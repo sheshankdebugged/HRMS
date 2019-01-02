@@ -31,7 +31,7 @@
 									<div class="col-md-12 nopadding">
 										<div class="back-button">
 											<div class="add-record-btn">
-												<a href="{{ url('employeedesignations') }}"><i class="fa fa-angle-left"></i>Back</a>
+												<a href="{{ url('employeetype') }}"><i class="fa fa-angle-left"></i>Back</a>
 											</div>
 										</div>
 									</div>
@@ -41,7 +41,7 @@
 										<h3>{{$Addform}}</h3>
 									</div>
 									<div class="form-upper-main">
-										<h4>Employee Designations</h4>
+										<h4>Employee Type</h4>
 									</div>
 									<div class="form-subsets">
 
@@ -55,42 +55,22 @@
                                             </div>
                                         @endif 
                                         
-                                        <form method="post" action="{{ url('employeedesignations/save') }}">
+                                        <form method="post" action="{{ url('employeetype/save') }}">
                                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                           <input type="hidden" name="id" value="{{isset($result->id)?$result->id:''}}">
 
 											<div class="form-field-inner">
 											
 												<div class="form-group">
-													<label>Employee Designation Name:</label>
+													<label>New record Value</label>
 													<input type="text" placeholder="" class="form-control-spacial" id="name" name="name" value="{{isset($result->name)?$result->name:''}}">
 													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 												</div>
 													
-												 <div class="form-group">
-													<label>Parent Designation:</label>
-													<select id="parent_designation_id" name="parent_designation_id" class="WebHRForm1" style="width:180px;">
-													<!-- <option value="ALL"> All </option> -->
-													@foreach($master['Employees'] as $val)
-													<option  value="{{$val['id']}}">{{$val['employee_name']}}</option>
-													@endforeach
-													</select>
-
-												 </div>
-
-												
+											
 
 												 <div class="form-group">
-													<h4>Job Description</h4>
-												 </div>
-
-                                                 <div class="form-group">
-												 <label>Notes:</label>
-													<textarea class="tinyeditorclass" name="job_description" id="job_description">{{isset($result->job_description)?$result->job_description:''}}</textarea>
-												</div> 
-												
-												 <div class="form-group">
-													<input class="submit-office" type="submit" value="Add Job Description">
+													<input class="submit-office" type="submit" value="Add Record">
 												</div>
 											</div>
 										</form>

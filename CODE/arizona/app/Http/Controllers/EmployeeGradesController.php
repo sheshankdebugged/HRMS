@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\employeecategory;
+use App\Models\EmployeeGrades;
 use App\Models\Employees;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Form;
 use Session;
 use Validator;
-class EmployeeCategoryController extends Controller
+
+class EmployeeGradesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -32,11 +33,11 @@ class EmployeeCategoryController extends Controller
         //         ['user_id', '=', $user_id],
         //     ];   
         // }
-        $list = EmployeeCategory::where($where)->paginate(10);
+        $list = EmployeeGrades::where($where)->paginate(10);
 
-          return view('hrmodule.employeecategory.list')->with([
+          return view('hrmodule.employeegrades.list')->with([
             'listData' => $list,
-            'pageTitle' => "Employee Category",
+            'pageTitle' => "Employee Grades",
         ]);
 
     }
@@ -50,10 +51,10 @@ class EmployeeCategoryController extends Controller
     {
         $action = 'add';
         $master = $this->getmasterfields();
-        return view('hrmodule.employeecategory.add')->with([
+        return view('hrmodule.employeegrades.add')->with([
             'action' => $action,
-            'pageTitle' => "Employee Category",
-            'Addform' => "Add New Employee Category",
+            'pageTitle' => "Employee Grades",
+            'Addform' => "Add New Employee Grades",
             'master' => $master
         ]);
     } 
@@ -73,12 +74,12 @@ class EmployeeCategoryController extends Controller
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                'name' => 'required',
+                'title' => 'required',
                               
             ]);
             if ($validator->fails()) {
-                $action = 'addemployeecategory';
-                return redirect('/employeecategory/add')
+                $action = 'addemployeegrades';
+                return redirect('/employeegrades/add')
                     ->withErrors($validator)
                     ->withInput()
                     ->with([
@@ -90,7 +91,7 @@ class EmployeeCategoryController extends Controller
             if (request()->hasFile('icon_img')) {
                 $file = request()->file('icon_img');
                 $input['icon_img'] = md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
-                $file->move('./img/uploads/employeecategory/', $input['icon_img']);
+                $file->move('./img/uploads/employeegrades/', $input['icon_img']);
             }
 
             echo "<pre>";
@@ -102,16 +103,16 @@ class EmployeeCategoryController extends Controller
             unset($input['_token']);
             if($input['id']>0){
                 $input['updated_at']=date("Y-m-d H:i:s");
-                Session::flash('message', 'Employee Category Updated Successfully.');
-                EmployeeCategory::where('id', $input['id'])->update($input);
+                Session::flash('message', 'Employee Grades Updated Successfully.');
+                EmployeeGrades::where('id', $input['id'])->update($input);
             }else{
                 unset($input['id']);
                 $input['created_at']=date("Y-m-d H:i:s");
                 $input['updated_at']=date("Y-m-d H:i:s");
-                Session::flash('message', 'Employee Category  Added Successfully.');
-                EmployeeCategory::insertGetId($input);
+                Session::flash('message', 'Employee Grades  Added Successfully.');
+                EmployeeGrades::insertGetId($input);
             }
-            return redirect('/employeecategory');
+            return redirect('/employeegrades');
         }
     }
 
@@ -137,12 +138,12 @@ class EmployeeCategoryController extends Controller
 
         $action = 'edit';
         $master = $this->getmasterfields();
-        $result =  EmployeeCategory::find($id);
+        $result =  EmployeeGrades::find($id);
         $action = 'add';
-        $editname = "Edit " . $result->name;
-        return view('hrmodule.employeecategory.add')->with([
+        $editname = "Edit " . $result->title;
+        return view('hrmodule.employeegrades.add')->with([
             'action' => $action,
-            'pageTitle' => "Employee Category",
+            'pageTitle' => "Employee Grades",
             'Addform' => $editname,
             'result' => $result,
             'master'  =>  $master
@@ -158,21 +159,21 @@ class EmployeeCategoryController extends Controller
      */
     public function destroy($id)
     {
-        $employeecategory = EmployeeCategory::find($id);
-        $employeecategory->status = 0;
-        $employeecategory->save();
-        Session::flash('message', 'Employee Category delete successfully');
-        return redirect("/employeecategory");
+        $employeegrades = EmployeeGrades::find($id);
+        $employeegrades->status = 0;
+        $employeegrades->save();
+        Session::flash('message', 'Employee Grades delete successfully');
+        return redirect("/employeegrades");
     }
     public static function routes()
     {
-            Route::group(array('prefix' => 'employeecategory'), function () {
-            Route::get('/', array('as' => 'employeecategory.index', 'uses' => 'EmployeeCategoryController@index'));
-            Route::get('/add', array('as' => 'employeecategory.create', 'uses' => 'EmployeeCategoryController@create'));
-            Route::post('/save', array('as' => 'employeecategory.save', 'uses' => 'EmployeeCategoryController@store'));
-            Route::get('/edit/{id}', array('as' => 'employeecategory.edit', 'uses' => 'EmployeeCategoryController@edit'));
-            Route::post('/update/{id}', array('as' => 'employeecategory.update', 'uses' => 'EmployeeCategoryController@update'));
-            Route::get('/delete/{id}', array('as' => 'employeecategory.destroy', 'uses' => 'EmployeeCategoryController@destroy'));
+            Route::group(array('prefix' => 'employeegrades'), function () {
+            Route::get('/', array('as' => 'employeegrades.index', 'uses' => 'EmployeeGradesController@index'));
+            Route::get('/add', array('as' => 'employeegrades.create', 'uses' => 'EmployeeGradesController@create'));
+            Route::post('/save', array('as' => 'employeegrades.save', 'uses' => 'EmployeeGradesController@store'));
+            Route::get('/edit/{id}', array('as' => 'employeegrades.edit', 'uses' => 'EmployeeGradesController@edit'));
+            Route::post('/update/{id}', array('as' => 'employeegrades.update', 'uses' => 'EmployeeGradesController@update'));
+            Route::get('/delete/{id}', array('as' => 'employeegrades.destroy', 'uses' => 'EmployeeGradesController@destroy'));
         });
     }
     public function getmasterfields()

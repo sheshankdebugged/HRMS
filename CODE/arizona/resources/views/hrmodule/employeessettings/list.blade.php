@@ -63,25 +63,25 @@
 												
 											<div class="form-group">
 													<label>Employee Designations:</label>
-													<a href="{{ url('#') }}">Manage Employee Designations</a>
+													<a href="{{ url('employeedesignations') }}">Manage Employee Designations</a>
 												 </div>
 
                                                  <div class="form-group">
 													<label>Employee Grades:</label>
-													<a href="{{ url('#') }}">Manage Employee Grades </a>
+													<a href="{{ url('employeegrades') }}">Manage Employee Grades </a>
 
 												 </div>
 
 
 												 <div class="form-group">
 													<label>Employee Types:</label>
-													<a href="{{ url('#') }}"> Manage Employee Types</a>
+													<a href="{{ url('employeetype') }}"> Manage Employee Types</a>
 												 </div>
 
 
                                                  <div class="form-group">
 													<label>Employee Categories:</label>
-													<a href="{{ url('#') }}">Manage Employee Categories</a>
+													<a href="{{ url('employeecategory') }}">Manage Employee Categories</a>
 												 </div>
 
 												

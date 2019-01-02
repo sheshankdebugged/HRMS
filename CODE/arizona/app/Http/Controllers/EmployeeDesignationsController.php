@@ -145,7 +145,7 @@ class EmployeeDesignationsController extends Controller
         $master = $this->getmasterfields();
         $result =  EmployeeDesignations::find($id);
         $action = 'add';
-        $editname = "Edit Boan " . $result->employee;
+        $editname = "Edit " . $result->name;
         return view('hrmodule.employeedesignations.add')->with([
             'action' => $action,
             'pageTitle' => "Employee Designations",
