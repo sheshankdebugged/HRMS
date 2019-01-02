@@ -84,7 +84,7 @@
 													<textarea class="tinyeditorclass" name="job_description" id="job_description">{{isset($result->job_description)?$result->job_description:''}}</textarea>
 												</div>
 												 <div class="form-group">
-													<input class="submit-office" type="submit" value="Add Job Description">
+													<input class="submit-office" type="submit" value="Add Designation">
 												</div>
 											</div>
 										</form>

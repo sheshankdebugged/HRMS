@@ -70,7 +70,7 @@
 											
 
 												 <div class="form-group">
-													<input class="submit-office" type="submit" value="Add Job Description">
+													<input class="submit-office" type="submit" value="Add Grade">
 												</div>
 											</div>
 										</form>
