@@ -63,7 +63,7 @@
 												
 												 <div class="form-group">
 													<label>Employee Name:</label>
-													<select  name ="employee_id" id="employee_id" class="form-control-select" >
+													<select  name ="employee_id" id="employee_id" class="form-control-select chosen-select" >
 													@foreach($master['Employees'] as $val)
 													<option  value="{{$val['id']}}">{{$val['employee_name']}}</option>
 													@endforeach													
@@ -73,7 +73,7 @@
 												 </div>
 												 <div class="form-group">
 													<label>Forward Application To:</label>
-													<select  name ="forward_employee_id" id="forward_employee_id" class="form-control-select" >
+													<select  name ="forward_employee_id" id="forward_employee_id" class="form-control-select chosen-select" >
 													@foreach($master['Employees'] as $val)
 													<option  value="{{$val['id']}}">{{$val['employee_name']}}</option>
 													@endforeach													

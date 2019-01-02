@@ -65,14 +65,14 @@
 											<div class="form-group">
 													<label>Employee:</label>
 
-													<select id="employee" name="employee" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">employee</option></select>
+													<select id="employee" name="employee" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">employee</option></select>
 													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 
 												 </div>
 
 												 <div class="form-group">
 													<label>Project:</label>
-													<select id="project" name="project" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">project</option></select>
+													<select id="project" name="project" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">project</option></select>
 
 
 

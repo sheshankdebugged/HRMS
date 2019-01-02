@@ -457,7 +457,7 @@
                                                                   <label>Additional Data Fields:</label>
                                                                </div>
                                                                <div class="field-value-an">
-                                                                  <select name="cars" multiple>
+                                                                  <select name="cars" multiple class="chosen-select">
                                                                     <option value="volvo">Volvo</option>
                                                                     <option value="saab">Saab</option>
                                                                     <option value="opel">Opel</option>

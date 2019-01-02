@@ -63,7 +63,7 @@
 												
 											<div class="form-group">
 													<label>Memo From:</label>
-													<select id="memo_from" name="memo_from"" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Memo From </option></select>
+													<select id="memo_from" name="memo_from" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Memo From </option></select>
 													<!-- <input type="text" placeholder="Contact Person" class="form-control-spacial" id="registration_name" name="contact_person" value="{{isset($result->contact_person)?$result->contact_person:''}}"> -->
                                                    
 												 </div>
@@ -89,7 +89,7 @@
 												 </div>
 												 <div class="form-group">
 													<label>Memo To:</label>
-													<select id="memo_to" name="memo_to"" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Memo To</option></select>
+													<select id="memo_to" name="memo_to" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Memo To</option></select>
 													<!-- <input type="text" placeholder="Contact Person" class="form-control-spacial" id="registration_name" name="contact_person" value="{{isset($result->contact_person)?$result->contact_person:''}}"> -->
                                                    
 												 </div>

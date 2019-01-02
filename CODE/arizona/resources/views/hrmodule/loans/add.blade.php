@@ -63,7 +63,7 @@
 												
 													<div class="form-group">
 													<label>Employee Name:</label>
-													<select id="employee_id" name="employee_id" class="WebHRForm1" style="width:180px;">
+													<select id="employee_id" name="employee_id" class="WebHRForm1 chosen-select" style="width:180px;">
 													<!-- <option value="ALL"> All </option> -->
 													@foreach($master['Employees'] as $val)
 													<option  value="{{$val['id']}}">{{$val['employee_name']}}</option>
@@ -74,7 +74,7 @@
 												 </div>
 												 <div class="form-group">
 													<label>Forward Application To:</label>
-													<select id="forward_employee_id" name="forward_employee_id" class="WebHRForm1" style="width:180px;">
+													<select id="forward_employee_id" name="forward_employee_id" class="WebHRForm1 chosen-select" style="width:180px;">
 													<!-- <option value="ALL"> All </option> -->
 													@foreach($master['Employees'] as $val)
 													<option  value="{{$val['id']}}">{{$val['employee_name']}}</option>
@@ -116,13 +116,13 @@
 												 </div>
 												 <div class="form-group">
 													<label>Repayment Type:</label>
-													<select id="repayment_type" name="repayment_type" class="WebHRForm1" style="width:180px;" onchange="RepaymentsType();" class="FieldValue">
+													<select id="repayment_type" name="repayment_type" class="WebHRForm1 chosen-select" style="width:180px;" onchange="RepaymentsType();" class="FieldValue">
 													<option style="" value="Head Office">Specific Amount</option><option style="" value="1">Monthly</option></select>
 													<div style="clear:both;"></div>		
 												 </div>
 												 <!-- <div class="form-group">
 													<label>Repayment Months:</label>
-													<select id="repayment_months" name="repayment_months" class="WebHRForm1" style="width:180px;" onchange="RepaymentsMonths();" class="FieldValue">
+													<select id="repayment_months" name="repayment_months" class="WebHRForm1 chosen-select" style="width:180px;" onchange="RepaymentsMonths();" class="FieldValue">
 													<div style="clear:both;"></div>
 
 												 </div>

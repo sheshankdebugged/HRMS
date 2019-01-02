@@ -451,6 +451,7 @@ header .header-menu li.dropdown .dropdown-menu  .menu-list a i{
     border-bottom: 1px solid #c1bebe;
         font-size: 13px;
     padding: 4px 10px;
+    border-radius: 5px;
 }
 .request-inner-table .form-group select, .form-subsets .form-group select {
     display: inline-block;

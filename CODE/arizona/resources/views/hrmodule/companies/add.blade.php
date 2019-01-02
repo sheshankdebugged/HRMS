@@ -81,7 +81,7 @@
 
 												 <div class="form-group">
 													<label>Company Type:</label>
-													<select id ="company_type_id" name ="company_type_id" class="WebHRForm1">
+													<select id ="company_type_id" name ="company_type_id" class="WebHRForm1 chosen-select">
 													@foreach($master['CompanyType'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->company_type_id) && $result->company_type_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['company_type_title']}}</option>
 													@endforeach
@@ -187,9 +187,9 @@
 												 <div class="form-group">
 												   <label>Country:</label>
 												   <!-- <input type="text"  placeholder="Country" placeholder="State Tax Number" class="form-control-spacial" id="country" name="country" value="{{isset($result->country)?$result->country:''}}"> -->
-												   <select id ="country_id" name ="country_id" class="WebHRForm1">
+												   <select id ="country_id" name ="country_id" class="WebHRForm1 chosen-select">
 													@foreach($master['Countries'] as $val)
-													<option  value="{{$val['country_id']}}" @php if(isset($result->country_id) && $result->country_id == $val['country_id']  ) { echo "selected";  } @endphp >{{$val['title']}}</option>
+													<option  value="{{$val['id']}}" @php if(isset($result->country_id) && $result->country_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['title']}}</option>
 													@endforeach
 													</select>
 												 </div>
@@ -227,7 +227,7 @@
 
 												 <div class="form-group">
 												   <label>Account Type:</label>
-												   <select id="ba_atype" class="WebHRForm1" style="width:180px;" name="account_type"><option style="" value="0"> - </option><option style="" value="1">Checking</option><option style="" value="2">Saving</option></select>
+												   <select id="ba_atype" class="WebHRForm1 chosen-select" style="width:180px;" name="account_type"><option style="" value="0"> - </option><option style="" value="1">Checking</option><option style="" value="2">Saving</option></select>
 												 </div>
 
 												 <div class="form-group">

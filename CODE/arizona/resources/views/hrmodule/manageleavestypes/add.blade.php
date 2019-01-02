@@ -65,7 +65,7 @@
 												   <input type="text" class="form-control-spacial" placeholder="" id="title" name="title" value="{{isset($result->title)?$result->title:''}}" >
 												   <a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="What would you like to call this Leave Type. For example: Annual Leaves, Paid Time Off (PTO), Sick Leaves, Maternity Leaves, Paternity Leaves, etc." data-original-title="" title=""><i style="font-size:14px; color:yellow;" class="fa fa-info-circle"></i></a>
 
-												   <!-- <select id="regular_hours" name="regular_hours" class="WebHRForm1"><option style="" value="{{isset($result->regular_hours)?$result->regular_hours:''}}">10</option></select> -->
+												   <!-- <select id="regular_hours" name="regular_hours" class="WebHRForm1 chosen-select"><option style="" value="{{isset($result->regular_hours)?$result->regular_hours:''}}">10</option></select> -->
 												   <!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 													<!-- <input type="text" placeholder="Contact Number" class="form-control-spacial" id="contact_number" name="contact_number" value="{{isset($result->contact_number)?$result->contact_number:''}}"> -->
 
@@ -92,7 +92,7 @@
 												   <input type="text" class="form-control-spacial" style="width: 50px" placeholder="1" id="leave_allowed" name="leave_allowed" value="{{isset($result->leave_allowed)?$result->leave_allowed:''}}" >
 												   <a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="What would you like to set as the default Leaves Quota for each employee for this Leave Type. Please note that Leaves Quota for each Employee can be updated separately by going to Leaves Quota screen." data-original-title="" title=""><i style="font-size:14px; color:yellow;" class="fa fa-info-circle"></i></a>
 
-												   <!-- <select id="regular_hours" name="regular_hours" class="WebHRForm1"><option style="" value="{{isset($result->regular_hours)?$result->regular_hours:''}}">10</option></select> -->
+												   <!-- <select id="regular_hours" name="regular_hours" class="WebHRForm1 chosen-select"><option style="" value="{{isset($result->regular_hours)?$result->regular_hours:''}}">10</option></select> -->
 												   <!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 													<!-- <input type="text" placeholder="Contact Number" class="form-control-spacial" id="contact_number" name="contact_number" value="{{isset($result->contact_number)?$result->contact_number:''}}"> -->
 
@@ -305,7 +305,7 @@
 												   <input type="text" class="form-control-spacial" style="width: 50px" placeholder="0" id="negative_leaves_limit" name="negative_leaves_limit" value="{{isset($result->negative_leaves_limit)?$result->negative_leaves_limit:''}}" >
 												   <a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum number of Negative Leaves an employee can apply for this leave. If set as 0 an employee can apply unlimited of nagative leaves." data-original-title="" title=""><i style="font-size:14px; color:yellow;" class="fa fa-info-circle"></i></a>
 
-												   <!-- <select id="regular_hours" name="regular_hours" class="WebHRForm1"><option style="" value="{{isset($result->regular_hours)?$result->regular_hours:''}}">10</option></select> -->
+												   <!-- <select id="regular_hours" name="regular_hours" class="WebHRForm1 chosen-select"><option style="" value="{{isset($result->regular_hours)?$result->regular_hours:''}}">10</option></select> -->
 												   <!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 													<!-- <input type="text" placeholder="Contact Number" class="form-control-spacial" id="contact_number" name="contact_number" value="{{isset($result->contact_number)?$result->contact_number:''}}"> -->
 
@@ -321,7 +321,7 @@
 												   <input type="text" class="form-control-spacial" style="width: 50px" placeholder="0" id="leaves_days_limit" name="leaves_days_limit" value="{{isset($result->leaves_days_limit)?$result->leaves_days_limit:''}}" >
 												   <a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Number of days after which an employee can apply for this leave. If set as 0, then employees will be able to apply for this leave immediately. If set as 10, then employees will be able to apply for this leave 10 days after their joining date." data-original-title="" title=""><i style="font-size:14px; color:yellow;" class="fa fa-info-circle"></i></a>
 
-												   <!-- <select id="regular_hours" name="regular_hours" class="WebHRForm1"><option style="" value="{{isset($result->regular_hours)?$result->regular_hours:''}}">10</option></select> -->
+												   <!-- <select id="regular_hours" name="regular_hours" class="WebHRForm1 chosen-select"><option style="" value="{{isset($result->regular_hours)?$result->regular_hours:''}}">10</option></select> -->
 												   <!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 													<!-- <input type="text" placeholder="Contact Number" class="form-control-spacial" id="contact_number" name="contact_number" value="{{isset($result->contact_number)?$result->contact_number:''}}"> -->
 												 </div>
@@ -330,7 +330,7 @@
 												   <input type="text" class="form-control-spacial" style="width: 50px" placeholder="0" id="maximum_leave_allowed" name="maximum_leave_allowed" value="{{isset($result->maximum_leave_allowed)?$result->maximum_leave_allowed:''}}" >
 												   <a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum number of days can an employee request for this Leave Type in one leave request (at one instance). Default value is 0, that means, employees can take as many leaves depending upon their leaves quota." data-original-title="" title=""><i style="font-size:14px; color:yellow;" class="fa fa-info-circle"></i></a>
 
-												   <!-- <select id="regular_hours" name="regular_hours" class="WebHRForm1"><option style="" value="{{isset($result->regular_hours)?$result->regular_hours:''}}">10</option></select> -->
+												   <!-- <select id="regular_hours" name="regular_hours" class="WebHRForm1 chosen-select"><option style="" value="{{isset($result->regular_hours)?$result->regular_hours:''}}">10</option></select> -->
 												   <!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 													<!-- <input type="text" placeholder="Contact Number" class="form-control-spacial" id="contact_number" name="contact_number" value="{{isset($result->contact_number)?$result->contact_number:''}}"> -->
 												 </div>
@@ -345,7 +345,7 @@
 													<!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 
 												 </div>
-													<!-- <select id="employee" name="employee" class="WebHRForm1"><option style="" value="Head Office">1</option></select> -->
+													<!-- <select id="employee" name="employee" class="WebHRForm1 chosen-select"><option style="" value="Head Office">1</option></select> -->
 													<!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 													<!-- <input type="text" placeholder="Contact Person" class="form-control-spacial" id="registration_name" name="contact_person" value="{{isset($result->contact_person)?$result->contact_person:''}}"> -->
 
@@ -426,7 +426,7 @@
 												   <input type="text" class="form-control-spacial" style="width: 50px" placeholder="0" id="order_no" name="order_no" value="{{isset($result->order_no)?$result->order_no:''}}" >
 												   <a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Order in which this Leave Type should appear in Leaves Summary and Widgets. Default value is 0." data-original-title="" title=""><i style="font-size:14px; color:yellow;" class="fa fa-info-circle"></i></a>
 
-												   <!-- <select id="regular_hours" name="regular_hours" class="WebHRForm1"><option style="" value="{{isset($result->regular_hours)?$result->regular_hours:''}}">10</option></select> -->
+												   <!-- <select id="regular_hours" name="regular_hours" class="WebHRForm1 chosen-select"><option style="" value="{{isset($result->regular_hours)?$result->regular_hours:''}}">10</option></select> -->
 												   <!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 													<!-- <input type="text" placeholder="Contact Number" class="form-control-spacial" id="contact_number" name="contact_number" value="{{isset($result->contact_number)?$result->contact_number:''}}"> -->
 
@@ -525,7 +525,7 @@
 												 </div>
 												 <div class="form-group">
 													<label>Employee Nationality:</label>
-													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1">
+													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1 chosen-select">
 													<option style="" value="Head Office">-</option>
 													<option style="" value="Head Office">--</option>
 													<!-- <option style="" value="Head Office">Employee's Joining Date</option> -->
@@ -536,7 +536,7 @@
 
 												 <div class="form-group">
 													<label>Employee Religion:</label>
-													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1">
+													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1 chosen-select">
 													<option style="" value="Head Office">-</option>
 													<option style="" value="Head Office">--</option>
 													<!-- <option style="" value="Head Office">Employee's Joining Date</option> -->
@@ -547,7 +547,7 @@
 
 												 <div class="form-group">
 													<label>Employee Marital Status:</label>
-													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1">
+													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1 chosen-select">
 													<option style="" value="Head Office">-</option>
 													<option style="" value="Head Office">--</option>
 													<!-- <option style="" value="Head Office">Employee's Joining Date</option> -->
@@ -571,7 +571,7 @@
 									            </div>
 												<div class="form-group">
 													<label>Approval Method:</label>
-													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1">
+													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1 chosen-select">
 													<option style="" value="Head Office">-</option>
 													<option style="" value="Head Office">Multi Level Approval</option>
 													<!-- <option style="" value="Head Office">Employee's Joining Date</option> -->
@@ -579,7 +579,7 @@
 													</div>
 												 	<div class="form-group">
 													<label>Approval Levels:</label>
-													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1">
+													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1 chosen-select">
 													<!-- <option style="" value="Head Office">-</option> -->
 													<option style="" value="Head Office">Auto Approved</option>
 													<option style="" value="Head Office">One level</option>
@@ -591,14 +591,14 @@
 													</div>
 													<div class="form-group">
 													<label>Approval Method for Joining Back from Leave:</label>
-													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1">
+													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1 chosen-select">
 													<option style="" value="Head Office">-</option>
 													<option style="" value="Head Office">Multi Level Approval</option>
 													</select>
 													</div>
 													<div class="form-group">
 													<label>Approval Levels:</label>
-													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1">
+													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1 chosen-select">
 													<!-- <option style="" value="Head Office">-</option> -->
 													<option style="" value="Head Office">Auto Approved</option>
 													<option style="" value="Head Office">One level</option>
@@ -614,7 +614,7 @@
 									            </div>
 												<div class="form-group">
 													<label>Notifications upon Submission:</label>
-													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1">
+													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1 chosen-select">
 													<!-- <option style="" value="Head Office">-</option> -->
 													<!-- <option style="" value="Head Office">Multi Level Approval</option> -->
 													<!-- <option style="" value="Head Office">Employee's Joining Date</option> -->
@@ -622,7 +622,7 @@
 													</div>
 													<div class="form-group">
 													<label>Notifications upon Approval:</label>
-													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1">
+													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1 chosen-select">
 													<!-- <option style="" value="Head Office">-</option> -->
 													<!-- <option style="" value="Head Office">Multi Level Approval</option> -->
 													<!-- <option style="" value="Head Office">Employee's Joining Date</option> -->
@@ -630,7 +630,7 @@
 													</div>
 													<div class="form-group">
 													<label>Join Back Notifications upon Approval:</label>
-													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1">
+													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1 chosen-select">
 													<!-- <option style="" value="Head Office">-</option> -->
 													<!-- <option style="" value="Head Office">Multi Level Approval</option> -->
 													<!-- <option style="" value="Head Office">Employee's Joining Date</option> -->

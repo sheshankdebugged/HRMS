@@ -63,7 +63,7 @@
 												
 												 <div class="form-group">
 													<label>Employee Name:</label>
-    												<select id="employee_id" name="employee_id" class="WebHRForm1" style="width:180px;">
+    												<select id="employee_id" name="employee_id" class="WebHRForm1 chosen-select" style="width:180px;">
 													<!-- <option value="ALL"> All </option> -->
 													@foreach($master['Employees'] as $val)
 													  <option  value="{{$val['id']}}" @php if(isset($result->employee_id) && $result->employee_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>

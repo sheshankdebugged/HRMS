@@ -63,13 +63,13 @@
 												
 												 <div class="form-group">
 													<label>Complaint From:</label>
-													<select id="complaint_from" name="complaint_from" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Complaint From</option></select>
+													<select id="complaint_from" name="complaint_from" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Complaint From</option></select>
                                                     <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 												 </div>
 												 
 												 <div class="form-group">
 													<label>Forward Application To:</label>
-													<select id="forward_application_to" name="forward_application_to" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Forward Application To</option></select>
+													<select id="forward_application_to" name="forward_application_to" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Forward Application To</option></select>
 
 												 </div>
 												 
@@ -91,7 +91,7 @@
 													<h4>Complaint Against</h4>
 													<label>Complaint Against:</label>
 												   <!-- <input type="text" placeholder="Complaint Title" class="form-control-spacial" id="complaint_against" name="complaint_against" value="{{isset($result->complaint_against)?$result->complaint_against:''}}"> -->
-												   <select id="complaint_against" name="complaint_against" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Complaint Title</option></select>
+												   <select id="complaint_against" name="complaint_against" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Complaint Title</option></select>
 
 												 </div>
 

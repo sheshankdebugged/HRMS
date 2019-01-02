@@ -63,12 +63,12 @@
 												
 											<div class="form-group">
 													<label>Employee Name:</label>
-													<select id="st" class="WebHRForm1" style="width:180px;" name="employee_name">
+													<select id="employee_name" class="WebHRForm1 chosen-select" style="width:180px;" name="employee_name">
 													@foreach($master['Employees'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->employee_name) && $result->id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
 													@endforeach
 													</select>
-													<!-- <select id="employee_name" name="employee_name" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">1</option></select> -->
+													<!-- <select id="employee_name" name="employee_name" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">1</option></select> -->
 													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 													<!-- <input type="text" placeholder="Contact Person" class="form-control-spacial" id="registration_name" name="contact_person" value="{{isset($result->contact_person)?$result->contact_person:''}}"> -->
                                                    
@@ -77,7 +77,7 @@
 
 												 <div class="form-group">
 												   <label>Forward Application To:</label>
-												   <select id="st" class="WebHRForm1" style="width:180px;" name="employee_name">
+												   <select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="employee_name">
 													@foreach($master['Employees'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->employee_name) && $result->id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
 													@endforeach
@@ -103,7 +103,7 @@
 												 <div class="form-group">
 												 <!-- Add Timepicker here -->
 												   <label>Sign In Time:</label>
-												   <select id="sign_in_time" name="sign_in_time" class="WebHRForm1" style="width:180px;"><option style="" value="{{isset($result->sign_in_time)?$result->sign_in_time:''}}">-</option></select>
+												   <select id="sign_in_time" name="sign_in_time" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="{{isset($result->sign_in_time)?$result->sign_in_time:''}}">-</option></select>
 													<!-- <input type="text" placeholder="Contact Number" class="form-control-spacial" id="contact_number" name="contact_number" value="{{isset($result->contact_number)?$result->contact_number:''}}"> -->
 													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
                                 
@@ -112,7 +112,7 @@
 												 <div class="form-group">
 												 <!-- Add Timepicker here -->
 												   <label>Sign Out Time:</label>
-												   <select id="sign_out_time" name="sign_out_time" class="WebHRForm1" style="width:180px;"><option style="" value="{{isset($result->sign_out_time)?$result->sign_out_time:''}}">-</option></select>
+												   <select id="sign_out_time" name="sign_out_time" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="{{isset($result->sign_out_time)?$result->sign_out_time:''}}">-</option></select>
 													<!-- <input type="text" placeholder="Fax Number" class="form-control-spacial" id="fax_number" name="fax_number" value="{{isset($result->fax_number)?$result->fax_number:''}}"> -->
                                 
 												 </div>
@@ -123,7 +123,7 @@
 												 <div class="form-group">
 												 <!-- Add Timepicker here -->
 												   <label>Lunch Break Out Time:</label>
-												   <select id="lunch_break_out_time" name="lunch_break_out_time" class="WebHRForm1" style="width:180px;"><option style="" value="{{isset($result->lunch_break_out_time)?$result->lunch_break_out_time:''}}">transfer_to_department 1</option></select>
+												   <select id="lunch_break_out_time" name="lunch_break_out_time" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="{{isset($result->lunch_break_out_time)?$result->lunch_break_out_time:''}}">transfer_to_department 1</option></select>
 													<!-- <input type="text" placeholder="Email Address" class="form-control-spacial" id="email_address" name="email_address" value="{{isset($result->email_address)?$result->email_address:''}}"> -->
                                 
 												 </div>
@@ -132,7 +132,7 @@
 												 <!-- Add Timepicker Here -->
 												   <label>Lunch Break In Time:</label>
 													<!-- <input type="text" placeholder="Department" class="form-control-spacial" id="website" name="website" value="{{isset($result->website)?$result->website:''}}"> -->
-													<select id="lunch_break_in_time" name="lunch_break_in_time" class="WebHRForm1" style="width:180px;"><option style="" value="{{isset($result->lunch_break_in_time)?$result->lunch_break_in_time:''}}">-</option></select>
+													<select id="lunch_break_in_time" name="lunch_break_in_time" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="{{isset($result->lunch_break_in_time)?$result->lunch_break_in_time:''}}">-</option></select>
 												 </div>
 
 												 <div class="form-group">
@@ -142,7 +142,7 @@
 												 <div class="form-group">
 												 <!-- Add Timepicker here -->
 												   <label>Additional Break Out Time:</label>
-												   <select id="additional_break_out_time" name="additional_break_out_time" class="WebHRForm1" style="width:180px;"><option style="" value="{{isset($result->additional_break_out_time)?$result->additional_break_out_time:''}}">transfer_to_department 1</option></select>
+												   <select id="additional_break_out_time" name="additional_break_out_time" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="{{isset($result->additional_break_out_time)?$result->additional_break_out_time:''}}">transfer_to_department 1</option></select>
 													<!-- <input type="text" placeholder="Email Address" class="form-control-spacial" id="email_address" name="email_address" value="{{isset($result->email_address)?$result->email_address:''}}"> -->
                                 
 												 </div>
@@ -151,7 +151,7 @@
 												 <!-- Add Timepicker Here -->
 												   <label>Additional Break In Time:</label>
 													<!-- <input type="text" placeholder="Department" class="form-control-spacial" id="website" name="website" value="{{isset($result->website)?$result->website:''}}"> -->
-													<select id="additional_break_in_time" name="additional_break_in_time" class="WebHRForm1" style="width:180px;"><option style="" value="{{isset($result->additional_break_in_time)?$result->additional_break_in_time:''}}">-</option></select>
+													<select id="additional_break_in_time" name="additional_break_in_time" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="{{isset($result->additional_break_in_time)?$result->additional_break_in_time:''}}">-</option></select>
 												 </div>
 												 <div class="form-group">
 													 <h4>Extra Break Hours</h4>
@@ -160,7 +160,7 @@
 												 <div class="form-group">
 												 <!-- Add Timepicker here -->
 												   <label>Extra Break Out Time:</label>
-												   <select id="extra_break_out_time" name="extra_break_out_time" class="WebHRForm1" style="width:180px;"><option style="" value="{{isset($result->extra_break_out_time)?$result->extra_break_out_time:''}}">transfer_to_department 1</option></select>
+												   <select id="extra_break_out_time" name="extra_break_out_time" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="{{isset($result->extra_break_out_time)?$result->extra_break_out_time:''}}">transfer_to_department 1</option></select>
 													<!-- <input type="text" placeholder="Email Address" class="form-control-spacial" id="email_address" name="email_address" value="{{isset($result->email_address)?$result->email_address:''}}"> -->
                                 
 												 </div>
@@ -169,7 +169,7 @@
 												 <!-- Add Timepicker Here -->
 												   <label>Extra Break In Time:</label>
 													<!-- <input type="text" placeholder="Department" class="form-control-spacial" id="website" name="website" value="{{isset($result->website)?$result->website:''}}"> -->
-													<select id="extra_break_in_time" name="extra_break_in_time" class="WebHRForm1" style="width:180px;"><option style="" value="{{isset($result->extra_break_in_time)?$result->extra_break_in_time:''}}">-</option></select>
+													<select id="extra_break_in_time" name="extra_break_in_time" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="{{isset($result->extra_break_in_time)?$result->extra_break_in_time:''}}">-</option></select>
 												 </div>
 												 										 
 										
@@ -181,24 +181,24 @@
 												 </div>
 												 <div class="form-group">
 												   <label>Attendance Station:</label>
-												   <select id="attendance_station_id" class="WebHRForm1" style="width:180px;" name="attendance_station_id">
+												   <select id="attendance_station_id" class="WebHRForm1 chosen-select" style="width:180px;" name="attendance_station_id">
 													@foreach($master['Stations'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->	attendance_station_id) && $result->attendance_station_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['station_name']}}</option>
 													@endforeach
 													</select>
-												   <!-- <select id="attendance_station" name="attendance_station" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">transfer_to_department 1</option></select> -->
+												   <!-- <select id="attendance_station" name="attendance_station" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">transfer_to_department 1</option></select> -->
 													                                
 												 </div>
 
 												 <div class="form-group">
 												 	<label>Attendance Project:</label>
-													 <select id="attendance_project_id" class="WebHRForm1" style="width:180px;" name="attendance_project_id">
+													 <select id="attendance_project_id" class="WebHRForm1 chosen-select" style="width:180px;" name="attendance_project_id">
 													@foreach($master['Projects'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->attendance_project_id) && $result->attendance_project_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['project_title']}}</option>
 													@endforeach
 													</select>
 													<!-- <input type="text" placeholder="Department" class="form-control-spacial" id="website" name="website" value="{{isset($result->website)?$result->website:''}}">
-													<select id="attendance_project" name="attendance_project" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">-</option></select> -->
+													<select id="attendance_project" name="attendance_project" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">-</option></select> -->
 												 </div>
 												 <div class="form-group">
 												 <label>Notes:</label>
