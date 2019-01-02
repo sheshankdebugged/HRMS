@@ -63,12 +63,12 @@
 												
 											<div class="form-group">
 													<label>Employee:</label>
-													<select id="employee_id" class="WebHRForm1" style="width:180px;" name="employee_id">
+													<select id="employee_id" class="WebHRForm1 chosen-select" style="width:180px;" name="employee_id">
 													@foreach($master['Employees'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->employee_name) && $result->id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
 													@endforeach
 													</select>
-													<!-- <select id="employee" name="employee" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">1</option></select> -->
+													<!-- <select id="employee" name="employee" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">1</option></select> -->
 													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 													<!-- <input type="text" placeholder="Contact Person" class="form-control-spacial" id="registration_name" name="contact_person" value="{{isset($result->contact_person)?$result->contact_person:''}}"> -->
                                                    
@@ -77,12 +77,12 @@
 
 												 <div class="form-group">
 												   <label>Project:</label>
-												   <select id="project_id" class="WebHRForm1" style="width:180px;" name="project_id">
+												   <select id="project_id" class="WebHRForm1 chosen-select" style="width:180px;" name="project_id">
 													@foreach($master['Projects'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->project_title) && $result->project_title == $val['id']  ) { echo "selected";  } @endphp >{{$val['project_title']}}</option>
 													@endforeach
 													</select>
-												   <!-- <select id="project" name="project" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">forward 2</option></select> -->
+												   <!-- <select id="project" name="project" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">forward 2</option></select> -->
 												   <!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 													<!-- <input type="text" placeholder="Contact Person Designation" class="form-control-spacial" id="contact_person_designation" name="contact_person_designation" value="{{isset($result->contact_person_designation)?$result->contact_person_designation:''}}"> -->
                                 
@@ -91,7 +91,7 @@
 												 
 												 <div class="form-group">
 												   <label>Date:</label>
-												   <!-- <select id="Transfer Date" name="employee_category" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Employee Category 1</option></select> -->
+												   <!-- <select id="Transfer Date" name="employee_category" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Employee Category 1</option></select> -->
 													<!-- <input type="text" placeholder="Transfer Date" class="form-control-spacial" id="transfer_date" name="transfer_date" value="{{isset($result->transfer_date)?$result->transfer_date:''}}"> -->
 													<input type="text" placeholder="" class="form-control-spacial date" id="date" name="date" value="{{isset($result->date)?$result->date:''}}">
 													<!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
@@ -100,7 +100,7 @@
 												 <div class="form-group">
 												   <label>Regular Hours:</label>
 												   <input type="text" class="form-control-spacial" placeholder="" id="regular_hours" name="regular_hours" value="{{isset($result->regular_hours)?$result->regular_hours:''}}" >
-												   <!-- <select id="regular_hours" name="regular_hours" class="WebHRForm1" style="width:180px;"><option style="" value="{{isset($result->regular_hours)?$result->regular_hours:''}}">10</option></select> -->
+												   <!-- <select id="regular_hours" name="regular_hours" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="{{isset($result->regular_hours)?$result->regular_hours:''}}">10</option></select> -->
 												   <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 													<!-- <input type="text" placeholder="Contact Number" class="form-control-spacial" id="contact_number" name="contact_number" value="{{isset($result->contact_number)?$result->contact_number:''}}"> -->
                                 
@@ -108,7 +108,7 @@
 
 												 <div class="form-group">
 												   <label>Overtime Hours:</label>
-												   <select id="overtime_hours" name="overtime_hours" class="WebHRForm1" style="width:180px;"><option style="" value="{{isset($result->overtime_hours)?$result->overtime_hours:''}}">-</option></select>
+												   <select id="overtime_hours" name="overtime_hours" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="{{isset($result->overtime_hours)?$result->overtime_hours:''}}">-</option></select>
 													<!-- <input type="text" placeholder="Fax Number" class="form-control-spacial" id="fax_number" name="fax_number" value="{{isset($result->fax_number)?$result->fax_number:''}}"> -->
                                 
 													<div class="form-group">

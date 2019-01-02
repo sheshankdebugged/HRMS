@@ -65,7 +65,7 @@
 											<div class="form-group">
 													<label>Warning To:</label>
 
-													<select  name ="warning_to" id="id" class="form-control-select" >
+													<select  name ="warning_to" id="id" class="form-control-select chosen-select" >
 
 													<option style="" value="0"> 0 </option>
 													<option style="" value="1">1</option>
@@ -86,7 +86,7 @@
 												 <div class="form-group">
 													<label>Forward Application To:</label>
 
-													<select  name ="forward_application_to" class="form-control-select">
+													<select  name ="forward_application_to" class="form-control-select chosen-select">
 													<option style="" value="0"> - </option>
 													<option style="" value="1">1</option>
 													<option style="" value="2">2</option>
@@ -98,7 +98,7 @@
 												 <div class="form-group">
 													<label>Warning By:</label>
 
-													<select  name ="warning_by" class="form-control-select">
+													<select  name ="warning_by" class="form-control-select chosen-select">
 													<option style="" value="0">-</option>
 													<option style="" value="1">-</option>
 													<option style="" value="2">-</option>
@@ -117,7 +117,7 @@
 												 <div class="form-group">
 													<label>Type of Warning:</label>
 
-													<select  name ="type_of_warning" class="form-control-select">
+													<select  name ="type_of_warning" class="form-control-select chosen-select">
 													<option style="" value="0">-</option>
 													<option style="" value="1">-</option>
 													<option style="" value="2">-</option>

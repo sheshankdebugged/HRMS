@@ -69,7 +69,7 @@
 
                                                 <div class="form-group">
                                                     <label>Job Field:</label>
-                                                    <select class="form-control-spacial" id="job_field_id" name="job_field_id">
+                                                    <select class="form-control-spacial chosen-select" id="job_field_id" name="job_field_id">
                                                         <option value="">-</option>
 													@foreach($master['JobField'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->job_field_id) && $result->job_field_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['job_field_title']}}</option>
@@ -79,7 +79,7 @@
 
                                                 <div class="form-group">
                                                     <label>Job Type:</label>
-                                                    <select class="form-control-spacial" id="job_type_id" name="job_type_id">
+                                                    <select class="form-control-spacial chosen-select" id="job_type_id" name="job_type_id">
                                                         @foreach($master['JobType'] as $val)
                                                         <option  value="{{$val['id']}}" @php if(isset($result->job_type_id) && $result->job_type_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['job_title']}}</option>
                                                         @endforeach
@@ -103,7 +103,7 @@
 
                                                 <div class="form-group">
                                                     <label>Publish in Jobs Portal:</label>
-                                                    <select class="form-control-spacial" id="publish_in_jobs_portal" value="{{isset($result->publish_in_jobs_portal)?$result->publish_in_jobs_portal:''}}" name="publish_in_jobs_portal">
+                                                    <select class="form-control-spacial chosen-select" id="publish_in_jobs_portal" value="{{isset($result->publish_in_jobs_portal)?$result->publish_in_jobs_portal:''}}" name="publish_in_jobs_portal">
                                                         <option value="0" <?php if (isset($result->publish_in_jobs_portal)) {echo ($result->publish_in_jobs_portal == 0) ? "selected" : "";}?>>No</option>
                                                         <option value="1" <?php if (isset($result->publish_in_jobs_portal)) {echo (!isset($result->publish_in_jobs_portal) || $result->publish_in_jobs_portal == 1) ? "selected" : "";}?>>Yes</option>
                                                     </select>
@@ -159,7 +159,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Country:</label>
-                                                    <select class="form-control-spacial" id="country_id" name="country_id">
+                                                    <select class="form-control-spacial chosen-select" id="country_id" name="country_id">
                                                         @foreach($master['Countries'] as $val)
                                                         <option  value="{{$val['id']}}" @php if(isset($result->country_id) && $result->country_id == $val['country_id']  ) { echo "selected";  } @endphp >{{$val['title']}}</option>
                                                         @endforeach
@@ -173,7 +173,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Candidate Age Range (Start):</label>
-                                                    <select class="form-control-spacial" id="country_id" name="country_id">
+                                                    <select class="form-control-spacial chosen-select" id="country_id" name="country_id">
                                                         @foreach($master['CandidateAgeRange'] as $val)
                                                         <option  value="{{$val['id']}}" @php if(isset($result->candidate_age_range_start_id) && $result->candidate_age_range_start_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['age_range_start']}}</option>
                                                         @endforeach
@@ -181,7 +181,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Candidate Age Range (End):</label>
-                                                    <select class="form-control-spacial" id="country_id" name="country_id">
+                                                    <select class="form-control-spacial chosen-select" id="country_id" name="country_id">
                                                         @foreach($master['CandidateAgeRange'] as $val)
                                                         <option  value="{{$val['id']}}" @php if(isset($result->candidate_age_range_end_id) && $result->candidate_age_range_end_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['age_range_end']}}</option>
                                                         @endforeach
@@ -247,7 +247,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Approval Levels:</label>
-                                                    <select class="form-control-spacial" id="approval_levels" name="approval_levels">
+                                                    <select class="form-control-spacial chosen-select" id="approval_levels" name="approval_levels">
                                                             @foreach($master['Countries'] as $val)
                                                             <option value="{{$val['id']}}" <?php if (isset($result->country)) {echo ($country['country_id'] == $result->country) ? "selected" : "";}?> >{{$val['title']}}</option>
                                                             @endforeach

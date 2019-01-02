@@ -65,7 +65,7 @@
 											<div class="form-group">
 													<label>Employee:</label>
 
-												<select  name ="employee" id="employee" class="form-control-select" >
+												<select  name ="employee" id="employee" class="form-control-select chosen-select" >
 
 													<option style="" value="0"> - </option>
 													<option style="" value="1">Corporation</option>
@@ -100,7 +100,7 @@
 												 <div class="form-group">
 													<label>Type of Exit:</label>
 
-													<select  name ="type_of_exit" class="form-control-select">
+													<select  name ="type_of_exit" class="form-control-select chosen-select">
 													<option style="" value="0"> - </option>
 													<option style="" value="1">1</option>
 													<option style="" value="2">2</option>
@@ -120,7 +120,7 @@
 												 <div class="form-group">
 													<label>Conducted Exit Interview:</label>
 
-													<select  name ="conducted_exit_interview" id="conducted_exit_interview" form-control-select">
+													<select  name ="conducted_exit_interview" id="conducted_exit_interview" class="form-control-select chosen-select">
 
 													<option value="0"> - </option>
 													<option value="1"> 1 </option>

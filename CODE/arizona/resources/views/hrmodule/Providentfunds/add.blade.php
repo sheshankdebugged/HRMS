@@ -63,7 +63,7 @@
 												
 												 <div class="form-group">
 													<label>Employee Name:</label>
-													<select id="employee_id" name="employee_id" class="WebHRForm1" style="width:180px;">
+													<select id="employee_id" name="employee_id" class="WebHRForm1 chosen-select" style="width:180px;">
 													<!-- <option value="ALL"> All </option> -->
 													@foreach($master['Employees'] as $val)
 													<option  value="{{$val['id']}}">{{$val['employee_name']}}</option>
@@ -74,7 +74,7 @@
 												 </div>
 												 <div class="form-group">
 													<label>Provident Fund Type:</label>
-													<select id="provident_fund_type" name="provident_fund_type" class="WebHRForm1" style="width:180px;">
+													<select id="provident_fund_type" name="provident_fund_type" class="WebHRForm1 chosen-select" style="width:180px;">
 													<!-- <option value="ALL"> All </option> -->
 													@foreach($master['Provident_Fund_Type'] as $val)
 													<option  value="{{$val['provident_fund_type']}}">{{$val['provident_fund_type']}}</option>

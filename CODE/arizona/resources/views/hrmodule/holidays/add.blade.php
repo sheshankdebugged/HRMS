@@ -63,34 +63,34 @@
 												
 												 <div class="form-group">
 													<label>Company:</label>
-													<select id="company" name="company" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Company Name-</option></select>
+													<select id="company" name="company" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Company Name-</option></select>
 
 												 </div>
 												 
 												 <div class="form-group">
 													<label>Station:</label>
-													<select id="station" name="station" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Station</option></select>
+													<select id="station" name="station" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Station</option></select>
 
 												 </div>
 
 												  
 												 <div class="form-group">
 													<label>Department:</label>
-													<select id="department" name="department" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Department</option></select>
+													<select id="department" name="department" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Department</option></select>
 
 												 </div>
 
 												  
 												 <div class="form-group">
 													<label>Employee Type:</label>
-													<select id="employee_type" name="employee_type" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Employee Type</option></select>
+													<select id="employee_type" name="employee_type" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Employee Type</option></select>
 
 												 </div>
 
 												  
 												 <div class="form-group">
 													<label>Employee Category:</label>
-													<select id="employee_category" name="employee_category" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Employee Category</option></select>
+													<select id="employee_category" name="employee_category" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Employee Category</option></select>
 
 												 </div>
 												 
@@ -112,7 +112,7 @@
 												 </div>
 												 <div class="form-group">
 													<label>Status:</label>
-													<select id="holiday_status" name="holiday_status" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">holiday_status</option></select>
+													<select id="holiday_status" name="holiday_status" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">holiday_status</option></select>
 
 												 </div>
 

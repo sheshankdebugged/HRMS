@@ -53,41 +53,35 @@
                                                     @endforeach
                                                 </ul>
                                             </div>
-                                        @endif 
-                                        
+                                        @endif
+
                                         <form method="post" action="{{ url('employeedesignations/save') }}">
                                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                           <input type="hidden" name="id" value="{{isset($result->id)?$result->id:''}}">
 
 											<div class="form-field-inner">
-											
+
 												<div class="form-group">
 													<label>Employee Designation Name:</label>
 													<input type="text" placeholder="" class="form-control-spacial" id="name" name="name" value="{{isset($result->name)?$result->name:''}}">
 												</div>
-													
+
 												 <div class="form-group">
 													<label>Parent Designation:</label>
-													<select id="parent_designation_id" name="parent_designation_id" class="WebHRForm1" style="width:180px;">
+													<select id="parent_designation_id" name="parent_designation_id" class="WebHRForm1 chosen-select" style="width:180px;">
 													<!-- <option value="ALL"> All </option> -->
-													@foreach($master['Employees'] as $val)
-													<option  value="{{$val['id']}}">{{$val['employee_name']}}</option>
+													@foreach($master['ParentDesignations'] as $val)
+													<option  value="{{$val['id']}}" @php if(isset($result->parent_designation_id) && $result->parent_designation_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['name']}}</option>
 													@endforeach
 													</select>
-
 												 </div>
-
-												
-
 												 <div class="form-group">
 													<h4>Job Description</h4>
 												 </div>
-
                                                  <div class="form-group">
 												 <label>Notes:</label>
 													<textarea class="tinyeditorclass" name="job_description" id="job_description">{{isset($result->job_description)?$result->job_description:''}}</textarea>
-												</div> 
-												
+												</div>
 												 <div class="form-group">
 													<input class="submit-office" type="submit" value="Add Job Description">
 												</div>

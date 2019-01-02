@@ -63,7 +63,7 @@
 												 <div class="form-group">
 													<label>Leaves Types:</label>
 													<a href="{{ url('manageleavestypes') }}" style="font-size:18px;color:yellow"><i class="fa fa-cog"></i>&nbsp;&nbsp;Manage Leaves Types</a>
-													<!-- <select id="employee_name" name="employee_name" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">employee_name</option></select> -->
+													<!-- <select id="employee_name" name="employee_name" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">employee_name</option></select> -->
 													<!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 
 												 </div>
@@ -72,7 +72,7 @@
 									            </div>
 												 <div class="form-group">
 													<label>Request Approval Method:</label>
-													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1" style="width:180px;">
+													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1 chosen-select" style="width:180px;">
 													<option style="" value="Head Office">Standrad One Employee Approval</option>
 													<option style="" value="Head Office">Multi-Level Approval</option>
 													</select>
@@ -81,7 +81,7 @@
 												 </div>
 												 <div class="form-group">
 													<label>Forward Leaves To:</label>
-													<select id="forward_application_to" name="forward_application_to" class="WebHRForm1" style="width:180px;">
+													<select id="forward_application_to" name="forward_application_to" class="WebHRForm1 chosen-select" style="width:180px;">
 													<option style="" value="Head Office">Forward Application To</option>
 													<option style="" value="Head Office">Forward Application To</option>
 													<option style="" value="Head Office">Forward Application To</option>
@@ -94,7 +94,7 @@
 									            </div>
 												<div class="form-group">
 													<label>Leaves Quota Reset Date:</label>
-													<select id="forward_application_to" name="forward_application_to" class="WebHRForm1" style="width:180px;">
+													<select id="forward_application_to" name="forward_application_to" class="WebHRForm1 chosen-select" style="width:180px;">
 													<option style="" value="Head Office">January 1st (Default) </option>
 													<option style="" value="Head Office">Specific Date </option>
 													<option style="" value="Head Office">Employe Joining Date </option>
@@ -104,37 +104,37 @@
 												 </div>
 												 <div class="form-group">
 													<label>Allow Editing of Taken/Pending in Leaves Quota:</label>
-													<select id="forward_application_to" name="forward_application_to" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Forward Application To</option></select>
+													<select id="forward_application_to" name="forward_application_to" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Forward Application To</option></select>
 													<!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 
 												 </div>
 												 <div class="form-group">
 													<label>Carry Forward Leaves on Leaves Quota Reset Date:</label>
-													<select id="forward_application_to" name="forward_application_to" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Forward Application To</option></select>
+													<select id="forward_application_to" name="forward_application_to" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Forward Application To</option></select>
 													<!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 
 												 </div>
 												 <div class="form-group">
 													<label>Pro-Rata Based Leaves Quota Assignment:</label>
-													<select id="forward_application_to" name="forward_application_to" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Forward Application To</option></select>
+													<select id="forward_application_to" name="forward_application_to" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Forward Application To</option></select>
 													<!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 
 												 </div>
 												 <div class="form-group">
 													<label>Allow Future Leaves (pro-Rata Based Leaves Only):</label>
-													<select id="forward_application_to" name="forward_application_to" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Forward Application To</option></select>
+													<select id="forward_application_to" name="forward_application_to" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Forward Application To</option></select>
 													<!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 
 												 </div>
 												 <div class="form-group">
 													<label>Leaves Quota Decimal Places:</label>
-													<select id="forward_application_to" name="forward_application_to" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Forward Application To</option></select>
+													<select id="forward_application_to" name="forward_application_to" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Forward Application To</option></select>
 													<!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 
 												 </div>
 												 <div class="form-group">
 													<label>Disable Leave Quota Deletion:</label>
-													<select id="forward_application_to" name="forward_application_to" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Forward Application To</option></select>
+													<select id="forward_application_to" name="forward_application_to" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Forward Application To</option></select>
 													<!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 
 												 </div>
@@ -316,12 +316,12 @@
 									            </div>
 												<div class="form-group">
 													<label>Data Grid Columns</label>
-													<select id="st" class="WebHRForm1" style="width:180px;" name="employee">
+													<select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="employee">
 													@foreach($master['Employees'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->employee_name) && $result->id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
 													@endforeach
 													</select>
-													<!-- <select id="employee" name="employee" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">1</option></select> -->
+													<!-- <select id="employee" name="employee" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">1</option></select> -->
 													<!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 													<!-- <input type="text" placeholder="Contact Person" class="form-control-spacial" id="registration_name" name="contact_person" value="{{isset($result->contact_person)?$result->contact_person:''}}"> -->
 
@@ -332,24 +332,24 @@
 									            </div>
 												<div class="form-group">
 													<label>Data Grid Columns</label>
-													<select id="st" class="WebHRForm1" style="width:180px;" name="employee">
+													<select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="employee">
 													@foreach($master['Employees'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->employee_name) && $result->id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
 													@endforeach
 													</select>
-													<!-- <select id="employee" name="employee" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">1</option></select> -->
+													<!-- <select id="employee" name="employee" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">1</option></select> -->
 													<!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 													<!-- <input type="text" placeholder="Contact Person" class="form-control-spacial" id="registration_name" name="contact_person" value="{{isset($result->contact_person)?$result->contact_person:''}}"> -->
 
 												 </div>
 												 <div class="form-group">
 													<label>Data Grid Columns</label>
-													<select id="st" class="WebHRForm1" style="width:180px;" name="employee">
+													<select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="employee">
 													@foreach($master['Employees'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->employee_name) && $result->id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
 													@endforeach
 													</select>
-													<!-- <select id="employee" name="employee" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">1</option></select> -->
+													<!-- <select id="employee" name="employee" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">1</option></select> -->
 													<!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 													<!-- <input type="text" placeholder="Contact Person" class="form-control-spacial" id="registration_name" name="contact_person" value="{{isset($result->contact_person)?$result->contact_person:''}}"> -->
 
@@ -363,7 +363,7 @@
 												 <div class="form-group">
 													<label>Delete</label>
 													<a href="{{url('delmultipleleaves')}}" style="font-size:18px;color:yellow"><i class="fa fa-times"></i>&nbsp;&nbsp;Delete Multiple Leaves</a>
-													 <select id="employee_name" name="employee_name" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">employee_name</option></select>
+													 <select id="employee_name" name="employee_name" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">employee_name</option></select>
 													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 
 												 </div>  -->

@@ -59,7 +59,7 @@
                                  <div class="form-field-inner">
                                     <div class="form-group">
 													<label>Forward Application To:</label>
-													<select id="forward_application_to" class="WebHRForm1" style="width:180px;" name="forward_application_to">
+													<select id="forward_application_to" class="WebHRForm1 chosen-select" style="width:180px;" name="forward_application_to">
 														@foreach($master['Employees'] as $val)
 														<option  value="{{$val['id']}}" @php if(isset($result->forward_application_to) && $result->forward_application_to == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
 														@endforeach
@@ -72,7 +72,7 @@
 									</div>
 									<div class="form-group">
 									   <label>Job Request Type:</label>
-										<select id="job_request_type_id" class="WebHRForm1" style="width:180px;" name="job_request_type_id">
+										<select id="job_request_type_id" class="WebHRForm1 chosen-select" style="width:180px;" name="job_request_type_id">
 													@foreach($master['JobRequestType'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->job_request_type_id) && $result->job_request_type_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['job_request_type']}}</option>
 													@endforeach
@@ -88,7 +88,7 @@
 									</div>
 									<div class="form-group">
 									   <label>Department:</label>
-										<select id="department_id" class="WebHRForm1" style="width:180px;" name="department_id">
+										<select id="department_id" class="WebHRForm1 chosen-select" style="width:180px;" name="department_id">
 													@foreach($master['Departments'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->department_id) && $result->department_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['department_name']}}</option>
 													@endforeach
@@ -96,7 +96,7 @@
 									</div>
 									<div class="form-group">
 									   <label>Job Type:</label>
-										<select id="job_type_id" class="WebHRForm1" style="width:180px;" name="job_type_id">
+										<select id="job_type_id" class="WebHRForm1 chosen-select" style="width:180px;" name="job_type_id">
 													@foreach($master['JobTypes'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->job_type_id) && $result->job_type_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['job_title']}}</option>
 													@endforeach
@@ -109,7 +109,7 @@
 									</div>
 									<div class="form-group">
 									   <label>Candidate Age Range (Start):</label>
-										<select id="candidate_age_range_start_id" class="WebHRForm1" style="width:180px;" name="candidate_age_range_start_id">
+										<select id="candidate_age_range_start_id" class="WebHRForm1 chosen-select" style="width:180px;" name="candidate_age_range_start_id">
 													@foreach($master['CandidateAgeRange'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->candidate_age_range_start_id) && $result->candidate_age_range_start_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['age_range_start']}}</option>
 													@endforeach
@@ -117,7 +117,7 @@
 									</div>
 									<div class="form-group">
 									   <label>Candidate Age Range (End):</label>
-										<select id="candidate_age_range_end_id" class="WebHRForm1" style="width:180px;" name="candidate_age_range_end_id">
+										<select id="candidate_age_range_end_id" class="WebHRForm1 chosen-select" style="width:180px;" name="candidate_age_range_end_id">
 													@foreach($master['CandidateAgeRange'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->candidate_age_range_end_id) && $result->candidate_age_range_end_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['age_range_end']}}</option>
 													@endforeach

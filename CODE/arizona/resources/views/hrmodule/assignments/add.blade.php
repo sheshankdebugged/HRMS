@@ -64,7 +64,7 @@
 
 											<div class="form-group">
 													<label>Assigned To:</label>
-                                                    <select  name ="assigned_to" id="assigned_to" class="form-control-select" >													
+                                                    <select  name ="assigned_to" id="assigned_to" class="form-control-select chosen-select" >													
 													  <option style="" value="0"> 0 </option>
 													  <option style="" value="1">1</option>
 													  <option style="" value="2">2</option>
@@ -82,7 +82,7 @@
 												 <div class="form-group">
 													<label>Project:</label>
 
-													<select  name ="project" class="form-control-select">
+													<select  name ="project" class="form-control-select chosen-select">
 													<option style="" value="0"> - </option>
 													<option style="" value="1">WebHR Job Portal</option>
 													<option style="" value="2">WebHumanResourse</option>
@@ -113,7 +113,7 @@
 												 <div class="form-group">
 													<label>Priority:</label>
 
-													<select  name ="priority" id="priority" form-control-select">
+													<select  name ="priority" id="priority" class="form-control-select chosen-select">
 
 													<option value="0"> 0 </option>
 													<option value="1"> 1 </option>

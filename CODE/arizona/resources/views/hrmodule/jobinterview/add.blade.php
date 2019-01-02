@@ -52,7 +52,7 @@
                                  <div class="form-field-inner">
                                     <div class="form-group">
                                        <label>Job Post:</label>
-                                       <select id="job_post_id" class="WebHRForm1" style="width:180px;" name="job_post_id">
+                                       <select id="job_post_id" class="WebHRForm1 chosen-select" style="width:180px;" name="job_post_id">
                                        @foreach($master['JobPosts'] as $val)
                                        <option  value="{{$val['id']}}" @php if(isset($result->job_post_id) && $result->job_post_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['job_title']}}</option>
                                        @endforeach
@@ -68,7 +68,7 @@
                                     </div>
                                     <div class="form-group">
                                        <label>Interviewers (Employees):</label>
-                                       <select id="interviewers_employees_id" class="WebHRForm1" style="width:180px;" name="interviewers_employees_id">
+                                       <select id="interviewers_employees_id" class="WebHRForm1 chosen-select" style="width:180px;" name="interviewers_employees_id">
                                        @foreach($master['Employees'] as $val)
                                        <option  value="{{$val['id']}}" @php if(isset($result->interviewers_employees_id) && $result->interviewers_employees_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
                                        @endforeach
@@ -76,7 +76,7 @@
                                     </div>
                                     <div class="form-group">
                                        <label>Interviewees (Candidates):</label>
-                                       <select id="Interviewees_Candidates_id" class="WebHRForm1" style="width:180px;" name="Interviewees_Candidates_id">
+                                       <select id="Interviewees_Candidates_id" class="WebHRForm1 chosen-select" style="width:180px;" name="Interviewees_Candidates_id">
                                        @foreach($master['JobCandidates'] as $val)
                                        <option  value="{{$val['id']}}" @php if(isset($result->Interviewees_Candidates_id) && $result->Interviewees_Candidates_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['first_name']}}</option>
                                        @endforeach

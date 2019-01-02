@@ -66,8 +66,8 @@
 										<tbody>
                                         @foreach($listData as $list)
 											<tr id="second" class="context-requst-one selected">
-											<td class="datainner" style="">{{$list->employee_name}}</td>
-											<td class="datainner" style="">{{$list->employeedesignations_title}}</td>
+											<td class="datainner" style="">{{$list->name}}</td>
+											<td class="datainner" style="">{{$list->parent_designation_id}}</td>
 											
 											                      
 											<td align="right">

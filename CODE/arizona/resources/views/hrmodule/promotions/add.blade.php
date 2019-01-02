@@ -63,14 +63,14 @@
 												
 												 <div class="form-group">
 													<label>Promotion For:</label>
-													<select id="promotion_for_employee_id" name="promotion_for_employee_id" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Employee Name-</option></select>
+													<select id="promotion_for_employee_id" name="promotion_for_employee_id" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Employee Name-</option></select>
 													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 
 												 </div>
 												 
 												 <div class="form-group">
 													<label>Forward Application To:</label>
-													<select id="forward_application_to" name="forward_application_to" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Forward Application To</option></select>
+													<select id="forward_application_to" name="forward_application_to" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Forward Application To</option></select>
 
 												 </div>
 												 
@@ -83,25 +83,25 @@
 
 												 <div class="form-group">
 													<label>Promotion Designation From:</label>
-													<select id="promotion_designation_from" name="promotion_designation_from" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Promotion Designation From</option></select>
+													<select id="promotion_designation_from" name="promotion_designation_from" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Promotion Designation From</option></select>
 
 												 </div>
 
 												 <div class="form-group">
 													<label>Promotion Designation To:</label>
-													<select id="promotion_designation_to" name="promotion_designation_to" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Promotion Designation To</option></select>
+													<select id="promotion_designation_to" name="promotion_designation_to" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Promotion Designation To</option></select>
 
 												 </div>
 
 												 <div class="form-group">
 													<label>Promotion Grade From:</label>
-													<select id="promotion_grade_from" name="promotion_grade_from" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Promotion Grade From</option></select>
+													<select id="promotion_grade_from" name="promotion_grade_from" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Promotion Grade From</option></select>
 
 												 </div>
 
 												 <div class="form-group">
 													<label>Promotion Grade To:</label>
-													<select id="promotion_grade_to" name="promotion_grade_to" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Promotion Grade To</option></select>
+													<select id="promotion_grade_to" name="promotion_grade_to" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Promotion Grade To</option></select>
 
 												 </div>
 

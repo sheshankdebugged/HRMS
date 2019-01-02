@@ -64,7 +64,7 @@
 
 											<div class="form-group">
 													<label>Employee Name:</label>
-													<select  name ="employee_id" id="employee_id" class="form-control-select" >
+													<select  name ="employee_id" id="employee_id" class="form-control-select chosen-select" >
 													@foreach($master['Employees'] as $val)
 													<option  value="{{$val['id']}}">{{$val['employee_name']}}</option>
 													@endforeach													
@@ -75,7 +75,7 @@
 
 												 <div class="form-group">
 												 <label>Forward Application To:</label>
-												 <select  name ="forward_employee_id" id="forward_employee_id" class="form-control-select" >
+												 <select  name ="forward_employee_id" id="forward_employee_id" class="form-control-select chosen-select" >
 													@foreach($master['Employees'] as $val)
 													<option  value="{{$val['id']}}">{{$val['employee_name']}}</option>
 													@endforeach													
@@ -87,7 +87,7 @@
 												   <!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 												   <div class="form-group">
 													<label>Adjustment Type:</label>
-													<select id ="adjustment_type"  name ="adjustment_type" class="form-control-select">
+													<select id ="adjustment_type"  name ="adjustment_type" class="form-control-select chosen-select">
 													<option style="" value="0">Increment</option>
 													<option style="" value="1">Decrement</option>
 													</select>
