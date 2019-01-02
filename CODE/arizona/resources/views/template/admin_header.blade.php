@@ -32,19 +32,19 @@ Password: @7tN$i2cF5~5
         <div class="container">
             <div class="row">
 
-                <div class="col">
+                <div class="col-md-4 col-xs-12">
                     <div class="logo">
                        <a href="{{url('dashboard')}}"> <img src="{{ url('admin/images/Arizona-original-Logo.png') }}" style="width: 85px"> </a>
                     </div>
                 </div>
 
-                <div class="col d-none d-sm-block" align="center">
+                <div class="col-md-4 d-none d-sm-block" align="center">
                     <!--img src="images/demo_OdCFED.png" border="0" class="img-fluid" style="height:64px;"-->
 				  <h1 style="font-size:18px;margin-top: 40px;">Arizona National Software</h1>
 
                 </div>
 
-                <div class="col rtl2">
+                <div class="col-md-4 rtl2 col-xs-12">
                     <div class="header-top-right navbar">
 
                         <div class="comment">
@@ -83,7 +83,7 @@ Password: @7tN$i2cF5~5
     </div>
 
     <nav class="navbar navbar-expand-lg navbar-expand-sm sticky header-section">
-        <div class="container navbar-collapse d-none d-sm-block header-main">
+        <div class="container navbar-collapse d-sm-block header-main">
             <ul class="rtl navbar-nav mr-auto header-menu">
                 <li>
                     <a href="{{url('dashboard')}}" class="nav-link">

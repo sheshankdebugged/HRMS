@@ -42,12 +42,12 @@
     		<div class="upper-profile-db">
     			<div class="col-md-12">
             <div class="row">
-        				<div class="col-md-2 nopadding">
+        				<div class="col-md-2 col-xs-12 nopadding">
         					<div class="user-profile-dp">
         						<img src="{{ url('admin/images/user.jpg') }}">
         					</div>
         				</div>
-        				<div class="col-md-7 nopadding">
+        				<div class="col-md-7 col-xs-12 nopadding">
         					<div class="inner-profilr-data">
         						<h2>System Administrator</h2>
         						<div class="user-role">
