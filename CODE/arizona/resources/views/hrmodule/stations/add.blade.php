@@ -1,4 +1,10 @@
 @include('template.admin_header')
+
+@php 
+
+
+
+@endphp
 <div class="main-section">
 	<div class="container">
         <div class="row">
@@ -161,9 +167,9 @@
 												 <div class="form-group">
 												   <label>Country:</label>
 												   <!-- <input type="text" id="country" name="country" value="{{isset($result->country)?$result->country:''}}"  placeholder="Country" class="form-control-spacial" > -->
-												   <select id ="country_id" name ="country_id" class="WebHRForm1" style="width:180px;">
+												   <select id ="country_id" name ="country_id" class="WebHRForm1 chosen-select" style="width:180px;">
 													@foreach($master['Countries'] as $val)
-													<option  value="{{$val['country_id']}}" @php if(isset($result->country_id) && $result->country_id == $val['country_id']  ) { echo "selected";  } @endphp >{{$val['title']}}</option>
+													<option  value="{{$val['id']}}" @php if(isset($result->id) && $result->id == $val['id']  ) { echo "selected";  } @endphp >{{$val['title']}}</option>
 													@endforeach
 													</select>
                 

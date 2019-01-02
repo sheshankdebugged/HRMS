@@ -112,7 +112,7 @@ class EmployeesController extends Controller
                 $file->move('./img/uploads/employees/', $input['employee_profile']);
             }
             $input['status'] = 1;
-            $input['employee_name'] = $input['first_name']+' '+$input['last_name'];
+            $input['employee_name'] = $input['first_name'].' '.$input['last_name'];
             $input['user_id'] = $user_id;
             unset($input['_token']);
             if ($input['id'] > 0) {

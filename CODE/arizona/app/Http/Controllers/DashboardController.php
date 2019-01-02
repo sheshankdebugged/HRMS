@@ -54,13 +54,63 @@ class DashboardController extends Controller
 
         $obj = new Employees();
         $result = array();
-        $result['EmployeeGender'] = $obj->getCountGender($where);
-        $result['EmployeeType']   = $obj->getCountEmployeetype($where);
-        $result['EmployessByCategory']   = $obj->getCountEmployeeCategory($where);
-        return $result;
+        $user_id = Auth::id();
+        $where   = "where employees.user_id = $user_id and employees.status =1 ";
+        $where  .=  $this->filterRequest();
+        $result['EmployeeGender']        = $obj->getCountGender($where);
+        $result['EmployeeRecord']        = json_decode(json_encode($obj->getEmployeeRecord($where)), true); 
+        $result['EmployeeType']          = json_decode(json_encode($obj->getCountEmployeetype($where)), true);
+        $result['EmployessByCategory']   = json_decode(json_encode($obj->getCountEmployeeCategory($where)), true);
+        $result['EmployessDesgination']  = json_decode(json_encode($obj->getCountEmployeeDesgination($where)), true);  
+        $result['EmployessDepartments']  = json_decode(json_encode($obj->getCountEmployeeDepartments($where)), true);  
+        $result['EmployessStations']     = json_decode(json_encode($obj->getCountEmployeeStations($where)), true);  
+ 
 
         
+        return  $result;
+        
     }
+
+    
+
+     function filterRequest(){
+        
+       
+        if(isset($_GET)){
+
+            $companies ="";
+
+            if(!empty($_GET['companies'])){
+
+                $implodeCompanies =implode(',',$_GET['companies']);
+                $companies ="AND employees.company_id in ($implodeCompanies)";
+            }
+
+            $status ="";
+           
+            if(!empty($_GET['status'])){
+                
+                $status ="AND employees.status =".$_GET['status'];
+            }
+             
+            $stations ="";
+            if(!empty($_GET['stations'])){
+                
+                $implodestations =implode(',',$_GET['stations']);  
+                $stations ="AND employees.station_id =".$implodestations;
+            }
+            
+            $departments ="";
+            if(!empty($_GET['departments'])){
+
+                $implodedepartments =implode(',',$_GET['departments']);
+                $departments ="AND employees.station_id =".$implodedepartments;
+            }
+
+            return $companies."  ".$status."  ".$departments."  ".$stations;
+        }
+
+     }
 
     
     /*

@@ -38,10 +38,10 @@
 							<div class="request-inner-table">
 								<div class="upper-header-request">
 									<div class="col-md-12 nopadding">
-										<div class="col-md-4 nopadding">
+										<div class="col-md-4 col-xs-12 nopadding">
 											<h3>{{ $pageTitle }}</h3>
 										</div>
-                             	<div class="col-md-8 nopadding">
+                             	<div class="col-md-8 col-xs-12 nopadding">
 								 <form id="search" name="search" method="get" />
 											<div class="search-area-request">
 												<input type="text" placeholder="Search..."  name="search" class="search" id="search" value="{{isset($_GET['search'])?$_GET['search']:''}} "/>

@@ -65,14 +65,14 @@
 												   <input type="text" class="form-control-spacial" placeholder="" id="regular_hours" name="regular_hours" value="{{isset($result->regular_hours)?$result->regular_hours:''}}" >
 												   <a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="What would you like to call this Leave Type. For example: Annual Leaves, Paid Time Off (PTO), Sick Leaves, Maternity Leaves, Paternity Leaves, etc." data-original-title="" title=""><i style="font-size:14px; color:yellow;" class="fa fa-info-circle"></i></a>
 
-												   <!-- <select id="regular_hours" name="regular_hours" class="WebHRForm1" style="width:180px;"><option style="" value="{{isset($result->regular_hours)?$result->regular_hours:''}}">10</option></select> -->
+												   <!-- <select id="regular_hours" name="regular_hours" class="WebHRForm1"><option style="" value="{{isset($result->regular_hours)?$result->regular_hours:''}}">10</option></select> -->
 												   <!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 													<!-- <input type="text" placeholder="Contact Number" class="form-control-spacial" id="contact_number" name="contact_number" value="{{isset($result->contact_number)?$result->contact_number:''}}"> -->
 
 												 </div>
 												 <div class="form-group">
 													<label>Leave Type:</label>
-													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1" style="width:180px;">
+													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1">
 													<option style="" value="Head Office">Unpaid Leave</option>
 													<option style="" value="Head Office">Paid Leave</option>
 													<option style="" value="Head Office">Half Day Paid Leave</option>
@@ -84,17 +84,17 @@
 												 </div>
 												 <div class="form-group">
 												   <label>Leaves Allowed Per Year:</label>
-												   <input type="text" class="form-control-spacial" style="width: 50px" placeholder="" id="regular_hours" name="regular_hours" value="{{isset($result->regular_hours)?$result->regular_hours:''}}" >
+												   <input type="text" class="form-control-spacial" placeholder="" id="regular_hours" name="regular_hours" value="{{isset($result->regular_hours)?$result->regular_hours:''}}" >
 												   <a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="What would you like to set as the default Leaves Quota for each employee for this Leave Type. Please note that Leaves Quota for each Employee can be updated separately by going to Leaves Quota screen." data-original-title="" title=""><i style="font-size:14px; color:yellow;" class="fa fa-info-circle"></i></a>
 
-												   <!-- <select id="regular_hours" name="regular_hours" class="WebHRForm1" style="width:180px;"><option style="" value="{{isset($result->regular_hours)?$result->regular_hours:''}}">10</option></select> -->
+												   <!-- <select id="regular_hours" name="regular_hours" class="WebHRForm1"><option style="" value="{{isset($result->regular_hours)?$result->regular_hours:''}}">10</option></select> -->
 												   <!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 													<!-- <input type="text" placeholder="Contact Number" class="form-control-spacial" id="contact_number" name="contact_number" value="{{isset($result->contact_number)?$result->contact_number:''}}"> -->
 
 												 </div>
 												 <div class="form-group">
 													<label>Leaves Duration Type:</label>
-													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1" style="width:180px;">
+													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1">
 													<option style="" value="Head Office">Days</option>
 													<option style="" value="Head Office">Hourly</option>
 													<!-- <option style="" value="Head Office">Half Day Paid Leave</option> -->
@@ -120,7 +120,7 @@
                                             </div>
 												 <div class="form-group">
 													<label>Leaves Quota Reset Date</label>
-													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1" style="width:180px;">
+													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1">
 													<option style="" value="Head Office">-</option>
 													<option style="" value="Head Office">January 01</option>
 													<option style="" value="Head Office">Specific Date</option>
@@ -141,7 +141,7 @@
 												
 												<div class="form-group">
 											     <label>Per Year Quota Assignment:</label>
-                                                 <label style="width:60px; !important" class="switch">
+                                                 <label class="switch">
 		                                           <input type="checkbox">
 		                                           <span class="slider round"></span>
 												   </label>
@@ -154,79 +154,79 @@
 													</thead>
 													<tbody><tr>
 														<td>Year 1</td>
-														<td><input type="text" id="pylqa_y1" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 1. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a><script>$('[data-toggle="popover"]').popover();</script></td>
+														<td><input type="text" id="pylqa_y1" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 1. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a></td>
 														</tr><tr>
 														<td>Year 2</td>
-														<td><input type="text" id="pylqa_y2" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 2. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a><script>$('[data-toggle="popover"]').popover();</script></td>
+														<td><input type="text" id="pylqa_y2" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 2. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a></td>
 														</tr><tr>
 														<td>Year 3</td>
-														<td><input type="text" id="pylqa_y3" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 3. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a><script>$('[data-toggle="popover"]').popover();</script></td>
+														<td><input type="text" id="pylqa_y3" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 3. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a></td>
 														</tr><tr>
 														<td>Year 4</td>
-														<td><input type="text" id="pylqa_y4" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 4. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a><script>$('[data-toggle="popover"]').popover();</script></td>
+														<td><input type="text" id="pylqa_y4" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 4. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a></td>
 														</tr><tr>
 														<td>Year 5</td>
-														<td><input type="text" id="pylqa_y5" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 5. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a><script>$('[data-toggle="popover"]').popover();</script></td>
+														<td><input type="text" id="pylqa_y5" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 5. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a></td>
 														</tr><tr>
 														<td>Year 6</td>
-														<td><input type="text" id="pylqa_y6" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 6. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a><script>$('[data-toggle="popover"]').popover();</script></td>
+														<td><input type="text" id="pylqa_y6" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 6. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a></td>
 														</tr><tr>
 														<td>Year 7</td>
-														<td><input type="text" id="pylqa_y7" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 7. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a><script>$('[data-toggle="popover"]').popover();</script></td>
+														<td><input type="text" id="pylqa_y7" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 7. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a></td>
 														</tr><tr>
 														<td>Year 8</td>
-														<td><input type="text" id="pylqa_y8" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 8. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a><script>$('[data-toggle="popover"]').popover();</script></td>
+														<td><input type="text" id="pylqa_y8" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 8. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a></td>
 														</tr><tr>
 														<td>Year 9</td>
-														<td><input type="text" id="pylqa_y9" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 9. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a><script>$('[data-toggle="popover"]').popover();</script></td>
+														<td><input type="text" id="pylqa_y9" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 9. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a></td>
 														</tr><tr>
 														<td>Year 10</td>
-														<td><input type="text" id="pylqa_y10" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 10. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a><script>$('[data-toggle="popover"]').popover();</script></td>
+														<td><input type="text" id="pylqa_y10" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 10. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a></td>
 														</tr><tr>
 														<td>Year 11</td>
-														<td><input type="text" id="pylqa_y11" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 11. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a><script>$('[data-toggle="popover"]').popover();</script></td>
+														<td><input type="text" id="pylqa_y11" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 11. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a></td>
 														</tr><tr>
 														<td>Year 12</td>
-														<td><input type="text" id="pylqa_y12" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 12. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a><script>$('[data-toggle="popover"]').popover();</script></td>
+														<td><input type="text" id="pylqa_y12" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 12. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a></td>
 														</tr><tr>
 														<td>Year 13</td>
-														<td><input type="text" id="pylqa_y13" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 13. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a><script>$('[data-toggle="popover"]').popover();</script></td>
+														<td><input type="text" id="pylqa_y13" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 13. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a></td>
 														</tr><tr>
 														<td>Year 14</td>
-														<td><input type="text" id="pylqa_y14" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 14. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a><script>$('[data-toggle="popover"]').popover();</script></td>
+														<td><input type="text" id="pylqa_y14" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 14. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a></td>
 														</tr><tr>
 														<td>Year 15</td>
-														<td><input type="text" id="pylqa_y15" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 15. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a><script>$('[data-toggle="popover"]').popover();</script></td>
+														<td><input type="text" id="pylqa_y15" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 15. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a></td>
 														</tr><tr>
 														<td>Year 16</td>
-														<td><input type="text" id="pylqa_y16" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 16. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a><script>$('[data-toggle="popover"]').popover();</script></td>
+														<td><input type="text" id="pylqa_y16" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 16. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a></td>
 														</tr><tr>
 														<td>Year 17</td>
-														<td><input type="text" id="pylqa_y17" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 17. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a><script>$('[data-toggle="popover"]').popover();</script></td>
+														<td><input type="text" id="pylqa_y17" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 17. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a></td>
 														</tr><tr>
 														<td>Year 18</td>
-														<td><input type="text" id="pylqa_y18" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 18. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a><script>$('[data-toggle="popover"]').popover();</script></td>
+														<td><input type="text" id="pylqa_y18" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 18. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a></td>
 														</tr><tr>
 														<td>Year 19</td>
-														<td><input type="text" id="pylqa_y19" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 19. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a><script>$('[data-toggle="popover"]').popover();</script></td>
+														<td><input type="text" id="pylqa_y19" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 19. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a></td>
 														</tr><tr>
 														<td>Year 20</td>
-														<td><input type="text" id="pylqa_y20" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 20. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a><script>$('[data-toggle="popover"]').popover();</script></td>
+														<td><input type="text" id="pylqa_y20" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 20. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a></td>
 														</tr><tr>
 														<td>Year 21</td>
-														<td><input type="text" id="pylqa_y21" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 21. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a><script>$('[data-toggle="popover"]').popover();</script></td>
+														<td><input type="text" id="pylqa_y21" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 21. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a></td>
 														</tr><tr>
 														<td>Year 22</td>
-														<td><input type="text" id="pylqa_y22" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 22. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a><script>$('[data-toggle="popover"]').popover();</script></td>
+														<td><input type="text" id="pylqa_y22" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 22. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a></td>
 														</tr><tr>
 														<td>Year 23</td>
-														<td><input type="text" id="pylqa_y23" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 23. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a><script>$('[data-toggle="popover"]').popover();</script></td>
+														<td><input type="text" id="pylqa_y23" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 23. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a></td>
 														</tr><tr>
 														<td>Year 24</td>
-														<td><input type="text" id="pylqa_y24" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 24. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a><script>$('[data-toggle="popover"]').popover();</script></td>
+														<td><input type="text" id="pylqa_y24" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 24. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a></td>
 														</tr><tr>
 														<td>Year 25</td>
-														<td><input type="text" id="pylqa_y25" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 25. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a><script>$('[data-toggle="popover"]').popover();</script></td>
+														<td><input type="text" id="pylqa_y25" class="WebHRForm1" value="" placeholder="" style="width:40px;">&nbsp;&nbsp;&nbsp;<a href="#noanchor" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum Leaves Quota Assignment for Year 25. To allow all leaves, please either leave this field blank or put the same value as Leaves Allowed Per Year" data-original-title="" title=""><i style="font-size:14px; color:#0c64ae;" class="fa fa-info-circle"></i></a></td>
 														</tr>
 														</tbody>
 														</table>
@@ -238,7 +238,7 @@
 
 												 <div class="form-group">
 													<label>Leaves Accrual:</label>
-													<select id="forward_application_to" name="forward_application_to" class="WebHRForm1" style="width:180px;">
+													<select id="forward_application_to" name="forward_application_to" class="WebHRForm1">
 													<option style="" value="Head Office">-</option>
 													<option style="" value="Head Office">Monthaly Leaves Accural(Every Month on Leaves Quota Start Date)</option>
 													<option style="" value="Head Office">Monthaly Leaves Accural(every Month on Employee Joining Date)</option>
@@ -269,32 +269,32 @@
 												 <div class="form-group">
 													<label>Leaves Carry Over Limit:</label>
 													<input type="text" class="form-control-spacial" placeholder="0" id="regular_hours" name="regular_hours" value="{{isset($result->regular_hours)?$result->regular_hours:''}}" >
-													<select id="forward_application_to" name="forward_application_to" class="WebHRForm1" style="width:180px;">
+													<select id="forward_application_to" name="forward_application_to" class="WebHRForm1">
 													<option style="" value="Head Office">Number</option>
 													<option style="" value="Head Office">Percentage</option>
 													</select>
 												 </div>
 												 <!--  <div class="form-group">
 													<label>Pro-Rata Based Leaves Quota Assignment:</label>
-													<select id="forward_application_to" name="forward_application_to" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Forward Application To</option></select>
+													<select id="forward_application_to" name="forward_application_to" class="WebHRForm1"><option style="" value="Head Office">Forward Application To</option></select>
 													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> 
 
 												 </div>
 												 <div class="form-group">
 													<label>Allow Future Leaves (pro-Rata Based Leaves Only):</label>
-													<select id="forward_application_to" name="forward_application_to" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Forward Application To</option></select>
+													<select id="forward_application_to" name="forward_application_to" class="WebHRForm1"><option style="" value="Head Office">Forward Application To</option></select>
 													 <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> 
 
 												 </div>
 												 <div class="form-group">
 													<label>Leaves Quota Decimal Places:</label>
-													<select id="forward_application_to" name="forward_application_to" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Forward Application To</option></select>
+													<select id="forward_application_to" name="forward_application_to" class="WebHRForm1"><option style="" value="Head Office">Forward Application To</option></select>
 													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 
 												 </div>
 												 <div class="form-group">
 													<label>Disable Leave Quota Deletion:</label>
-													<select id="forward_application_to" name="forward_application_to" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Forward Application To</option></select>
+													<select id="forward_application_to" name="forward_application_to" class="WebHRForm1"><option style="" value="Head Office">Forward Application To</option></select>
 													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> 
 
 												 </div> -->
@@ -316,7 +316,7 @@
 												   <input type="text" class="form-control-spacial" placeholder="0" id="regular_hours" name="regular_hours" value="{{isset($result->regular_hours)?$result->regular_hours:''}}" >
 												   <a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum number of Negative Leaves an employee can apply for this leave. If set as 0 an employee can apply unlimited of nagative leaves." data-original-title="" title=""><i style="font-size:14px; color:yellow;" class="fa fa-info-circle"></i></a>
 
-												   <!-- <select id="regular_hours" name="regular_hours" class="WebHRForm1" style="width:180px;"><option style="" value="{{isset($result->regular_hours)?$result->regular_hours:''}}">10</option></select> -->
+												   <!-- <select id="regular_hours" name="regular_hours" class="WebHRForm1"><option style="" value="{{isset($result->regular_hours)?$result->regular_hours:''}}">10</option></select> -->
 												   <!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 													<!-- <input type="text" placeholder="Contact Number" class="form-control-spacial" id="contact_number" name="contact_number" value="{{isset($result->contact_number)?$result->contact_number:''}}"> -->
 
@@ -332,7 +332,7 @@
 												   <input type="text" class="form-control-spacial" placeholder="0" id="regular_hours" name="regular_hours" value="{{isset($result->regular_hours)?$result->regular_hours:''}}" >
 												   <a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Number of days after which an employee can apply for this leave. If set as 0, then employees will be able to apply for this leave immediately. If set as 10, then employees will be able to apply for this leave 10 days after their joining date." data-original-title="" title=""><i style="font-size:14px; color:yellow;" class="fa fa-info-circle"></i></a>
 
-												   <!-- <select id="regular_hours" name="regular_hours" class="WebHRForm1" style="width:180px;"><option style="" value="{{isset($result->regular_hours)?$result->regular_hours:''}}">10</option></select> -->
+												   <!-- <select id="regular_hours" name="regular_hours" class="WebHRForm1"><option style="" value="{{isset($result->regular_hours)?$result->regular_hours:''}}">10</option></select> -->
 												   <!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 													<!-- <input type="text" placeholder="Contact Number" class="form-control-spacial" id="contact_number" name="contact_number" value="{{isset($result->contact_number)?$result->contact_number:''}}"> -->
 												 </div>
@@ -341,13 +341,13 @@
 												   <input type="text" class="form-control-spacial" placeholder="0" id="regular_hours" name="regular_hours" value="{{isset($result->regular_hours)?$result->regular_hours:''}}" >
 												   <a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum number of days can an employee request for this Leave Type in one leave request (at one instance). Default value is 0, that means, employees can take as many leaves depending upon their leaves quota." data-original-title="" title=""><i style="font-size:14px; color:yellow;" class="fa fa-info-circle"></i></a>
 
-												   <!-- <select id="regular_hours" name="regular_hours" class="WebHRForm1" style="width:180px;"><option style="" value="{{isset($result->regular_hours)?$result->regular_hours:''}}">10</option></select> -->
+												   <!-- <select id="regular_hours" name="regular_hours" class="WebHRForm1"><option style="" value="{{isset($result->regular_hours)?$result->regular_hours:''}}">10</option></select> -->
 												   <!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 													<!-- <input type="text" placeholder="Contact Number" class="form-control-spacial" id="contact_number" name="contact_number" value="{{isset($result->contact_number)?$result->contact_number:''}}"> -->
 												 </div>
 												 <div class="form-group">
 													<label>Gender Restriction:</label>
-													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1" style="width:180px;">
+													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1">
 													<option style="" value="Head Office">-</option>
 													<option style="" value="Head Office">Male Employees Can Only Apply</option>
 													<option style="" value="Head Office">Female Employees Can Only Apply</option>
@@ -356,7 +356,7 @@
 													<!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 
 												 </div>
-													<!-- <select id="employee" name="employee" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">1</option></select> -->
+													<!-- <select id="employee" name="employee" class="WebHRForm1"><option style="" value="Head Office">1</option></select> -->
 													<!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 													<!-- <input type="text" placeholder="Contact Person" class="form-control-spacial" id="registration_name" name="contact_person" value="{{isset($result->contact_person)?$result->contact_person:''}}"> -->
 
@@ -437,14 +437,14 @@
 												   <input type="text" class="form-control-spacial" style="width: 50px" placeholder="0" id="regular_hours" name="regular_hours" value="{{isset($result->regular_hours)?$result->regular_hours:''}}" >
 												   <a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Order in which this Leave Type should appear in Leaves Summary and Widgets. Default value is 0." data-original-title="" title=""><i style="font-size:14px; color:yellow;" class="fa fa-info-circle"></i></a>
 
-												   <!-- <select id="regular_hours" name="regular_hours" class="WebHRForm1" style="width:180px;"><option style="" value="{{isset($result->regular_hours)?$result->regular_hours:''}}">10</option></select> -->
+												   <!-- <select id="regular_hours" name="regular_hours" class="WebHRForm1"><option style="" value="{{isset($result->regular_hours)?$result->regular_hours:''}}">10</option></select> -->
 												   <!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 													<!-- <input type="text" placeholder="Contact Number" class="form-control-spacial" id="contact_number" name="contact_number" value="{{isset($result->contact_number)?$result->contact_number:''}}"> -->
 
 												 </div>
 												 <div class="form-group">
 													<label>Status:</label>
-													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1" style="width:180px;">
+													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1">
 													<option style="" value="Head Office">Active</option>
 													<option style="" value="Head Office">Inactive</option>
 													<!-- <option style="" value="Head Office">Employee's Joining Date</option> -->
@@ -457,7 +457,7 @@
 									            </div>
 												<div class="form-group">
 													<label>Company:</label>
-													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1" style="width:180px;">
+													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1">
 													<option style="" value="Head Office">-</option>
 													<option style="" value="Head Office">--</option>
 													<!-- <option style="" value="Head Office">Employee's Joining Date</option> -->
@@ -467,7 +467,7 @@
 												 </div>
 												 <div class="form-group">
 													<label>Division:</label>
-													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1" style="width:180px;">
+													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1">
 													<option style="" value="Head Office">-</option>
 													<option style="" value="Head Office">--</option>
 													<!-- <option style="" value="Head Office">Employee's Joining Date</option> -->
@@ -477,7 +477,7 @@
 												 </div>
 												 <div class="form-group">
 													<label>Station:</label>
-													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1" style="width:180px;">
+													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1">
 													<option style="" value="Head Office">-</option>
 													<option style="" value="Head Office">--</option>
 													<!-- <option style="" value="Head Office">Employee's Joining Date</option> -->
@@ -487,7 +487,7 @@
 												 </div>
 												 <div class="form-group">
 													<label>Department:</label>
-													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1" style="width:180px;">
+													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1">
 													<option style="" value="Head Office">-</option>
 													<option style="" value="Head Office">--</option>
 													<!-- <option style="" value="Head Office">Employee's Joining Date</option> -->
@@ -497,7 +497,7 @@
 												 </div>
 												 <div class="form-group">
 													<label>Employee Type:</label>
-													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1" style="width:180px;">
+													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1">
 													<option style="" value="Head Office">-</option>
 													<option style="" value="Head Office">--</option>
 													<!-- <option style="" value="Head Office">Employee's Joining Date</option> -->
@@ -507,7 +507,7 @@
 												 </div>
 												 <div class="form-group">
 													<label>Employee Category:</label>
-													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1" style="width:180px;">
+													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1">
 													<option style="" value="Head Office">-</option>
 													<option style="" value="Head Office">--</option>
 													<!-- <option style="" value="Head Office">Employee's Joining Date</option> -->
@@ -517,7 +517,7 @@
 												 </div>
 												 <div class="form-group">
 													<label>Employee Grade:</label>
-													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1" style="width:180px;">
+													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1">
 													<option style="" value="Head Office">-</option>
 													<option style="" value="Head Office">--</option>
 													<!-- <option style="" value="Head Office">Employee's Joining Date</option> -->
@@ -527,7 +527,7 @@
 												 </div>
 												 <div class="form-group">
 													<label>Employee Nationality:</label>
-													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1" style="width:180px;">
+													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1">
 													<option style="" value="Head Office">-</option>
 													<option style="" value="Head Office">--</option>
 													<!-- <option style="" value="Head Office">Employee's Joining Date</option> -->
@@ -538,7 +538,7 @@
 
 												 <div class="form-group">
 													<label>Employee Religion:</label>
-													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1" style="width:180px;">
+													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1">
 													<option style="" value="Head Office">-</option>
 													<option style="" value="Head Office">--</option>
 													<!-- <option style="" value="Head Office">Employee's Joining Date</option> -->
@@ -549,7 +549,7 @@
 
 												 <div class="form-group">
 													<label>Employee Marital Status:</label>
-													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1" style="width:180px;">
+													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1">
 													<option style="" value="Head Office">-</option>
 													<option style="" value="Head Office">--</option>
 													<!-- <option style="" value="Head Office">Employee's Joining Date</option> -->
@@ -573,7 +573,7 @@
 									            </div>
 												<div class="form-group">
 													<label>Approval Method:</label>
-													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1" style="width:180px;">
+													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1">
 													<option style="" value="Head Office">-</option>
 													<option style="" value="Head Office">Multi Level Approval</option>
 													<!-- <option style="" value="Head Office">Employee's Joining Date</option> -->
@@ -581,7 +581,7 @@
 													</div>
 												 	<div class="form-group">
 													<label>Approval Levels:</label>
-													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1" style="width:180px;">
+													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1">
 													<!-- <option style="" value="Head Office">-</option> -->
 													<option style="" value="Head Office">Auto Approved</option>
 													<option style="" value="Head Office">One level</option>
@@ -593,14 +593,14 @@
 													</div>
 													<div class="form-group">
 													<label>Approval Method for Joining Back from Leave:</label>
-													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1" style="width:180px;">
+													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1">
 													<option style="" value="Head Office">-</option>
 													<option style="" value="Head Office">Multi Level Approval</option>
 													</select>
 													</div>
 													<div class="form-group">
 													<label>Approval Levels:</label>
-													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1" style="width:180px;">
+													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1">
 													<!-- <option style="" value="Head Office">-</option> -->
 													<option style="" value="Head Office">Auto Approved</option>
 													<option style="" value="Head Office">One level</option>
@@ -616,7 +616,7 @@
 									            </div>
 												<div class="form-group">
 													<label>Notifications upon Submission:</label>
-													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1" style="width:180px;">
+													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1">
 													<!-- <option style="" value="Head Office">-</option> -->
 													<!-- <option style="" value="Head Office">Multi Level Approval</option> -->
 													<!-- <option style="" value="Head Office">Employee's Joining Date</option> -->
@@ -624,7 +624,7 @@
 													</div>
 													<div class="form-group">
 													<label>Notifications upon Approval:</label>
-													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1" style="width:180px;">
+													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1">
 													<!-- <option style="" value="Head Office">-</option> -->
 													<!-- <option style="" value="Head Office">Multi Level Approval</option> -->
 													<!-- <option style="" value="Head Office">Employee's Joining Date</option> -->
@@ -632,7 +632,7 @@
 													</div>
 													<div class="form-group">
 													<label>Join Back Notifications upon Approval:</label>
-													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1" style="width:180px;">
+													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1">
 													<!-- <option style="" value="Head Office">-</option> -->
 													<!-- <option style="" value="Head Office">Multi Level Approval</option> -->
 													<!-- <option style="" value="Head Office">Employee's Joining Date</option> -->
@@ -643,7 +643,7 @@
 												 <!-- <div class="form-group">
 													<label>Delete</label>
 													<a href="{{url('#')}}" style="font-size:18px;color:yellow"><i class="fa fa-times"></i>&nbsp;&nbsp;Delete Multiple Leaves</a>
-												    <select id="employee_name" name="employee_name" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">employee_name</option></select> 
+												    <select id="employee_name" name="employee_name" class="WebHRForm1"><option style="" value="Head Office">employee_name</option></select> 
 													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> 
 
 												 </div> -->

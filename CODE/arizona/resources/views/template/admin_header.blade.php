@@ -12,12 +12,17 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{ url('/admin/css/bootstrap.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url('/admin/css/custome.css') }}">
-    <link href="{{ url('/admin/css/datepicker.css') }}" rel="stylesheet" type="text/css" />
+    
+   
+  
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=a57gf21fw3xkb4vsipclijy1rlihz8b4rz5un8vg1n7xzbbq"></script>
     <script>tinymce.init({ selector:'.tinyeditorclass' });</script>
+
+    <link href="{{ url('/admin/bower_components/chosen/chosen.css') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="{{ url('/admin/css/bootstrap.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url('/admin/css/custome.css') }}">
+    <link href="{{ url('/admin/css/datepicker.css') }}" rel="stylesheet" type="text/css" />
 
     <!--
 Username: debug86d
@@ -32,19 +37,19 @@ Password: @7tN$i2cF5~5
         <div class="container">
             <div class="row">
 
-                <div class="col">
+                <div class="col-md-4 col-xs-12">
                     <div class="logo">
                        <a href="{{url('dashboard')}}"> <img src="{{ url('admin/images/Arizona-original-Logo.png') }}" style="width: 85px"> </a>
                     </div>
                 </div>
 
-                <div class="col d-none d-sm-block" align="center">
+                <div class="col-md-4 d-none d-sm-block" align="center">
                     <!--img src="images/demo_OdCFED.png" border="0" class="img-fluid" style="height:64px;"-->
 				  <h1 style="font-size:18px;margin-top: 40px;">Arizona National Software</h1>
 
                 </div>
 
-                <div class="col rtl2">
+                <div class="col-md-4 rtl2 col-xs-12">
                     <div class="header-top-right navbar">
 
                         <div class="comment">
@@ -83,7 +88,7 @@ Password: @7tN$i2cF5~5
     </div>
 
     <nav class="navbar navbar-expand-lg navbar-expand-sm sticky header-section">
-        <div class="container navbar-collapse d-none d-sm-block header-main">
+        <div class="container navbar-collapse d-sm-block header-main">
             <ul class="rtl navbar-nav mr-auto header-menu">
                 <li>
                     <a href="{{url('dashboard')}}" class="nav-link">

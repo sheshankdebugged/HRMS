@@ -30,9 +30,9 @@
 	  <!-- Nav tabs -->
 	  <ul class="nav nav-tabs" role="tablist">
 	    <li role="presentation"><a href="#home" class="active" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-	    <li role="presentation"><a href="#hrdashboard" aria-controls="hrdashboard" role="tab" data-toggle="tab">HR Dashboard</a></li>
-	    <li role="presentation"><a href="#hrdata" aria-controls="hrdata" role="tab" data-toggle="tab">HR Data</a></li>
-	    <li role="presentation"><a href="#organogram" aria-controls="organogram" role="tab" data-toggle="tab">Organogram</a></li>
+	    <li role="presentation"><a href="#hrdashboard" aria-controls="hrdashboard" role="tab" data-toggle="tab" id="hrdashboardtab">HR Dashboard</a></li>
+	    <li role="presentation"><a href="#hrdata" aria-controls="hrdata" role="tab" data-toggle="tab" id="hrdatatab">HR Data</a></li>
+	    <!--<li role="presentation"><a href="#organogram" aria-controls="organogram" role="tab" data-toggle="tab">Organogram</a></li> -->
 	  </ul>
 
   <!-- Tab panes -->
@@ -42,12 +42,12 @@
     		<div class="upper-profile-db">
     			<div class="col-md-12">
             <div class="row">
-        				<div class="col-md-2 nopadding">
+        				<div class="col-md-2 col-xs-12 nopadding">
         					<div class="user-profile-dp">
         						<img src="{{ url('admin/images/user.jpg') }}">
         					</div>
         				</div>
-        				<div class="col-md-7 nopadding">
+        				<div class="col-md-7 col-xs-12 nopadding">
         					<div class="inner-profilr-data">
         						<h2>System Administrator</h2>
         						<div class="user-role">
@@ -196,11 +196,13 @@
                     <div class="upper-header-theme">
                         <h3>Dashboard Filters</h3>
                     </div>
+
+                    <form action="{{url('dashboard')}}" method="GET">
                     <div class="search-filter">
                         <div class="single-search-an">
                             
-                        <select id="st" class="WebHRForm1" style="width:180px;" name="companies[]">
-                            <option value="ALL"> All Companies</option>
+                        <select id="company_id" class="WebHRForm1 chosen-select" style="width:180px;" name="companies[]" multiple>
+                            <option value=""> All Companies</option>
                             @foreach($master['Companies'] as $val)
                             <option  value="{{$val['id']}}">{{$val['company_name']}}</option>
                             @endforeach
@@ -209,16 +211,16 @@
                         <div class="single-search-an">
                            
                                  
-                        <select id="st" class="WebHRForm1" style="width:180px;" name="stations[]">
-                            <option value="ALL"> All Stations</option>
+                        <select id="station_id" class="chosen-select" style="width:180px;" name="stations[]" multiple>
+                            <option value=""> All Stations</option>
                             @foreach($master['Stations'] as $val)
                             <option  value="{{$val['id']}}">{{$val['station_name']}}</option>
                             @endforeach
                             </select>
                         </div>
                         <div class="single-search-an">
-                        <select id="st" class="WebHRForm1" style="width:180px;" name="departments[]">
-                        <option value="ALL"> All Departments</option>
+                        <select id="departments_id" class="WebHRForm1 chosen-select" style="width:180px;" name="departments[]" multiple>
+                        <option value=""> All Departments</option>
                             @foreach($master['Departments'] as $val)
                             <option  value="{{$val['id']}}">{{$val['department_name']}}</option>
                             @endforeach
@@ -227,10 +229,10 @@
                         </div>
                         <div class="single-search-an">
                             
-                        <select id="st" class="WebHRForm1" style="width:180px;" name="departments[]">
-                        <option value="ALL"> All Employees</option>
+                        <select id="status" class="WebHRForm1 chosen-select" style="width:180px;" name="status">
+                        <option value="">    All Employees</option>
                         <option value="1">   Active Employees</option>
-                        <option value="2">   Inactive Employees</option>
+                        <option value="0">   Inactive Employees</option>
                          </select>
 
                         </div>
@@ -240,6 +242,8 @@
                     </div>
                 </div>
             </div>
+
+            </form>
             <div class="bottom-profile-area">
                 <div class="col-md-12">
                     <div class="row">
@@ -321,10 +325,12 @@
                                                  <td style="width:30%;" align="center">Employees</td>
                                                  <td style="width:16px;"></td>
                                                  </tr>
+
+                                                
                                                 @foreach($result['EmployeeType'] as $val) 
                                                  <tr>
-                                                 <td>{{$val['employee_type']}}</td>
-                                                 <td align="center">{{$val['total']}}</td>
+                                                 <td>{{$val['name']}}</td>
+                                                 <td align="center">{{$val['Total']}}</td>
                                                  <td align="center"><a href="#"><i style="color:#b9b9b9;" class="fa fa-external-link"></i></a></td>
                                                  </tr>
                                                 @endforeach
@@ -350,8 +356,8 @@
                                                  </tr>
                                                 @foreach($result['EmployessByCategory'] as $val) 
                                                  <tr>
-                                                 <td>{{$val['employee_type']}}</td>
-                                                 <td align="center">{{$val['total']}}</td>
+                                                 <td>{{$val['name']}}</td>
+                                                 <td align="center">{{$val['Total']}}</td>
                                                  <td align="center"><a href="#"><i style="color:#b9b9b9;" class="fa fa-external-link"></i></a></td>
                                                  </tr>
                                                 @endforeach
@@ -376,24 +382,50 @@
                                 <div class="upper-header-theme">
                                     <h3>Dashboard Filters</h3>
                                 </div>
+                                <form action="{{url('dashboard')}}" method="GET">
                                 <div class="search-filter">
                                     <div class="single-search-an">
-                                        <input type="text" placeholder="search">
+                                        
+                                        <select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="companies[]" multiple>
+                                        <option value=""> All Companies</option>
+                                        @foreach($master['Companies'] as $val)
+                                        <option  value="{{$val['id']}}">{{$val['company_name']}}</option>
+                                        @endforeach
+                                        </select>
+
+
+                                    </div>
+                                    <div class="single-search-an ">
+                                        <select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="stations[]" multiple>
+                                        <option value=""> All Stations</option>
+                                        @foreach($master['Stations'] as $val)
+                                        <option  value="{{$val['id']}}">{{$val['station_name']}}</option>
+                                        @endforeach
+                                        </select>
                                     </div>
                                     <div class="single-search-an">
-                                        <input type="text" placeholder="search">
+                                       
+                                    <select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="departments[]" multiple>
+                                    <option value=""> All Departments</option>
+                                        @foreach($master['Departments'] as $val)
+                                        <option  value="{{$val['id']}}">{{$val['department_name']}}</option>
+                                        @endforeach
+                                    </select>
                                     </div>
                                     <div class="single-search-an">
-                                        <input type="text" placeholder="search">
-                                    </div>
-                                    <div class="single-search-an">
-                                        <input type="text" placeholder="search">
+                                    <select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="status">
+                                    <option value="">    All Employees</option>
+                                    <option value="1">   Active Employees</option>
+                                    <option value="0">   Inactive Employees</option>
+                                    </select>
+
                                     </div>
                                     <div class="single-search-button-an">
                                         <input type="submit" value="Apply Filters" class="submit-buttton-an">
                                     </div>
                                 </div>
                             </div>
+                            </form>
                         </div>
                         <div class="col-md-9">
                             <div class="row">
@@ -410,7 +442,7 @@
                                         <div class="pai-cart-an">
                                             <img src="{{ url('admin/images/pai.png') }}">
                                         </div>
-                                        <h3>Employees by Designation</h3>
+                                        <h3>Employees by Departments</h3>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -438,94 +470,25 @@
 		                                 </tr>
 		                                 </thead>
 		                                <tbody>
+
+                                        @php $i=1; @endphp
+
+                                        @foreach($result['EmployeeRecord'] as $val) 
                                             <tr>
-                                                 <td>1</td>
-                                                 <td>Allen Parker</td>
-                                                 <td></td>
-                                                 <td></td>
-                                                 <td></td>
-                                                 <td></td>
-                                                 <td></td>
-                                                 <td></td>
-                                                 <td></td>
+                                                 <td>{{$i}}</td>
+                                                 <td>{{$val['first_name']}} {{$val['last_name']}}</td>
+                                                 <td>{{$val['user_name']}}</td>
+                                                 <td>{{$val['employee_access_code']}}</td>
+                                                 <td>{{$val['designation_name']}}</td>
+                                                 <td>{{$val['department_name']}}</td>
+                                                 <td>{{$val['station_name']}}</td>
+                                                 <td>{{$val['company_name']}}</td>
+                                                 <td><a href=""> Employee profile </a></td>
+                                                
                                             </tr>
-                                            <tr>
-                                                 <td>2</td>
-                                                 <td>Allen Parker</td>
-                                                 <td></td>
-                                                 <td></td>
-                                                 <td></td>
-                                                 <td></td>
-                                                 <td></td>
-                                                 <td></td>
-                                                 <td></td>
-                                            </tr>
-                                            <tr>
-                                                 <td>3</td>
-                                                 <td>Allen Parker</td>
-                                                 <td></td>
-                                                 <td></td>
-                                                 <td></td>
-                                                 <td></td>
-                                                 <td></td>
-                                                 <td></td>
-                                                 <td></td>
-                                            </tr>
-                                            <tr>
-                                                 <td>4</td>
-                                                 <td>Allen Parker</td>
-                                                 <td></td>
-                                                 <td></td>
-                                                 <td></td>
-                                                 <td></td>
-                                                 <td></td>
-                                                 <td></td>
-                                                 <td></td>
-                                            </tr>
-                                            <tr>
-                                                 <td>5</td>
-                                                 <td>Allen Parker</td>
-                                                 <td></td>
-                                                 <td></td>
-                                                 <td></td>
-                                                 <td></td>
-                                                 <td></td>
-                                                 <td></td>
-                                                 <td></td>
-                                            </tr>
-                                            <tr>
-                                                 <td>6</td>
-                                                 <td>Allen Parker</td>
-                                                 <td></td>
-                                                 <td></td>
-                                                 <td></td>
-                                                 <td></td>
-                                                 <td></td>
-                                                 <td></td>
-                                                 <td></td>
-                                            </tr>
-                                            <tr>
-                                                 <td>7</td>
-                                                 <td>Allen Parker</td>
-                                                 <td></td>
-                                                 <td></td>
-                                                 <td></td>
-                                                 <td></td>
-                                                 <td></td>
-                                                 <td></td>
-                                                 <td></td>
-                                            </tr>
-                                            <tr>
-                                                 <td>8</td>
-                                                 <td>Allen Parker</td>
-                                                 <td></td>
-                                                 <td></td>
-                                                 <td></td>
-                                                 <td></td>
-                                                 <td></td>
-                                                 <td></td>
-                                                 <td></td>
-                                            </tr>
+                                            @php $i++; @endphp
+                                            @endforeach
+                                           
                                          </tbody>
                                      </table>
                                 </div>
@@ -552,7 +515,25 @@
 	</div>
 </div>
 
+
+
 @include('template.admin_footer')
+
+
+<script>
+
+$("#hrdatatab").click(function(){
+
+    $('.chosen-container').css("width", "210px");;
+});
+
+$("#hrdashboardtab").click(function(){
+
+$('.chosen-container').css("width", "210px");;
+});
+
+
+</script>
 
 
 
