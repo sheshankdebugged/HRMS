@@ -26,6 +26,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Form;
 use Session;
+use Validator;
 
 class EmployeesController extends Controller
 {
@@ -94,19 +95,19 @@ class EmployeesController extends Controller
         $master = $this->getmasterfields();
         if ($request->all()) {
 
-            /*  $validator = Validator::make($request->all(), [
-            'employee_name' => 'required',
-
+            $validator = Validator::make($request->all(), [
+                'first_name' => 'required',
+                'last_name' => 'required'
             ]);
             if ($validator->fails()) {
-            $action = 'addemployees';
-            return redirect('/employees/add')
-            ->withErrors($validator)
-            ->withInput()
-            ->with([
-            'action' => $action,
-            ]);
-            } */
+                $action = 'addemployees';
+                return redirect('/employees/add')
+                    ->withErrors($validator)
+                    ->withInput()
+                    ->with([
+                        'action' => $action,
+                    ]);
+            }
 
             $input = $request->all();
             if (request()->hasFile('profile_pic')) {

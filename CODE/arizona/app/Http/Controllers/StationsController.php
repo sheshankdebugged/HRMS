@@ -3,11 +3,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Companies;
+use App\Models\Countries;
 use App\Models\Divisions;
+use App\Models\Employees;
 use App\Models\Stations;
 use App\Models\StationTypes;
-use App\Models\Employees;
-use App\Models\Countries;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -27,17 +27,17 @@ class StationsController extends Controller
     public function index()
     {
         $user_id = Auth::id();
-        $searchQuery  = isset($_GET['search'])?trim($_GET['search']):"";
-        $where   = ['status'=>1,'user_id'=>$user_id];
-        
-        if(!empty($searchQuery)){
+        $searchQuery = isset($_GET['search']) ? trim($_GET['search']) : "";
+        $where = ['status' => 1, 'user_id' => $user_id];
+
+        if (!empty($searchQuery)) {
             $where = [
                 ['station_name', 'LIKE', "%$searchQuery%"],
                 ['status', '=', 1],
                 ['user_id', '=', $user_id],
-            ];   
+            ];
         }
-        $list =Stations::where($where)->paginate(10);
+        $list = Stations::where($where)->paginate(10);
         return view('hrmodule.stations.list')->with([
             'listData' => $list,
             'pageTitle' => "Stations",
@@ -58,7 +58,7 @@ class StationsController extends Controller
             'action' => $action,
             'pageTitle' => "Stations",
             'Addform' => "Add New Station",
-            'master' => $master
+            'master' => $master,
         ]);
     }
 
@@ -76,7 +76,7 @@ class StationsController extends Controller
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                'station_name' => 'required'
+                'station_name' => 'required',
             ]);
             if ($validator->fails()) {
                 $action = 'addstations';
@@ -164,20 +164,21 @@ class StationsController extends Controller
 
     /*
      *
-    */
-    function getmasterfields(){
-            $master                     = array();
-            $master['Companies']        = Companies::where(['status'=>1])->get()->toArray();
-            $master['Employees']        = Employees::where(['status'=>1])->get()->toArray();
-            $master['Divisions']        = Divisions::where(['status'=>1])->get()->toArray();
-            $master['StationTypes']     = StationTypes::where(['status'=>1])->get()->toArray();
-            $master['Countries']        = Countries::where(['status' => 1])->get()->toArray();
-            return $master;
+     */
+    public function getmasterfields()
+    {
+        $master = array();
+        $master['Companies'] = Companies::where(['status' => 1])->get()->toArray();
+        $master['Employees'] = Employees::where(['status' => 1])->get()->toArray();
+        $master['Divisions'] = Divisions::where(['status' => 1])->get()->toArray();
+        $master['StationTypes'] = StationTypes::where(['status' => 1])->get()->toArray();
+        $master['Countries'] = Countries::where(['status' => 1])->get()->toArray();
+        return $master;
     }
 
     public static function routes()
     {
-           Route::group(array('prefix' => 'stations'), function () {
+        Route::group(array('prefix' => 'stations'), function () {
             Route::get('/', array('as' => 'stations.index', 'uses' => 'StationsController@index'));
             Route::get('/add', array('as' => 'stations.create', 'uses' => 'StationsController@create'));
             Route::post('/save', array('as' => 'stations.save', 'uses' => 'StationsController@store'));
