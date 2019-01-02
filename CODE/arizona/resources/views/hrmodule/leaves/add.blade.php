@@ -171,12 +171,7 @@
 												 </div>
 												 <input type="file" name="leave_document" id="leave_document" />
 												 </div>
-
-												 			 <!--Add Attachment Button  -->
-
-
-
-
+												 	
 												 <div class="form-group">
 													<h4>Additional Information</h4>
 												 </div>

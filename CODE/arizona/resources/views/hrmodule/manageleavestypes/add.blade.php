@@ -65,25 +65,14 @@
 												   <input type="text" class="form-control-spacial" placeholder="" id="title" name="title" value="{{isset($result->title)?$result->title:''}}" >
 												   <a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="What would you like to call this Leave Type. For example: Annual Leaves, Paid Time Off (PTO), Sick Leaves, Maternity Leaves, Paternity Leaves, etc." data-original-title="" title=""><i style="font-size:14px; color:yellow;" class="fa fa-info-circle"></i></a>
 
-												   <!-- <select id="regular_hours" name="regular_hours" class="WebHRForm1 chosen-select"><option style="" value="{{isset($result->regular_hours)?$result->regular_hours:''}}">10</option></select> -->
-												   <!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
-													<!-- <input type="text" placeholder="Contact Number" class="form-control-spacial" id="contact_number" name="contact_number" value="{{isset($result->contact_number)?$result->contact_number:''}}"> -->
-
-												 </div>
+												   </div>
 												 <div class="form-group">
 													<label>Leave Type:</label>
-													<select id="st" class="WebHRForm1" style="width:180px;" name="leave_type_id">
+													<select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="leave_type_id">
 													@foreach($master['LeaveTypesMaster'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->leave_type_id) && $result->leave_type_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['title']}}</option>
 													@endforeach
 													</select>
-													<!-- <select id="request_approval_method" name="request_approval_method" class="WebHRForm1">
-													<option style="" value="Head Office">Unpaid Leave</option>
-													<option style="" value="Head Office">Paid Leave</option>
-													<option style="" value="Head Office">Half Day Paid Leave</option>
-													<option style="" value="Head Office">25% Paid Leave</option>
-													<option style="" value="Head Office">75% Paid Leave</option>
-													</select> -->
 													<!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 
 												 </div>
@@ -91,22 +80,13 @@
 												   <label>Leaves Allowed Per Year:</label>
 												   <input type="text" class="form-control-spacial" style="width: 50px" placeholder="1" id="leave_allowed" name="leave_allowed" value="{{isset($result->leave_allowed)?$result->leave_allowed:''}}" >
 												   <a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="What would you like to set as the default Leaves Quota for each employee for this Leave Type. Please note that Leaves Quota for each Employee can be updated separately by going to Leaves Quota screen." data-original-title="" title=""><i style="font-size:14px; color:yellow;" class="fa fa-info-circle"></i></a>
-
-												   <!-- <select id="regular_hours" name="regular_hours" class="WebHRForm1 chosen-select"><option style="" value="{{isset($result->regular_hours)?$result->regular_hours:''}}">10</option></select> -->
-												   <!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
-													<!-- <input type="text" placeholder="Contact Number" class="form-control-spacial" id="contact_number" name="contact_number" value="{{isset($result->contact_number)?$result->contact_number:''}}"> -->
-
 												 </div>
 												 <div class="form-group">
 													<label>Leaves Duration Type:</label>
-													<select id="st" class="WebHRForm1" style="width:180px;" name="leaves_duration_type_id">
+													<select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="leaves_duration_type_id">
 													@foreach($master['LeaveDuration'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->leaves_duration_type_id) && $result->leaves_duration_type_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['title']}}</option>
 													@endforeach
-													</select>
-													<!-- <option style="" value="Head Office">Half Day Paid Leave</option> -->
-													<!-- <option style="" value="Head Office">25% Paid Leave</option> -->
-													<!-- <option style="" value="Head Office">75% Paid Leave</option> -->
 													</select>
 													<a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Please select carry over limit as either number (e.g. 10), or percentage (e.g. 50)" data-original-title="" title=""><i style="font-size:14px; color:yellow;" class="fa fa-info-circle"></i></a>
 
@@ -129,16 +109,13 @@
                                             </div>
 												 <div class="form-group">
 													<label>Leaves Quota Reset Date</label>
-													<select id="st" class="WebHRForm1" style="width:180px;" name="leaves_quota_reset_date_id">
+													<select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="leaves_quota_reset_date_id">
 													<option style="" value="0">-</option>
 													@foreach($master['LeavesQuotaResetDate'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->leaves_quota_reset_date_id) && $result->leaves_quota_reset_date_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['title']}}</option>
 													@endforeach
 													</select>
-													<!-- <option style="" value="Head Office">-</option> -->
-
-													<!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
-
+													
 												 </div>
 												 <div class="form-group">
 											     <label>Allow Future Leaves:</label>
@@ -249,7 +226,7 @@
 
 												 <div class="form-group">
 													<label>Leaves Accrual:</label>
-													<select id="st" class="WebHRForm1" style="width:180px;" name="leaves_accrual_id">
+													<select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="leaves_accrual_id">
 													<option style="" value="0">-</option>
 													@foreach($master['LeavesAccrual'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->leaves_accrual_id) && $result->leaves_accrual_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['title']}}</option>
@@ -279,8 +256,7 @@
 												 <div class="form-group">
 													<label>Leaves Carry Over Limit:</label>
 													<input type="text" class="form-control-spacial" style="width: 50px" placeholder="0" id="leaves_carryover_limit" name="leaves_carryover_limit" value="{{isset($result->leaves_carryover_limit)?$result->leaves_carryover_limit:''}}" >
-													<select id="st" class="WebHRForm1" style="width:180px;" name="leaves_carry_typ_id">
-													<!-- <option style="" value="0">-</option> -->
+													<select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="leaves_carry_typ_id">
 													@foreach($master['LeavesCarryOverLimit'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->leaves_carry_typ_id) && $result->leaves_carry_typ_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['title']}}</option>
 													@endforeach
@@ -305,10 +281,6 @@
 												   <input type="text" class="form-control-spacial" style="width: 50px" placeholder="0" id="negative_leaves_limit" name="negative_leaves_limit" value="{{isset($result->negative_leaves_limit)?$result->negative_leaves_limit:''}}" >
 												   <a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum number of Negative Leaves an employee can apply for this leave. If set as 0 an employee can apply unlimited of nagative leaves." data-original-title="" title=""><i style="font-size:14px; color:yellow;" class="fa fa-info-circle"></i></a>
 
-												   <!-- <select id="regular_hours" name="regular_hours" class="WebHRForm1 chosen-select"><option style="" value="{{isset($result->regular_hours)?$result->regular_hours:''}}">10</option></select> -->
-												   <!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
-													<!-- <input type="text" placeholder="Contact Number" class="form-control-spacial" id="contact_number" name="contact_number" value="{{isset($result->contact_number)?$result->contact_number:''}}"> -->
-
 												 </div>
 												 <div class="form-upper-main">
 										           <h4>
@@ -321,22 +293,16 @@
 												   <input type="text" class="form-control-spacial" style="width: 50px" placeholder="0" id="leaves_days_limit" name="leaves_days_limit" value="{{isset($result->leaves_days_limit)?$result->leaves_days_limit:''}}" >
 												   <a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Number of days after which an employee can apply for this leave. If set as 0, then employees will be able to apply for this leave immediately. If set as 10, then employees will be able to apply for this leave 10 days after their joining date." data-original-title="" title=""><i style="font-size:14px; color:yellow;" class="fa fa-info-circle"></i></a>
 
-												   <!-- <select id="regular_hours" name="regular_hours" class="WebHRForm1 chosen-select"><option style="" value="{{isset($result->regular_hours)?$result->regular_hours:''}}">10</option></select> -->
-												   <!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
-													<!-- <input type="text" placeholder="Contact Number" class="form-control-spacial" id="contact_number" name="contact_number" value="{{isset($result->contact_number)?$result->contact_number:''}}"> -->
 												 </div>
 												 <div class="form-group">
 												   <label>Maximum Leave Days Allowed:</label>
 												   <input type="text" class="form-control-spacial" style="width: 50px" placeholder="0" id="maximum_leave_allowed" name="maximum_leave_allowed" value="{{isset($result->maximum_leave_allowed)?$result->maximum_leave_allowed:''}}" >
 												   <a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Maximum number of days can an employee request for this Leave Type in one leave request (at one instance). Default value is 0, that means, employees can take as many leaves depending upon their leaves quota." data-original-title="" title=""><i style="font-size:14px; color:yellow;" class="fa fa-info-circle"></i></a>
 
-												   <!-- <select id="regular_hours" name="regular_hours" class="WebHRForm1 chosen-select"><option style="" value="{{isset($result->regular_hours)?$result->regular_hours:''}}">10</option></select> -->
-												   <!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
-													<!-- <input type="text" placeholder="Contact Number" class="form-control-spacial" id="contact_number" name="contact_number" value="{{isset($result->contact_number)?$result->contact_number:''}}"> -->
 												 </div>
 												 <div class="form-group">
 													<label>Gender Restriction:</label>
-													<select id="st" class="WebHRForm1" style="width:180px;" name="gender_restriction">
+													<select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="gender_restriction">
 													<option style="" value="0">-</option>
 													@foreach($master['GenderRestriction'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->gender_restriction) && $result->gender_restriction == $val['id']  ) { echo "selected";  } @endphp >{{$val['title']}}</option>
@@ -345,9 +311,6 @@
 													<!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 
 												 </div>
-													<!-- <select id="employee" name="employee" class="WebHRForm1 chosen-select"><option style="" value="Head Office">1</option></select> -->
-													<!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
-													<!-- <input type="text" placeholder="Contact Person" class="form-control-spacial" id="registration_name" name="contact_person" value="{{isset($result->contact_person)?$result->contact_person:''}}"> -->
 
 												 </div>
 												 <div class="form-upper-main">
@@ -426,17 +389,13 @@
 												   <input type="text" class="form-control-spacial" style="width: 50px" placeholder="0" id="order_no" name="order_no" value="{{isset($result->order_no)?$result->order_no:''}}" >
 												   <a href="#" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Order in which this Leave Type should appear in Leaves Summary and Widgets. Default value is 0." data-original-title="" title=""><i style="font-size:14px; color:yellow;" class="fa fa-info-circle"></i></a>
 
-												   <!-- <select id="regular_hours" name="regular_hours" class="WebHRForm1 chosen-select"><option style="" value="{{isset($result->regular_hours)?$result->regular_hours:''}}">10</option></select> -->
-												   <!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
-													<!-- <input type="text" placeholder="Contact Number" class="form-control-spacial" id="contact_number" name="contact_number" value="{{isset($result->contact_number)?$result->contact_number:''}}"> -->
 
 												 </div>
 												 <div class="form-group">
 													<label>Status:</label>
-													<select id="status_act" name="status_act" class="WebHRForm1">
+													<select id="status_act" name="status_act" class="WebHRForm1 chosen-select">
 													<option style="" value="1">Active</option>
 													<option style="" value="0">Inactive</option>
-													<!-- <option style="" value="Head Office">Employee's Joining Date</option> -->
 													</select>
 													<!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 
@@ -446,8 +405,7 @@
 									            </div>
 												<div class="form-group">
 													<label>Company:</label>
-													<select id="st" class="WebHRForm1" style="width:180px;" name="company_id">
-													<!-- <option style="" value="0">-</option> -->
+													<select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="company_id">
 													@foreach($master['Companies'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->company_id) && $result->company_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['company_name']}}</option>
 													@endforeach
@@ -457,102 +415,86 @@
 												 </div>
 												 <div class="form-group">
 													<label>Division:</label>
-													<select id="st" class="WebHRForm1" style="width:180px;" name="division_id">
-													<!-- <option style="" value="0">-</option> -->
+													<select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="division_id">
 													@foreach($master['Divisions'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->division_id) && $result->division_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['division_name']}}</option>
 													@endforeach
 													</select>
-													<!-- <option style="" value="Head Office">Employee's Joining Date</option> -->
 													</select>
-													<!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 
 												 </div>
 												 <div class="form-group">
 													<label>Station:</label>
-													<select id="st" class="WebHRForm1" style="width:180px;" name="station_id">
-													<!-- <option style="" value="0">-</option> -->
+													<select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="station_id">
 													@foreach($master['Stations'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->station_id) && $result->station_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['station_name']}}</option>
 													@endforeach
 													</select>
-													<!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 
 												 </div>
 												 <div class="form-group">
 													<label>Department:</label>
-													<select id="st" class="WebHRForm1" style="width:180px;" name="department_id">
-													<!-- <option style="" value="0">-</option> -->
+													<select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="department_id">
 													@foreach($master['Departments'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->department_id) && $result->department_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['department_name']}}</option>
 													@endforeach
 													</select>
-													<!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 
 												 </div>
 												 <div class="form-group">
 													<label>Employee Type:</label>
-													<select id="st" class="WebHRForm1" style="width:180px;" name="employee_type_id">
-													<!-- <option style="" value="0">-</option> -->
+													<select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="employee_type_id">
 													@foreach($master['EmployeeType'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->employee_type_id) && $result->employee_type_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['name']}}</option>
 													@endforeach
 													</select>
-													<!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 
 												 </div>
 												 <div class="form-group">
 													<label>Employee Category:</label>
-													<select id="st" class="WebHRForm1" style="width:180px;" name="employee_category_id">
-													<!-- <option style="" value="0">-</option> -->
+													<select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="employee_category_id">
 													@foreach($master['EmployeeCategory'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->employee_category_id) && $result->employee_category_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['name']}}</option>
 													@endforeach
 													</select>
-													<!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 
 												 </div>
 												 <div class="form-group">
 													<label>Employee Grade:</label>
-													<select id="st" class="WebHRForm1" style="width:180px;" name="employee_category_id">
-													<!-- <option style="" value="0">-</option> -->
-													@foreach($master['EmployeeCategory'] as $val)
-													<option  value="{{$val['id']}}" @php if(isset($result->employee_category_id) && $result->employee_category_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['name']}}</option>
+													<select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="employee_grade_id">
+													@foreach($master['Grade'] as $val)
+													<option  value="{{$val['id']}}" @php if(isset($result->employee_grade_id) && $result->employee_grade_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['title']}}</option>
 													@endforeach
 													</select>
-													<!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 
 												 </div>
 												 <div class="form-group">
 													<label>Employee Nationality:</label>
-													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1 chosen-select">
-													<option style="" value="Head Office">-</option>
-													<option style="" value="Head Office">--</option>
-													<!-- <option style="" value="Head Office">Employee's Joining Date</option> -->
+													<select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="employee_nationality_id">
+													@foreach($master['Nationality'] as $val)
+													<option  value="{{$val['id']}}" @php if(isset($result->employee_nationality_id) && $result->employee_nationality_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['title']}}</option>
+													@endforeach
 													</select>
-													<!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 
 												 </div>
 
 												 <div class="form-group">
 													<label>Employee Religion:</label>
-													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1 chosen-select">
-													<option style="" value="Head Office">-</option>
-													<option style="" value="Head Office">--</option>
-													<!-- <option style="" value="Head Office">Employee's Joining Date</option> -->
+													<select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="employee_religion_id">
+													@foreach($master['Religion'] as $val)
+													<option  value="{{$val['id']}}" @php if(isset($result->employee_religion_id) && $result->employee_religion_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['title']}}</option>
+													@endforeach
 													</select>
-													<!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 
 												 </div>
 
 												 <div class="form-group">
 													<label>Employee Marital Status:</label>
-													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1 chosen-select">
-													<option style="" value="Head Office">-</option>
-													<option style="" value="Head Office">--</option>
-													<!-- <option style="" value="Head Office">Employee's Joining Date</option> -->
+													<select id="st" class="WebHRForm1 chosen-select" style="width:180px;" name="employee_marital_status_id">
+													@foreach($master['MaritalStatus'] as $val)
+													<option  value="{{$val['id']}}" @php if(isset($result->employee_marital_status_id) && $result->employee_marital_status_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['title']}}</option>
+													@endforeach
 													</select>
-													<!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
 
 												 </div>
 
@@ -562,7 +504,7 @@
 									            </div>
 												<div class="form-group">
 												 <label>Reasons:</label>
-													<textarea class="tinyeditorclass" name="additional_information" id="additional_information">{{isset($result->notes)?$result->additional_information:''}}</textarea>
+													<textarea class="tinyeditorclass" name="reason" id="reason">{{isset($result->reason)?$result->reason:''}}</textarea>
 												</div>
 
 
@@ -574,13 +516,11 @@
 													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1 chosen-select">
 													<option style="" value="Head Office">-</option>
 													<option style="" value="Head Office">Multi Level Approval</option>
-													<!-- <option style="" value="Head Office">Employee's Joining Date</option> -->
 													</select>
 													</div>
 												 	<div class="form-group">
 													<label>Approval Levels:</label>
 													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1 chosen-select">
-													<!-- <option style="" value="Head Office">-</option> -->
 													<option style="" value="Head Office">Auto Approved</option>
 													<option style="" value="Head Office">One level</option>
 													<option style="" value="Head Office">Two Level</option>
@@ -599,13 +539,8 @@
 													<div class="form-group">
 													<label>Approval Levels:</label>
 													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1 chosen-select">
-													<!-- <option style="" value="Head Office">-</option> -->
 													<option style="" value="Head Office">Auto Approved</option>
 													<option style="" value="Head Office">One level</option>
-													<!-- <option style="" value="Head Office">Two Level</option>
-													<option style="" value="Head Office">Three Level</option>
-													<option style="" value="Head Office">Four Level</option>
-													<option style="" value="Head Office">Five Level</option> -->
 													</select>
 													</div>
 
@@ -615,25 +550,16 @@
 												<div class="form-group">
 													<label>Notifications upon Submission:</label>
 													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1 chosen-select">
-													<!-- <option style="" value="Head Office">-</option> -->
-													<!-- <option style="" value="Head Office">Multi Level Approval</option> -->
-													<!-- <option style="" value="Head Office">Employee's Joining Date</option> -->
 													</select>
 													</div>
 													<div class="form-group">
 													<label>Notifications upon Approval:</label>
 													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1 chosen-select">
-													<!-- <option style="" value="Head Office">-</option> -->
-													<!-- <option style="" value="Head Office">Multi Level Approval</option> -->
-													<!-- <option style="" value="Head Office">Employee's Joining Date</option> -->
 													</select>
 													</div>
 													<div class="form-group">
 													<label>Join Back Notifications upon Approval:</label>
 													<select id="request_approval_method" name="request_approval_method" class="WebHRForm1 chosen-select">
-													<!-- <option style="" value="Head Office">-</option> -->
-													<!-- <option style="" value="Head Office">Multi Level Approval</option> -->
-													<!-- <option style="" value="Head Office">Employee's Joining Date</option> -->
 													</select>
 													</div>
 												<div class="form-field-inner">

@@ -11,10 +11,14 @@ use App\Models\EmployeeType;
 use App\Models\Stations;
 use App\Models\Divisions;
 use App\Models\EmployeeCategory;
-// use App\Models\Departments;
-// use App\Models\EmployeeType;
-// use App\Models\Stations;
-// use App\Models\Divisions;
+use App\Models\Grade;
+use App\Models\Nationality;
+use App\Models\Religion;
+use App\Models\MaritalStatus;
+// use App\Models\Grade;
+// use App\Models\Nationality;
+// use App\Models\Religion;
+// use App\Models\MaritalStatus;
 use App\Models\LeavesCarryOverLimit;
 use App\Models\GenderRestriction;
 use App\Models\LeavesAccrual;
@@ -111,7 +115,7 @@ class ManageLeavesTypesController extends Controller
 
             echo "<pre>";
 
-            $input['leave_from'] = ($input['leave_from'] != "") ? date('Y-m-d', strtotime($input['leave_from'])) : $input['leave_from'];
+            $input['created_at'] = ($input['created_at'] != "") ? date('Y-m-d', strtotime($input['created_at'])) : $input['created_at'];
             // $input['poll_end_date']   = ($input['poll_end_date'] !="")?date('Y-m-d',strtotime($input['poll_end_date'])):$input['poll_end_date'];
             $input['status'] = 1;
             $input['user_id'] = $user_id;
@@ -205,10 +209,10 @@ class ManageLeavesTypesController extends Controller
         $master['Departments']               = Departments::where(['status' => 1])->get()->toArray();
         $master['EmployeeType']               = EmployeeType::where(['status' => 1])->get()->toArray();
         $master['EmployeeCategory']               = EmployeeCategory::where(['status' => 1])->get()->toArray();
-        // $master['Stations']               = Stations::where(['status' => 1])->get()->toArray();
-        // $master['Stations']               = Stations::where(['status' => 1])->get()->toArray();
-        // $master['Stations']               = Stations::where(['status' => 1])->get()->toArray();
-        // $master['Stations']               = Stations::where(['status' => 1])->get()->toArray();
+        $master['Grade']               = Grade::where(['status' => 1])->get()->toArray();
+        $master['Nationality']               = Nationality::where(['status' => 1])->get()->toArray();
+        $master['Religion']               = Religion::where(['status' => 1])->get()->toArray();
+        $master['MaritalStatus']               = MaritalStatus::where(['status' => 1])->get()->toArray();
         // $master['Stations']               = Stations::where(['status' => 1])->get()->toArray();
         // $master['Stations']               = Stations::where(['status' => 1])->get()->toArray();
         // $master['Stations']               = Stations::where(['status' => 1])->get()->toArray();
