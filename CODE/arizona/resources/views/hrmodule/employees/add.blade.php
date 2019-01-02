@@ -65,7 +65,7 @@
 											<div class="form-field-inner">
 												 <div class="form-group">
 													<label>Company:</label>
-													<select id="company_id" class="WebHRForm1" style="width:180px;" name="company_id">
+													<select id="company_id" class="WebHRForm1 chosen-select" style="width:180px;" name="company_id">
 
 													<!-- <option value="ALL"> All </option> -->
 													@foreach($master['Companies'] as $val)
