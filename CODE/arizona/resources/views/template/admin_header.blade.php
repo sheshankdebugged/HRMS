@@ -135,8 +135,8 @@ Password: @7tN$i2cF5~5
                         <div class="d-block menu-list">
                            <div class="row">
                               <div class="col-sm-6 list-unstyled">
-                                 <a href="#"><i class="fa fa-dashboard"></i>Dashboard</a>
-                                 <a href="#"><i class="fa fa-desktop" style="margin-right:12px; font-size:18px;"></i>Screening</a>
+                                 <a href="{{url('recruitment/dashboard')}}"><i class="fa fa-dashboard"></i>Dashboard</a>
+                                 <a href="{{url('recruitment/screening')}}"><i class="fa fa-desktop" style="margin-right:12px; font-size:18px;"></i>Screening</a>
                                  <a href="{{url('jobrequests')}}"><i class="fa fa-envelope-open"></i>Job Requests</a>
                                  <a href="{{url('jobposts')}}"><i class="fa fa-envelope-o"></i>Job Posts</a>
                                  <a href="{{url('jobcandidates')}}"><i class="fa fa-male"></i>Job Candidates</a>
