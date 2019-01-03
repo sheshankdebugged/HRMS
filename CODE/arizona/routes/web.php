@@ -274,4 +274,8 @@ Route::group(['middleware' => 'auth'], function () {
         // Employee Category
 
         \App\Http\Controllers\EmployeeCategoryController::routes();
+
+        // Recruitment Dashboard 
+
+        \App\Http\Controllers\RecruitmentdashboardController::routes();
 });

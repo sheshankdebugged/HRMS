@@ -16,7 +16,13 @@ jQuery(document).ready(function ($) {
 	 }).datepicker('update', new Date());
 
 	$('.dropdown-custom').click(function(e){
-  $(this).parent().toggleClass('active');
+    if($('.dropdown.action-drop').hasClass('active')){
+        $(this).removeClass('active');
+    }
+    $(this).parent().toggleClass('active');
+});
+$('.menu-toggle-mob').click(function(e){
+  $('body').toggleClass('mobile-menu');
 });
 //         $('#myTabs a').click(function (e) {
 //   e.preventDefault()

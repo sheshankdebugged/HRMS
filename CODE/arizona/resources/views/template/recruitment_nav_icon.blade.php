@@ -1,10 +1,10 @@
 <ul>
 	<li>          
-	<a href="{{url('dashboard')}}"><i class="fa fa-dashboard"></i></a>
+	<a href="{{url('/recruitment/dashboard')}}"><i class="fa fa-dashboard"></i></a>
 	</li>
 	
 	<li>
-	<a href="{{url('screening')}}"><i class="fa fa-desktop"></i></a>
+	<a href="{{url('/recruitment/screening')}}"><i class="fa fa-desktop"></i></a>
 	</li>
 	<li>
 	<a href="{{url('jobrequests')}}"><i class="fa fa-envelope-open"></i></a>
