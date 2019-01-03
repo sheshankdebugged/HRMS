@@ -90,11 +90,8 @@
 													<option  value="{{$val['id']}}" @php if(isset($result->division_id) && $result->division_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['division_name']}}</option>
 													@endforeach
 													</select>
-<<<<<<< HEAD
-=======
 													<a data-toggle="popover" data-trigger="hover" data-placement="top" data-content="To add multiple divisions, please go to Organization - Division module" data-original-title="" title=""><i style="font-size:14px; color:yellow;" class="fa fa-info-circle"></i></a>
 
->>>>>>> bf04b32f03ecb37a5092251238fa02782c2479df
 												 </div>
                                                  <div class="form-group">
 													<label>Station Type:</label>
