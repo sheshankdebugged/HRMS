@@ -32,6 +32,15 @@
 <script>
     $(function(){
         $('[data-toggle="tooltip"]').tooltip();
+        $(window).scroll(function() {    
+    var scroll = $(window).scrollTop();
+
+    if (scroll >= 200) {
+        $("body").addClass("fixheader");
+    } else {
+        $("body").removeClass("fixheader");
+    }
+});
     });
 </script>
 <script src="{{ url('/admin/js/popper.min.js') }}"></script>

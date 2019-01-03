@@ -324,4 +324,8 @@ Route::group(['middleware' => 'auth'], function () {
     // Manage Recruitment Sources
 
     \App\Http\Controllers\ManageRecruitmentSourcesController::routes();
+
+    // Recruitment Dashboard
+
+    \App\Http\Controllers\RecruitmentdashboardController::routes();
 });

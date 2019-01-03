@@ -1130,15 +1130,133 @@ a[data-toggle="popover"] {
     color: #fff;
 }
 
-@media screen and (min-width:767px){
+@media screen and (min-width:768px){
+.fixheader .an-header-main {
+    position: fixed;
+    z-index: 9999;
+    padding: 10px 0;
+}
 
+.fixheader .header-top {
+    display: none;
+}
+
+.fixheader .main-section {
+    padding-top: 154px;
+}
+
+.an-header-main {
+    transition: all 0.4s;
+}
+.fixheader .header-section {
+    padding-top: 0;
+    padding-bottom: 10px;
+}
+
+.fixheader .header-menu li .nav-link i {
+    height: 28px;
+}
+
+.header-section {
+    transition: all 0.5s;
+}
 .nopadding {
     padding: 0;
 }
+.menu-toggle-mob {
+display:none;
+}
 }
 @media screen and (max-width:767px){
+.inner-form-main {
+    padding: 20px 0;
+}
+.menu-toggle-mob {
+    width: 30px;
+        height: 30px;
+    display: inline-block;
+    position: relative;
+    margin-left: 30px;
+    margin-top: 4px;
+    margin-bottom: 7px;
+}
+
+.navbar-expand-sm.header-section {
+    display: block;
+    background: #000;
+    position: absolute;
+    left: 0;
+    width: 100px;
+    z-index: 99;
+    transform: translateX(-200px);
+}
+.fixheader .an-header-main {
+    position: fixed;
+    z-index: 999;
+}
+header .header-menu li.dropdown .dropdown-menu {
+    width: 190px;
+    left: 100px;
+    top: 0;
+}
+.dropdown {
+    position: static;
+}
+.navbar-nav .dropdown-menu{
+    position:absolute;
+}
+.fixheader .header-top {
+    display: none;
+}
+.an-header-main .navbar-nav {
+    display: block;
+}
+
+.menu-toggle-mob span {
+    display: inline-block;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+}
+header .header-menu li .nav-link i {
+    border-bottom: 0px;
+}
+
+.mobile-menu .navbar-expand-sm.header-section {
+    transform: translateX(0);
+}
+
+.navbar-expand-sm.header-section {
+    transition: all 0.5s;
+    background: #0a1823;
+    padding: 29px 0;
+}
+.menu-toggle-mob span:before {
+    content: "";
+    bottom: 3px;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+}
+.menu-toggle-mob span:after {
+    content: "";
+    top: 6px;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+}
 .logo {
     text-align: center;
+}
+.form-heading-space {
+    text-align: left;
+}
+
+.form-heading-space h3 {
+    font-size: 24px;
+    font-weight: bold;
 }
 .an-bio-name {
     width: 100%;
