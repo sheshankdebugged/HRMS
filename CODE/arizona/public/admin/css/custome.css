@@ -1139,6 +1139,115 @@ a[data-toggle="popover"] {
     color: #fff;
 }
 
+.search-field-outer {
+    display: inline-block;
+    margin: auto;
+}
+
+.search-field-outer input {
+    background: transparent;
+    border: 1px solid #fff;
+    padding: 4px;
+}
+
+.bottom-search-request h2 {
+    color: #fff;
+    font-size: 24px;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.bottom-search-request .row {
+    width: 100%;
+}
+
+.bottom-search-request {
+    display: inline-block;
+    width: 100%;
+}
+.persentage-inner span {
+    font-size: 38px;
+    font-weight: bold;
+    color: #fff018;
+}
+.search-timeline-outline {
+    display: inline-block;
+    width: 100%;
+}
+
+.search-timeline-single {
+    display: inline-block;
+    width: 100%;
+    background: #163850;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.37);
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+.left-text-name {
+    float: left;
+}
+
+.left-text-name span {
+    background-repeat: no-repeat;
+    background-position: 50%;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background-color: #fff018;
+    font-size: 22px;
+    padding-top: 8px;
+    color: #163850;
+    text-align: center;
+    display: inline-block;
+}
+
+.middle-name {
+    float: left;
+    padding: 0 10px;
+}
+
+.middle-name h3 {
+    font-size: 19px;
+    margin: 0;
+    color: #fff;
+}
+
+.middle-name p {
+    font-size: 11px;
+    color: #fff;
+    margin: 0;
+}
+
+.timeline-date {
+    float: right;
+}
+
+.timeline-date span {
+    color: #fff;
+    font-size: 13px;
+}
+.persentage-inner p {
+    color: #fff;
+        padding: 0 5px;
+}
+.persentage-inner {
+    display: flex;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 @media screen and (min-width:768px){
 .fixheader .an-header-main {
     position: fixed;
