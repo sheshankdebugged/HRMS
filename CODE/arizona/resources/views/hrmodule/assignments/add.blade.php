@@ -64,16 +64,10 @@
 
 											<div class="form-group">
 													<label>Assigned To:</label>
-                                                    <select  name ="assigned_to" id="assigned_to" class="form-control-select chosen-select" >													
-													  <option style="" value="0"> 0 </option>
-													  <option style="" value="1">1</option>
-													  <option style="" value="2">2</option>
-													  <option style="" value="3">3</option>
-													  <option style="" value="4">4</option>
-													  <option style="" value="5">5</option>
-													  <option style="" value="6">6</option>
-													  <option style="" value="7">7</option>
-													  <option style="" value="8">8</option>
+                                                    <select  name ="employee_id" id="employee_id" class="form-control-select chosen-select" >													
+													@foreach($master['Employees'] as $val)
+													<option  value="{{$val['id']}}"  @php if(isset($result->employee_id) && $result->employee_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
+													@endforeach
 													</select>
 													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 
@@ -82,11 +76,10 @@
 												 <div class="form-group">
 													<label>Project:</label>
 
-													<select  name ="project" class="form-control-select chosen-select">
-													<option style="" value="0"> - </option>
-													<option style="" value="1">WebHR Job Portal</option>
-													<option style="" value="2">WebHumanResourse</option>
-
+													<select  name ="project_id" id="project_id" class="form-control-select chosen-select">
+													@foreach($master['Projects'] as $val)
+													<option  value="{{$val['id']}}" @php if(isset($result->project_id) && $result->project_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['project_title']}}</option>
+													@endforeach
 													</select>
 
 
@@ -99,13 +92,13 @@
 												 </div>
 												 <div class="form-group">
 													<label>Start Date:</label>
-													<input type="text" placeholder="" class="form-control-spacial date" id="start_date" name="start_date" value="{{isset($result->assignment_employees)?$result->assignment_employees:''}}">
+													<input type="text" placeholder="" class="form-control-spacial date" id="start_date" name="start_date" value="{{isset($result->start_date)?$result->start_date:''}}">
 
 												 </div>
 
 												 <div class="form-group">
 													<label>Due Date:</label>
-													<input type="text" placeholder="" class="form-control-spacial date" id="due_date" name="due_date" value="{{isset($result->assignment_employees)?$result->assignment_employees:''}}">
+													<input type="text" placeholder="" class="form-control-spacial date" id="due_date" name="due_date" value="{{isset($result->start_date)?$result->start_date:''}}">
 
 												 </div>
 
@@ -113,12 +106,16 @@
 												 <div class="form-group">
 													<label>Priority:</label>
 
+													@php $array= ['Low','Medium','High','Critical']@endphp
+
 													<select  name ="priority" id="priority" class="form-control-select chosen-select">
 
-													<option value="0"> 0 </option>
-													<option value="1"> 1 </option>
-													<option value="2"> 2 </option>
-													<option value="3"> 3 </option>
+
+
+                                                     @foreach($array as $key=>$val):
+													<option value="{{$key}}" @php if(isset($result->priority) && $key == $result->priority)
+													 { echo "selected" ; } @endphp  >{{$val}} </option>
+													 @endforeach;
 
 
 													</select>
@@ -135,18 +132,14 @@
 
 												 <div class="form-group">
 													<label>Assignment Employees:</label>
-													<input type="text" placeholder="" class="form-control-spacial" id="assignment_employees" name="assignment_employees" value="{{isset($result->assignment_employees)?$result->assignment_employees:''}}">
-
-												 </div>
-
+													<select  name ="additional_employees_id" id="additional_employees_id" class="form-control-select chosen-select" >													
+													@foreach($master['Employees'] as $val)
+													<option  value="{{$val['id']}}"  @php if(isset($result->additional_employees_id) && $result->additional_employees_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}} [{{$val['user_name']}}]</option>
+													@endforeach
+													</select>
+												 </div>	
 												 
-
-
-
-
-												 
-
-												<div class="form-group">
+												 <div class="form-group">
 													<h4>Additional Information</h4>
 												 </div>
 												 <div class="form-group">

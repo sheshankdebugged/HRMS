@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Complaints;
+use App\Models\Employees;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -33,7 +34,7 @@ class ComplaintsController extends Controller
                 ['user_id', '=', $user_id],
             ];   
         }
-        $list =complaints::where($where)->paginate(10);
+        $list =Complaints::where($where)->paginate(10);
 
         // $list = complaints::where(['status' => 1])->paginate(10);
         return view('hrmodule.complaints.list')->with([
@@ -51,10 +52,12 @@ class ComplaintsController extends Controller
     public function create()
     {
         $action = 'add';
+        $master = $this->getmasterfields();
         return view('hrmodule.complaints.add')->with([
             'action' => $action,
             'pageTitle' => "Complaints",
             'Addform' => "Add New Complaint",
+            'master' => $master
         ]);
     }
 
@@ -72,7 +75,7 @@ class ComplaintsController extends Controller
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                  'complaint_from' => 'required',
+                  'employee_id' => 'required',
                   'complaint_title' => 'required',
                 // 'poll_answer_2' => 'required'
             ]);
@@ -110,7 +113,7 @@ class ComplaintsController extends Controller
                 $input['created_at']=date("Y-m-d H:i:s");
                 $input['updated_at']=date("Y-m-d H:i:s");
                 Session::flash('message', 'Complaints  Added Successfully.');
-                complaints::insertGetId($input);
+                Complaints::insertGetId($input);
             }
             return redirect('/complaints');
         }
@@ -137,14 +140,16 @@ class ComplaintsController extends Controller
     {
 
         $action = 'edit';
-        $result = complaints::find($id);
+        $master = $this->getmasterfields();
+        $result = Complaints::find($id);
         $action = 'add';
         $editname = "Edit Complaint " . $result->employee;
         return view('hrmodule.complaints.add')->with([
             'action' => $action,
-            'pageTitle' => "complaints",
+            'pageTitle' => "Complaints",
             'Addform' => $editname,
             'result' => $result,
+            'master' => $master
         ]);
 
     }
@@ -157,7 +162,7 @@ class ComplaintsController extends Controller
      */
     public function destroy($id)
     {
-        $complaints = complaints::find($id);
+        $complaints = Complaints::find($id);
         $complaints->status = 0;
         $complaints->save();
         Session::flash('message', ' Complaints delete successfully');
@@ -173,5 +178,11 @@ class ComplaintsController extends Controller
             Route::post('/update/{id}', array('as' => 'complaints.update', 'uses' => 'ComplaintsController@update'));
             Route::get('/delete/{id}', array('as' => 'complaints.destroy', 'uses' => 'ComplaintsController@destroy'));
         });
+    }
+    public function getmasterfields()
+    {
+        $master = array();
+              $master['Employees']               = Employees::where(['status' => 1])->get()->toArray();
+        return $master;
     }
 }

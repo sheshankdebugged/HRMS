@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Promotions;
+use App\Models\Employees;
+use App\Models\EmployeeDesignation;
+use App\Models\Grade;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -51,10 +54,12 @@ class PromotionsController extends Controller
     public function create()
     {
         $action = 'add';
+        $master = $this->getmasterfields();
         return view('hrmodule.promotions.add')->with([
             'action' => $action,
             'pageTitle' => "Promotions",
             'Addform' => "Add New Promotion",
+            'master' => $master
         ]);
     }
 
@@ -72,9 +77,8 @@ class PromotionsController extends Controller
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                'promotion_for_employee_id' => 'required',
-                // 'poll_answer_1' => 'required',
-                // 'poll_answer_2' => 'required'
+                'employee_id' => 'required',
+                 'promotion_title' => 'required',
             ]);
             if ($validator->fails()) {
                 $action = 'addpromotions';
@@ -110,7 +114,7 @@ class PromotionsController extends Controller
                 $input['created_at']=date("Y-m-d H:i:s");
                 $input['updated_at']=date("Y-m-d H:i:s");
                 Session::flash('message', 'Promotions  Added Successfully.');
-                promotions::insertGetId($input);
+                Promotions::insertGetId($input);
             }
             return redirect('/promotions');
         }
@@ -137,14 +141,16 @@ class PromotionsController extends Controller
     {
 
         $action = 'edit';
-        $result = promotions::find($id);
+        $master = $this->getmasterfields();
+        $result = Promotions::find($id);
         $action = 'add';
-        $editname = "Edit Promotion " . $result->employee;
+        $editname = "Edit  " . $result->employee_id;
         return view('hrmodule.promotions.add')->with([
             'action' => $action,
-            'pageTitle' => "promotions",
+            'pageTitle' => "Promotions",
             'Addform' => $editname,
             'result' => $result,
+            'master' => $master
         ]);
 
     }
@@ -157,7 +163,7 @@ class PromotionsController extends Controller
      */
     public function destroy($id)
     {
-        $promotions = promotions::find($id);
+        $promotions = Promotions::find($id);
         $promotions->status = 0;
         $promotions->save();
         Session::flash('message', ' Promotions delete successfully');
@@ -166,13 +172,21 @@ class PromotionsController extends Controller
     public static function routes()
     {
             Route::group(array('prefix' => 'promotions'), function () {
-            Route::get('/', array('as' => 'promotions.index', 'uses' => 'promotionsController@index'));
-            Route::get('/add', array('as' => 'promotions.create', 'uses' => 'promotionsController@create'));
-            Route::post('/save', array('as' => 'promotions.save', 'uses' => 'promotionsController@store'));
-            Route::get('/edit/{id}', array('as' => 'promotions.edit', 'uses' => 'promotionsController@edit'));
-            Route::post('/update/{id}', array('as' => 'promotions.update', 'uses' => 'promotionsController@update'));
-            Route::get('/delete/{id}', array('as' => 'promotions.destroy', 'uses' => 'promotionsController@destroy'));
+            Route::get('/', array('as' => 'promotions.index', 'uses' => 'PromotionsController@index'));
+            Route::get('/add', array('as' => 'promotions.create', 'uses' => 'PromotionsController@create'));
+            Route::post('/save', array('as' => 'promotions.save', 'uses' => 'PromotionsController@store'));
+            Route::get('/edit/{id}', array('as' => 'promotions.edit', 'uses' => 'PromotionsController@edit'));
+            Route::post('/update/{id}', array('as' => 'promotions.update', 'uses' => 'PromotionsController@update'));
+            Route::get('/delete/{id}', array('as' => 'promotions.destroy', 'uses' => 'PromotionsController@destroy'));
         });
+    }
+    public function getmasterfields()
+    {
+        $master = array();
+              $master['Employees']               = Employees::where(['status' => 1])->get()->toArray();
+              $master['EmployeeDesignation']     = EmployeeDesignation::where(['status' => 1])->get()->toArray();
+              $master['Grade']                   = Grade::where(['status' => 1])->get()->toArray();
+        return $master;
     }
 }
 

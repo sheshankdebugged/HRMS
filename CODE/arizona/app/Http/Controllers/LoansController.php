@@ -148,7 +148,7 @@ class LoansController extends Controller
         $master = $this->getmasterfields();
         $result = loans::find($id);
         $action = 'add';
-        $editname = "Edit Boan " . $result->employee;
+        $editname = "Edit " . $result->loans_title;
         return view('hrmodule.loans.add')->with([
             'action' => $action,
             'pageTitle' => "Loans",

@@ -65,19 +65,10 @@
 											<div class="form-group">
 													<label>Warning To:</label>
 
-													<select  name ="warning_to" id="id" class="form-control-select chosen-select" >
-
-													<option style="" value="0"> 0 </option>
-													<option style="" value="1">1</option>
-													<option style="" value="2">2</option>
-													<option style="" value="3">3</option>
-													<option style="" value="4">4</option>
-													<option style="" value="5">5</option>
-													<option style="" value="6">6</option>
-													<option style="" value="7">7</option>
-													<option style="" value="8">8</option>
-
-
+													<select  name ="employee_id" id="employee_id" class="form-control-select chosen-select" >													
+													@foreach($master['Employees'] as $val)
+													<option  value="{{$val['id']}}"  @php if(isset($result->employee_id) && $result->employee_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
+													@endforeach
 													</select>
 
 
@@ -86,23 +77,21 @@
 												 <div class="form-group">
 													<label>Forward Application To:</label>
 
-													<select  name ="forward_application_to" class="form-control-select chosen-select">
-													<option style="" value="0"> - </option>
-													<option style="" value="1">1</option>
-													<option style="" value="2">2</option>
-
+													<!-- <select  name ="forward_application_to" class="form-control-select chosen-select"> -->
+													<select  name ="forward_employee_id" id="forward_employee_id" class="form-control-select chosen-select" >													
+													@foreach($master['Employees'] as $val)
+													<option  value="{{$val['id']}}"  @php if(isset($result->forward_employee_id) && $result->forward_employee_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
+													@endforeach
 													</select>
-
 
 												 </div>
 												 <div class="form-group">
 													<label>Warning By:</label>
 
-													<select  name ="warning_by" class="form-control-select chosen-select">
-													<option style="" value="0">-</option>
-													<option style="" value="1">-</option>
-													<option style="" value="2">-</option>
-
+													<select  name ="warning_by_id" id ="warning_by_id" class="form-control-select chosen-select">
+													@foreach($master['Employees'] as $val)
+													<option  value="{{$val['id']}}"  @php if(isset($result->warning_by_id) && $result->warning_by_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
+													@endforeach
 													</select>
 
 
@@ -110,17 +99,17 @@
 
 												 <div class="form-group">
 													<label>Warning Date:</label>
-													<input type="text" placeholder="" class="form-control-spacial date" id="warning_date" name="warning_date" value="{{isset($result->warning_date)?$result->warning_date:''}}">
+													<input type="date" placeholder="" id="warning_date" name="warning_date" value="{{isset($result->warning_date)?$result->warning_date:''}}">
 
 												 </div>
 
 												 <div class="form-group">
 													<label>Type of Warning:</label>
 
-													<select  name ="type_of_warning" class="form-control-select chosen-select">
-													<option style="" value="0">-</option>
-													<option style="" value="1">-</option>
-													<option style="" value="2">-</option>
+													<select  name ="type_of_warning_id" id ="type_of_warning_id" class="form-control-select chosen-select">
+													@foreach($master['WarningType'] as $val)
+													<option  value="{{$val['id']}}"  @php if(isset($result->type_of_warning_id) && $result->type_of_warning_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['title']}}</option>
+													@endforeach
 
 													</select>
 

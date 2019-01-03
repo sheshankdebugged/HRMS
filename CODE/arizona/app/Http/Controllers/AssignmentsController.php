@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Assignments;
+use App\Models\Employees;
+use App\Models\Projects;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -53,10 +55,12 @@ class AssignmentsController extends Controller
     public function create()
     {
         $action = 'add';
+        $master = $this->getmasterfields();
         return view('hrmodule.assignments.add')->with([
             'action' => $action,
             'pageTitle'=>"Assignments",
-            'Addform'  =>"Add New Assignment"
+            'Addform'  =>"Add New Assignment",
+            'master' => $master
         ]);
     }
 
@@ -73,14 +77,14 @@ class AssignmentsController extends Controller
         if($request->all()){
 
             $validator = Validator::make($request->all(), [
-                'assigned_to' => 'required',
+                'employee_id' => 'required',
                 'assignment_name' => 'required',
 
 
             ]);
            if ($validator->fails()) {
                 $action = 'addassignments';
-                return redirect('/addassignments')
+                return redirect('assignments/add')
                     ->withErrors($validator)
                     ->withInput()
                     ->with([
@@ -133,6 +137,7 @@ class AssignmentsController extends Controller
     {
 
         $action = 'edit';
+        $master = $this->getmasterfields();
         $result = Assignments::find($id);
         $action = 'add';
         $editname = "Edit ".$result->assignment_name;
@@ -140,7 +145,8 @@ class AssignmentsController extends Controller
             'action' => $action,
             'pageTitle'=>"Assignments",
             'Addform'  =>$editname,
-            'result'  =>$result
+            'result'  =>$result,
+            'master' => $master
         ]);
 
     }
@@ -154,7 +160,7 @@ class AssignmentsController extends Controller
      */
     public function destroy($id)
     {
-        $assignments = assignments::find($id);
+        $assignments = Assignments::find($id);
         $assignments->status = 0;
         $assignments->save();
         Session::flash('message', 'Assignment delete successfully');
@@ -175,5 +181,17 @@ class AssignmentsController extends Controller
             Route::get('/delete/{id}', array('as' => 'assignments.destroy', 'uses' => 'AssignmentsController@destroy'));
         });
 
+    }
+    public function getmasterfields()
+    {
+        $master = array();
+           $master['Employees']               = Employees::where(['status' => 1])->get()->toArray();
+           $master['Projects']            = Projects::where(['status' => 1])->get()->toArray();
+        //    $master['EmployeeDesignation']     = EmployeeDesignation::where(['status' => 1])->get()->toArray();
+        //    $master['EmployeeCategory']        = EmployeeCategory::where(['status' => 1])->get()->toArray();
+        //    $master['Grade']                   = Grade::where(['status' => 1])->get()->toArray();
+        //    $master['Departments']             = Departments::where(['status' => 1])->get()->toArray();
+        //    $master['Stations']             = Stations::where(['status' => 1])->get()->toArray();
+        return $master;
     }
 }

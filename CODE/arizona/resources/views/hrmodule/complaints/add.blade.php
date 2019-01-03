@@ -63,13 +63,22 @@
 												
 												 <div class="form-group">
 													<label>Complaint From:</label>
-													<select id="complaint_from" name="complaint_from" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Complaint From</option></select>
-                                                    <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
+													<select  name ="employee_id" id="employee_id" class="form-control-select chosen-select" >													
+													@foreach($master['Employees'] as $val)
+													<option  value="{{$val['id']}}"  @php if(isset($result->employee_id) && $result->employee_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
+													@endforeach
+													</select>
+													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
+
 												 </div>
 												 
 												 <div class="form-group">
 													<label>Forward Application To:</label>
-													<select id="forward_application_to" name="forward_application_to" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Forward Application To</option></select>
+													<select id="forward_employee_id" name="forward_employee_id" class="WebHRForm1 chosen-select" style="width:180px;">
+													@foreach($master['Employees'] as $val)
+													<option  value="{{$val['id']}}"  @php if(isset($result->forward_employee_id) && $result->forward_employee_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
+													@endforeach
+													</select>
 
 												 </div>
 												 
@@ -84,14 +93,17 @@
 
 												 <div class="form-group">
 													<label>Complaint Date:</label>
-													<input type="text" placeholder="" class="form-control-spacial date" id="complaint_date" name="complaint_date" value="{{isset($result->complaint_date)?$result->complaint_date:''}}">
+													<input type="date" placeholder=""  id="complaint_date" name="complaint_date" value="{{isset($result->complaint_date)?$result->complaint_date:''}}">
 
 												 </div>
 												 <div class="form-group">
 													<h4>Complaint Against</h4>
 													<label>Complaint Against:</label>
-												   <!-- <input type="text" placeholder="Complaint Title" class="form-control-spacial" id="complaint_against" name="complaint_against" value="{{isset($result->complaint_against)?$result->complaint_against:''}}"> -->
-												   <select id="complaint_against" name="complaint_against" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Complaint Title</option></select>
+												   <select id="complaint_against_id" name="complaint_against_id" class="WebHRForm1 chosen-select" style="width:180px;">
+												   @foreach($master['Employees'] as $val)
+													<option  value="{{$val['id']}}"  @php if(isset($result->complaint_against_id) && $result->complaint_against_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
+													@endforeach
+												   </select>
 
 												 </div>
 

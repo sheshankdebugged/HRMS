@@ -180,8 +180,9 @@ class EmployeeDesignationsController extends Controller
     public function getmasterfields()
     {
         $master = array();
-        $master['Employees'] = Employees::where(['status' => 1])->get()->toArray();
-        $master['ParentDesignations'] = EmployeeDesignation::where(['status' => 1])->get()->toArray();       
+        $master['Employees']            = Employees::where(['status' => 1])->get()->toArray();
+        $master['ParentDesignations']   = EmployeeDesignation::where(['status' => 1])->get()->toArray(); 
+             
         return $master;
     }
 }

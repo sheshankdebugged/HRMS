@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Warnings;
+use App\Models\Employees;
+use App\Models\WarningType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -50,10 +52,12 @@ class WarningsController extends Controller
     public function create()
     {
         $action = 'add';
+        $master = $this->getmasterfields();
         return view('hrmodule.warnings.add')->with([
             'action' => $action,
             'pageTitle'=>"Warnings",
-            'Addform'  =>"Add New Warnings"
+            'Addform'  =>"Add New Warnings",
+            'master' => $master
         ]);
     }
 
@@ -94,13 +98,13 @@ class WarningsController extends Controller
             if($input['id']>0){
                 $input['updated_at']=date("Y-m-d H:i:s");
                 Session::flash('message', 'Warning Updated Successfully.');
-                warnings::where('id', $input['id'])->update($input);
+                Warnings::where('id', $input['id'])->update($input);
             }else{
                 unset($input['id']);
                 $input['created_at']=date("Y-m-d H:i:s");
                 $input['updated_at']=date("Y-m-d H:i:s");
                 Session::flash('message', 'Warning  Added Successfully.');
-                warnings::insertGetId($input);
+                Warnings::insertGetId($input);
             }
             return redirect('/warnings');
         }
@@ -127,14 +131,16 @@ class WarningsController extends Controller
     {
 
         $action = 'edit';
-        $result = warnings::find($id);
+        $master = $this->getmasterfields();
+        $result = Warnings::find($id);
         $action = 'add';
         $editname = "Edit ".$result->assignment_name;
         return view('hrmodule.warnings.add')->with([
             'action' => $action,
-            'pageTitle'=>"warnings",
+            'pageTitle'=>"Warnings",
             'Addform'  =>$editname,
-            'result'  =>$result
+            'result'  =>$result,
+            'master' => $master
         ]);
 
     }
@@ -148,7 +154,7 @@ class WarningsController extends Controller
      */
     public function destroy($id)
     {
-        $warnings = warnings::find($id);
+        $warnings = Warnings::find($id);
         $warnings->status = 0;
         $warnings->save();
         Session::flash('message', 'Warning delete successfully');
@@ -169,5 +175,13 @@ class WarningsController extends Controller
             Route::get('/delete/{id}', array('as' => 'warnings.destroy', 'uses' => 'WarningsController@destroy'));
         });
 
+    }
+    public function getmasterfields()
+    {
+        $master = array();
+              $master['Employees']               = Employees::where(['status' => 1])->get()->toArray();
+              $master['WarningType']             = WarningType::where(['status' => 1])->get()->toArray();
+            //   $master['Grade']                   = Grade::where(['status' => 1])->get()->toArray();
+        return $master;
     }
 }

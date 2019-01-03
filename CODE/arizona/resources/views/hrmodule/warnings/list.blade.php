@@ -75,10 +75,10 @@
 										<tbody>
                                         @foreach($listData as $list)
 											<tr id="second" class="context-requst-one selected">
-											<td class="datainner" style="">{{$list->warning_by}}</td>
-											<td class="datainner" style="">{{$list->warning_to}}</td>
+											<td class="datainner" style="">{{$list->warning_by_id}}</td>
+											<td class="datainner" style="">{{$list->employee_id}}</td>
 											<td class="datainner" style="">{{$list->subject}}</td>
-											<td class="datainner" style="">{{$list->type_of_warning}}</td>
+											<td class="datainner" style="">{{$list->type_of_warning_id}}</td>
 											<td class="datainner" style="">{{$list->approval_status_id}}</td> 
 											<td align="right">
 													<div class="dropdown action-drop">

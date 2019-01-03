@@ -65,26 +65,11 @@
 											<div class="form-group">
 													<label>Employee:</label>
 
-												<select  name ="employee" id="employee" class="form-control-select chosen-select" >
-
-													<option style="" value="0"> - </option>
-													<option style="" value="1">Corporation</option>
-													<option style="" value="2">Exempt Organization</option>
-													<option style="" value="3">Partnership</option>
-													<option style="" value="4">Private Foundation</option>
-													<option style="" value="5">S Corporation</option>
-													<option style="" value="6">Sole Proprietor</option>
-													<option style="" value="7">Limited Liability Company</option>
-													<option style="" value="8">Trading LLC</option>
-													<option style="" value="9">Private Limited</option>
-													<option style="" value="10">General Partnership</option>
-													<option style="" value="11">Limited Partnership</option>
-													<option style="" value="12">Non Profit Organization</option>
-													<option style="" value="13">Trust</option>
-													<option style="" value="14">Joint Venture</option>
-													<option style="" value="15">Association</option>
-													<option style="" value="16">Free Zone</option>				        
-												</select>
+													<select  name ="employee_id" id="employee_id" class="form-control-select chosen-select" >													
+													@foreach($master['Employees'] as $val)
+													<option  value="{{$val['id']}}"  @php if(isset($result->employee_id) && $result->employee_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
+													@endforeach
+													</select>
 												<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 
 
@@ -93,23 +78,17 @@
 												 
                                                   <div class="form-group">
 													<label>Exit Date:</label>
-													<input type="text" placeholder="" class="form-control-spacial date" id="exit_date" name="exit_date" value="{{isset($result->employee)?$result->employee:''}}">
+													<input type="date" placeholder="" class"form-control-spacial date" id="exit_date" name="exit_date" value="{{isset($result->exit_date)?$result->exit_date:''}}">
 													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 
 												 </div>
 												 <div class="form-group">
 													<label>Type of Exit:</label>
-
-													<select  name ="type_of_exit" class="form-control-select chosen-select">
-													<option style="" value="0"> - </option>
-													<option style="" value="1">1</option>
-													<option style="" value="2">2</option>
-													<option style="" value="3">3</option>
-													<option style="" value="4">4</option>
-													<option style="" value="5">5</option>
-													<option style="" value="6">6</option>
-													<option style="" value="7">7</option>
-													<option style="" value="8">8</option>
+													
+												 	<select  name ="exit_type_id" class="form-control-select chosen-select">
+													 @foreach($master['EmployeeExitType'] as $val)
+													<option  value="{{$val['id']}}"  @php if(isset($result->exit_type_id) && $result->exit_type_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['name']}}</option>
+													@endforeach
 
 													</select>
 
@@ -119,26 +98,25 @@
 												 
 												 <div class="form-group">
 													<label>Conducted Exit Interview:</label>
-
+													@php $array= ['-','Yes','No']@endphp
 													<select  name ="conducted_exit_interview" id="conducted_exit_interview" class="form-control-select chosen-select">
-
-													<option value="0"> - </option>
-													<option value="1"> 1 </option>
-													<option value="2"> 2 </option>
-													<option value="3"> 3 </option>
-
-
+														@foreach($array as $key=>$val):
+														 <option value="{{$key}}" @php if(isset($result->conducted_exit_interview) && $key == $result->conducted_exit_interview)
+													     { echo "selected" ; } @endphp  >{{$val}} </option>
+													    @endforeach;
 													</select>
-
-
 												 </div>											
 
 
 												 
 												 <div class="form-group">
-													<label>Exit Interviewer::</label>
-													<input type="text" placeholder="" class="form-control-spacial" id="	exit_interviewer" name="exit_interviewer" value="{{isset($result->exit_interviewer)?$result->exit_interviewer:''}}">
-
+													<label>Exit Interviewer:</label>
+													<!-- <input type="text" placeholder="" class="form-control-spacial" id="	exit_interviewer" name="exit_interviewer" value="{{isset($result->exit_interviewer)?$result->exit_interviewer:''}}"> -->
+													<select multiple name ="exit_interviewer_id" id="exit_interviewer_id" class="form-control-select chosen-select" >													
+													@foreach($master['Employees'] as $val)
+													<option  value="{{$val['id']}}"  @php if(isset($result->employee_id) && $result->employee_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}} [{{$val['user_name']}}]</option>
+													@endforeach
+													</select>
 												 </div>
 
 												 

@@ -75,10 +75,10 @@
 										<tbody>
                                         @foreach($listData as $list)
 											<tr id="second" class="context-requst-one selected">
-											<td class="datainner" style="">{{$list->forward_application_to}}</td>
+											<td class="datainner" style="">{{$list->employee_id}}</td>
 											<td class="datainner" style="">{{$list->achievement_title}}</td>
 											<td class="datainner" style="">{{$list->achievement_date}}</td>  
-											<td class="datainner" style="">{{$list->status}}</td>                      
+											<td class="datainner" style="">{{$list->approval_status_id}}</td>                      
 											<td align="right">
 												<div class="dropdown action-drop">
 													<a href="javascript:void(0);" class="dropdown-custom"><i style="font-size:16px;" class="fa fa-cog"></i></a>

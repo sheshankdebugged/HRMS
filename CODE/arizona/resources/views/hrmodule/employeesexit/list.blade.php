@@ -74,8 +74,8 @@
 										<tbody>
                                         @foreach($listData as $list)
 											<tr id="second" class="context-requst-one selected">
-											<td class="datainner" style="">{{$list->employee}}</td>
-											<td class="datainner" style="">{{$list->type_of_exit}}</td>
+											<td class="datainner" style="">{{$list->employee_id}}</td>
+											<td class="datainner" style="">{{$list->exit_type_id}}</td>
 											<td class="datainner" style="">{{$list->exit_date}}</td>
 											
 											<td align="right">

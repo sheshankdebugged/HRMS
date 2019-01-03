@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\resignations;
+use App\Models\Employees;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -57,10 +58,12 @@ class resignationsController extends Controller
     public function create()
     {
         $action = 'add';
+        $master = $this->getmasterfields();
         return view('hrmodule.resignations.add')->with([
             'action' => $action,
             'pageTitle'=>"Resignations",
-            'Addform'  =>"Add New Resignations"
+            'Addform'  =>"Add New Resignations",
+            'master' => $master
         ]);
     }
 
@@ -77,7 +80,7 @@ class resignationsController extends Controller
         if($request->all()){
 
             $validator = Validator::make($request->all(), [
-                'resigning_employee' => 'required',
+                'employee_id' => 'required',
             ]);
            if ($validator->fails()) {
                 $action = 'addresignations';
@@ -134,6 +137,7 @@ class resignationsController extends Controller
     {
 
         $action = 'edit';
+        $master = $this->getmasterfields();
         $result = Resignations::find($id);
         $action = 'add';
         $editname = "Edit ".$result->assignment_name;
@@ -141,7 +145,8 @@ class resignationsController extends Controller
             'action' => $action,
             'pageTitle'=>"Resignation",
             'Addform'  =>$editname,
-            'result'  =>$result
+            'result'  =>$result,
+            'master' => $master
         ]);
 
     }
@@ -176,5 +181,11 @@ class resignationsController extends Controller
             Route::get('/delete/{id}', array('as' => 'resignations.destroy', 'uses' => 'ResignationsController@destroy'));
         });
 
+    }
+    public function getmasterfields()
+    {
+        $master = array();
+           $master['Employees']               = Employees::where(['status' => 1])->get()->toArray();
+         return $master;
     }
 }

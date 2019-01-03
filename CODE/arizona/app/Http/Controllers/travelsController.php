@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\travels;
+use App\Models\Travels;
+use App\Models\Employees;
+use App\Models\EmployeeDesignation;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,7 +14,7 @@ use Illuminate\Support\Form;
 use Session;
 use Validator;
 
-class travelsController extends Controller
+class TravelsController extends Controller
 {
    /**
      * Display a listing of the resource.
@@ -32,10 +34,10 @@ class travelsController extends Controller
                 ['user_id', '=', $user_id],
             ];   
         }
-        $list =  travels::where($where)->paginate(10);
+        $list =  Travels::where($where)->paginate(10);
 
 
-        // $list = travels::where(['status'=>1])->paginate(10);
+        // $list = Travels::where(['status'=>1])->paginate(10);
         return view('hrmodule.travels.list')->with([
             'listData' => $list,
             'pageTitle'=>"Travels"
@@ -51,10 +53,12 @@ class travelsController extends Controller
     public function create()
     {
         $action = 'add';
+        $master = $this->getmasterfields();
         return view('hrmodule.travels.add')->with([
             'action' => $action,
             'pageTitle'=>"Travels",
-            'Addform'  =>"Add New Travels"
+            'Addform'  =>"Add New Travels",
+            'master' => $master
         ]);
     }
 
@@ -97,13 +101,13 @@ class travelsController extends Controller
             if($input['id']>0){
                 $input['updated_at']=date("Y-m-d H:i:s");
                 Session::flash('message', 'Travels Updated Successfully.');
-                travels::where('id', $input['id'])->update($input);
+                Travels::where('id', $input['id'])->update($input);
             }else{
                 unset($input['id']);
                 $input['created_at']=date("Y-m-d H:i:s");
-                $input['updated_at']=date("Y-m-d H:i:s");
+                // $input['updated_at']=date("Y-m-d H:i:s");
                 Session::flash('message', 'Travels  Added Successfully.');
-                travels::insertGetId($input);
+                Travels::insertGetId($input);
             }
             return redirect('/travels');
         }
@@ -130,14 +134,16 @@ class travelsController extends Controller
     {
 
         $action = 'edit';
-        $result = travels::find($id);
+        $master = $this->getmasterfields();
+        $result = Travels::find($id);
         $action = 'add';
-        $editname = "Edit ".$result->assignment_name;
+        $editname = "Edit ".$result->purpose_of_visit;
         return view('hrmodule.travels.add')->with([
             'action' => $action,
-            'pageTitle'=>"travels",
+            'pageTitle'=>"Travels",
             'Addform'  =>$editname,
-            'result'  =>$result
+            'result'  =>$result,
+            'master' => $master
         ]);
 
     }
@@ -151,7 +157,7 @@ class travelsController extends Controller
      */
     public function destroy($id)
     {
-        $travels = travels::find($id);
+        $travels = Travels::find($id);
         $travels->status = 0;
         $travels->save();
         Session::flash('message', 'Travels delete successfully');
@@ -172,5 +178,14 @@ class travelsController extends Controller
             Route::get('/delete/{id}', array('as' => 'travels.destroy', 'uses' => 'TravelsController@destroy'));
         });
 
+    }
+    
+    public function getmasterfields()
+    {
+        $master = array();
+              $master['Employees']               = Employees::where(['status' => 1])->get()->toArray();
+              $master['EmployeeDesignation']     = EmployeeDesignation::where(['status' => 1])->get()->toArray();
+       
+        return $master;
     }
 }

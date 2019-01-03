@@ -65,19 +65,10 @@
 											<div class="form-group">
 													<label>Employee:</label>
 
-													<select  name ="employee" id="employee" class="form-control-select chosen-select" >
-
-													<option style="" value="0"> 0 </option>
-													<option style="" value="1">1</option>
-													<option style="" value="2">2</option>
-													<option style="" value="3">3</option>
-													<option style="" value="4">4</option>
-													<option style="" value="5">5</option>
-													<option style="" value="6">6</option>
-													<option style="" value="7">7</option>
-													<option style="" value="8">8</option>
-
-
+													<select  name ="employee_id" id="employee_id" class="form-control-select chosen-select" >													
+													@foreach($master['Employees'] as $val)
+													<option  value="{{$val['id']}}"  @php if(isset($result->employee_id) && $result->employee_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
+													@endforeach
 													</select>
 
 
@@ -97,11 +88,11 @@
 												 </div>
 												 <div class="form-group">
 													<label>Forward Application To:</label>
-													<select  name ="forward_application_to" class="form-control-select chosen-select">
-													<option style="" value="0">-</option>
-													<option style="" value="1">-</option>
-													<option style="" value="2">-</option>
-													</select>
+													<select id="forward_employee_id" name="forward_employee_id" class="WebHRForm1 chosen-select" style="width:180px;">
+													@foreach($master['Employees'] as $val)
+													<option  value="{{$val['id']}}"  @php if(isset($result->forward_employee_id) && $result->forward_employee_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
+													@endforeach
+													   </select>
 												 </div>
                                                  <div class="form-group">
 													<label>Purpose of Visit:</label>
@@ -153,7 +144,7 @@
 													<h4>Travel Description</h4>
 												 </div>
 												  <div class="form-group">
-											      <textarea class="tinyeditorclass" name="travel_description" id="travel_description" value="{{isset($result->notes)?$result->travel_description:''}}"></textarea>
+											      <textarea class="tinyeditorclass" name="travel_description" id="travel_description" value="{{isset($result->travel_description)?$result->travel_description:''}}"></textarea>
 										        </div>
 
 												<div class="form-group">
@@ -168,7 +159,7 @@
 													<h4>Additional Information</h4>
 												 </div>
 												  <div class="form-group">
-											      <textarea class="tinyeditorclass" name="notes" id="notes">{{isset($result->notes)?$result->notes:''}}</textarea>
+											      <textarea class="tinyeditorclass" name="additional_information" id="additional_information">{{isset($result->additional_information)?$result->additional_information:''}}</textarea>
 												</div>
 
 
