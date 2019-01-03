@@ -73,7 +73,7 @@ class EmployeesController extends Controller
                 //     ['user_id', '=', $user_id],
             ];
         }
-        $list = employees::where($where)->paginate(10);
+        $list = Employees::where($where)->paginate(10);
         return view('hrmodule.employees.list')->with([
             'listData' => $list,
             'pageTitle' => "Employees",
@@ -174,7 +174,7 @@ class EmployeesController extends Controller
     public function edit($id)
     {
         $action = 'edit';
-        $result = employees::find($id);
+        $result = Employees::find($id);
         $action = 'add';
         $editname = "Edit " . $result->employee_name;
         $master = $this->getmasterfields();
@@ -196,7 +196,7 @@ class EmployeesController extends Controller
      */
     public function destroy($id)
     {
-        $employees = employees::find($id);
+        $employees = Employees::find($id);
         $employees->status = 0;
         $employees->save();
         Session::flash('message', 'Employee delete successfully');

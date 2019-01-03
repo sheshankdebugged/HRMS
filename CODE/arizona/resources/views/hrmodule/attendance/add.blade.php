@@ -101,74 +101,51 @@
 												 </div>
 										 
 												 <div class="form-group">
-												 <!-- Add Timepicker here -->
 												   <label>Sign In Time:</label>
-												   <select id="sign_in_time" name="sign_in_time" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="{{isset($result->sign_in_time)?$result->sign_in_time:''}}">-</option></select>
+												   <input type="time" placeholder="" class="form-control-spacial" id="sign_in_time" name="sign_in_time" value="{{isset($result->sign_in_time)?$result->sign_in_time:''}}">
 													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
                                 
 												 </div>
 
 												 <div class="form-group">
-												 <!-- Add Timepicker here -->
+												 
 												   <label>Sign Out Time:</label>
-												   <select id="sign_out_time" name="sign_out_time" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="{{isset($result->sign_out_time)?$result->sign_out_time:''}}">-</option></select>
-													<!-- <input type="text" placeholder="Fax Number" class="form-control-spacial" id="fax_number" name="fax_number" value="{{isset($result->fax_number)?$result->fax_number:''}}"> -->
-                                
+												   <input type="time" placeholder="" class="form-control-spacial" id="sign_out_time" name="sign_out_time" value="{{isset($result->sign_out_time)?$result->sign_out_time:''}}">
 												 </div>
 												 <div class="form-group">
 													 <h4>Lunch Break Hours</h4>
 												  </div>
 
 												 <div class="form-group">
-												 <!-- Add Timepicker here -->
 												   <label>Lunch Break Out Time:</label>
-												   <select id="lunch_break_out_time" name="lunch_break_out_time" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="{{isset($result->lunch_break_out_time)?$result->lunch_break_out_time:''}}">transfer_to_department 1</option></select>
-													<!-- <input type="text" placeholder="Email Address" class="form-control-spacial" id="email_address" name="email_address" value="{{isset($result->email_address)?$result->email_address:''}}"> -->
-                                
+												   <input type="time" placeholder="" class="form-control-spacial" id="lunch_break_out_time" name="lunch_break_out_time" value="{{isset($result->lunch_break_out_time)?$result->lunch_break_out_time:''}}">
 												 </div>
 
 												 <div class="form-group">
-												 <!-- Add Timepicker Here -->
-												   <label>Lunch Break In Time:</label>
-													<!-- <input type="text" placeholder="Department" class="form-control-spacial" id="website" name="website" value="{{isset($result->website)?$result->website:''}}"> -->
-													<select id="lunch_break_in_time" name="lunch_break_in_time" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="{{isset($result->lunch_break_in_time)?$result->lunch_break_in_time:''}}">-</option></select>
+												    <label>Lunch Break In Time:</label>
+													<input type="time" placeholder="" class="form-control-spacial" id="lunch_break_in_time" name="lunch_break_in_time" value="{{isset($result->lunch_break_in_time)?$result->lunch_break_in_time:''}}">
 												 </div>
 
 												 <div class="form-group">
 													 <h4>Additional Break Hours</h4>
 												  </div>
-
 												 <div class="form-group">
-												 <!-- Add Timepicker here -->
 												   <label>Additional Break Out Time:</label>
-												   <select id="additional_break_out_time" name="additional_break_out_time" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="{{isset($result->additional_break_out_time)?$result->additional_break_out_time:''}}">transfer_to_department 1</option></select>
-													<!-- <input type="text" placeholder="Email Address" class="form-control-spacial" id="email_address" name="email_address" value="{{isset($result->email_address)?$result->email_address:''}}"> -->
-                                
+												   <input type="time" placeholder="" class="form-control-spacial" id="additional_break_out_time" name="additional_break_out_time" value="{{isset($result->additional_break_out_time)?$result->additional_break_out_time:''}}">
 												 </div>
-
 												 <div class="form-group">
-												 <!-- Add Timepicker Here -->
 												   <label>Additional Break In Time:</label>
-													<!-- <input type="text" placeholder="Department" class="form-control-spacial" id="website" name="website" value="{{isset($result->website)?$result->website:''}}"> -->
-													<select id="additional_break_in_time" name="additional_break_in_time" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="{{isset($result->additional_break_in_time)?$result->additional_break_in_time:''}}">-</option></select>
-												 </div>
+												   <input type="time" placeholder="" class="form-control-spacial" id="additional_break_in_time" name="additional_break_in_time" value="{{isset($result->additional_break_in_time)?$result->additional_break_in_time:''}}">
 												 <div class="form-group">
 													 <h4>Extra Break Hours</h4>
 												  </div>
-
 												 <div class="form-group">
-												 <!-- Add Timepicker here -->
 												   <label>Extra Break Out Time:</label>
-												   <select id="extra_break_out_time" name="extra_break_out_time" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="{{isset($result->extra_break_out_time)?$result->extra_break_out_time:''}}">transfer_to_department 1</option></select>
-													<!-- <input type="text" placeholder="Email Address" class="form-control-spacial" id="email_address" name="email_address" value="{{isset($result->email_address)?$result->email_address:''}}"> -->
-                                
-												 </div>
-
+												   <input type="time" placeholder="" class="form-control-spacial" id="extra_break_out_time" name="extra_break_out_time" value="{{isset($result->extra_break_out_time)?$result->extra_break_out_time:''}}">
+ 												 </div>
 												 <div class="form-group">
-												 <!-- Add Timepicker Here -->
 												   <label>Extra Break In Time:</label>
-													<!-- <input type="text" placeholder="Department" class="form-control-spacial" id="website" name="website" value="{{isset($result->website)?$result->website:''}}"> -->
-													<select id="extra_break_in_time" name="extra_break_in_time" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="{{isset($result->extra_break_in_time)?$result->extra_break_in_time:''}}">-</option></select>
+												   <input type="time" placeholder="" class="form-control-spacial" id="extra_break_in_time" name="extra_break_in_time" value="{{isset($result->extra_break_in_time)?$result->extra_break_in_time:''}}">
 												 </div>
 												 										 
 										
@@ -185,7 +162,6 @@
 													<option  value="{{$val['id']}}" @php if(isset($result->	attendance_station_id) && $result->attendance_station_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['station_name']}}</option>
 													@endforeach
 													</select>
-												   <!-- <select id="attendance_station" name="attendance_station" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">transfer_to_department 1</option></select> -->
 													                                
 												 </div>
 

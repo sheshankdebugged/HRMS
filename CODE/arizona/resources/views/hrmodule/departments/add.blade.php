@@ -78,7 +78,11 @@
 
 												<div class="form-group">
 													<label>Parent Department:</label>
-													<select id="pd" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="0">No Parent</option><option style="" value="39">Administration</option></select>
+													<select id ="parent_department_id" name ="parent_department_id" class="WebHRForm1 chosen-select" style="width:180px;">
+													@foreach($master['Departments'] as $val)
+													<option  value="{{$val['id']}}" @php if(isset($result->parent_department_id) && $result->parent_department_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['department_name']}}</option>
+													@endforeach
+													</select>
 												</div>
 												<div class="form-upper-main">
 													<h4>Head of Department</h4>
@@ -105,6 +109,7 @@
 												<div class="form-group">
                                                     <label>Department Sorting Order</label>
                                                     <input type="text" class="form-control-spacial" id="department_sorting_order" name="department_sorting_order" value="{{isset($result->job_title)?$result->job_title:''}}">
+													<a data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Order in which Departments should appear, if all Departments have a sort order of 1, then they will appear in ascending order" data-original-title="" title=""><i style="font-size:14px; color:yellow;" class="fa fa-info-circle"></i></a>
 												</div>
 												<div class="form-group">
 												<label>Notes:</label>

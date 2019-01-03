@@ -73,6 +73,13 @@
 													<option  value="{{$val['id']}}" @php if(isset($result->company_id) && $result->company_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['company_name']}}</option>
 													@endforeach
 													</select>
+													<a data-toggle="popover" data-trigger="hover" data-placement="top" data-content="To add multiple companies, please go to Organization - Companies module" data-original-title="" title=""><i style="font-size:14px; color:yellow;" class="fa fa-info-circle"></i></a>
+													<!-- <select id ="division_id" name ="division_id" class="WebHRForm1 chosen-select" style="width:180px;">
+													@foreach($master['Divisions'] as $val)
+													<option  value="{{$val['id']}}" @php if(isset($result->division_id) && $result->division_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['division_name']}}</option>
+													@endforeach
+													</select> -->
+
 												 </div>
 
                                                  <div class="form-group">
@@ -83,6 +90,11 @@
 													<option  value="{{$val['id']}}" @php if(isset($result->division_id) && $result->division_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['division_name']}}</option>
 													@endforeach
 													</select>
+<<<<<<< HEAD
+=======
+													<a data-toggle="popover" data-trigger="hover" data-placement="top" data-content="To add multiple divisions, please go to Organization - Division module" data-original-title="" title=""><i style="font-size:14px; color:yellow;" class="fa fa-info-circle"></i></a>
+
+>>>>>>> bf04b32f03ecb37a5092251238fa02782c2479df
 												 </div>
                                                  <div class="form-group">
 													<label>Station Type:</label>
@@ -91,6 +103,7 @@
 													<option  value="{{$val['id']}}" @php if(isset($result->station_type_id) && $result->station_type_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['station_type_name']}}</option>
 													@endforeach
 													</select>
+													<a data-toggle="popover" data-trigger="hover" data-placement="top" data-content="To add more Station Types, please go to Organization -> System Settings -> Constants" data-original-title="" title=""><i style="font-size:14px; color:yellow;" class="fa fa-info-circle"></i></a>
 												 </div>
 												 <div class="form-group">
 													<label>Station Name:</label>

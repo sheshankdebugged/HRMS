@@ -273,7 +273,7 @@
                                                                   <label>Skills</label>
                                                                </div>
                                                                <div class="field-value-an">
-                                                               <a href="">Manage Skills</a>
+                                                               <a href="{{url('manageskills')}}">Manage Skills</a>
                                                                </div>
                                                             </div>
                                                             <div class="field-group">
@@ -281,7 +281,7 @@
                                                                   <label>Qualification Degrees</label>
                                                                </div>
                                                                <div class="field-value-an">
-                                                               <a href="">Manage Qualification Degrees</a>
+                                                               <a href="{{url('managequalificationdegrees')}}">Manage Qualification Degrees</a>
                                                                </div>
                                                             </div>
                                                             <div class="field-group">
@@ -289,7 +289,7 @@
                                                                   <label>Contract Types</label>
                                                                </div>
                                                                <div class="field-value-an">
-                                                               <a href="">Manage Contract Types</a>
+                                                               <a href="{{url('managecontracttypes')}}">Manage Contract Types</a>
                                                                </div>
                                                             </div>
                                                             <div class="field-group">
@@ -297,7 +297,7 @@
                                                                   <label>Job Types</label>
                                                                </div>
                                                                <div class="field-value-an">
-                                                               <a href="">Manage Job Types</a>
+                                                               <a href="{{url('managejobtypes')}}">Manage Job Types</a>
                                                                </div>
                                                             </div>
                                                             <div class="field-group">
@@ -305,7 +305,7 @@
                                                                 <label>Job Fields</label>
                                                                </div>
                                                                <div class="field-value-an">
-                                                               <a href="">Manage Job Fields</a>
+                                                               <a href="{{url('managejobfields')}}">Manage Job Fields</a>
                                                                </div>
                                                             </div>
                                                             <div class="field-group">
@@ -313,7 +313,7 @@
                                                                   <label>Division Types</label>
                                                                </div>
                                                                <div class="field-value-an">
-                                                               <a href="">Manage Division Types</a>
+                                                               <a href="{{url('managedivisiontypes')}}">Manage Division Types</a>
                                                                </div>
                                                             </div>
                                                             <div class="field-group">
@@ -321,7 +321,7 @@
                                                                   <label>Station Types</label>
                                                                </div>
                                                                <div class="field-value-an">
-                                                               <a href="">Manage Station Types</a>
+                                                               <a href="{{url('managestationtypes')}}">Manage Station Types</a>
                                                                </div>
                                                             </div>
                                                             <div class="field-group">
@@ -329,7 +329,7 @@
                                                                   <label>Policy Types</label>
                                                                </div>
                                                                <div class="field-value-an">
-                                                               <a href="">Manage Policy Types</a>
+                                                               <a href="{{url('managepolicytypes')}}">Manage Policy Types</a>
                                                                </div>
                                                             </div>
                                                             <div class="field-group">
@@ -337,7 +337,7 @@
                                                                   <label>Employee Types</label>
                                                                </div>
                                                                <div class="field-value-an">
-                                                               <a href="">Manage Employee Types</a>
+                                                               <a href="{{url('manageemployeetypes')}}">Manage Employee Types</a>
                                                                </div>
                                                             </div>
                                                             <div class="field-group">
@@ -345,7 +345,7 @@
                                                                   <label>Employee Categories</label>
                                                                </div>
                                                                <div class="field-value-an">
-                                                                  <a href="">Manage Employee Categories</a>                                                    
+                                                                  <a href="{{url('manageemployeecategories')}}">Manage Employee Categories</a>                                                    
                                                                </div>
                                                             </div>
                                                             <div class="field-group">
@@ -353,7 +353,7 @@
                                                                   <label>Insurance Types</label>
                                                                </div>
                                                                <div class="field-value-an">
-                                                                  <a href="">Manage Insurance Types</a>                                                    
+                                                                  <a href="{{url('manageinsurancetypes')}}">Manage Insurance Types</a>                                                    
                                                                </div>
                                                             </div>
                                                             <div class="field-group">
@@ -361,7 +361,7 @@
                                                                   <label>Training Types</label>
                                                                </div>
                                                                <div class="field-value-an">
-                                                                  <a href="">Manage Training Types</a>                                                    
+                                                                  <a href="{{url('managetrainingtypes')}}">Manage Training Types</a>                                                    
                                                                </div>
                                                             </div>
                                                             <div class="field-group">
@@ -369,7 +369,7 @@
                                                                   <label>Training Subjects</label>
                                                                </div>
                                                                <div class="field-value-an">
-                                                                  <a href="">Manage Training Subjects</a>                                                    
+                                                                  <a href="{{url('managetrainingsubjects')}}">Manage Training Subjects</a>                                                    
                                                                </div>
                                                             </div>
                                                             <div class="field-group">
@@ -377,7 +377,7 @@
                                                                   <label>Reimbursement Categories</label>
                                                                </div>
                                                                <div class="field-value-an">
-                                                                  <a href="">Manage Reimbursement Categories</a>                                                    
+                                                                  <a href="{{url('managereimbursementcategories')}}">Manage Reimbursement Categories</a>                                                    
                                                                </div>
                                                             </div>
                                                             <div class="field-group">
@@ -385,7 +385,7 @@
                                                                   <label>Recruitment Screening Parameters</label>
                                                                </div>
                                                                <div class="field-value-an">
-                                                                  <a href="">Manage Recruitment Screening Parameters</a>                                                    
+                                                                  <a href="{{url('managerecruitmentscreeningparameters')}}">Manage Recruitment Screening Parameters</a>                                                    
                                                                </div>
                                                             </div>
                                                             <div class="field-group">
@@ -393,7 +393,7 @@
                                                                   <label>Recruitment Sources</label>
                                                                </div>
                                                                <div class="field-value-an">
-                                                                  <a href="">Manage Recruitment Sources</a>                                                    
+                                                                  <a href="{{url('managerecruitmentsources')}}">Manage Recruitment Sources</a>                                                    
                                                                </div>
                                                             </div>
                                                          </div>

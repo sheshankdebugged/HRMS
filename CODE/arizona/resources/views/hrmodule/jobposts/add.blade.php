@@ -65,6 +65,7 @@
                                                     <label>Job Title:</label>
                                                     <input type="text" class="form-control-spacial" id="job_title" name="job_title" value="{{isset($result->job_title)?$result->job_title:''}}">
                                                     <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
+                                                    <a data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Type a Job Title / Designation / Position Name." data-original-title="" title=""><i style="font-size:14px; color:yellow;" class="fa fa-info-circle"></i></a>
                                                 </div>
 
                                                 <div class="form-group">
@@ -75,6 +76,7 @@
 													<option  value="{{$val['id']}}" @php if(isset($result->job_field_id) && $result->job_field_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['job_field_title']}}</option>
 													@endforeach
                                                     </select>
+                                                    <a data-toggle="popover" data-trigger="hover" data-placement="top" data-content="To add more Job Fields, please go to Organization / System Settings / Constants - then click on Manage Job Fields button" data-original-title="" title=""><i style="font-size:14px; color:yellow;" class="fa fa-info-circle"></i></a>
                                                 </div>
 
                                                 <div class="form-group">
@@ -84,16 +86,19 @@
                                                         <option  value="{{$val['id']}}" @php if(isset($result->job_type_id) && $result->job_type_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['job_title']}}</option>
                                                         @endforeach
                                                     </select>
+                                                    <a data-toggle="popover" data-trigger="hover" data-placement="top" data-content="To add more Job Types, please go to Organization / System Settings / Constants - then click on Manage Job Types button" data-original-title="" title=""><i style="font-size:14px; color:yellow;" class="fa fa-info-circle"></i></a>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label>Job Post Opening Date:</label>
                                                     <input type="text" class="form-control-spacial date" id="job_post_opening_date" name="job_post_opening_date" value="{{isset($result->job_post_opening_date)?$result->job_post_opening_date:''}}">
+                                                    <a data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Please provide a opening date for this job post. This job post will appear in your Jobs Portal from the opening date." data-original-title="" title=""><i style="font-size:14px; color:yellow;" class="fa fa-info-circle"></i></a>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label>Job Post Closing Date:</label>
                                                     <input type="text" class="form-control-spacial date" id="job_post_closing_date" name="job_post_closing_date" value="{{isset($result->job_post_closing_date)?$result->job_post_closing_date:''}}">
+                                                    <a data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Please provide a closing date for this job post. This job post will not appear in your Jobs Portal after the closing date." data-original-title="" title=""><i style="font-size:14px; color:yellow;" class="fa fa-info-circle"></i></a>
                                                 </div>
 
                                                 <div class="form-group">
@@ -107,6 +112,7 @@
                                                         <option value="0" <?php if (isset($result->publish_in_jobs_portal)) {echo ($result->publish_in_jobs_portal == 0) ? "selected" : "";}?>>No</option>
                                                         <option value="1" <?php if (isset($result->publish_in_jobs_portal)) {echo (!isset($result->publish_in_jobs_portal) || $result->publish_in_jobs_portal == 1) ? "selected" : "";}?>>Yes</option>
                                                     </select>
+                                                    <a data-toggle="popover" data-trigger="hover" data-placement="top" data-content="If selected as Yes, this Job Post will appear in your Jobs Portal. To access your Jobs Portal, please go to Add More Modules, then click on Jobs Portal." data-original-title="" title=""><i style="font-size:14px; color:yellow;" class="fa fa-info-circle"></i></a>
                                                 </div>
 
                                                 {{--  Job Post Detail  --}}
@@ -115,18 +121,28 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Company:</label>
-                                                    <input type="text" class="form-control-spacial" id="companies" name="company" value="{{isset($result->companies)?$result->companies:''}}" >
-
+                                                    <select id="company_id" multiple class="WebHRForm1 chosen-select" style="width:180px;" name="company_id">
+													@foreach($master['Companies'] as $val)
+														<option value="{{$val['id']}}" @php if(isset($result->company_id) && $result->company_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['company_name']}}</option>
+													@endforeach
+													</select>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Station:</label>
-                                                    <input type="text" class="form-control-spacial" id="stations" name="station" value="{{isset($result->stations)?$result->stations:''}}" >
-
+                                                    <select id="st" multiple class="WebHRForm1 chosen-select" style="width:180px;" name="station_id">
+													@foreach($master['Stations'] as $val)
+														<option  value="{{$val['id']}}" @php if(isset($result->station_id) && $result->station_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['station_name']}}</option>
+													@endforeach
+													</select>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Department:</label>
-                                                    <input type="text" class="form-control-spacial" id="departments" name="department" value="{{isset($result->departments)?$result->departments:''}}">
-
+                                                    <!-- <input type="text" class="form-control-spacial" id="departments" name="department" value="{{isset($result->departments)?$result->departments:''}}"> -->
+                                                    <select id="st" multiple class="WebHRForm1 chosen-select" style="width:180px;" name="department_id">
+													@foreach($master['Departments'] as $val)
+														<option  value="{{$val['id']}}" @php if(isset($result->department_id) && $result->department_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['department_name']}}</option>
+													@endforeach
+													</select>
                                                 </div>
                                                 {{-- End of Job Post Detail --}}
 
@@ -136,7 +152,13 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Employees involved in Recruitment Process:</label>
-                                                    <input type="text" class="form-control-spacial" id="employees_involved_in" name="employees_involved_in" value="{{isset($result->employees_involved_in)?$result->employees_involved_in:''}}">
+                                                    <!-- <input type="text" class="form-control-spacial" id="employees_involved_in" name="employees_involved_in" value="{{isset($result->employees_involved_in)?$result->employees_involved_in:''}}"> -->
+                                                    <select id="employees_involved_in" multiple class="WebHRForm1 chosen-select" style="width:180px;" name="employees_involved_in">
+													@foreach($master['Employees'] as $val)
+													<option  value="{{$val['id']}}" @php if(isset($result->employees_involved_in) && $result->id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
+													@endforeach
+													</select>
+                                                    <a data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Select Employees who will have access to Screening stages on this Job Post." data-original-title="" title=""><i style="font-size:14px; color:yellow;" class="fa fa-info-circle"></i></a>
                                                 </div>
                                                 {{--End of Recruiters--}}
 
@@ -210,7 +232,8 @@
                                                 </div>
                                                 <div class="form-group">
 												<label>Recruitment Parameters:</label>
-                                                <textarea class="notes" name="recruitment_parameters" id="recruitment_parameters">{{isset($result->recruitment_parameters)?$result->notes:''}}</textarea>
+                                                <textarea class="notes" name="recruitment_parameters" id="recruitment_parameters" style="width:500px; height:100
+                                                px; placeholder=">Dress Code,Attitude,Communication Skills,Technical Knowledge,Confidence,Potential,Learning Ability,Mental Capacity,Analytical Approach,Willingness to Work{{isset($result->recruitment_parameters)?$result->notes:''}}</textarea>
 												</div>
                                                 {{--Job Post Recruitment Parameters End--}}
 
@@ -247,9 +270,9 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Approval Levels:</label>
-                                                    <select class="form-control-spacial chosen-select" id="approval_levels" name="approval_levels">
-                                                            @foreach($master['Countries'] as $val)
-                                                            <option value="{{$val['id']}}" <?php if (isset($result->country)) {echo ($country['country_id'] == $result->country) ? "selected" : "";}?> >{{$val['title']}}</option>
+                                                    <select class="form-control-spacial chosen-select" id="approval_levels_id" name="approval_levels_id">
+                                                            @foreach($master['ApprovalLevel'] as $val)
+                                                            <option value="{{$val['id']}}" <?php if (isset($result->approval_levels_id)) {echo ($country['approval_levels_id'] == $result->approval_levels_id) ? "selected" : "";}?> >{{$val['title']}}</option>
                                                             @endforeach
                                                     </select>
                                                 </div>

@@ -161,7 +161,7 @@
 									{{-- Job Request Document (Optional) --}}
 									<div class="form-upper-main">
 										<h4>Job Request Document (Optional)</h4>
-										<input class="submit-office" type="file" name="job_request_document" id="job_request_document">
+										<input class="submit-office" type="file" name="job_request_document" id="job_request_document" accept="image/x-png,image/gif,image/jpeg">
 									</div>
 
 									{{-- End of Job Request Document (Optional) --}}
