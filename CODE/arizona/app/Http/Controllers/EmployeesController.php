@@ -20,8 +20,10 @@ use App\Models\Religion;
 use App\Models\Salutation;
 use App\Models\Stations;
 use App\Models\WorkShifts;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Form;
@@ -37,7 +39,21 @@ class EmployeesController extends Controller
     //  */
     public function index()
     {
-        $user_id = Auth::id();
+
+        $userParent = Auth::user();
+        $user_id    = Auth::id();  // user_id
+        $parent_id =0;
+        if($userParent->employee_id > 0){
+            $parent_id = $userParent->parent_user_id; // organisation id
+        }
+
+        // 
+        
+        if($parent_id){
+            
+        }
+     
+        
         //     $list = employees::where(['status'=>1,'user_id'=>$user_id])->paginate(10);
         //     return view('hrmodule.employees.list')->with([
         //         'listData' => $list,
@@ -97,7 +113,7 @@ class EmployeesController extends Controller
 
             $validator = Validator::make($request->all(), [
                 'first_name' => 'required',
-                'last_name' => 'required'
+                'last_name' => 'required',
             ]);
             if ($validator->fails()) {
                 $action = 'addemployees';
@@ -124,13 +140,15 @@ class EmployeesController extends Controller
                 $input['dob'] = date("Y-m-d H:i:s");
                 Session::flash('message', 'Employee Updated Successfully.');
                 Employees::where('id', $input['id'])->update($input);
+                $this->createUser($employee_id, $input);
             } else {
                 unset($input['id']);
                 $input['created_at'] = date("Y-m-d H:i:s");
                 $input['updated_at'] = date("Y-m-d H:i:s");
                 $input['dob'] = date("Y-m-d H:i:s");
                 Session::flash('message', 'Employee Added Successfully.');
-                Employees::insertGetId($input);
+                $employee_id = Employees::insertGetId($input);
+                $this->createUser($employee_id, $input);
             }
             return redirect('/employees');
         }
@@ -203,23 +221,47 @@ class EmployeesController extends Controller
     public function getmasterfields()
     {
         $master = array();
-        $master['Companies'] = Companies::where(['status' => 1])->get()->toArray();
+        $master['Companies'] = Companies::where(['status' => 1, 'user_id' => Auth::id()])->get()->toArray();
         $master['Countries'] = Countries::where(['status' => 1])->get()->toArray();
-        $master['Divisions'] = Divisions::where(['status' => 1])->get()->toArray();
-        $master['Stations'] = Stations::where(['status' => 1])->get()->toArray();
-        $master['Departments'] = Departments::where(['status' => 1])->get()->toArray();
-        $master['EmployeeType'] = EmployeeType::where(['status' => 1])->get()->toArray();
-        $master['EmployeeCategory'] = EmployeeCategory::where(['status' => 1])->get()->toArray();
-        $master['Employees'] = Employees::where(['status' => 1])->get()->toArray();
+        $master['Divisions'] = Divisions::where(['status' => 1, 'user_id' => Auth::id()])->get()->toArray();
+        $master['Stations'] = Stations::where(['status' => 1, 'user_id' => Auth::id()])->get()->toArray();
+        $master['Departments'] = Departments::where(['status' => 1, 'user_id' => Auth::id()])->get()->toArray();
+        $master['EmployeeType'] = EmployeeType::where(['status' => 1, 'user_id' => Auth::id()])->get()->toArray();
+        $master['EmployeeCategory'] = EmployeeCategory::where(['status' => 1, 'user_id' => Auth::id()])->get()->toArray();
+        $master['Employees'] = Employees::where(['status' => 1, 'user_id' => Auth::id()])->get()->toArray();
         $master['Salutations'] = Salutation::where(['status' => 1])->get()->toArray();
         $master['Genders'] = Gender::where(['status' => 1])->get()->toArray();
         $master['BloodGroups'] = BloodGroup::where(['status' => 1])->get()->toArray();
         $master['Nationalities'] = Nationality::where(['status' => 1])->get()->toArray();
         $master['Religions'] = Religion::where(['status' => 1])->get()->toArray();
         $master['MaritalStatus'] = MaritalStatus::where(['status' => 1])->get()->toArray();
-        $master['EmployeeDesignation'] = EmployeeDesignation::where(['status' => 1])->get()->toArray();
-        $master['Grades'] = Grade::where(['status' => 1])->get()->toArray();
-        $master['WorkShifts'] = WorkShifts::where(['status' => 1])->get()->toArray();
+        $master['EmployeeDesignation'] = EmployeeDesignation::where(['status' => 1, 'user_id' => Auth::id()])->get()->toArray();
+        $master['Grades'] = Grade::where(['status' => 1, 'user_id' => Auth::id()])->get()->toArray();
+        $master['WorkShifts'] = WorkShifts::where(['status' => 1, 'user_id' => Auth::id()])->get()->toArray();
         return $master;
+    }
+
+    /*
+     * create usere
+     */
+
+    public function createUser($employee_id, $data)
+    {
+
+        /*return User::create([
+        'name' => $data['name'],
+        'email' => $data['email'],
+        'password' => Hash::make($data['password']),
+        ]); */
+
+        $userData['employee_id'] = $employee_id;
+        $userData['email'] = $data['email_address'];
+        $userData['parent_user_id'] = Auth::id();
+        $userData['name'] = $data['first_name'];
+        $userData['created_at'] = date("Y-m-d H:i:s");
+        $userData['updated_at'] = date("Y-m-d H:i:s");
+        $userData['password'] = Hash::make($data['password']);
+        $employee_id = User::insertGetId($userData);
+
     }
 }
