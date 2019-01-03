@@ -172,7 +172,7 @@ class DepartmentsController extends Controller
         // $master['Countries']               = Countries::where(['status' => 1])->get()->toArray();
         $master['Stations']                   = Stations::where(['status'=>1])->get()->toArray();
         $master['Employees']                  = Employees::where(['status'=>1])->get()->toArray();
-        // $master['Departments']             = Departments::where(['status'=>1])->get()->toArray();
+        $master['Departments']             = Departments::where(['status'=>1])->get()->toArray();
         // $master['EmployeeType']            = EmployeeType::where(['status'=>1])->get()->toArray();
         // $master['EmployeeCategory']        = [];//EmployeeCategory::where(['status'=>1])->get()->toArray();
         // $master['EmployeeDesignation']     = [];//EmployeeDesignation::where(['status'=>1])->get()->toArray();

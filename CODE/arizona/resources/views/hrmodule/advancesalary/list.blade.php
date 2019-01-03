@@ -42,7 +42,7 @@
 											<h3>{{ $pageTitle }}</h3>
 										</div>
                              	<div class="col-md-8 nopadding">
-								 <form id="search" name="search" method="get" />
+								 <form id="search" name="search" method="get">
 											<div class="search-area-request">
 												<input type="text" placeholder="Search..."  name="search" class="search" id="search" value="{{isset($_GET['search'])?$_GET['search']:''}} "/>
 												<button style="cursor:pointer"><i class="fa fa-search"></i></button>

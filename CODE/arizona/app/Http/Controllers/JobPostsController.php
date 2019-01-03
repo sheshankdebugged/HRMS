@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Countries;
+use App\Models\ApprovalLevel;
+use App\Models\Departments;
+use App\Models\Companies;
+use App\Models\Employees;
+
+use App\Models\Stations;
 use App\Models\JobPosts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -198,7 +204,11 @@ class JobPostsController extends Controller
         $master['CandidateAgeRange']   = CandidateAgeRange::where(['status'=>1])->get()->toArray();
         $master['Countries']             = Countries::where(['status'=>1])->get()->toArray();
         $master['JobField']             = JobField::where(['status'=>1])->get()->toArray();
-
+        $master['ApprovalLevel']             = ApprovalLevel::where(['status'=>1])->get()->toArray();
+        $master['Companies']            = Companies::where(['status' => 1])->get()->toArray();
+        $master['Stations'] = Stations::where(['status' => 1])->get()->toArray();
+        $master['Departments'] = Departments::where(['status' => 1])->get()->toArray();
+        $master['Employees']               = Employees::where(['status' => 1])->get()->toArray();
         return $master;
     }
 }
