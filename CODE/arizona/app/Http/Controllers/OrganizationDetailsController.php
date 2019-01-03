@@ -28,11 +28,14 @@ class OrganizationDetailsController extends Controller
         $timezone = $this->gettimezone();
         $dateformat = $this->getdateformat();
         $timeformat = $this->gettimeformat();
+        // echo $user_id;
+        // die();
 
         // echo "$user_id";
         // $list = OrganizationDetails::where(['user_id' => $user_id])->paginate(10);
         $list = OrganizationDetails::where(['status' => 1, 'user_id' => $user_id])->get();
         $list1 = GeneralSettings::where(['status' => 1])->get();
+
 
         return view('hrmodule.setting')->with([
             'listData' => $list[0],
@@ -196,5 +199,4 @@ class OrganizationDetailsController extends Controller
         $timeformat['TimeFormat'] = TimeFormat::where(['status' => 1])->get()->toArray();
         return $timeformat;
     }
-    
 }

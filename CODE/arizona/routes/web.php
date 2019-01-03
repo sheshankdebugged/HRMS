@@ -185,93 +185,143 @@ Route::group(['middleware' => 'auth'], function () {
 
     //  HR Reports
     //   Hourly Wages\
-    
-      \App\Http\Controllers\HourlywagesController::routes();
-      
+
+    \App\Http\Controllers\HourlywagesController::routes();
+
     //   Overtime
-    
-      \App\Http\Controllers\OvertimesController::routes();
+
+    \App\Http\Controllers\OvertimesController::routes();
 
     //   Provident Funds
-      
-      \App\Http\Controllers\ProvidentfundsController::routes();
+
+    \App\Http\Controllers\ProvidentfundsController::routes();
 
     //   Advance Salary
-      
-     \App\Http\Controllers\AdvancesalaryController::routes();
 
-    //   Insurance 
-      
-     \App\Http\Controllers\InsuranceController::routes();
+    \App\Http\Controllers\AdvancesalaryController::routes();
 
-    //   Adjustments 
-      
-     \App\Http\Controllers\AdjustmentsController::routes();
+    //   Insurance
+
+    \App\Http\Controllers\InsuranceController::routes();
+
+    //   Adjustments
+
+    \App\Http\Controllers\AdjustmentsController::routes();
 
     // Loans
-      
-      \App\Http\Controllers\LoansController::routes();
+
+    \App\Http\Controllers\LoansController::routes();
 
     //   Bonuses
-      
-      \App\Http\Controllers\BonusesController::routes();
+
+    \App\Http\Controllers\BonusesController::routes();
 
     //   Deductions
-      
-      \App\Http\Controllers\DeductionsController::routes();
+
+    \App\Http\Controllers\DeductionsController::routes();
 
     //  Commissions
-      
-        \App\Http\Controllers\CommissionsController::routes();
+
+    \App\Http\Controllers\CommissionsController::routes();
 
     //  Reimbursements
-      
-        \App\Http\Controllers\ReimbursementsController::routes();
 
-          
-        //  Employees Settings
-      
-        \App\Http\Controllers\EmployeesSettingsController::routes();
+    \App\Http\Controllers\ReimbursementsController::routes();
 
-        // Employee Designations
-        
+    //  Employees Settings
+
+    \App\Http\Controllers\EmployeesSettingsController::routes();
+
+    // Employee Designations
+
     //  Manage Leaves Types
-        
-        \App\Http\Controllers\ManageLeavesTypesController::routes();
-        
+
+    \App\Http\Controllers\ManageLeavesTypesController::routes();
+
     //  Delete Multiple Leaves
-        
-        \App\Http\Controllers\DelMultipleLeavesController::routes();
+
+    \App\Http\Controllers\DelMultipleLeavesController::routes();
 
     //  HR Leaves
 
-        \App\Http\Controllers\HRReportsController::routes();
+    \App\Http\Controllers\HRReportsController::routes();
 
     //  EmployeeDesignationsController Leaves
 
-        \App\Http\Controllers\EmployeeDesignationsController::routes();
-    
+    \App\Http\Controllers\EmployeeDesignationsController::routes();
+
     //  OrganizationDetailsController Leaves
 
-        \App\Http\Controllers\OrganizationDetailsController::routes();
-        
-        // HR Reports
+    \App\Http\Controllers\OrganizationDetailsController::routes();
 
-        \App\Http\Controllers\HRReportsController::routes();
+    // HR Reports
 
-        //  Employee Designations 
+    \App\Http\Controllers\HRReportsController::routes();
 
-        \App\Http\Controllers\EmployeeDesignationsController::routes();
+    //  Employee Designations
 
-        // Employee Grades
+    \App\Http\Controllers\EmployeeDesignationsController::routes();
 
-        \App\Http\Controllers\EmployeeGradesController::routes();
+    // Employee Grades
 
-        // Employee Type
+    \App\Http\Controllers\EmployeeGradesController::routes();
 
-        \App\Http\Controllers\EmployeeTypeController::routes();
+    // Employee Type
 
-        // Employee Category
+    \App\Http\Controllers\EmployeeTypeController::routes();
 
-        \App\Http\Controllers\EmployeeCategoryController::routes();
+    // Employee Category
+
+    \App\Http\Controllers\EmployeeCategoryController::routes();
+
+    // Manage Skills
+
+    \App\Http\Controllers\ManageSkillsController::routes();
+
+    // ManageQualificationDegrees
+
+    \App\Http\Controllers\ManageQualificationDegreesController::routes();
+
+    // Manage Contract Types
+
+    \App\Http\Controllers\ManageContractTypesController::routes();
+    // Manage Job Types
+
+    \App\Http\Controllers\ManageJobTypesController::routes();
+    // Manage Job Fields
+
+    \App\Http\Controllers\ManageJobFieldsController::routes();
+    // Manage Division Types
+
+    \App\Http\Controllers\ManageDivisionTypesController::routes();
+    // Manage Station Types
+
+    \App\Http\Controllers\ManageStationTypesController::routes();
+    // Manage Policy Types
+
+    \App\Http\Controllers\ManagePolicyTypesController::routes();
+    // // Manage Employee Types
+
+    \App\Http\Controllers\ManageEmployeeTypesController::routes();
+    // Manage Employee Categories
+
+    \App\Http\Controllers\ManageEmployeeCategoriesController::routes();
+    // Manage Insurance Types
+
+    \App\Http\Controllers\ManageInsuranceTypesController::routes();
+    // Manage Training Types
+
+    \App\Http\Controllers\ManageTrainingTypesController::routes();
+    // Manage Training Subjects
+
+    \App\Http\Controllers\ManageTrainingSubjectsController::routes();
+    // Manage Reimbursement Categories
+
+    \App\Http\Controllers\ManageReimbursementCategoriesController::routes();
+    // Manage Recruitment Screening Parameters
+
+    \App\Http\Controllers\ManageRecruitmentScreeningParametersController::routes();
+    // Manage Recruitment Sources
+
+    \App\Http\Controllers\ManageRecruitmentSourcesController::routes();
 });
