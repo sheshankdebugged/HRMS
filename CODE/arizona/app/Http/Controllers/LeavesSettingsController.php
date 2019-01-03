@@ -5,11 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\LeavesSettings;
 use Illuminate\Http\Request;
 use App\Models\Leaves;
+use App\Models\LeavesQuotaResetDate;
 use App\Models\ManageLeavesTypes;
 use App\Models\Employees;
+// use App\Models\LeavesAccrual;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
+
+use Session;
+use Validator;
+
 
 class LeavesSettingsController extends Controller
 {
@@ -67,7 +73,6 @@ class LeavesSettingsController extends Controller
      */
     public function store(Request $request)
     {
-
         $user_id = Auth::id();
         if ($request->all()) {
 
@@ -77,7 +82,7 @@ class LeavesSettingsController extends Controller
                   
             ]);
             if ($validator->fails()) {
-                $action = 'addRegularhours';
+                $action = 'addLeavesSettings';
                 return redirect('/leavessettings/add')
                     ->withErrors($validator)
                     ->withInput()
@@ -96,7 +101,7 @@ class LeavesSettingsController extends Controller
             echo "<pre>";
 
        
-             $input['leave_from'] = ($input['leave_from'] !="")?date('Y-m-d',strtotime($input['leave_from'])):$input['leave_from'];
+            //  $input['leave_from'] = ($input['leave_from'] !="")?date('Y-m-d',strtotime($input['leave_from'])):$input['leave_from'];
             // $input['poll_end_date']   = ($input['poll_end_date'] !="")?date('Y-m-d',strtotime($input['poll_end_date'])):$input['poll_end_date'];
             $input['status'] =  1;
             $input['user_id'] =  $user_id;
@@ -112,7 +117,7 @@ class LeavesSettingsController extends Controller
                 Session::flash('message', 'Employee Leaves  Added Successfully.');
                 LeavesSettings::insertGetId($input);
             }
-            return redirect('/leavessettings');
+            return redirect('/leavessettings/add');
         }
     }
 
@@ -161,7 +166,7 @@ class LeavesSettingsController extends Controller
         $LeavesSettings->status = 0;
         $LeavesSettings->save();
         Session::flash('message', ' Leaves Settings delete successfully');
-        return redirect("/leavessettings");
+        return redirect("/leavessettings/add");
     }
     public static function routes()
     {
@@ -178,6 +183,8 @@ class LeavesSettingsController extends Controller
     {
         $master = array();
         $master['Employees']               = Employees::where(['status' => 1])->get()->toArray();
+        $master['LeavesQuotaResetDate']               = LeavesQuotaResetDate::where(['status' => 1])->get()->toArray();
+        // $master['LeavesAccrual']               = LeavesAccrual::where(['status' => 1])->get()->toArray();
         // $master['Stations']                = Stations::where(['status'=>1])->get()->toArray();
         // $master['Projects']               = Projects::where(['status' => 1])->get()->toArray();               
         return $master;

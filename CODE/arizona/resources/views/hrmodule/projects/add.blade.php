@@ -64,7 +64,8 @@
 													@foreach($master['ProjectCategories'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->project_cat_id) && $result->project_cat_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['project_category_name']}}</option>
 													@endforeach
-													</select>		
+													</select>
+													<a data-toggle="popover" data-trigger="hover" data-placement="top" data-content="This is an optional field. To add a new category, please go to Project Settings by clicking on Projects Settings icon on top right corner within Projects module" data-original-title="" title=""><i style="font-size:14px; color:yellow;" class="fa fa-info-circle"></i></a>		
 												</div>
 												 <div class="form-group">
 													<label>Project Title:</label>
@@ -77,12 +78,14 @@
 													@foreach($master['Clients'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->client_id) && $result->client_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['name']}}</option>
 													@endforeach
-													</select>	
+													</select>
+													<a data-toggle="popover" data-trigger="hover" data-placement="top" data-content="This is an optional field. To add a new client, please go to Project Settings by clicking on Projects Settings icon on top right corner within Projects module" data-original-title="" title=""><i style="font-size:14px; color:yellow;" class="fa fa-info-circle"></i></a>	
 												 </div>
 												 <div class="form-group">
 													<label>Client Name (Old):</label>
 													<input type="text"  id="client_name_old" name="client_name_old"  placeholder="Client Name">
-                                                    <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
+                                                    <!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
+													<a data-toggle="popover" data-trigger="hover" data-placement="top" data-content="This is an obsolete field, and will be removed from the system soon. Please use the Project Client field above" data-original-title="" title=""><i style="font-size:14px; color:yellow;" class="fa fa-info-circle"></i></a>
 												 </div>
 												 <div class="form-group">
 													<label>Project Start Date:</label>
@@ -151,6 +154,10 @@
 												 <div class="form-group">
 													<h4>Project Description</h4>
 												 </div>
+												 <div class="form-group">
+												 <label>Description:</label>
+												 <textarea class="notes" name="notes" id="nproject_descriptionotes" id="project_description">{{isset($result->notes)?$result->project_description:''}}</textarea>
+												</div>
 												 <div class="form-group">
 													<h4>Additional Information</h4>
 												 </div>

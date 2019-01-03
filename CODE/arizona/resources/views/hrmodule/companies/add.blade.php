@@ -70,7 +70,7 @@
                                                  <div class="form-group">
 													<label>Legal / Trading Name:</label>
 													<input type="text" class="form-control-spacial" id="legal_trading_name" value="{{isset($result->legal_trading_name)?$result->legal_trading_name:''}}" name="legal_trading_name" placeholder="Legal / Trading Name"> 
-                                                   
+                                                    <a data-toggle="popover" data-trigger="hover" data-placement="top" data-content="This is an optional field. Please enter legal or trading name if it is different from the company name" data-original-title="" title=""><i style="font-size:14px; color:yellow;;" class="fa fa-info-circle"></i></a>
 												 </div>
 
                                                  <div class="form-group">
