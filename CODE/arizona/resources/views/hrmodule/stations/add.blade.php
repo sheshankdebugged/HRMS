@@ -66,24 +66,13 @@
                                           <input type="hidden" name="id" value="{{isset($result->id)?$result->id:''}}">
 
 											<div class="form-field-inner">
-
 												 <div class="form-group">
 													<label>Company:</label>
-
 													<select id="company_id" class="WebHRForm1 chosen-select" style="width:180px;" name="company_id">
-													<!-- <option value="ALL"> All </option> -->
 													@foreach($master['Companies'] as $val)
-													<!-- <option  value="{{$val['company_name']}}">{{$val['company_name']}}</option> -->
 													<option  value="{{$val['id']}}" @php if(isset($result->company_id) && $result->company_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['company_name']}}</option>
 													@endforeach
 													</select>
-
-													<!-- <select id ="division_id" name ="division_id" class="WebHRForm1 chosen-select" style="width:180px;">
-													@foreach($master['Divisions'] as $val)
-													<option  value="{{$val['id']}}" @php if(isset($result->division_id) && $result->division_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['division_name']}}</option>
-													@endforeach
-													</select> -->
-
 												 </div>
 
                                                  <div class="form-group">
@@ -94,9 +83,7 @@
 													<option  value="{{$val['id']}}" @php if(isset($result->division_id) && $result->division_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['division_name']}}</option>
 													@endforeach
 													</select>
-
 												 </div>
-
                                                  <div class="form-group">
 													<label>Station Type:</label>
 													<select id ="station_type_id" name ="station_type_id" class="WebHRForm1 chosen-select" style="width:180px;">
@@ -105,7 +92,6 @@
 													@endforeach
 													</select>
 												 </div>
-
 												 <div class="form-group">
 													<label>Station Name:</label>
 													<input type="text" id="station_name" name="station_name" value="{{isset($result->station_name)?$result->station_name:''}}" placeholder="Station Name" class="form-control-spacial" />
