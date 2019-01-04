@@ -328,4 +328,19 @@ Route::group(['middleware' => 'auth'], function () {
     // Recruitment Dashboard
 
     \App\Http\Controllers\RecruitmentdashboardController::routes();
+    //OnBoarding
+
+    \App\Http\Controllers\OnBoardingController::routes();
+    //OnBoardingSettings
+
+    \App\Http\Controllers\OnBoardingSettingsController::routes();
+    //OnBoardingNotifications
+
+    // \App\Http\Controllers\OnBoardingNotificationsController::routes();
+    //OnBoardingSettings
+
+    // \App\Http\Controllers\OnBoardingChecklistController::routes();
+    // //EmployeeOnBoardingTasks
+
+    // \App\Http\Controllers\EmployeeOnBoardingTasksController::routes();
 });
