@@ -42,7 +42,7 @@
 											<h3>{{ $pageTitle }}</h3>
 										</div>
                              	<div class="col-md-8 nopadding">
-								 <form id="search" name="search" method="get" />
+								 <form id="search" name="search" method="get">
 											<div class="search-area-request">
 												<input type="text" placeholder="Search..."  name="search" class="search" id="search" value="{{isset($_GET['search'])?$_GET['search']:''}} "/>
 												<button style="cursor:pointer"><i class="fa fa-search"></i></button>
@@ -51,8 +51,15 @@
 											<div class="filter-btn-request">
 												<a href="{{ url('attendance') }}" alt="Dashboard"><i class="fa fa-refresh"></i></a>
 											</div>
+											<!-- <div style="">&nbsp;&nbsp;<button id="" type="button" onclick="jsOpenWindow('#', 800, 600);" class="add-record-btn" style="">Time Clock</button>&nbsp;&nbsp;<button id="" type="button" onclick="AjaxPage('', 'divContainerMain');" class="add-record-btn" style="">Multiple Attendance</button></div> -->
 											<div class="add-record-btn">
 												<a href="{{ url('attendance/add') }}"><i class="fa fa-plus"></i>Add Record</a>
+											</div>
+											<div class="add-record-btn">
+												<a href="{{ url('multipleattendance') }}"><i class="fa fa-user-circle"></i>Multiple Attendance</a>
+											</div>
+											<div class="add-record-btn">
+												<a href="{{ url('#') }}"><i class="fa fa-clock-o"></i>Time Clock</a>
 											</div>
 											
 										</div>

@@ -17,16 +17,16 @@
 									<h2>{{ $pageTitle }}</h2>
 								</div>
                                 
-								<!-- <div class="settings-buttons">
+								<div class="settings-buttons">
 									<ul>
 										<li>
 											<a href="#" alt="Dashboard"><i class="fa fa-cog"></i></a>
 										</li>
-										<li>
+										<!-- <li>
 											<a href="#" alt="Dashboard"><i class="fa fa-question-circle"></i></a>
-										</li>
+										</li> -->
 									</ul>
-								</div> -->
+								</div>
 							</div>
 
                             @if(Session::get('message'))
@@ -53,6 +53,9 @@
 											</div>
 											<div class="add-record-btn">
 												<a href="{{ url('employeehours/add') }}"><i class="fa fa-plus"></i>Add Record</a>
+											</div>
+											<div class="add-record-btn">
+												<a href="{{ url('addmultipleemployeehours/add') }}"><i class="fa fa-hourglass"></i>Multiple Employee Hours</a>
 											</div>
 											
 										</div>
