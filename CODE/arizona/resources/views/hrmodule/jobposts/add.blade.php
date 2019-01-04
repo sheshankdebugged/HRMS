@@ -15,16 +15,16 @@
 								<div class="inner-heading-request">
 									<h2>{{$pageTitle}}</h2>
 								</div>
-								<!-- <div class="settings-buttons">
+								<div class="settings-buttons">
 									<ul>
 										<li>
-											<a href="#" alt="Dashboard"><i class="fa fa-cog"></i></a>
+											<a href="{{ url('jobpostsettings/add') }}" alt="Dashboard"><i class="fa fa-cog"></i></a>
 										</li>
-										<li>
+										<!-- <li>
 											<a href="#" alt="Dashboard"><i class="fa fa-question-circle"></i></a>
-										</li>
+										</li> -->
 									</ul>
-								</div> -->
+								</div> 
 							</div>
 							<div class="request-inner-table">
 								<div class="upper-header-request">

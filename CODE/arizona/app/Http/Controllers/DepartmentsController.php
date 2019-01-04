@@ -3,9 +3,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Departments;
-use App\Models\Stations;
 use App\Models\Employees;
-use App\Models\Companies;
+use App\Models\Stations;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -25,15 +24,15 @@ class DepartmentsController extends Controller
     public function index()
     {
         $user_id = Auth::id();
-        $searchQuery  = isset($_GET['search'])?trim($_GET['search']):"";
-        $where   = ['status'=>1,'user_id'=>$user_id];
-        
-        if(!empty($searchQuery)){
+        $searchQuery = isset($_GET['search']) ? trim($_GET['search']) : "";
+        $where = ['status' => 1, 'user_id' => $user_id];
+
+        if (!empty($searchQuery)) {
             $where = [
                 ['department_name', 'LIKE', "%$searchQuery%"],
                 ['status', '=', 1],
                 ['user_id', '=', $user_id],
-            ];   
+            ];
         }
 
         $list = Departments::where($where)->paginate(10);
@@ -57,7 +56,7 @@ class DepartmentsController extends Controller
             'action' => $action,
             'pageTitle' => "Departments",
             'Addform' => "Add New Departments",
-            'master' => $master
+            'master' => $master,
         ]);
     }
 
@@ -75,7 +74,7 @@ class DepartmentsController extends Controller
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                'department_name' => 'required'
+                'department_name' => 'required',
             ]);
             if ($validator->fails()) {
                 $action = 'departments/add';
@@ -141,7 +140,7 @@ class DepartmentsController extends Controller
             'pageTitle' => "Departments",
             'Addform' => $editname,
             'result' => $result,
-            'master' => $master
+            'master' => $master,
         ]);
 
     }
@@ -170,9 +169,9 @@ class DepartmentsController extends Controller
         $master = array();
         // $master['CompanyType']             = CompanyType::where(['status' => 1])->get()->toArray();
         // $master['Countries']               = Countries::where(['status' => 1])->get()->toArray();
-        $master['Stations']                   = Stations::where(['status'=>1])->get()->toArray();
-        $master['Employees']                  = Employees::where(['status'=>1])->get()->toArray();
-        $master['Departments']             = Departments::where(['status'=>1])->get()->toArray();
+        $master['Stations'] = Stations::where(['status' => 1])->get()->toArray();
+        $master['Employees'] = Employees::where(['status' => 1])->get()->toArray();
+        $master['Departments'] = Departments::where(['status' => 1])->get()->toArray();
         // $master['EmployeeType']            = EmployeeType::where(['status'=>1])->get()->toArray();
         // $master['EmployeeCategory']        = [];//EmployeeCategory::where(['status'=>1])->get()->toArray();
         // $master['EmployeeDesignation']     = [];//EmployeeDesignation::where(['status'=>1])->get()->toArray();

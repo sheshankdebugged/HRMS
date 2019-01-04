@@ -41,12 +41,12 @@
 										</div>
                              	<div class="col-md-8 nopadding">
 											<!-- <div class="search-area-request">
-												<input type="text" placeholder="Search...">
+												<input type="text" placeholder="Quick Search...">
 												<button><i class="fa fa-search"></i></button>
 											</div> -->
 											<form id="search" name="search" method="get" />
 											<div class="search-area-request">
-												<input type="text" placeholder="Search..."  name="search" class="search" id="search" value="{{isset($_GET['search'])?$_GET['search']:''}} "/>
+												<input type="text" placeholder="Quick Search..."  name="search" class="search" id="search" value="{{isset($_GET['search'])?$_GET['search']:''}} "/>
 												<button style="cursor:pointer"><i class="fa fa-search"></i></button>
 											</div>
 									
