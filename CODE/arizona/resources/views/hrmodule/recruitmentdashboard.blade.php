@@ -21,7 +21,7 @@
 								<div class="upper-header-request">
 									<div class="col-md-12 nopadding">
 										<div class="search-field-outer">
-                                            <input class="search-field" type="text" placeholder="Candidates Search...">
+                                            <input class="search-field" type="text" placeholder="Candidates Quick Search...">
                                             <a href="#"><i class="fa fa-search"></i></a>
                                             <a href="#"><i class="fa fa-filter"></i></a>
                                         </div>
