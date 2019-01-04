@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Memos;
+use App\Models\Employees;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -51,10 +52,12 @@ class MemosController extends Controller
     public function create()
     {
         $action = 'add';
+        $master = $this->getmasterfields();
         return view('hrmodule.memos.add')->with([
             'action' => $action,
             'pageTitle' => "Memos",
             'Addform' => "Add New Memo",
+            'master' => $master
         ]);
     }
 
@@ -133,15 +136,17 @@ class MemosController extends Controller
     public function edit($id)
     {
 
-        $action = 'edit';
+        $action = 'edit';        
+        $master = $this->getmasterfields();
         $result = memos::find($id);
         $action = 'add';
-        $editname = "Edit Memo " . $result->employee;
+        $editname = "Edit  " . $result->memo_subject;
         return view('hrmodule.memos.add')->with([
             'action' => $action,
             'pageTitle' => "memos",
             'Addform' => $editname,
             'result' => $result,
+            'master' => $master
         ]);
 
     }
@@ -170,6 +175,12 @@ class MemosController extends Controller
             Route::post('/update/{id}', array('as' => 'memos.update', 'uses' => 'MemosController@update'));
             Route::get('/delete/{id}', array('as' => 'memos.destroy', 'uses' => 'MemosController@destroy'));
         });
+    }
+    public function getmasterfields()
+    {
+        $master = array();
+              $master['Employees']               = Employees::where(['status' => 1])->get()->toArray();
+        return $master;
     }
 }
 

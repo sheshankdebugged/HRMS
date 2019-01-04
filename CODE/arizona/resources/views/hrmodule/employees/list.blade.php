@@ -57,7 +57,14 @@
 												<a href="{{ url('employees/add') }}"><i class="fa fa-plus"></i>Add Record</a>
 											</div>
 											
+											<div class="add-record-btn">
+												<a href="{{ url('#') }}">Employee Roles</a>
+											</div>
+											<div class="add-record-btn">
+												<a href="{{ url('employeegroups') }}">Employee Groups</a>
+											</div>
 										</div>
+										
 										
 									</div>
 								</div>

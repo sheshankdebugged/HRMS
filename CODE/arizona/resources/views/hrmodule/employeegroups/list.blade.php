@@ -16,17 +16,15 @@
 								<div class="inner-heading-request">
 									<h2>{{ $pageTitle }}</h2>
 								</div>
-                                
-								<!-- <div class="settings-buttons">
+								<div class="settings-buttons">
 									<ul>
 										<li>
-											<a href="#" alt="Dashboard"><i class="fa fa-cog"></i></a>
+											<a href="{{ url('employeegroupssettings') }}" alt="Dashboard"><i class="fa fa-cog"></i></a>
 										</li>
-										<li>
-											<a href="#" alt="Dashboard"><i class="fa fa-question-circle"></i></a>
-										</li>
+										
 									</ul>
-								</div> -->
+								</div>
+                            
 							</div>
 
                             @if(Session::get('message'))
@@ -42,20 +40,26 @@
 											<h3>{{ $pageTitle }}</h3>
 										</div>
                              	<div class="col-md-8 nopadding">
-								 <form id="search" name="search" method="get" />
+											<!-- <div class="search-area-request">
+												<input type="text" placeholder="Search...">
+												<button><i class="fa fa-search"></i></button>
+											</div> -->
+											<form id="search" name="search" method="get" />
 											<div class="search-area-request">
 												<input type="text" placeholder="Search..."  name="search" class="search" id="search" value="{{isset($_GET['search'])?$_GET['search']:''}} "/>
 												<button style="cursor:pointer"><i class="fa fa-search"></i></button>
 											</div>
-											</form>
-											<div class="filter-btn-request">
-												<a href="{{ url('memos') }}" alt="Dashboard"><i class="fa fa-refresh"></i></a>
-											</div>
+									
+											<div class="filter-btn-request"> 
+											 <a href="{{ url('employeegroups') }}" alt="Dashboard"><i class="fa fa-refresh"></i></a>
+										    </div>
 											<div class="add-record-btn">
-												<a href="{{ url('memos/add') }}"><i class="fa fa-plus"></i>Add Record</a>
+												<a href="{{ url('employeegroups/add') }}"><i class="fa fa-plus"></i>Add Record</a>
 											</div>
 											
+											
 										</div>
+										
 										
 									</div>
 								</div>
@@ -64,28 +68,23 @@
 									<table id="requesttab" border="0" cellspacing="0" cellpadding="3" width="100%" align="center">
 									 <thead>
 									  <tr>
-										  <td style="background-color:#0c64ae; " class="thbackgroud"><a style="color:#fff; " href="#">Memo From</a></td>
-										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">Subject</a></td>
-										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">	Memo Date</a></td>
-										  <td style="background-color:#0c64ae; " class=""><a style="color:#fff; " href="#">	Approval Status</a></td>
-									      <td style="background-color:#0c64ae; width:1%;"></td>
+										  <td style="background-color:#0c64ae; " class="thbackgroud"><a style="color:#fff; " href="#">Group Name</a></td>
+										  <td style="background-color:#0c64ae; width:1%;"></td>
 									  </tr>
 									</thead>
 										<tbody>
                                         @foreach($listData as $list)
 											<tr id="second" class="context-requst-one selected">
-											<td class="datainner" style="">{{$list->employee_id}}</td>
-											<td class="datainner" style="">{{$list->memo_subject}}</td>
-											<td class="datainner" style="">{{$list->memo_date}}</td> 
-											<td class="datainner" style="">{{$list->approval_status_id}}</td>                      
+											<td class="datainner" style="">{{$list->group_name}}</td>
+										                    
 											<td align="right">
 												<div class="dropdown action-drop">
 													<a href="javascript:void(0);" class="dropdown-custom"><i style="font-size:16px;" class="fa fa-cog"></i></a>
 													<ul class="dropdown-menu">
 														<!-- <li><a href="#"><i class="fa fa-folder-open"></i>View Record</a></li> -->
-														<li><a href="{{url('/memos/edit')}}/{{$list->id}}"><i class="fa fa-edit"></i>Edit Record</a></li>
+														<li><a href="{{url('/employeegroups/edit')}}/{{$list->id}}"><i class="fa fa-edit"></i>Edit Record</a></li>
 														<!-- <li><a href="#"><i class="fa fa-sticky-note"></i>Notes</a></li> -->
-														<li><a href="{{url('/memos/delete/')}}/{{$list->id}}" onclick="return confirm('Are you sure to want delete this?')"><i class="fa fa-times"></i>Delete Record</a></li>
+														<li><a href="{{url('/employeegroups/delete/')}}/{{$list->id}}" onclick="return confirm('Are you sure to want delete this?')"><i class="fa fa-times"></i>Delete Record</a></li>
 													</ul>
 												</div>
 											</td> 
