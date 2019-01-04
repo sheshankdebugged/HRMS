@@ -17,16 +17,16 @@
 									<h2>{{ $pageTitle }}</h2>
 								</div>
 
-								<!-- <div class="settings-buttons">
+								 <div class="settings-buttons">
 									<ul>
 										<li>
-											<a href="#" alt="Dashboard"><i class="fa fa-cog"></i></a>
-										</li>
-										<li>
+											<a href="{{ url('jobpostsettings/add') }}" alt="Dashboard"><i class="fa fa-cog"></i></a>
+										</li> 
+										<!-- <li>
 											<a href="#" alt="Dashboard"><i class="fa fa-question-circle"></i></a>
-										</li>
+										</li> -->
 									</ul>
-								</div> -->
+								</div> 
 							</div>
 
                             @if(Session::get('message'))
@@ -44,7 +44,7 @@
                              	<div class="col-md-8 nopadding">
 								 <form id="search" name="search" method="get" >
 											<div class="search-area-request">
-												<input type="text" placeholder="Search..."  name="search" class="search" id="search" value="{{isset($_GET['search'])?$_GET['search']:''}} "/>
+												<input type="text" placeholder="Quick Search..."  name="search" class="search" id="search" value="{{isset($_GET['search'])?$_GET['search']:''}} "/>
 												<button style="cursor:pointer"><i class="fa fa-search"></i></button>
 											</div>
 											</form>

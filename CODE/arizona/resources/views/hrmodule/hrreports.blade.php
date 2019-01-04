@@ -809,7 +809,7 @@
                                                       </a>
                                                    </div>
                                                    <div class="search-area-request">
-                                                      <input type="text" placeholder="Search...">
+                                                      <input type="text" placeholder="Quick Search...">
                                                       <button>
                                                       <i class="fa fa-search"></i>
                                                       </button>
@@ -869,7 +869,7 @@
                                                       </a>
                                                    </div>
                                                    <div class="search-area-request">
-                                                      <input type="text" placeholder="Search...">
+                                                      <input type="text" placeholder="Quick Search...">
                                                       <button>
                                                       <i class="fa fa-search"></i>
                                                       </button>
@@ -921,7 +921,7 @@
                                                       </a>
                                                    </div>
                                                    <div class="search-area-request">
-                                                      <input type="text" placeholder="Search...">
+                                                      <input type="text" placeholder="Quick Search...">
                                                       <button>
                                                       <i class="fa fa-search"></i>
                                                       </button>

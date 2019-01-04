@@ -64,6 +64,7 @@
 												<div class="form-group">
 													<label>Station:</label>
 													<select id ="station_id" name ="station_id" class="WebHRForm1 chosen-select" style="width:180px;">
+													<option  value="0">All Stations</option>
 													@foreach($master['Stations'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->station_id) && $result->station_id == $val['country_id']  ) { echo "selected";  } @endphp >{{$val['station_name']}}</option>
 													@endforeach
@@ -79,6 +80,7 @@
 												<div class="form-group">
 													<label>Parent Department:</label>
 													<select id ="parent_department_id" name ="parent_department_id" class="WebHRForm1 chosen-select" style="width:180px;">
+													<option  value="0">No Parent</option>
 													@foreach($master['Departments'] as $val)
 													<option  value="{{$val['id']}}" @php if(isset($result->parent_department_id) && $result->parent_department_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['department_name']}}</option>
 													@endforeach

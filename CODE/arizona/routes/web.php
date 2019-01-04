@@ -328,4 +328,18 @@ Route::group(['middleware' => 'auth'], function () {
     // Recruitment Dashboard
 
     \App\Http\Controllers\RecruitmentdashboardController::routes();
+
+    // Job Post Settings
+    \App\Http\Controllers\JobPostSettingsController::routes();
+    
+
+    // Multiple employee Attendance
+
+    \App\Http\Controllers\MultipleAttendanceController::routes();
+
+    // Add Multiple Employee Hours
+
+    \App\Http\Controllers\AddMultipleEmployeeHoursController::routes();
+  
+    
 });
