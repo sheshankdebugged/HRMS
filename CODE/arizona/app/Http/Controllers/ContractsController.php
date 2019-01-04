@@ -146,7 +146,7 @@ class ContractsController extends Controller
         $master = $this->getmasterfields();
         $result = Contracts::find($id);
         $action = 'add';
-        $editname = "Edit " . $result->employee;
+        $editname = "Edit Contracts" . $result->employee;
         return view('hrmodule.contracts.add')->with([
             'action' => $action,
             'pageTitle' => "Contracts",

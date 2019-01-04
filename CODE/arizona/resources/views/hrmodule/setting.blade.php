@@ -72,7 +72,7 @@
                                                                      <label>Organization Code:</label>
                                                                   </div>
                                                                   <div class="field-value-an">
-                                                                     <p>{{$listData->organization_code}}</p>
+                                                                     <p>{{isset($listData->organization_code)?$listData->organization_code:''}}</p>
                                                                   </div>
                                                                </div>
                                                                <div class="field-group">
@@ -80,7 +80,7 @@
                                                                      <label>Organization Url:</label>
                                                                   </div>
                                                                   <div class="field-value-an">
-                                                                     <p>{{$listData->organization_url}}</p>
+                                                                     <p>{{isset($listData->organization_url)?$listData->organization_url:''}}</p>
                                                                   </div>
                                                                </div>
                                                                <div class="field-group">
@@ -88,7 +88,7 @@
                                                                      <label>Organization Name:</label>
                                                                   </div>
                                                                   <div class="field-value-an">
-                                                                     <input type="text" name="organization_code" id="organization_code" placeholder="{{$listData->organization_code}}" value="{{isset($result->organization_name)?$result->organization_name:''}}">
+                                                                     <input type="text" name="organization_code" id="organization_code" placeholder="Organization Name" value="{{isset($result->organization_name)?$result->organization_name:''}}">
                                                                   </div>
                                                                </div>
                                                                <div class="field-group">
@@ -96,7 +96,7 @@
                                                                      <label>Organization Starting Year:</label>
                                                                   </div>
                                                                   <div class="field-value-an">
-                                                                     <input type="text" name="organization_starting_year" id="organization_starting_year" placeholder="{{$listData->organization_starting_year}}" value="{{isset($result->organization_starting_year)?$result->organization_starting_year:''}}">
+                                                                     <input type="text" name="organization_starting_year" id="organization_starting_year" placeholder="Organization Starting Year" value="{{isset($result->organization_starting_year)?$result->organization_starting_year:''}}">
                                                                   </div>
                                                                </div>
                                                             </div>
@@ -107,7 +107,7 @@
                                                                      <label>First Name:</label>
                                                                   </div>
                                                                   <div class="field-value-an">
-                                                                     <p>{{$listData->contact_person_first_name}}</p>
+                                                                     <p>{{isset($listData->contact_person_first_name)?$listData->contact_person_first_name:''}}</p>
                                                                   </div>
                                                                </div>
                                                                <div class="field-group">
@@ -115,7 +115,7 @@
                                                                      <label>Last Name:</label>
                                                                   </div>
                                                                   <div class="field-value-an">
-                                                                     <p>{{$listData->contact_person_last_name}}</p>
+                                                                     <p>{{isset($listData->contact_person_last_name)?$listData->contact_person_last_name:''}}</p>
                                                                   </div>
                                                                </div>
                                                                <div class="field-group">
@@ -123,7 +123,7 @@
                                                                      <label>Email Address:</label>
                                                                   </div>
                                                                   <div class="field-value-an">
-                                                                     <input type="text" name="contact_person_email_address" id="contact_person_email_address" placeholder="{{$listData->contact_person_email_address}}" value="{{isset($result->contact_person_email_address)?$result->contact_person_email_address:''}}">
+                                                                     <input type="text" name="contact_person_email_address" id="contact_person_email_address" placeholder="Email Address" value="{{isset($result->contact_person_email_address)?$result->contact_person_email_address:''}}">
                                                                   </div>
                                                                </div>
                                                                <div class="field-group">
@@ -143,7 +143,7 @@
                                                                      <label>Phone Number:</label>
                                                                   </div>
                                                                   <div class="field-value-an">
-                                                                     <input type="text" name="contact_person_phone_number" id="contact_person_phone_number" placeholder="{{$listData->contact_person_phone_number}}" value="{{isset($result->contact_person_phone_number)?$result->contact_person_phone_number:''}}">
+                                                                     <input type="text" name="contact_person_phone_number" id="contact_person_phone_number" placeholder="Phone Number" value="{{isset($result->contact_person_phone_number)?$result->contact_person_phone_number:''}}">
                                                                   </div>
                                                                </div>
                                                                <h2>Organization Logo</h2>

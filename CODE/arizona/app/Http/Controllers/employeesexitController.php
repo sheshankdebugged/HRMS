@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\employeesexit;
+use App\Models\EmployeesExit;
+use App\Models\Employees;
+use App\Models\EmployeeExitType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -12,7 +14,7 @@ use Illuminate\Support\Form;
 use Session;
 use Validator;
 
-class employeesexitController extends Controller
+class EmployeesExitController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -32,7 +34,7 @@ class employeesexitController extends Controller
                 ['user_id', '=', $user_id],
             ];   
         }
-        $list = employeesexit::where($where)->paginate(10);
+        $list = EmployeesExit::where($where)->paginate(10);
 
 
         // $list = employeesexit::where(['status' => 1])->paginate(10);
@@ -51,10 +53,12 @@ class employeesexitController extends Controller
     public function create()
     {
         $action = 'add';
+        $master = $this->getmasterfields();
         return view('hrmodule.employeesexit.add')->with([
             'action' => $action,
             'pageTitle' => "Employees Exit",
             'Addform' => "Add New Employees Exit",
+            'master' => $master
         ]);
     }
 
@@ -72,7 +76,7 @@ class employeesexitController extends Controller
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                'employee' => 'required',
+                'employee_id' => 'required',
                 'exit_date' => 'required',
 
             ]);
@@ -88,7 +92,7 @@ class employeesexitController extends Controller
 
             $input = $request->all();
             echo "<pre>";
-
+            // die($input['exit_date']);
             $input['exit_date'] = ($input['exit_date'] != "") ? date('Y-m-d', strtotime($input['exit_date'])) : $input['exit_date'];
             $input['status'] = 1;
             $input['user_id'] = $user_id;
@@ -96,13 +100,12 @@ class employeesexitController extends Controller
             if ($input['id'] > 0) {
                 $input['updated_at'] = date("Y-m-d H:i:s");
                 Session::flash('message', 'Employees Exit Updated Successfully.');
-                employeesexit::where('id', $input['id'])->update($input);
+                EmployeesExit::where('id', $input['id'])->update($input);
             } else {
                 unset($input['id']);
-                $input['exit_date'] = date("Y-m-d H:i:s");
-                $input['updated_at'] = date("Y-m-d H:i:s");
+                $input['created_at'] = date("Y-m-d H:i:s");
                 Session::flash('message', 'Employees Exit  Added Successfully.');
-                employeesexit::insertGetId($input);
+                EmployeesExit::insertGetId($input);
             }
             return redirect('/employeesexit');
         }
@@ -129,8 +132,8 @@ class employeesexitController extends Controller
     {
 
         $action = 'edit';
-        $result = employeesexit::find($id);
-        $result = employeesexit::find($id);
+        $master = $this->getmasterfields();
+        $result = EmployeesExit::find($id);
         $action = 'add';
         $editname = "Edit " . $result->employees_exit;
         return view('hrmodule.employeesexit.add')->with([
@@ -138,6 +141,7 @@ class employeesexitController extends Controller
             'pageTitle' => "Employees Exit",
             'Addform' => $editname,
             'result' => $result,
+            'master' => $master
         ]);
 
     }
@@ -150,7 +154,7 @@ class employeesexitController extends Controller
      */
     public function destroy($id)
     {
-        $employeesexit = employeesexit::find($id);
+        $employeesexit = EmployeesExit::find($id);
         $employeesexit->status = 0;
         $employeesexit->save();
         Session::flash('message', 'Employees Exit delete successfully');
@@ -163,13 +167,23 @@ class employeesexitController extends Controller
     public static function routes()
     {
         Route::group(array('prefix' => 'employeesexit'), function () {
-            Route::get('/', array('as' => 'employeesexit.index', 'uses' => 'EmployeesexitController@index'));
-            Route::get('/add', array('as' => 'employeesexit.create', 'uses' => 'EmployeesexitController@create'));
-            Route::post('/save', array('as' => 'employeesexit.save', 'uses' => 'EmployeesexitController@store'));
-            Route::get('/edit/{id}', array('as' => 'employeesexit.edit', 'uses' => 'EmployeesexitController@edit'));
-            Route::post('/update/{id}', array('as' => 'employeesexit.update', 'uses' => 'EmployeesexitController@create'));
-            Route::get('/delete/{id}', array('as' => 'employeesexit.destroy', 'uses' => 'EmployeesexitController@destroy'));
+            Route::get('/', array('as' => 'employeesexit.index', 'uses' => 'EmployeesExitController@index'));
+            Route::get('/add', array('as' => 'employeesexit.create', 'uses' => 'EmployeesExitController@create'));
+            Route::post('/save', array('as' => 'employeesexit.save', 'uses' => 'EmployeesExitController@store'));
+            Route::get('/edit/{id}', array('as' => 'employeesexit.edit', 'uses' => 'EmployeesExitController@edit'));
+            Route::post('/update/{id}', array('as' => 'employeesexit.update', 'uses' => 'EmployeesExitController@create'));
+            Route::get('/delete/{id}', array('as' => 'employeesexit.destroy', 'uses' => 'EmployeesExitController@destroy'));
         });
 
     }
+    public function getmasterfields()
+    {
+        $master = array();
+           $master['Employees']               = Employees::where(['status' => 1])->get()->toArray();
+           $master['EmployeeExitType']       = EmployeeExitType::where(['status' => 1])->get()->toArray();
+        //    $master['Stations']                = Stations::where(['status' => 1])->get()->toArray();
+        //    $master['Departments']             = Departments::where(['status' => 1])->get()->toArray();
+        return $master;
+    }
+
 }

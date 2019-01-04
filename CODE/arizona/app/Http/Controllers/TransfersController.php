@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transfers;
+use App\Models\Employees;
+use App\Models\Companies;
+use App\Models\Stations;
+use App\Models\Departments;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -32,10 +36,10 @@ class TransfersController extends Controller
                 ['user_id', '=', $user_id],
             ];   
         }
-        $list = transfers::where($where)->paginate(10);
+        $list = Transfers::where($where)->paginate(10);
 
 
-        // $list = transfers::where(['status' => 1])->paginate(10);
+        // $list = Transfers::where(['status' => 1])->paginate(10);
         return view('hrmodule.transfers.list')->with([
             'listData' => $list,
             'pageTitle' => "Transfers",
@@ -51,10 +55,12 @@ class TransfersController extends Controller
     public function create()
     {
         $action = 'add';
+        $master = $this->getmasterfields();
         return view('hrmodule.transfers.add')->with([
             'action' => $action,
-            'pageTitle' => "transfers",
+            'pageTitle' => "Transfers",
             'Addform' => "Add New Transfer",
+            'master' => $master
         ]);
     }
 
@@ -72,7 +78,7 @@ class TransfersController extends Controller
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                'employee_to_transfer' => 'required',
+                'employee_id' => 'required',
 
             ]);
             if ($validator->fails()) {
@@ -101,13 +107,13 @@ class TransfersController extends Controller
             if ($input['id'] > 0) {
                 $input['updated_at'] = date("Y-m-d H:i:s");
                 Session::flash('message', 'Transfer  Updated Successfully.');
-                transfers::where('id', $input['id'])->update($input);
+                Transfers::where('id', $input['id'])->update($input);
             } else {
                 unset($input['id']);
                 $input['created_at'] = date("Y-m-d H:i:s");
                 $input['updated_at'] = date("Y-m-d H:i:s");
                 Session::flash('message', 'Transfer  Added Successfully.');
-                transfers::insertGetId($input);
+                Transfers::insertGetId($input);
             }
             return redirect('/transfers');
         }
@@ -134,14 +140,16 @@ class TransfersController extends Controller
     {
 
         $action = 'edit';
-        $result = transfers::find($id);
+        $master = $this->getmasterfields();
+        $result = Transfers::find($id);
         $action = 'add';
         $editname = "Edit Transfer " . $result->employee;
         return view('hrmodule.transfers.add')->with([
             'action' => $action,
-            'pageTitle' => "transfers",
+            'pageTitle' => "Transfers",
             'Addform' => $editname,
             'result' => $result,
+            'master' => $master
         ]);
 
     }
@@ -170,6 +178,15 @@ class TransfersController extends Controller
             Route::post('/update/{id}', array('as' => 'transfers.update', 'uses' => 'TransfersController@update'));
             Route::get('/delete/{id}', array('as' => 'transfers.destroy', 'uses' => 'TransfersController@destroy'));
         });
+    }
+    public function getmasterfields()
+    {
+        $master = array();
+           $master['Employees']               = Employees::where(['status' => 1])->get()->toArray();
+           $master['Companies']               = Companies::where(['status' => 1])->get()->toArray();
+           $master['Stations']                = Stations::where(['status' => 1])->get()->toArray();
+           $master['Departments']             = Departments::where(['status' => 1])->get()->toArray();
+        return $master;
     }
 }
 

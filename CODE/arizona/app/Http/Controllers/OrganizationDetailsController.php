@@ -38,7 +38,7 @@ class OrganizationDetailsController extends Controller
 
 
         return view('hrmodule.setting')->with([
-            'listData' => $list[0],
+            'listData' => isset($list[0])?$list[0]:0,
             'pageTitle' => "Organization Details",
             'master' => $master,
             'listData1'=> $list1,

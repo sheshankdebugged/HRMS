@@ -65,19 +65,10 @@
 											<div class="form-group">
 													<label>Resigning Employee:</label>
 
-													<select  name ="resigning_employee" id="resigning_employee" class="form-control-select chosen-select" >
-
-													<option style="" value="0"> 0 </option>
-													<option style="" value="1">1</option>
-													<option style="" value="2">2</option>
-													<option style="" value="3">3</option>
-													<option style="" value="4">4</option>
-													<option style="" value="5">5</option>
-													<option style="" value="6">6</option>
-													<option style="" value="7">7</option>
-													<option style="" value="8">8</option>
-
-
+													<select  name ="employee_id" id="employee_id" class="form-control-select chosen-select" >													
+													@foreach($master['Employees'] as $val)
+													<option  value="{{$val['id']}}"  @php if(isset($result->employee_id) && $result->employee_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
+													@endforeach
 													</select>
 													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 
@@ -85,10 +76,10 @@
 
 												 <div class="form-group">
 													<label>Forward Application To:</label>
-													<select id ="forward_application_to_id"  name ="forward_application_to_id" class="form-control-select chosen-select">
-													<option style="" value="0"> - </option>
-													<option style="" value="1">1</option>
-													<option style="" value="2">2</option>
+													<select id ="forward_employee_id"  name ="forward_employee_id" class="form-control-select chosen-select">
+													@foreach($master['Employees'] as $val)
+													<option  value="{{$val['id']}}"  @php if(isset($result->forward_employee_id) && $result->forward_employee_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
+													@endforeach
 													</select>
 												 </div>
 

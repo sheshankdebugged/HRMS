@@ -75,7 +75,7 @@
 										<tbody>
                                         @foreach($listData as $list)
 											<tr id="second" class="context-requst-one selected">
-											<td class="datainner" style="">{{$list->promotion_for_employee_id}}</td>
+											<td class="datainner" style="">{{$list->employee_id}}</td>
 											<td class="datainner" style="">{{$list->promotion_title}}</td>
 											<td class="datainner" style="">{{$list->promotion_date}}</td>  
 											<td class="datainner" style="">{{$list->approval_status_id}}</td>                      

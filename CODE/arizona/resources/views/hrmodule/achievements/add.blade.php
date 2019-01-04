@@ -63,13 +63,20 @@
 												
 												 <div class="form-group">
 													<label>Employee:</label>
-													<select id="employee" name="employee" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Employee-</option></select>
-
+													 <select  name ="employee_id" id="employee_id" class="form-control-select chosen-select" >													
+													@foreach($master['Employees'] as $val)
+													<option  value="{{$val['id']}}"  @php if(isset($result->employee_id) && $result->employee_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
+													@endforeach
+													</select>
 												 </div>
 												 
 												 <div class="form-group">
 													<label>Forward Application To:</label>
-													<select id="forward_application_to" name="forward_application_to" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Forward Application To</option></select>
+													<select id="forward_employee_id" name="forward_employee_id" class="WebHRForm1 chosen-select" style="width:180px;">
+													@foreach($master['Employees'] as $val)
+													<option  value="{{$val['id']}}"  @php if(isset($result->forward_employee_id) && $result->forward_employee_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
+													@endforeach
+													   </select>
 
 												 </div>
 												 
@@ -82,7 +89,7 @@
 
 												 <div class="form-group">
 													<label>Achievement Date:</label>
-													<input type="text" placeholder="" class="form-control-spacial date" id="achievement_date" name="achievement_date" value="{{isset($result->achievement_date)?$result->achievement_date:''}}">
+													<input type="date" placeholder="" class "form-control-spacial date" id="achievement_date" name="achievement_date" value="{{isset($result->achievement_date)?$result->achievement_date:''}}">
 
 												 </div>
 

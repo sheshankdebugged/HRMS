@@ -75,8 +75,8 @@
 										<tbody>
                                         @foreach($listData as $list)
 											<tr id="second" class="context-requst-one selected">
-											<td class="datainner" style="">{{$list->complaint_from}}</td>
-											<td class="datainner" style="">{{$list->complaint_against}}</td>
+											<td class="datainner" style="">{{$list->employee_id}}</td>
+											<td class="datainner" style="">{{$list->employee_id}}</td>
 											<td class="datainner" style="">{{$list->complaint_title}}</td>  
 											<td class="datainner" style="">{{$list->approval_status}}</td>                      
 											<td align="right">
