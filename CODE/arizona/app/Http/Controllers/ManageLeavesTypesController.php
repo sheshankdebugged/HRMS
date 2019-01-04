@@ -115,7 +115,7 @@ class ManageLeavesTypesController extends Controller
 
             echo "<pre>";
 
-            $input['created_at'] = ($input['created_at'] != "") ? date('Y-m-d', strtotime($input['created_at'])) : $input['created_at'];
+            // $input['created_at'] = ($input['created_at'] != "") ? date('Y-m-d', strtotime($input['created_at'])) : $input['created_at'];
             // $input['poll_end_date']   = ($input['poll_end_date'] !="")?date('Y-m-d',strtotime($input['poll_end_date'])):$input['poll_end_date'];
             $input['status'] = 1;
             $input['user_id'] = $user_id;
