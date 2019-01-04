@@ -419,7 +419,7 @@
                                                       <a href="#"><i class="fa fa-plus"></i>Add Custom Field</a>
                                                    </div>
                                                    <div class="search-area-request">
-                                                      <input type="text" placeholder="Search...">
+                                                      <input type="text" placeholder="Quick Search...">
                                                       <button><i class="fa fa-search"></i></button>
                                                    </div>
                                                 </div>
@@ -463,7 +463,7 @@
                                                       <a href="#"><i class="fa fa-plus"></i>Add Notification</a>
                                                    </div>
                                                    <div class="search-area-request">
-                                                      <input type="text" placeholder="Search...">
+                                                      <input type="text" placeholder="Quick Search...">
                                                       <button><i class="fa fa-search"></i></button>
                                                    </div>
                                                 </div>
@@ -503,7 +503,7 @@
                                                       <a href="#"><i class="fa fa-plus"></i>Add Reminder</a>
                                                    </div>
                                                    <div class="search-area-request">
-                                                      <input type="text" placeholder="Search...">
+                                                      <input type="text" placeholder="Quick Search...">
                                                       <button><i class="fa fa-search"></i></button>
                                                    </div>
                                                 </div>
