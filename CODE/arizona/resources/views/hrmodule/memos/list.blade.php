@@ -44,7 +44,7 @@
                              	<div class="col-md-8 nopadding">
 								 <form id="search" name="search" method="get" />
 											<div class="search-area-request">
-												<input type="text" placeholder="Search..."  name="search" class="search" id="search" value="{{isset($_GET['search'])?$_GET['search']:''}} "/>
+												<input type="text" placeholder="Quick Search..."  name="search" class="search" id="search" value="{{isset($_GET['search'])?$_GET['search']:''}} "/>
 												<button style="cursor:pointer"><i class="fa fa-search"></i></button>
 											</div>
 											</form>
@@ -74,10 +74,10 @@
 										<tbody>
                                         @foreach($listData as $list)
 											<tr id="second" class="context-requst-one selected">
-											<td class="datainner" style="">{{$list->memo_from}}</td>
+											<td class="datainner" style="">{{$list->employee_id}}</td>
 											<td class="datainner" style="">{{$list->memo_subject}}</td>
 											<td class="datainner" style="">{{$list->memo_date}}</td> 
-											<td class="datainner" style="">{{$list->approval_status}}</td>                      
+											<td class="datainner" style="">{{$list->approval_status_id}}</td>                      
 											<td align="right">
 												<div class="dropdown action-drop">
 													<a href="javascript:void(0);" class="dropdown-custom"><i style="font-size:16px;" class="fa fa-cog"></i></a>

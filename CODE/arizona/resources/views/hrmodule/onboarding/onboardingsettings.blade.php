@@ -47,7 +47,7 @@
                                  <li role="presentation"><a href="#settings" <?php if($_GET['tab'] == 4) {?> class="active" <?php }?> aria-controls="settings" role="tab" data-toggle="tab">Employee Tasks</a></li>
                               </ul>
                               <div class="tab-content">
-                                 <div role="tabpanel" class="tab-pane active"<?php if($_GET['tab'] == 2) {?> style="display:none;" <?php }?>  id="home">
+                                 <div role="tabpanel" class="tab-pane active"<?php if($_GET['tab'] == 2||3||4) {?> style="display:none;" <?php }?>  id="home">
                                     <div class="inner-setting-db">
                                        <div class="col-md-12">
                                           <div class="row">

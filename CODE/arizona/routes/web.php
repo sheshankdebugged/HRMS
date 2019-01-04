@@ -343,4 +343,33 @@ Route::group(['middleware' => 'auth'], function () {
     // //EmployeeOnBoardingTasks
 
     // \App\Http\Controllers\EmployeeOnBoardingTasksController::routes();
+
+     // Employee Groups
+
+     \App\Http\Controllers\EmployeeGroupsController::routes();
+
+     // Employee Trainings
+
+     \App\Http\Controllers\EmployeeTrainingsController::routes();
+
+      // Employee Training Setting
+
+      \App\Http\Controllers\EmployeeTrainingSettingController::routes();
+
+      // Employee Employees Directory
+
+      \App\Http\Controllers\EmployeesDirectoryController::routes();
+    // Job Post Settings
+    \App\Http\Controllers\JobPostSettingsController::routes();
+    
+
+    // Multiple employee Attendance
+
+    \App\Http\Controllers\MultipleAttendanceController::routes();
+
+    // Add Multiple Employee Hours
+
+    \App\Http\Controllers\AddMultipleEmployeeHoursController::routes();
+  
+    
 });

@@ -106,6 +106,16 @@
 													<label>Station Name:</label>
 													<input type="text" id="station_name" name="station_name" value="{{isset($result->station_name)?$result->station_name:''}}" placeholder="Station Name" class="form-control-spacial" />
 													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
+												 </div>
+
+												 <div class="form-group">
+													<label>Parent Station:</label>
+													<select id ="parent_station_id" name ="parent_station_id" class="WebHRForm1 chosen-select">
+													<option  value="0">No Parent</option>
+													@foreach($master['Stations'] as $val)
+													<option  value="{{$val['id']}}" @php if(isset($result->parent_station_id) && $result->parent_station_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['station_name']}}</option>
+													@endforeach
+													</select>
 
 												 </div>
 

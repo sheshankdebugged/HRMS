@@ -63,15 +63,16 @@
 												
 											<div class="form-group">
 													<label>Memo From:</label>
-													<select id="memo_from" name="memo_from" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Memo From </option></select>
-													<!-- <input type="text" placeholder="Contact Person" class="form-control-spacial" id="registration_name" name="contact_person" value="{{isset($result->contact_person)?$result->contact_person:''}}"> -->
-                                                   
+													<select  name ="employee_id" id="employee_id" class="form-control-select chosen-select" >													
+													@foreach($master['Employees'] as $val)
+													<option  value="{{$val['id']}}"  @php if(isset($result->employee_id) && $result->employee_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
+													@endforeach
+													</select>
 												 </div>
 
 
 												 <div class="form-group">
 												   <label>Memo Subject:</label>
-												   <!-- <select id="forward_application_to" name="forward_application_to" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Forward Application To: 1</option></select> -->
 													<input type="text" placeholder="Memo Subject" class="form-control-spacial" id="memo_subject" name="memo_subject" value="{{isset($result->memo_subject)?$result->memo_subject:''}}">
 													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 
@@ -80,18 +81,18 @@
 												 
 												 <div class="form-group">
 												   <label>Memo Date:</label>
-												   <!-- <select id="Memo Date" name="employee_category" class="WebHRForm1" style="width:180px;"><option style="" value="Head Office">Employee Category 1</option></select> -->
-													<!-- <input type="text" placeholder="Memo Date" class="form-control-spacial" id="memo_date" name="memo_date" value="{{isset($result->memo_date)?$result->memo_date:''}}"> -->
-													<input type="text" placeholder="" class="form-control-spacial date" id="memo_date" name="memo_date" value="{{isset($result->memo_date)?$result->memo_date:''}}">
+												  	<input type="date" placeholder="" id="memo_date" name="memo_date" value="{{isset($result->memo_date)?$result->memo_date:''}}">
 												 </div>
 												 <div class="form-group">
 													<h4>Memo To</h4>
 												 </div>
 												 <div class="form-group">
 													<label>Memo To:</label>
-													<select id="memo_to" name="memo_to" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Memo To</option></select>
-													<!-- <input type="text" placeholder="Contact Person" class="form-control-spacial" id="registration_name" name="contact_person" value="{{isset($result->contact_person)?$result->contact_person:''}}"> -->
-                                                   
+													<select multiple id="memo_to_id" name="memo_to_id" class="WebHRForm1 chosen-select" style="width:180px;">
+													@foreach($master['Employees'] as $val)
+													<option  value="{{$val['id']}}"  @php if(isset($result->memo_to_id) && $result->memo_to_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}} [{{$val['user_name']}}]</option>
+													@endforeach
+													</select>
 												 </div>
 										 
 												 

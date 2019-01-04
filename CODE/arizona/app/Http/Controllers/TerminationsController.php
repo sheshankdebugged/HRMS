@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Terminations;
+use App\Models\TerminationType;
+use App\Models\Employees;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -34,7 +36,7 @@ class TerminationsController extends Controller
                 ['user_id', '=', $user_id],
             ];   
         }
-        $list =  terminations::where($where)->paginate(10);
+        $list =  Terminations::where($where)->paginate(10);
 
 
         // $list = terminations::where(['status' => 1])->paginate(10);
@@ -53,10 +55,12 @@ class TerminationsController extends Controller
     public function create()
     {
         $action = 'add';
+        $master = $this->getmasterfields();
         return view('hrmodule.terminations.add')->with([
             'action' => $action,
             'pageTitle' => "Terminations",
             'Addform' => "Add New Termination",
+            'master' => $master
         ]);
     }
 
@@ -74,7 +78,7 @@ class TerminationsController extends Controller
         if ($request->all()) {
 
             $validator = Validator::make($request->all(), [
-                'employee_terminated' => 'required',
+                'employee_id' => 'required',
 
             ]);
             if ($validator->fails()) {
@@ -104,13 +108,13 @@ class TerminationsController extends Controller
             if ($input['id'] > 0) {
                 $input['updated_at'] = date("Y-m-d H:i:s");
                 Session::flash('message', 'Termination  Updated Successfully.');
-                terminations::where('id', $input['id'])->update($input);
+                Terminations::where('id', $input['id'])->update($input);
             } else {
                 unset($input['id']);
                 $input['created_at'] = date("Y-m-d H:i:s");
                 $input['updated_at'] = date("Y-m-d H:i:s");
                 Session::flash('message', 'Termination  Added Successfully.');
-                terminations::insertGetId($input);
+                Terminations::insertGetId($input);
             }
             return redirect('/terminations');
         }
@@ -137,14 +141,16 @@ class TerminationsController extends Controller
     {
 
         $action = 'edit';
-        $result = terminations::find($id);
+        $master = $this->getmasterfields();
+        $result = Terminations::find($id);
         $action = 'add';
-        $editname = "Edit Termination " . $result->employee;
+        $editname = "Edit Termination ";
         return view('hrmodule.terminations.add')->with([
             'action' => $action,
             'pageTitle' => "Terminations",
             'Addform' => $editname,
             'result' => $result,
+            'master' => $master
         ]);
 
     }
@@ -157,7 +163,7 @@ class TerminationsController extends Controller
      */
     public function destroy($id)
     {
-        $terminations = terminations::find($id);
+        $terminations = Terminations::find($id);
         $terminations->status = 0;
         $terminations->save();
         Session::flash('message', 'Termination delete successfully');
@@ -173,6 +179,13 @@ class TerminationsController extends Controller
             Route::post('/update/{id}', array('as' => 'terminations.update', 'uses' => 'TerminationsController@update'));
             Route::get('/delete/{id}', array('as' => 'terminations.destroy', 'uses' => 'TerminationsController@destroy'));
         });
+    }
+    public function getmasterfields()
+    {
+        $master = array();
+              $master['Employees']               = Employees::where(['status' => 1])->get()->toArray();
+              $master['TerminationType']               = TerminationType::where(['status' => 1])->get()->toArray();
+        return $master;
     }
 }
 

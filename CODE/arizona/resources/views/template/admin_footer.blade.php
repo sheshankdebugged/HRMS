@@ -32,7 +32,7 @@
 <script>
     $(function(){
         $('[data-toggle="tooltip"]').tooltip();
-        $(window).scroll(function() {    
+        $(window).scroll(function() {
     var scroll = $(window).scrollTop();
 
     if (scroll >= 200) {
@@ -42,6 +42,20 @@
     }
 });
     });
+</script>
+
+<script type="text/javascript">
+            $(function () {
+                $('#datetimepicker3').datetimepicker({
+                    format: 'LT'
+                });
+            });
+        </script>
+
+<script>
+$("#checkAll").click(function(){
+    $('input:checkbox').not(this).prop('checked', this.checked);
+});
 </script>
 <script src="{{ url('/admin/js/popper.min.js') }}"></script>
 <script src="{{ url('/admin/js/bootstrap-datepicker.js') }}"></script>

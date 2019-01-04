@@ -173,6 +173,7 @@ class StationsController extends Controller
         $master['Divisions'] = Divisions::where(['status' => 1])->get()->toArray();
         $master['StationTypes'] = StationTypes::where(['status' => 1])->get()->toArray();
         $master['Countries'] = Countries::where(['status' => 1])->get()->toArray();
+        $master['Stations'] = Stations::where(['status' => 1])->get()->toArray();
         return $master;
     }
 

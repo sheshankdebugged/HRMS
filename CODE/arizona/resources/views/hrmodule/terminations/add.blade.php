@@ -63,35 +63,41 @@
 												
 											<div class="form-group">
 													<label>Employee Terminated:</label>
-													<select id="employee_terminated" name="employee_terminated" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Employee Terminated</option></select>
-													<!-- <input type="text" placeholder="Contact Person" class="form-control-spacial" id="registration_name" name="contact_person" value="{{isset($result->contact_person)?$result->contact_person:''}}"> -->
+													<select  name ="employee_id" id="employee_id" class="form-control-select chosen-select" >													
+													@foreach($master['Employees'] as $val)
+													<option  value="{{$val['id']}}"  @php if(isset($result->employee_id) && $result->employee_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
+													@endforeach
+													</select>
 													<i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i>
 												 </div>
 
 
 												 <div class="form-group">
 												   <label>Forward Application To:</label>
-												   <select id="forward_application_to" name="forward_application_to" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Forward Application To:</option></select>
-													<!-- <input type="text" placeholder="Termination Subject" class="form-control-spacial" id="Termination_subject" name="Termination_subject" value="{{isset($result->Termination_subject)?$result->Termination_subject:''}}"> -->
-													<!-- <i title="Mandatory Field" style="font-size:10px; color:#ff0000;" class="fa fa-asterisk"></i> -->
-
+												   <select id="forward_employee_id" name="forward_employee_id" class="WebHRForm1 chosen-select" style="width:180px;">
+												   @foreach($master['Employees'] as $val)
+													<option  value="{{$val['id']}}"  @php if(isset($result->forward_employee_id) && $result->forward_employee_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['employee_name']}}</option>
+													@endforeach
+												   </select>													
 												 </div>
 
 												 
 												 <div class="form-group">
 												   <label>Termination Type:</label>
-												   <select id="termination_type" name="termination_type" class="WebHRForm1 chosen-select" style="width:180px;"><option style="" value="Head Office">Termination Type</option></select>
-													<!-- <input type="text" placeholder="Termination Date" class="form-control-spacial" id="Termination_date" name="Termination_date" value="{{isset($result->Termination_date)?$result->Termination_date:''}}"> -->
-													<!-- <input type="text" placeholder="" class="form-control-spacial date" id="Termination_date" name="Termination_date" value="{{isset($result->Termination_date)?$result->Termination_date:''}}"> -->
+												   <select id="termination_type_id" name="termination_type_id" class="WebHRForm1 chosen-select" style="width:180px;">
+												   @foreach($master['TerminationType'] as $val)
+													<option  value="{{$val['id']}}"  @php if(isset($result->termination_type_id) && $result->termination_type_id == $val['id']  ) { echo "selected";  } @endphp >{{$val['title']}}</option>
+													@endforeach
+													</select>
 												 </div>
 												 <div class="form-group">
 												   <label>Termination Date:</label>
-												   <input type="text" placeholder="" class="form-control-spacial date" id="termination_date" name="termination_date" value="{{isset($result->termination_date)?$result->termination_date:''}}">
+												   <input type="date" placeholder="" id="termination_date" name="termination_date" value="{{isset($result->termination_date)?$result->termination_date:''}}">
 												 </div>
 
 												 <div class="form-group">
 												   <label>Notice Date:</label>
-												   <input type="text" placeholder="" class="form-control-spacial date" id="notice_date" name="notice_date" value="{{isset($result->notice_date)?$result->notice_date:''}}">
+												   <input type="date" placeholder=""  id="notice_date" name="notice_date" value="{{isset($result->notice_date)?$result->notice_date:''}}">
 												 </div>
 
 												 
