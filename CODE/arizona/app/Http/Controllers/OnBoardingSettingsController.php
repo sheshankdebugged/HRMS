@@ -150,7 +150,7 @@ class OnBoardingSettingsController extends Controller
                 Session::flash('message', 'Notification has been added successfully.');
                 OnBoardingNotifications::insertGetId($input);
             }
-            return redirect('/onboardingsettings?tab=2');
+            return redirect('/onboardingsettings');
 
         }
     }

@@ -41,13 +41,13 @@
                            <div class="dash-board-bd">
                               <!-- Nav tabs -->
                               <ul class="nav nav-tabs" role="tablist">
-                                 <li role="presentation"><a href="#home" <?php $_GET['tab'] == 1;  if ($_GET['tab'] == 1 || $_GET['tab']=="") {?> class="active" <?php }?> aria-controls="home" role="tab" data-toggle="tab">General Settings</a></li>
-                                 <li role="presentation"><a href="#profile" <?php if($_GET['tab'] == 2) {?> class="active" <?php }?> aria-controls="profile" role="tab" data-toggle="tab">Notifications</a></li>
-                                 <li role="presentation"><a href="#messages" <?php if($_GET['tab'] == 3) {?> class="active" <?php }?> aria-controls="messages" role="tab" data-toggle="tab">Checklist</a></li>
-                                 <li role="presentation"><a href="#settings" <?php if($_GET['tab'] == 4) {?> class="active" <?php }?> aria-controls="settings" role="tab" data-toggle="tab">Employee Tasks</a></li>
+                                 <li role="presentation"><a href="#generalsettings" class="active" aria-controls="generalsettings" role="tab" data-toggle="tab">General Settings</a></li>
+                                 <li role="presentation"><a href="#notifications" aria-controls="notifications" role="tab" data-toggle="tab">Notifications</a></li>
+                                 <li role="presentation"><a href="#checklist" aria-controls="checklist" role="tab" data-toggle="tab">checklist</a></li>
+                                 <li role="presentation"><a href="#employeetasks" aria-controls="employeetasks" role="tab" data-toggle="tab">Employee Tasks</a></li>
                               </ul>
                               <div class="tab-content">
-                                 <div role="tabpanel" class="tab-pane active"<?php if($_GET['tab'] == 2||3||4) {?> style="display:none;" <?php }?>  id="home">
+                                 <div role="tabpanel" class="tab-pane active" id="generalsettings">
                                     <div class="inner-setting-db">
                                        <div class="col-md-12">
                                           <div class="row">
@@ -335,7 +335,7 @@
                                        </div>
                                     </div>
                                  </div>
-                                 <div role="tabpanel" class="tab-pane" id="profile" <?php if($_GET['tab'] == 2) {?> style="display:block;" <?php }?>>
+                                 <div role="tabpanel" class="tab-pane" id="notifications">
                                     <div class="col-md-12">
                                        <div class="row" style="width: 100%">
                                           <div class="inner-wrapper-an">
@@ -452,15 +452,15 @@
                                        </div>
                                     </div>
                                  </div>
-                                 <div role="tabpanel" class="tab-pane" id="messages">
+                                 <div role="tabpanel" class="tab-pane" id="checklist">
                                     <div class="col-md-12">
                                        <div class="row" style="width: 100%">
                                           <div class="inner-wrapper-an">
                                              <div class="custon-field-header">
-                                                <h2>Manage Onboarding Checklist </h2>
+                                                <h2>Manage Onboarding checklist </h2>
                                                 <div class="right-button">
                                                    <div class="add-record-btn">
-                                                      <a href="#" id="addchecklist"><i class="fa fa-plus"></i>New Checklist Item</a>
+                                                      <a href="#" id="addchecklist"><i class="fa fa-plus"></i>New checklist Item</a>
                                                    </div>
                                                 </div>
                                              </div>
@@ -469,7 +469,7 @@
                                                    <thead>
                                                       <tr>
                                                          <td><a style="color:#fff; " href="#">S#</a></td>
-                                                         <td><a style="color:#fff; " href="#">Checklist Item</a></td>
+                                                         <td><a style="color:#fff; " href="#">checklist Item</a></td>
                                                          <td><a style="color:#fff; " href="#"> </a></td>
                                                       </tr>
                                                    </thead>
@@ -515,11 +515,11 @@
                                                       <input type="hidden" name="id" value="{{isset($result->id)?$result->id:''}}">
                                                       <div class="form-field-inner">
                                                          <div class="form-group">
-                                                            <label>Checklist Item:</label>
+                                                            <label>checklist Item:</label>
                                                             <input type="text" class="form-control-spacial" id="city" name="city" value="{{isset($result->city)?$result->city:''}}">
                                                          </div>
                                                          <div class="form-group text-center">
-                                                            <input class="submit-office" type="submit" value="Add Checklist Item">
+                                                            <input class="submit-office" type="submit" value="Add checklist Item">
                                                          </div>
                                                       </div>
                                                    </form>
@@ -529,7 +529,7 @@
                                        </div>
                                     </div>
                                  </div>
-                                 <div role="tabpanel" class="tab-pane" id="settings">
+                                 <div role="tabpanel" class="tab-pane" id="employeetasks">
                                     <div class="col-md-12">
                                        <div class="row" style="width: 100%">
                                           <div class="inner-wrapper-an">
@@ -655,10 +655,10 @@
      });
    
      $("#addchecklist").click(function(){
-        if($("#addchecklist")[0].innerHTML =='<i class="fa fa-plus"></i>New Checklist Item'){
+        if($("#addchecklist")[0].innerHTML =='<i class="fa fa-plus"></i>New checklist Item'){
             $("#addchecklist")[0].innerHTML = '<i class="fa fa-angle-left"></i>Back';
         }else{
-         $("#addchecklist")[0].innerHTML ='<i class="fa fa-plus"></i>New Checklist Item';
+         $("#addchecklist")[0].innerHTML ='<i class="fa fa-plus"></i>New checklist Item';
         }
       $("#checklist").toggle();
       $("#newchecklist").toggle();
